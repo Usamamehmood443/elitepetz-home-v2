@@ -166,14 +166,13 @@
     letter-spacing: -0.012em;
     font-weight: 600;
     margin-bottom: 22px;
-    max-width: 760px;
+    white-space: nowrap;
   }
   .intro-block .description {
     font-family: var(--serif);
     font-size: 17px;
     line-height: 1.6;
     color: var(--text-muted);
-    max-width: 700px;
     font-weight: 400;
   }
   .intro-block .description em { font-style: italic; color: var(--text); }
@@ -398,7 +397,6 @@
     font-size: 18.5px;
     line-height: 1.55;
     color: var(--text);
-    max-width: 740px;
     margin-bottom: 28px;
   }
   .problem-list {
@@ -477,7 +475,6 @@
     font-size: 16px;
     line-height: 1.65;
     color: var(--text-muted);
-    max-width: 720px;
     margin-bottom: 24px;
   }
 
@@ -489,7 +486,6 @@
     font-size: 18.5px;
     line-height: 1.55;
     color: var(--text);
-    max-width: 740px;
     margin-bottom: 30px;
   }
   .cert-list {
@@ -532,38 +528,21 @@
   }
   .cert-list.excludes li .label { color: var(--text-muted); }
 
-  /* Side-by-side grid for Includes / Does Not Represent (SEC 03) */
-  .cert-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+  /* Single-column Certification Includes block (SEC 03) */
+  .cert-list.single {
     margin-bottom: 28px;
-  }
-  .cert-grid .cert-list {
-    margin-bottom: 0;
     border-top: none;
-    padding: 0 22px 18px;
+    padding: 0 26px 22px;
     background: #fff;
     border: 1px solid var(--border);
-  }
-  .cert-grid .cert-list.includes {
     border-left: 3px solid var(--active-fg);
   }
-  /* Right column slightly emphasized per Pavel's request */
-  .cert-grid .cert-list.excludes {
-    border-left: 3px solid var(--revoked-fg);
-    background: var(--bg-band);
-  }
-  .cert-grid .cert-list .b-label {
-    padding: 18px 0 12px;
+  .cert-list.single .b-label {
+    padding: 20px 0 14px;
     border-bottom: 1px solid var(--border-soft);
     margin-bottom: 4px;
   }
-  .cert-grid .cert-list li:first-child { border-top: none; }
-  .cert-grid .cert-list.excludes li .label {
-    color: var(--text);
-    font-weight: 500;
-  }
+  .cert-list.single li:first-child { border-top: none; }
 
   .cert-actions {
     display: flex;
@@ -652,7 +631,6 @@
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-muted);
-    max-width: 700px;
     margin-bottom: 28px;
   }
   .stats-grid {
@@ -664,10 +642,10 @@
   .stat-cell {
     border: 1px solid var(--border);
     background: #fff;
-    padding: 22px 24px;
+    padding: 16px 18px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
   .stat-cell .pill-line {
     display: flex;
@@ -694,7 +672,7 @@
   }
   .stat-cell .figure {
     font-family: var(--mono);
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 500;
     color: var(--text);
     letter-spacing: -0.015em;
@@ -702,9 +680,9 @@
   }
   .stat-cell .figure.zero { color: var(--text-soft); }
   .stat-cell .lbl {
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--text-muted);
-    line-height: 1.4;
+    line-height: 1.45;
   }
   .stat-cell.total {
     background: var(--navy);
@@ -938,7 +916,6 @@
     font-size: 17px;
     line-height: 1.6;
     color: var(--text);
-    max-width: 720px;
     margin-bottom: 22px;
   }
   .advisory-notice {
@@ -1041,13 +1018,17 @@
   }
 
   /* ══════════════════════════════════════════════════════════════════
-     AUTHORITY & SCOPE (SEC 11 — two-column What We Do / What We Do Not Do)
+     AUTHORITY & SCOPE (SEC 11 — single Outside Our Scope list)
   ══════════════════════════════════════════════════════════════════ */
-  .scope-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 4px;
+  .scope-lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .scope-single {
+    margin-bottom: 22px;
   }
   .scope-col {
     padding: 24px 28px;
@@ -1106,65 +1087,64 @@
   ══════════════════════════════════════════════════════════════════ */
   footer.site-footer {
     background: #fff;
-    padding: 56px 0 32px;
+    padding: 28px 0 24px;
     border-top: 2px solid var(--text);
   }
   footer.site-footer .footer-top {
-    padding-bottom: 32px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
     border-bottom: 1px solid var(--border-soft);
-    margin-bottom: 36px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
   }
   footer.site-footer .footer-top .name {
     font-family: var(--serif);
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 6px;
   }
-  footer.site-footer .footer-top .desc {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 540px;
-  }
-  footer.site-footer .footer-cols {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 44px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--border-soft);
-    margin-bottom: 26px;
-  }
-  footer.site-footer .col-title {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
+  footer.site-footer .footer-top .est {
+    font-family: var(--mono);
+    font-size: 11px;
     color: var(--text-soft);
-    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-  footer.site-footer ul { list-style: none; }
-  footer.site-footer li {
-    font-size: 13px;
-    line-height: 2;
-  }
-  footer.site-footer li a { color: var(--text); border: none; }
-  footer.site-footer li a:hover { color: var(--navy); }
-  footer.site-footer .footer-disclosure {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 760px;
-    padding-bottom: 22px;
-    margin-bottom: 18px;
+  footer.site-footer .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
     border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
   }
+  footer.site-footer .footer-nav a {
+    color: var(--text);
+    border: none;
+    font-weight: 500;
+  }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
   footer.site-footer .footer-copyright {
     font-size: 11.5px;
     color: var(--text-soft);
     letter-spacing: 0.01em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: baseline;
+  }
+  footer.site-footer .footer-copyright a {
+    color: var(--text-soft);
+    border: none;
+  }
+  footer.site-footer .footer-copyright a:hover { color: var(--navy); }
+  footer.site-footer .footer-copyright .sep {
+    color: var(--text-soft);
+    opacity: 0.5;
   }
 
   /* ══════════════════════════════════════════════════════════════════
@@ -1175,7 +1155,7 @@
     .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
     .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
     .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
-    .intro-block h1 { font-size: 28px; }
+    .intro-block h1 { font-size: 28px; white-space: normal; }
     .about-block .body { columns: 1; }
     .lifecycle-strip { grid-template-columns: 1fr; }
     .ls-stage,
@@ -1200,17 +1180,16 @@
     .advisory-row { grid-template-columns: 1fr; gap: 4px; }
     .state-row { grid-template-columns: 1fr; gap: 6px; }
     .scope-grid { grid-template-columns: 1fr; }
-    .cert-grid { grid-template-columns: 1fr; }
-    footer.site-footer .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    footer.site-footer .footer-top { flex-direction: column; align-items: flex-start; gap: 4px; }
   }
   @media (max-width: 560px) {
     .container, .container-narrow { padding: 0 22px; }
     .intro-block { padding: 40px 0 28px; }
-    .intro-block h1 { font-size: 24px; }
+    .intro-block h1 { font-size: 24px; white-space: normal; }
     .scope-col { padding: 20px 22px; }
     .stats-grid { grid-template-columns: 1fr; }
     .cert-actions .btn { width: 100%; justify-content: center; }
-    footer.site-footer .footer-cols { grid-template-columns: 1fr; gap: 28px; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
   }
 </style>
 </head>
@@ -1390,35 +1369,22 @@
     <div class="cert-section">
       <p class="lead" style="margin-bottom: 14px;">
         ElitePetz certification indicates that a breeder has been reviewed under the
-        Authority's published standards framework and has been issued a public
-        certification record.
+        Authority's published standards framework and issued a public certification
+        record.
       </p>
       <p class="lead">
-        Certification establishes a documented status that may be independently
-        verified through the ElitePetz Registry.
+        Certification status may be independently verified through the ElitePetz Registry.
       </p>
 
-      <div class="cert-grid">
-        <div class="cert-list includes">
-          <div class="b-label">Certification Includes</div>
-          <ul>
-            <li><span class="mark">&#10003;</span><span class="label">Standards-based review</span></li>
-            <li><span class="mark">&#10003;</span><span class="label">Public certification record</span></li>
-            <li><span class="mark">&#10003;</span><span class="label">Verification by Certification ID</span></li>
-            <li><span class="mark">&#10003;</span><span class="label">Ongoing status monitoring</span></li>
-            <li><span class="mark">&#10003;</span><span class="label">Public status history</span></li>
-          </ul>
-        </div>
-
-        <div class="cert-list excludes">
-          <div class="b-label">Certification Does Not Represent</div>
-          <ul>
-            <li><span class="mark">&#10005;</span><span class="label">Government licensing or approval</span></li>
-            <li><span class="mark">&#10005;</span><span class="label">Veterinary endorsement</span></li>
-            <li><span class="mark">&#10005;</span><span class="label">A guarantee of breeder performance</span></li>
-            <li><span class="mark">&#10005;</span><span class="label">A substitute for independent due diligence</span></li>
-          </ul>
-        </div>
+      <div class="cert-list includes single">
+        <div class="b-label">Certification Includes</div>
+        <ul>
+          <li><span class="mark">&#10003;</span><span class="label">Standards-based review</span></li>
+          <li><span class="mark">&#10003;</span><span class="label">Public certification record</span></li>
+          <li><span class="mark">&#10003;</span><span class="label">Verification by Certification ID</span></li>
+          <li><span class="mark">&#10003;</span><span class="label">Ongoing status monitoring</span></li>
+          <li><span class="mark">&#10003;</span><span class="label">Public status history</span></li>
+        </ul>
       </div>
 
       <div class="cert-actions">
@@ -1482,41 +1448,39 @@
     </div>
 
     <p class="stats-intro">
-      Public statistics reflecting the current composition of the ElitePetz Registry.
-      Counts are updated as records are issued, suspended, revoked, expired, or
-      otherwise modified.
+      Current public statistics reflecting the composition of the ElitePetz Registry.
     </p>
 
     <div class="stats-grid">
       <div class="stat-cell total">
-        <div class="head-line">Total public records</div>
+        <div class="head-line">Total Public Records</div>
         <div class="figure">8</div>
-        <div class="lbl">All records of every status — active, provisional, and terminated — held in the public registry.</div>
+        <div class="lbl">All certification records currently maintained in the public registry.</div>
       </div>
       <div class="stat-cell">
         <div class="pill-line"><span class="pill pill-active">ElitePetz Certified</span></div>
         <div class="figure">6</div>
-        <div class="lbl">Active certifications in force under the current standards framework.</div>
+        <div class="lbl">Certifications currently active and in good standing.</div>
       </div>
       <div class="stat-cell">
         <div class="pill-line"><span class="pill pill-claimed">Invited</span></div>
         <div class="figure">2</div>
-        <div class="lbl">Invited for certification — approved records awaiting confirmation.</div>
+        <div class="lbl">Invitations issued and awaiting activation.</div>
       </div>
       <div class="stat-cell">
         <div class="pill-line"><span class="pill pill-suspended">Suspended</span></div>
         <div class="figure zero">0</div>
-        <div class="lbl">Currently suspended pending review under the established procedure.</div>
+        <div class="lbl">Certifications temporarily suspended from active status.</div>
       </div>
       <div class="stat-cell">
         <div class="pill-line"><span class="pill pill-revoked">Revoked</span></div>
         <div class="figure zero">0</div>
-        <div class="lbl">Certifications withdrawn. Records remain permanently visible.</div>
+        <div class="lbl">Revoked certifications retained in the public record.</div>
       </div>
       <div class="stat-cell">
         <div class="pill-line"><span class="pill pill-expired">Expired</span></div>
         <div class="figure zero">0</div>
-        <div class="lbl">Certification term lapsed without renewal. May be renewed to active.</div>
+        <div class="lbl">Certification term ended without renewal.</div>
       </div>
     </div>
 
@@ -1540,7 +1504,7 @@
       <h2>Certification Lifecycle</h2>
       <span class="head-meta">SEC. 06 &middot; From Application to Renewal</span>
     </div>
-    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+    <p class="section-intro" style="margin-bottom:28px;">
       Every certification follows a defined lifecycle from application through renewal.
       Status changes are recorded and reflected in the public registry.
     </p>
@@ -1549,12 +1513,12 @@
       <div class="ls-stage">
         <div class="step">Stage 01</div>
         <h4>Application</h4>
-        <p>Application submitted under the Standards Framework.</p>
+        <p>Application submitted for certification review.</p>
       </div>
       <div class="ls-stage">
         <div class="step">Stage 02</div>
         <h4>Review</h4>
-        <p>Application assessed against the published standards.</p>
+        <p>Application reviewed and evaluated.</p>
       </div>
       <div class="ls-stage">
         <div class="step">Stage 03</div>
@@ -1569,7 +1533,7 @@
       <div class="ls-stage">
         <div class="step">Stage 05</div>
         <h4>Monitoring</h4>
-        <p>Active certification remains subject to ongoing review.</p>
+        <p>Certification status remains subject to ongoing monitoring.</p>
       </div>
       <div class="ls-stage">
         <div class="step">Stage 06</div>
@@ -1594,7 +1558,7 @@
       <span class="head-meta">SEC. 07 &middot; Published Research &amp; Reports</span>
     </div>
 
-    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+    <p class="section-intro" style="margin-bottom:28px;">
       Research publications, whitepapers, and reports issued by the ElitePetz
       Certification Authority.
     </p>
@@ -1627,7 +1591,7 @@
       <span class="head-meta">SEC. 08 &middot; Governing Documents</span>
     </div>
 
-    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+    <p class="section-intro" style="margin-bottom:28px;">
       Certification is administered under a published framework of standards, policies,
       and procedures. These documents form the basis for certification decisions,
       monitoring, and enforcement.
@@ -1675,7 +1639,7 @@
       <h2>Founding Certified Breeders</h2>
       <span class="head-meta">SEC. 09 &middot; Founding Cohort Status</span>
     </div>
-    <p style="max-width:720px; color:var(--text-muted); margin-bottom:24px;">
+    <p class="section-intro">
       The Founding Certified Breeders program is limited to fifteen certifications
       issued during the Authority's inaugural period. Participation is publicly
       recognized, but all certifications remain subject to the same standards,
@@ -1775,37 +1739,26 @@
       <span class="head-meta">SEC. 11 &middot; Mandate &amp; Limits</span>
     </div>
 
-    <p style="max-width:760px; font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text); margin-bottom: 28px;">
-      ElitePetz administers certifications, maintains certification records, and
-      provides public verification of certification status through the ElitePetz
-      Registry.
+    <p class="scope-lead">
+      ElitePetz operates within a defined certification mandate. The Authority's role
+      is limited to certification administration, record maintenance, and public
+      verification.
     </p>
 
-    <div class="scope-grid">
-      <div class="scope-col do">
-        <div class="col-label">What We Do</div>
-        <ul>
-          <li><span class="mark">&#10003;</span><span class="text">Administer certifications</span></li>
-          <li><span class="mark">&#10003;</span><span class="text">Maintain certification records</span></li>
-          <li><span class="mark">&#10003;</span><span class="text">Provide public verification</span></li>
-          <li><span class="mark">&#10003;</span><span class="text">Monitor certification status</span></li>
-          <li><span class="mark">&#10003;</span><span class="text">Publish status history</span></li>
-        </ul>
-      </div>
-      <div class="scope-col dont">
-        <div class="col-label">What We Do Not Do</div>
-        <ul>
-          <li><span class="mark">&#10005;</span><span class="text">Regulate breeding activities</span></li>
-          <li><span class="mark">&#10005;</span><span class="text">Provide veterinary advice</span></li>
-          <li><span class="mark">&#10005;</span><span class="text">License businesses</span></li>
-          <li><span class="mark">&#10005;</span><span class="text">Guarantee breeder performance</span></li>
-          <li><span class="mark">&#10005;</span><span class="text">Participate in animal sales</span></li>
-        </ul>
-      </div>
+    <div class="scope-col dont scope-single">
+      <div class="col-label">Outside Our Scope</div>
+      <ul>
+        <li><span class="mark">&#10005;</span><span class="text">Government licensing or approval</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Veterinary endorsement</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Regulation of breeding activities</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Participation in animal sales</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Guarantees of breeder performance</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Replacement of independent due diligence</span></li>
+      </ul>
     </div>
 
     <div class="section-foot">
-      <a href="#">View Authority Framework →</a>
+      <a href="#">Learn About the Authority →</a>
     </div>
   </div>
 </section>
@@ -1818,52 +1771,25 @@
 
     <div class="footer-top">
       <div class="name">ElitePetz Certification Authority</div>
-      <div class="desc">
-        Private certification body operating within the companion animal breeding sector.
-      </div>
+      <div class="est">EST. 2025 &middot; ELITE PETZ LLC</div>
     </div>
 
-    <div class="footer-cols">
-      <div>
-        <div class="col-title">About</div>
-        <ul>
-          <li><a href="#">About the Authority</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="col-title">Certification</div>
-        <ul>
-          <li><a href="#">Standards Framework</a></li>
-          <li><a href="#">How Certification Works</a></li>
-          <li><a href="#">Apply for Certification</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="col-title">Registry</div>
-        <ul>
-          <li><a href="#">Verify Certification</a></li>
-          <li><a href="#">Public Registry</a></li>
-          <li><a href="#">Founding Certified Breeders</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="col-title">Governance</div>
-        <ul>
-          <li><a href="#">Governance Framework</a></li>
-          <li><a href="#">Code of Ethics</a></li>
-          <li><a href="#">Reporting Concerns</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-disclosure">
-      ElitePetz is a private certification authority. Certification does not constitute
-      government licensing, veterinary endorsement, or a guarantee of breeder performance.
-    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#">About</a>
+      <a href="#">Certification</a>
+      <a href="#">Registry</a>
+      <a href="#">Governance</a>
+      <a href="#">Contact</a>
+    </nav>
 
     <div class="footer-copyright">
-      &copy; 2026 ElitePetz Certification Authority. All rights reserved.
+      <span>&copy; 2026 Elite Petz LLC</span>
+      <span class="sep">&middot;</span>
+      <a href="#">Privacy</a>
+      <span class="sep">&middot;</span>
+      <a href="#">Terms</a>
+      <span class="sep">&middot;</span>
+      <a href="#">Cookies</a>
     </div>
 
   </div>
