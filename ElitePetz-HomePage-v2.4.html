@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ElitePetz Certification Authority — Public Certification Registry for Companion Animal Breeders</title>
+<meta name="description" content="ElitePetz Certification Authority — an independent certification body operating a public verification registry for certified companion animal breeders. Verify a certification record, review the standards framework, or explore the certification programme.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+  .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+  ══════════════════════════════════════════════════════════════════ */
+  .top-meta {
+    border-bottom: 1px solid var(--border-soft);
+    padding: 8px 0;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .top-meta .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+  ══════════════════════════════════════════════════════════════════ */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0 24px;
+    background: #fff;
+  }
+  .masthead .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead .org {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    border-bottom: none;
+    color: var(--text);
+  }
+  .masthead .mark {
+    height: 88px;
+    display: flex;
+    align-items: center;
+  }
+  .masthead .mark img {
+    height: 88px;
+    width: auto;
+    max-width: 360px;
+    object-fit: contain;
+    display: block;
+  }
+  .masthead .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .masthead .wordmark .sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .masthead .topnav {
+    display: flex;
+    gap: 26px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .masthead .topnav a {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    font-weight: 500;
+  }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     INTRO BLOCK
+  ══════════════════════════════════════════════════════════════════ */
+  .intro-block {
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .intro-block .eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+  }
+  .intro-block h1 {
+    font-size: 34px;
+    line-height: 1.22;
+    letter-spacing: -0.012em;
+    font-weight: 600;
+    margin-bottom: 22px;
+    max-width: 760px;
+  }
+  .intro-block .description {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 700px;
+    font-weight: 400;
+  }
+  .intro-block .description em { font-style: italic; color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     VERIFICATION PANEL — primary public function
+  ══════════════════════════════════════════════════════════════════ */
+  .verify-panel {
+    padding: 36px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .verify-panel .panel {
+    background: var(--bg-band);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    padding: 28px 30px;
+  }
+  .verify-panel .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .verify-panel .panel-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .verify-panel .panel-help {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .verify-panel .search-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+  .verify-panel input[type="text"] {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 13px 16px;
+    letter-spacing: 0.02em;
+    transition: border-color .12s, box-shadow .12s;
+  }
+  .verify-panel input[type="text"]::placeholder { color: var(--text-soft); }
+  .verify-panel input[type="text"]:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.08);
+  }
+  .verify-panel .submit {
+    background: var(--navy);
+    color: #fff;
+    border: 1px solid var(--navy);
+    border-radius: 3px;
+    padding: 13px 26px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .12s;
+  }
+  .verify-panel .submit:hover { background: var(--navy-hover); }
+  .verify-panel .below-line {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .verify-panel .below-line a { color: var(--navy); font-weight: 500; }
+
+  /* ── Example certification record (inside verify panel) ─────────── */
+  .verify-panel .sample-record {
+    margin-top: 24px;
+    padding: 22px 24px 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .verify-panel .sample-record .sample-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .verify-panel .sample-record .sample-label::before {
+    content: "";
+    flex: 0 0 22px;
+    height: 1px;
+    background: var(--text-soft);
+  }
+  .verify-panel .sample-record .row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .verify-panel .sample-record .id-block .lbl {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .verify-panel .sample-record .id-block .id {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .verify-panel .sample-record .entity {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 14px;
+  }
+  .verify-panel .sample-record .fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 24px;
+  }
+  .verify-panel .sample-record .field .f-lbl {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 3px;
+  }
+  .verify-panel .sample-record .field .f-val {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     SECTION PRIMITIVES (shared by all numbered sections)
+  ══════════════════════════════════════════════════════════════════ */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section.alt { background: var(--bg-band); }
+  .section.cream { background: var(--bg-cream); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.008em;
+    font-weight: 600;
+  }
+  .section-head .head-meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .section-foot {
+    margin-top: 22px;
+    font-size: 13.5px;
+  }
+  .section-foot a {
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .draft-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--claimed-fg);
+    background: var(--claimed-bg);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     WHY-BLOCK (SEC 01)
+  ══════════════════════════════════════════════════════════════════ */
+  .why-block .lead {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 740px;
+    margin-bottom: 28px;
+  }
+  .problem-list {
+    border-top: 1px solid var(--border-soft);
+    margin-bottom: 22px;
+  }
+  .problem-row {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 22px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .problem-row .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .problem-row .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .problem-row .text .muted {
+    color: var(--text-muted);
+    display: block;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+  .why-block .response-block {
+    padding: 24px 26px;
+    background: var(--navy-tint);
+    border-left: 3px solid var(--navy);
+  }
+  .why-block .response-heading {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .why-block .response-text {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     ABOUT BLOCK (SEC 02)
+  ══════════════════════════════════════════════════════════════════ */
+  .about-block .body {
+    columns: 2;
+    column-gap: 48px;
+    column-rule: 1px solid var(--border-soft);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .about-block .body p { margin-bottom: 16px; break-inside: avoid; }
+  .about-block .body p:last-child { margin-bottom: 0; }
+  .about-block .body p strong { font-weight: 600; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     CERTIFICATION PROGRAMME (SEC 03)
+  ══════════════════════════════════════════════════════════════════ */
+  .cert-section .lead {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 740px;
+    margin-bottom: 30px;
+  }
+  .cert-list {
+    margin-bottom: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .cert-list .b-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 14px 0 10px;
+  }
+  .cert-list.includes .b-label { color: var(--navy); }
+  .cert-list.excludes .b-label { color: var(--text-soft); }
+  .cert-list ul { list-style: none; }
+  .cert-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 11px 0;
+    border-top: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .cert-list li .mark {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .cert-list.includes li .mark { color: var(--active-fg); }
+  .cert-list.excludes li .mark { color: var(--revoked-fg); }
+  .cert-list li .label {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .cert-list.excludes li .label { color: var(--text-muted); }
+
+  /* Side-by-side grid for Includes / Does Not Represent (SEC 03) */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 28px;
+  }
+  .cert-grid .cert-list {
+    margin-bottom: 0;
+    border-top: none;
+    padding: 0 22px 18px;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+  .cert-grid .cert-list.includes {
+    border-left: 3px solid var(--active-fg);
+  }
+  /* Right column slightly emphasized per Pavel's request */
+  .cert-grid .cert-list.excludes {
+    border-left: 3px solid var(--revoked-fg);
+    background: var(--bg-band);
+  }
+  .cert-grid .cert-list .b-label {
+    padding: 18px 0 12px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 4px;
+  }
+  .cert-grid .cert-list li:first-child { border-top: none; }
+  .cert-grid .cert-list.excludes li .label {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .cert-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 14px 26px;
+    border-radius: 3px;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+    border-bottom: 1.5px solid transparent;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+  .btn-outline:hover {
+    background: var(--navy-tint);
+    border-bottom: 1.5px solid var(--navy);
+  }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     NOTICES & UPDATES (SEC 04)
+  ══════════════════════════════════════════════════════════════════ */
+  .notices-list {
+    border-top: 1px solid var(--border-soft);
+  }
+  .notice {
+    display: grid;
+    grid-template-columns: 130px 130px 1fr auto;
+    gap: 28px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .notice:last-child { border-bottom: none; }
+  .notice .date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .notice .type {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  .notice .title {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .notice .title a { color: var(--text); border-bottom: none; }
+  .notice .title a:hover { color: var(--navy); }
+  .notice .ref {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+    text-align: right;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     REGISTRY STATISTICS (SEC 05)
+  ══════════════════════════════════════════════════════════════════ */
+  .stats-intro {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .stat-cell {
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stat-cell .pill-line {
+    display: flex;
+    align-items: center;
+  }
+  .stat-cell .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: var(--sans);
+    white-space: nowrap;
+  }
+  .stat-cell .pill::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .stat-cell .figure {
+    font-family: var(--mono);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .stat-cell .figure.zero { color: var(--text-soft); }
+  .stat-cell .lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .stat-cell.total {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  .stat-cell.total .head-line {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .stat-cell.total .figure { color: #fff; }
+  .stat-cell.total .lbl { color: rgba(255,255,255,0.78); }
+  .stats-footnote {
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.55;
+    margin-top: 6px;
+    font-style: italic;
+    font-family: var(--serif);
+  }
+  .stats-footnote .stamp {
+    font-family: var(--mono);
+    font-style: normal;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  /* ── Global pill style (used outside stat cells too) ─────────────── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 13px 5px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: var(--sans);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .pill::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55);
+  }
+
+  /* status-coloured pills */
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-claimed { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-expired { background: var(--expired-bg); color: var(--expired-fg); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     CERTIFICATION LIFECYCLE (SEC 06)
+  ══════════════════════════════════════════════════════════════════ */
+  .lifecycle-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ls-stage {
+    padding: 22px;
+    border-right: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ls-stage:nth-child(3n) { border-right: none; }
+  .ls-stage:nth-child(n+4) { border-bottom: none; }
+  .ls-stage .step {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ls-stage h4 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .ls-stage p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+  .lifecycle-states {
+    margin-top: 26px;
+    padding: 18px 22px;
+    background: var(--bg-band);
+    border: 1px solid var(--border);
+  }
+  .lifecycle-states .heading {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 12px;
+  }
+  .state-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-soft);
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .state-row .label { font-weight: 500; color: var(--text); }
+  .state-row .desc { color: var(--text-muted); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOC TABLE (SEC 07, SEC 08)
+  ══════════════════════════════════════════════════════════════════ */
+  .doc-table {
+    border-top: 1px solid var(--border-soft);
+  }
+  .doc-row {
+    display: grid;
+    grid-template-columns: 70px 110px 1fr 70px;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .doc-row .ref-num {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+  }
+  .doc-row .date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .doc-row .titles { font-family: var(--serif); }
+  .doc-row .titles .t1 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .doc-row .titles .t1 a { color: inherit; border-bottom: none; }
+  .doc-row .titles .t1 a:hover { color: var(--navy); }
+  .doc-row .titles .t2 {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .doc-row .format {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--navy);
+    text-align: right;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .doc-row .format a { color: inherit; border-bottom: none; }
+  .doc-row .format a:hover { border-bottom: 1px solid var(--navy); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     COHORT INLINE (SEC 09)
+  ══════════════════════════════════════════════════════════════════ */
+  .cohort-line {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .cohort-line .label-block .l1 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+  .cohort-line .label-block .l2 {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .cohort-line .stats {
+    display: flex;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .cohort-line .stats .item { text-align: right; }
+  .cohort-line .stats .item .num {
+    font-size: 18px;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1;
+    display: block;
+  }
+  .cohort-line .stats .item .lbl {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 6px;
+    display: block;
+  }
+  .cohort-line .stats .item.issued .num { color: var(--navy); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     ADVISORY PANEL (SEC 10)
+  ══════════════════════════════════════════════════════════════════ */
+  .advisory-block .lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 720px;
+    margin-bottom: 22px;
+  }
+  .advisory-notice {
+    padding: 20px 24px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-soft);
+    border-left: 3px solid var(--claimed-fg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .advisory-notice .badge {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--claimed-fg);
+    background: var(--claimed-bg);
+    padding: 5px 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .advisory-notice .copy {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .advisory-roster {
+    border-top: 1px solid var(--border-soft);
+    margin-top: 24px;
+  }
+  .advisory-roster .b-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    padding: 14px 0 10px;
+  }
+  .advisory-row {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 24px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-soft);
+  }
+  .advisory-row .role {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .advisory-row .role .sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text-soft);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+  .advisory-row .occupant {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-family: var(--serif);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     GOVERNANCE LIST (SEC 08 — simplified, title + description)
+  ══════════════════════════════════════════════════════════════════ */
+  .gov-list {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .gov-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .gov-item .gov-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .gov-item .gov-title a {
+    color: var(--text);
+    border-bottom: none;
+  }
+  .gov-item .gov-title a:hover { color: var(--navy); }
+  .gov-item .gov-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     AUTHORITY & SCOPE (SEC 11 — two-column What We Do / What We Do Not Do)
+  ══════════════════════════════════════════════════════════════════ */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 4px;
+  }
+  .scope-col {
+    padding: 24px 28px;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+  .scope-col.do {
+    border-left: 3px solid var(--active-fg);
+  }
+  .scope-col.dont {
+    border-left: 3px solid var(--revoked-fg);
+    background: var(--bg-band);
+  }
+  .scope-col .col-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .scope-col.do  .col-label { color: var(--active-fg); }
+  .scope-col.dont .col-label { color: var(--revoked-fg); }
+  .scope-col ul {
+    list-style: none;
+  }
+  .scope-col li {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-top: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .scope-col li:first-child { border-top: none; }
+  .scope-col li .mark {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .scope-col.do  li .mark { color: var(--active-fg); }
+  .scope-col.dont li .mark { color: var(--revoked-fg); }
+  .scope-col li .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .scope-col.dont li .text { color: var(--text-muted); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════════════════════ */
+  footer.site-footer {
+    background: #fff;
+    padding: 56px 0 32px;
+    border-top: 2px solid var(--text);
+  }
+  footer.site-footer .footer-top {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 36px;
+  }
+  footer.site-footer .footer-top .name {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  footer.site-footer .footer-top .desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 540px;
+  }
+  footer.site-footer .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 44px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 26px;
+  }
+  footer.site-footer .col-title {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  footer.site-footer ul { list-style: none; }
+  footer.site-footer li {
+    font-size: 13px;
+    line-height: 2;
+  }
+  footer.site-footer li a { color: var(--text); border: none; }
+  footer.site-footer li a:hover { color: var(--navy); }
+  footer.site-footer .footer-disclosure {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 760px;
+    padding-bottom: 22px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  footer.site-footer .footer-copyright {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.01em;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .container, .container-narrow { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .about-block .body { columns: 1; }
+    .lifecycle-strip { grid-template-columns: 1fr; }
+    .ls-stage,
+    .ls-stage:nth-child(3n),
+    .ls-stage:nth-child(n+4) {
+      padding: 20px 0;
+      border-right: none;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .ls-stage:last-child { border-bottom: none; }
+    .notice { grid-template-columns: 110px 1fr; gap: 16px; }
+    .notice .type, .notice .ref { display: none; }
+    .doc-row { grid-template-columns: 1fr; gap: 6px; }
+    .doc-row .ref-num, .doc-row .date, .doc-row .format { font-size: 11px; }
+    .doc-row .format { text-align: left; }
+    .cohort-line { grid-template-columns: 1fr; gap: 16px; }
+    .cohort-line .stats { justify-content: flex-start; flex-wrap: wrap; }
+    .verify-panel .search-row { grid-template-columns: 1fr; }
+    .verify-panel .sample-record .fields { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .problem-row { grid-template-columns: 28px 1fr; gap: 14px; }
+    .advisory-row { grid-template-columns: 1fr; gap: 4px; }
+    .state-row { grid-template-columns: 1fr; gap: 6px; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    footer.site-footer .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
+  @media (max-width: 560px) {
+    .container, .container-narrow { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .scope-col { padding: 20px 22px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .cert-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-cols { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+══════════════════════════════════════════════════════════════════ -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="#">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="#">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="#">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+══════════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="container">
+    <a href="#" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_de27abfacc024cd69d3930600e303402~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Certification</a>
+      <a href="#">Registry</a>
+      <a href="#">Research</a>
+      <a href="#">Governance</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     INTRO BLOCK
+══════════════════════════════════════════════════════════════════ -->
+<section class="intro-block">
+  <div class="container">
+    <h1>Public Certification Registry for Companion Animal Breeders</h1>
+    <p class="description">
+      Permanent certification records, status histories, and public verification.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     VERIFICATION PANEL — primary public function
+══════════════════════════════════════════════════════════════════ -->
+<section class="verify-panel">
+  <div class="container">
+    <div class="panel">
+      <h2 class="panel-title">Verify a Certification Record</h2>
+      <p class="panel-help">
+        Enter a Certification ID to view the public certification record.
+      </p>
+      <form class="search-row" onsubmit="return false;">
+        <input type="text" placeholder="e.g. EP-CERT-2026-0007-K9D" aria-label="Certification ID">
+        <button type="submit" class="submit">Verify →</button>
+      </form>
+      <div class="below-line">
+        <a href="#">View Public Registry →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 01 — WHY THIS REGISTRY EXISTS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Why This Registry Exists</h2>
+      <span class="head-meta">SEC. 01 &middot; The Verification Gap</span>
+    </div>
+    <div class="why-block">
+      <p class="lead">
+        Companion animal breeding lacks a widely available public mechanism for
+        independently verifying certification claims.
+      </p>
+      <div class="problem-list">
+        <div class="problem-row">
+          <span class="num">01</span>
+          <span class="text">
+            Prospective buyers often encounter certification claims without a reliable way to verify their validity or current status.
+          </span>
+        </div>
+        <div class="problem-row">
+          <span class="num">02</span>
+          <span class="text">
+            Many certification programs provide limited public information regarding certified entities, suspensions, revocations, or expirations.
+          </span>
+        </div>
+        <div class="problem-row">
+          <span class="num">03</span>
+          <span class="text">
+            Without accessible records, buyers must often rely on badges, screenshots, marketing materials, or self-reported claims.
+          </span>
+        </div>
+        <div class="problem-row">
+          <span class="num">04</span>
+          <span class="text">
+            Limited transparency makes independent verification difficult and reduces public visibility into certification outcomes.
+          </span>
+        </div>
+      </div>
+      <div class="response-block">
+        <div class="response-heading">The ElitePetz Response</div>
+        <p class="response-text">
+          ElitePetz maintains a permanent public registry of certification records and
+          status histories. Each certification is assigned a unique identifier, and
+          status changes remain publicly visible as part of the record.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 02 — ABOUT THE AUTHORITY
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>About the ElitePetz Certification Authority</h2>
+      <span class="head-meta">SEC. 02 &middot; What we do</span>
+    </div>
+    <div class="about-block">
+      <div class="body">
+        <p>
+          We are a private certification body operating within the companion animal
+          breeding sector.
+        </p>
+        <p>
+          Our role is to administer certifications under a published standards
+          framework, maintain certification records, and provide public verification
+          of certification status.
+        </p>
+        <p>
+          We are independent of breeders, breed clubs, kennel clubs, government
+          licensing agencies, and commercial marketplaces. We do not regulate breeding
+          activities, provide veterinary advice, or participate in the sale of animals.
+        </p>
+        <p>
+          Our purpose is to administer certifications, maintain accurate records, and
+          provide reliable public verification of certification status.
+          <a href="#">Learn more about the Authority →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 03 — WHAT ELITEPETZ CERTIFICATION REPRESENTS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What ElitePetz Certification Represents</h2>
+      <span class="head-meta">SEC. 03 &middot; Meaning of Certification</span>
+    </div>
+    <div class="cert-section">
+      <p class="lead" style="margin-bottom: 14px;">
+        ElitePetz certification indicates that a breeder has been reviewed under the
+        Authority's published standards framework and has been issued a public
+        certification record.
+      </p>
+      <p class="lead">
+        Certification establishes a documented status that may be independently
+        verified through the ElitePetz Registry.
+      </p>
+
+      <div class="cert-grid">
+        <div class="cert-list includes">
+          <div class="b-label">Certification Includes</div>
+          <ul>
+            <li><span class="mark">&#10003;</span><span class="label">Standards-based review</span></li>
+            <li><span class="mark">&#10003;</span><span class="label">Public certification record</span></li>
+            <li><span class="mark">&#10003;</span><span class="label">Verification by Certification ID</span></li>
+            <li><span class="mark">&#10003;</span><span class="label">Ongoing status monitoring</span></li>
+            <li><span class="mark">&#10003;</span><span class="label">Public status history</span></li>
+          </ul>
+        </div>
+
+        <div class="cert-list excludes">
+          <div class="b-label">Certification Does Not Represent</div>
+          <ul>
+            <li><span class="mark">&#10005;</span><span class="label">Government licensing or approval</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">Veterinary endorsement</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">A guarantee of breeder performance</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">A substitute for independent due diligence</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cert-actions">
+        <a href="#" class="btn btn-outline">How Certification Works <span class="arrow">→</span></a>
+        <a href="#" class="btn btn-outline">Apply for Certification <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 04 — NOTICES & UPDATES
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Notices &amp; Updates</h2>
+      <span class="head-meta">SEC. 04 &middot; Official Notices</span>
+    </div>
+
+    <p style="max-width:720px; color:var(--text-muted); margin-bottom:24px; font-family:var(--serif); font-size:16px; line-height:1.6;">
+      Official notices, publications, and registry announcements issued by the
+      ElitePetz Certification Authority.
+    </p>
+
+    <div class="notices-list">
+      <div class="notice">
+        <span class="date">10 Jun 2026</span>
+        <span class="type">Registry</span>
+        <span class="title"><a href="#">Founding Cohort Status: 6 certified, 2 invitations outstanding, 7 positions remaining.</a></span>
+        <span class="ref">REG-2026-008</span>
+      </div>
+      <div class="notice">
+        <span class="date">28 May 2026</span>
+        <span class="type">Publication</span>
+        <span class="title"><a href="#">Research Publication No. 001 released: The Verification Problem in Companion Animal Breeding.</a></span>
+        <span class="ref">PUB-2026-001</span>
+      </div>
+      <div class="notice">
+        <span class="date">14 May 2026</span>
+        <span class="type">Cohort</span>
+        <span class="title"><a href="#">Founding Certified Breeders program opened. Applications accepted until all founding positions are filled.</a></span>
+        <span class="ref">COH-2026-001</span>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View Official Notices →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 05 — REGISTRY STATISTICS (NEW)
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Registry at a Glance</h2>
+      <span class="head-meta">SEC. 05 &middot; Current Registry Statistics</span>
+    </div>
+
+    <p class="stats-intro">
+      Public statistics reflecting the current composition of the ElitePetz Registry.
+      Counts are updated as records are issued, suspended, revoked, expired, or
+      otherwise modified.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-cell total">
+        <div class="head-line">Total public records</div>
+        <div class="figure">8</div>
+        <div class="lbl">All records of every status — active, provisional, and terminated — held in the public registry.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="pill-line"><span class="pill pill-active">ElitePetz Certified</span></div>
+        <div class="figure">6</div>
+        <div class="lbl">Active certifications in force under the current standards framework.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="pill-line"><span class="pill pill-claimed">Invited</span></div>
+        <div class="figure">2</div>
+        <div class="lbl">Invited for certification — approved records awaiting confirmation.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="pill-line"><span class="pill pill-suspended">Suspended</span></div>
+        <div class="figure zero">0</div>
+        <div class="lbl">Currently suspended pending review under the established procedure.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="pill-line"><span class="pill pill-revoked">Revoked</span></div>
+        <div class="figure zero">0</div>
+        <div class="lbl">Certifications withdrawn. Records remain permanently visible.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="pill-line"><span class="pill pill-expired">Expired</span></div>
+        <div class="figure zero">0</div>
+        <div class="lbl">Certification term lapsed without renewal. May be renewed to active.</div>
+      </div>
+    </div>
+
+    <p class="stats-footnote">
+      <span class="stamp">Registry snapshot as of June 2026.</span> All certification
+      records remain publicly visible regardless of status.
+    </p>
+
+    <div class="section-foot">
+      <a href="#">View Public Registry →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 06 — THE CERTIFICATION LIFECYCLE
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Certification Lifecycle</h2>
+      <span class="head-meta">SEC. 06 &middot; From Application to Renewal</span>
+    </div>
+    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+      Every certification follows a defined lifecycle from application through renewal.
+      Status changes are recorded and reflected in the public registry.
+    </p>
+
+    <div class="lifecycle-strip">
+      <div class="ls-stage">
+        <div class="step">Stage 01</div>
+        <h4>Application</h4>
+        <p>Application submitted under the Standards Framework.</p>
+      </div>
+      <div class="ls-stage">
+        <div class="step">Stage 02</div>
+        <h4>Review</h4>
+        <p>Application assessed against the published standards.</p>
+      </div>
+      <div class="ls-stage">
+        <div class="step">Stage 03</div>
+        <h4>Decision</h4>
+        <p>Certification approved or declined.</p>
+      </div>
+      <div class="ls-stage">
+        <div class="step">Stage 04</div>
+        <h4>Activation</h4>
+        <p>Certification issued and entered into the public registry.</p>
+      </div>
+      <div class="ls-stage">
+        <div class="step">Stage 05</div>
+        <h4>Monitoring</h4>
+        <p>Active certification remains subject to ongoing review.</p>
+      </div>
+      <div class="ls-stage">
+        <div class="step">Stage 06</div>
+        <h4>Renewal</h4>
+        <p>Certification may be renewed at the end of its term.</p>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">Read the full lifecycle policy →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 07 — PUBLICATIONS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Research &amp; Publications</h2>
+      <span class="head-meta">SEC. 07 &middot; Published Research &amp; Reports</span>
+    </div>
+
+    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+      Research publications, whitepapers, and reports issued by the ElitePetz
+      Certification Authority.
+    </p>
+
+    <div class="doc-table">
+      <div class="doc-row">
+        <span class="ref-num">No. 001</span>
+        <span class="date">June 2026</span>
+        <div class="titles">
+          <div class="t1"><a href="#">The Verification Problem in Companion Animal Breeding</a></div>
+          <div class="t2">Research Publication &middot; v1.0 &middot; 16 pp. &middot; Examines the verification gap in companion animal breeding and the role of public certification records.</div>
+        </div>
+        <span class="format"><a href="#">PDF ↓</a></span>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View all publications →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 08 — GOVERNANCE DOCUMENTS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Standards &amp; Governance</h2>
+      <span class="head-meta">SEC. 08 &middot; Governing Documents</span>
+    </div>
+
+    <p style="max-width:720px; color:var(--text-muted); margin-bottom:28px;">
+      Certification is administered under a published framework of standards, policies,
+      and procedures. These documents form the basis for certification decisions,
+      monitoring, and enforcement.
+    </p>
+
+    <div class="gov-list">
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Standards Framework</a></div>
+        <div class="gov-desc">Published standards used to evaluate certification applications and ongoing compliance.</div>
+      </div>
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Code of Ethics</a></div>
+        <div class="gov-desc">Conduct expectations applicable to all active certification holders.</div>
+      </div>
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Reporting Concerns</a></div>
+        <div class="gov-desc">Procedures for submitting complaints, evidence, and certification concerns.</div>
+      </div>
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Review &amp; Due Process</a></div>
+        <div class="gov-desc">Procedures governing certification reviews, appeals, and administrative actions.</div>
+      </div>
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Conflict of Interest Policy</a></div>
+        <div class="gov-desc">Safeguards supporting independence and impartial decision-making.</div>
+      </div>
+      <div class="gov-item">
+        <div class="gov-title"><a href="#">Decision-Making Authority</a></div>
+        <div class="gov-desc">Defines the authority and responsibilities associated with certification decisions.</div>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View Governance Framework →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 09 — THE FOUNDING COHORT
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Founding Certified Breeders</h2>
+      <span class="head-meta">SEC. 09 &middot; Founding Cohort Status</span>
+    </div>
+    <p style="max-width:720px; color:var(--text-muted); margin-bottom:24px;">
+      The Founding Certified Breeders program is limited to fifteen certifications
+      issued during the Authority's inaugural period. Participation is publicly
+      recognized, but all certifications remain subject to the same standards,
+      monitoring, and governance requirements. Once filled, the cohort permanently
+      closes.
+    </p>
+
+    <div class="cohort-line">
+      <div class="label-block">
+        <div class="l1">Founding Cohort Status</div>
+        <div class="l2">As of June 2026 &middot; Updated from the public registry</div>
+      </div>
+      <div class="stats">
+        <div class="item issued">
+          <span class="num">06</span>
+          <span class="lbl">Issued</span>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <span class="lbl">Invited</span>
+        </div>
+        <div class="item">
+          <span class="num">07</span>
+          <span class="lbl">Remaining</span>
+        </div>
+        <div class="item">
+          <span class="num">15</span>
+          <span class="lbl">Total slots</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View Founding Certified Breeders →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 10 — INDEPENDENT ADVISORY PANEL (NEW — placeholder section)
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Independent Advisory Panel</h2>
+      <span class="head-meta">SEC. 10 &middot; Independent External Guidance</span>
+    </div>
+    <div class="advisory-block">
+      <p class="lead">
+        The Independent Advisory Panel provides non-binding guidance on matters
+        relating to certification, governance, transparency, animal welfare, and
+        public confidence. Panel members do not participate in individual
+        certification decisions.
+      </p>
+
+      <div class="advisory-notice">
+        <span class="badge">Appointments in progress</span>
+        <span class="copy">
+          Initial appointments will be announced publicly upon confirmation.
+        </span>
+      </div>
+
+      <div class="advisory-roster">
+        <div class="b-label">Reserved seats</div>
+        <div class="advisory-row">
+          <div class="role">Chair <span class="sub">Independent Governance</span></div>
+          <div class="occupant">To be appointed</div>
+        </div>
+        <div class="advisory-row">
+          <div class="role">Veterinary Member</div>
+          <div class="occupant">To be appointed</div>
+        </div>
+        <div class="advisory-row">
+          <div class="role">Animal Welfare Member</div>
+          <div class="occupant">To be appointed</div>
+        </div>
+        <div class="advisory-row">
+          <div class="role">Breeder Representative</div>
+          <div class="occupant">To be appointed</div>
+        </div>
+        <div class="advisory-row">
+          <div class="role">Public Interest Member</div>
+          <div class="occupant">To be appointed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 11 — AUTHORITY & SCOPE
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Authority &amp; Scope</h2>
+      <span class="head-meta">SEC. 11 &middot; Mandate &amp; Limits</span>
+    </div>
+
+    <p style="max-width:760px; font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text); margin-bottom: 28px;">
+      ElitePetz administers certifications, maintains certification records, and
+      provides public verification of certification status through the ElitePetz
+      Registry.
+    </p>
+
+    <div class="scope-grid">
+      <div class="scope-col do">
+        <div class="col-label">What We Do</div>
+        <ul>
+          <li><span class="mark">&#10003;</span><span class="text">Administer certifications</span></li>
+          <li><span class="mark">&#10003;</span><span class="text">Maintain certification records</span></li>
+          <li><span class="mark">&#10003;</span><span class="text">Provide public verification</span></li>
+          <li><span class="mark">&#10003;</span><span class="text">Monitor certification status</span></li>
+          <li><span class="mark">&#10003;</span><span class="text">Publish status history</span></li>
+        </ul>
+      </div>
+      <div class="scope-col dont">
+        <div class="col-label">What We Do Not Do</div>
+        <ul>
+          <li><span class="mark">&#10005;</span><span class="text">Regulate breeding activities</span></li>
+          <li><span class="mark">&#10005;</span><span class="text">Provide veterinary advice</span></li>
+          <li><span class="mark">&#10005;</span><span class="text">License businesses</span></li>
+          <li><span class="mark">&#10005;</span><span class="text">Guarantee breeder performance</span></li>
+          <li><span class="mark">&#10005;</span><span class="text">Participate in animal sales</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View Authority Framework →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-top">
+      <div class="name">ElitePetz Certification Authority</div>
+      <div class="desc">
+        Private certification body operating within the companion animal breeding sector.
+      </div>
+    </div>
+
+    <div class="footer-cols">
+      <div>
+        <div class="col-title">About</div>
+        <ul>
+          <li><a href="#">About the Authority</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-title">Certification</div>
+        <ul>
+          <li><a href="#">Standards Framework</a></li>
+          <li><a href="#">How Certification Works</a></li>
+          <li><a href="#">Apply for Certification</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-title">Registry</div>
+        <ul>
+          <li><a href="#">Verify Certification</a></li>
+          <li><a href="#">Public Registry</a></li>
+          <li><a href="#">Founding Certified Breeders</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-title">Governance</div>
+        <ul>
+          <li><a href="#">Governance Framework</a></li>
+          <li><a href="#">Code of Ethics</a></li>
+          <li><a href="#">Reporting Concerns</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-disclosure">
+      ElitePetz is a private certification authority. Certification does not constitute
+      government licensing, veterinary endorsement, or a guarantee of breeder performance.
+    </div>
+
+    <div class="footer-copyright">
+      &copy; 2026 ElitePetz Certification Authority. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
