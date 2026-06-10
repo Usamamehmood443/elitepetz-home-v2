@@ -462,13 +462,24 @@
     columns: 2;
     column-gap: 48px;
     column-rule: 1px solid var(--border-soft);
-    font-size: 15px;
-    line-height: 1.7;
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--text);
   }
   .about-block .body p { margin-bottom: 16px; break-inside: avoid; }
   .about-block .body p:last-child { margin-bottom: 0; }
   .about-block .body p strong { font-weight: 600; }
+
+  /* Shared serif intro paragraph used under section headings */
+  .section-intro {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin-bottom: 24px;
+  }
 
   /* ══════════════════════════════════════════════════════════════════
      CERTIFICATION PROGRAMME (SEC 03)
@@ -1428,7 +1439,7 @@
       <span class="head-meta">SEC. 04 &middot; Official Notices</span>
     </div>
 
-    <p style="max-width:720px; color:var(--text-muted); margin-bottom:24px; font-family:var(--serif); font-size:16px; line-height:1.6;">
+    <p class="section-intro">
       Official notices, publications, and registry announcements issued by the
       ElitePetz Certification Authority.
     </p>
