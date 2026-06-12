@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Founding Certified Breeders — ElitePetz Certification Authority</title>
+<meta name="description" content="The Founding Certified Breeders are the first cohort of entities certified by the ElitePetz Certification Authority under the published Standards Framework. Public registry of founding-period certifications.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+  ══════════════════════════════════════════════════════════════════ */
+  .top-meta {
+    border-bottom: 1px solid var(--border-soft);
+    padding: 8px 0;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .top-meta .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+  ══════════════════════════════════════════════════════════════════ */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0 24px;
+    background: #fff;
+  }
+  .masthead .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead .org {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    border-bottom: none;
+    color: var(--text);
+  }
+  .masthead .mark {
+    height: 88px;
+    display: flex;
+    align-items: center;
+  }
+  .masthead .mark img {
+    height: 88px;
+    width: auto;
+    max-width: 360px;
+    object-fit: contain;
+    display: block;
+  }
+  .masthead .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .masthead .wordmark .sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .masthead .topnav {
+    display: flex;
+    gap: 26px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .masthead .topnav a {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    font-weight: 500;
+  }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+  ══════════════════════════════════════════════════════════════════ */
+  .breadcrumb {
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  .breadcrumb a { color: var(--text-muted); border-bottom: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .sep { margin: 0 8px; color: var(--text-soft); opacity: 0.6; }
+  .breadcrumb .current { color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════════════════════════════ */
+  .hero {
+    padding: 40px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    line-height: 1.18;
+    letter-spacing: -0.014em;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero .description {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .hero .description.last { margin-bottom: 0; }
+  .hero .description em { font-style: italic; color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     SECTION PRIMITIVES
+  ══════════════════════════════════════════════════════════════════ */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section.alt { background: var(--bg-band); }
+  .section.cream { background: var(--bg-cream); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.008em;
+    font-weight: 600;
+  }
+  .section-head .head-meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .section .lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .section .body-p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section .body-p.muted { color: var(--text-muted); }
+  .section .closing {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .section-foot {
+    margin-top: 22px;
+    font-size: 13.5px;
+  }
+  .section-foot a {
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     NUMBERED LIST (used in SEC 01, 02, 05)
+  ══════════════════════════════════════════════════════════════════ */
+  .checklist {
+    border-top: 1px solid var(--border-soft);
+    margin: 18px 0 0;
+  }
+  .checklist .item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .checklist .item .mark {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--active-fg);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .checklist .item .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     COHORT REGISTRY (SEC 03)
+  ══════════════════════════════════════════════════════════════════ */
+  .cohort-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .cohort-cell {
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cohort-cell.total {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  .cohort-cell .pill-line {
+    display: flex;
+    align-items: center;
+  }
+  .cohort-cell .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: var(--sans);
+    white-space: nowrap;
+  }
+  .cohort-cell .pill::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .cohort-cell .head-line {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .cohort-cell .figure {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .cohort-cell.total .figure { color: #fff; }
+  .cohort-cell .figure.zero { color: var(--text-soft); }
+  .cohort-cell .lbl {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .cohort-cell.total .lbl { color: rgba(255,255,255,0.78); }
+
+  /* ── Global pill (used in certification card header) ───────────── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 13px 5px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: var(--sans);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .pill::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55);
+  }
+
+  /* status-coloured pills (work for both scoped and global pills) */
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-claimed { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-expired { background: var(--expired-bg); color: var(--expired-fg); }
+  .pill-open { background: var(--navy-tint); color: var(--navy); }
+
+  /* Subhead label inside SEC 03 (Issued / Empty preview) */
+  .founding-subhead {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin: 32px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Founding certification cards — compact registry-listing density */
+  .founding-records {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .founding-record {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    padding: 18px 22px;
+  }
+  .founding-record .record-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .founding-record .id-section { flex: 1; min-width: 0; }
+  .founding-record .id-section .label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 3px;
+  }
+  .founding-record .id-section .id-value {
+    font-family: var(--mono);
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    word-break: break-all;
+  }
+  .founding-record .entity-name {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.22;
+    letter-spacing: -0.005em;
+    margin-bottom: 12px;
+  }
+  .founding-record .record-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 28px;
+  }
+  .founding-record .field-row .lbl {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 3px;
+  }
+  .founding-record .field-row .val {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Divider between issued state and empty-state preview */
+  .preview-divider {
+    margin: 36px 0 18px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .preview-divider .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--claimed-fg);
+    background: var(--claimed-bg);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .preview-divider .text {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Minimal empty-state notice */
+  .founding-empty {
+    padding: 18px 24px;
+    background: var(--bg-band);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--text-soft);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+  }
+  .founding-empty .info .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .founding-empty .info p {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .founding-empty a {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .registry-footnote {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+  .registry-footnote .stamp {
+    font-family: var(--mono);
+    font-style: normal;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOUNDING PERIOD BLOCK (SEC 04)
+  ══════════════════════════════════════════════════════════════════ */
+  .period-block {
+    padding: 24px 28px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    margin-bottom: 18px;
+  }
+  .period-block .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .period-block .range {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .period-block .range .start,
+  .period-block .range .end {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .period-block .range .end.tbd {
+    color: var(--text-soft);
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 15.5px;
+  }
+  .period-block .range .dash {
+    color: var(--text-soft);
+  }
+  .period-block .note {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     APPLY CTA (SEC 06)
+  ══════════════════════════════════════════════════════════════════ */
+  .apply-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    margin-bottom: 22px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 14px 26px;
+    border-radius: 3px;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+    border-bottom: 1.5px solid transparent;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+  .btn-outline:hover {
+    background: var(--navy-tint);
+    border-bottom: 1.5px solid var(--navy);
+  }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  .governance-list {
+    border-top: 1px solid var(--border-soft);
+    margin-top: 8px;
+  }
+  .governance-list .item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .governance-list .item .num {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .governance-list .item .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .governance-list .item .text a { color: var(--navy); font-weight: 500; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOUNDER STATEMENT — boxed callout with navy left rule
+  ══════════════════════════════════════════════════════════════════ */
+  .founder-section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .founder-box {
+    padding: 36px 40px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+  }
+  .founder-box .eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .founder-box h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.008em;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .founder-box p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .founder-box p:last-of-type { margin-bottom: 24px; }
+  .founder-box .signature {
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .founder-box .signature .name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .founder-box .signature .role {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOOTER (canonical — matches v2.4 / Verify v1.3 / Apply v1)
+  ══════════════════════════════════════════════════════════════════ */
+  footer.site-footer {
+    background: #fff;
+    padding: 28px 0 24px;
+    border-top: 2px solid var(--text);
+  }
+  footer.site-footer .footer-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  footer.site-footer .footer-row.top {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: flex-end;
+  }
+  footer.site-footer .brand .name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  footer.site-footer .brand .est {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  footer.site-footer .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-size: 13px;
+  }
+  footer.site-footer .footer-nav a {
+    color: var(--text);
+    border: none;
+    font-weight: 500;
+  }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright,
+  footer.site-footer .legal-links {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.01em;
+  }
+  footer.site-footer .legal-links a {
+    color: var(--text-soft);
+    border: none;
+  }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep {
+    color: var(--text-soft);
+    opacity: 0.5;
+    margin: 0 4px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .hero h1 { font-size: 30px; }
+    .cohort-grid { grid-template-columns: repeat(2, 1fr); }
+    .founding-record .record-fields { grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+    .founding-empty { grid-template-columns: 1fr; gap: 12px; }
+    .founder-box { padding: 28px 26px; }
+    .founder-box h3 { font-size: 19px; }
+    .founder-box p { font-size: 15.5px; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .hero { padding: 28px 0 44px; }
+    .hero h1 { font-size: 26px; }
+    .cohort-grid { grid-template-columns: 1fr; }
+    .founding-record { padding: 16px 18px; }
+    .founding-record .entity-name { font-size: 17px; }
+    .founding-record .record-fields { grid-template-columns: 1fr; gap: 10px; }
+    .founding-empty { padding: 16px 20px; }
+    .period-block { padding: 20px 22px; }
+    .founder-section { padding: 40px 0; }
+    .founder-box { padding: 24px 22px; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+══════════════════════════════════════════════════════════════════ -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="#">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="#">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="#">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+══════════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="container">
+    <a href="#" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Certification</a>
+      <a href="#" class="active">Registry</a>
+      <a href="#">Research</a>
+      <a href="#">Governance</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+══════════════════════════════════════════════════════════════════ -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">Home</a>
+    <span class="sep">›</span>
+    <span class="current">Founding Certified Breeders</span>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Founding Cohort &middot; Public Registry</div>
+    <h1>Founding Certified Breeders</h1>
+    <p class="description">
+      The Founding Certified Breeders are the first entities to complete the
+      ElitePetz Certification process under the
+      <a href="#">Certification Standards Framework</a>.
+    </p>
+    <p class="description">
+      These breeders joined during the initial formation of the ElitePetz
+      Certification Authority and demonstrated early commitment to transparency,
+      structured review, and compliance standards.
+    </p>
+    <p class="description last">
+      <em>Founding status reflects timing of certification &mdash; not preferential
+      treatment or enhanced standing.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 01 — WHAT FOUNDING STATUS MEANS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What &ldquo;Founding&rdquo; Status Means</h2>
+      <span class="head-meta">SEC. 01 &middot; Meaning of the Founding Designation</span>
+    </div>
+
+    <p class="lead">
+      All Founding Certified Breeders are subject to the same standards, compliance
+      obligations, and enforcement framework as all other certified entities.
+    </p>
+
+    <p class="body-p">Founding Certified Breeders:</p>
+
+    <div class="checklist">
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Were among the first approved under the ElitePetz Certification Framework.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Agreed to early adoption of structured disclosure requirements.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Accepted ongoing compliance obligations.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Support the development of transparent certification practices within the companion animal breeding sector.</span>
+      </div>
+    </div>
+
+    <p class="closing">
+      Founding designation does not imply lifetime status. It recognizes early
+      participation in the establishment of the certification programme.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 02 — CERTIFICATION STATUS TRANSPARENCY
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Certification Status Transparency</h2>
+      <span class="head-meta">SEC. 02 &middot; Public Record of Every Founding Certification</span>
+    </div>
+
+    <p class="lead">
+      Each Founding Certified Breeder holds an individual public certification
+      record, subject to the same verification and enforcement procedures as every
+      other record in the Registry.
+    </p>
+
+    <p class="body-p">Each Founding Certified Breeder:</p>
+
+    <div class="checklist">
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Has an individual certification record in the ElitePetz Registry.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Has a unique Certification ID in the format <span style="font-family:var(--mono);">EP-CERT-YYYY-NNNN-XXX</span>.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Appears publicly only while holding Active status.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Is subject to suspension, revocation, or expiration under the <a href="#">Governance &amp; Enforcement Framework</a>.</span>
+      </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">Verify a Certification &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 03 — FOUNDING COHORT REGISTRY (PUBLIC LISTING)
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Founding Cohort Registry</h2>
+      <span class="head-meta">SEC. 03 &middot; Public Listing of Founding Period Certifications</span>
+    </div>
+
+    <p class="lead">
+      Below are the current statistics for the founding cohort of the ElitePetz
+      Certification Authority. The cohort is limited to fifteen certifications
+      issued during the founding period.
+    </p>
+
+    <div class="cohort-grid">
+      <div class="cohort-cell total">
+        <div class="head-line">Total Founding Positions</div>
+        <div class="figure">15</div>
+        <div class="lbl">Maximum number of certifications available during the founding period.</div>
+      </div>
+      <div class="cohort-cell">
+        <div class="pill-line"><span class="pill pill-active">Issued</span></div>
+        <div class="figure">6</div>
+        <div class="lbl">Founding certifications currently active and in good standing.</div>
+      </div>
+      <div class="cohort-cell">
+        <div class="pill-line"><span class="pill pill-claimed">Reserved</span></div>
+        <div class="figure">2</div>
+        <div class="lbl">Invitations issued and awaiting breeder activation.</div>
+      </div>
+      <div class="cohort-cell">
+        <div class="pill-line"><span class="pill pill-open">Remaining</span></div>
+        <div class="figure">7</div>
+        <div class="lbl">Founding positions still available for application.</div>
+      </div>
+    </div>
+
+    <!-- ─── Issued Founding Certifications — sample records ─── -->
+    <div class="founding-subhead">Issued Founding Certifications</div>
+
+    <div class="founding-records">
+      <article class="founding-record">
+        <div class="record-head">
+          <div class="id-section">
+            <div class="label">Certification ID</div>
+            <div class="id-value">EP-CERT-2026-0001-K9A</div>
+          </div>
+          <span class="pill pill-active">ElitePetz Certified</span>
+        </div>
+        <h3 class="entity-name">Brookhill Companion Animals</h3>
+        <div class="record-fields">
+          <div class="field-row">
+            <div class="lbl">Country of operation</div>
+            <div class="val">United States</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Species &amp; breed category</div>
+            <div class="val">Canine &mdash; Golden Retriever</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Certification status</div>
+            <div class="val">ElitePetz Certified</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Activation date</div>
+            <div class="val">14 May 2026</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Expiration date</div>
+            <div class="val">14 May 2028</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="founding-record">
+        <div class="record-head">
+          <div class="id-section">
+            <div class="label">Certification ID</div>
+            <div class="id-value">EP-CERT-2026-0002-F7B</div>
+          </div>
+          <span class="pill pill-active">ElitePetz Certified</span>
+        </div>
+        <h3 class="entity-name">Highgrove Heritage Cattery</h3>
+        <div class="record-fields">
+          <div class="field-row">
+            <div class="lbl">Country of operation</div>
+            <div class="val">United Kingdom</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Species &amp; breed category</div>
+            <div class="val">Feline &mdash; British Shorthair</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Certification status</div>
+            <div class="val">ElitePetz Certified</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Activation date</div>
+            <div class="val">18 May 2026</div>
+          </div>
+          <div class="field-row">
+            <div class="lbl">Expiration date</div>
+            <div class="val">18 May 2028</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">View Public Registry &rarr;</a>
+    </div>
+
+    <!-- ─── Empty-state preview (for Pavel's reference) ─── -->
+    <div class="preview-divider">
+      <span class="tag">Preview</span>
+      <span class="text">How this section appears when no founding certifications are currently listed:</span>
+    </div>
+
+    <div class="founding-empty">
+      <div class="info">
+        <div class="label">No Records Listed</div>
+        <p>Founding certifications will appear here as each cohort breeder completes the activation process.</p>
+      </div>
+      <a href="#">Apply for Certification &rarr;</a>
+    </div>
+
+    <p class="registry-footnote">
+      <span class="stamp">Cohort snapshot as of June 2026.</span> Once a founding
+      position is filled, the cohort total updates accordingly. Records remain
+      visible in the public registry regardless of subsequent status changes.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 04 — FOUNDING PERIOD DEFINITION
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Founding Period Definition</h2>
+      <span class="head-meta">SEC. 04 &middot; Duration of the Founding Designation</span>
+    </div>
+
+    <p class="lead">
+      The Founding designation applies to certifications issued during the
+      Authority's inaugural certification phase.
+    </p>
+
+    <div class="period-block">
+      <div class="label">Founding Period</div>
+      <div class="range">
+        <span class="start">[Insert Start Date]</span>
+        <span class="dash">&mdash;</span>
+        <span class="end tbd">[Insert End Date or &ldquo;Initial Program Phase&rdquo;]</span>
+      </div>
+      <div class="note">
+        ElitePetz reserves the right to close the Founding designation once the
+        initial certification phase concludes.
+      </div>
+    </div>
+
+    <p class="body-p muted">
+      Once filled, the founding cohort permanently closes. Subsequent applicants
+      receive standard certification under the same Standards Framework but are
+      not designated as founding participants.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 05 — COMMITMENT TO INTEGRITY
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Commitment to Integrity</h2>
+      <span class="head-meta">SEC. 05 &middot; Founding Participation &amp; Enforcement</span>
+    </div>
+
+    <p class="lead">
+      Founding participation does not grant immunity from review or enforcement.
+    </p>
+
+    <p class="body-p">All certifications are:</p>
+
+    <div class="checklist">
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Time-bound.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Conditional.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Subject to ongoing compliance review.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Recorded in the Status History log.</span>
+      </div>
+    </div>
+
+    <p class="closing">
+      ElitePetz Certification is built on structured documentation, transparency,
+      and enforceable standards &mdash; not marketing claims.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 06 — INTERESTED IN BECOMING CERTIFIED?
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Interested in Becoming Certified?</h2>
+      <span class="head-meta">SEC. 06 &middot; Application &amp; Governing Documents</span>
+    </div>
+
+    <p class="lead">
+      Breeders seeking certification may apply through the official application
+      process. The Authority will review each application against the published
+      Standards Framework.
+    </p>
+
+    <div class="apply-actions">
+      <a href="#" class="btn btn-outline">How Certification Works <span class="arrow">&rarr;</span></a>
+      <a href="#" class="btn btn-outline">Apply for Certification <span class="arrow">&rarr;</span></a>
+    </div>
+
+    <p class="body-p">Certification decisions are governed by the:</p>
+
+    <div class="governance-list">
+      <div class="item">
+        <span class="num">01</span>
+        <span class="text"><a href="#">Certification Standards Framework</a></span>
+      </div>
+      <div class="item">
+        <span class="num">02</span>
+        <span class="text"><a href="#">Governance &amp; Enforcement Framework</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOUNDER STATEMENT — boxed callout with navy left rule
+══════════════════════════════════════════════════════════════════ -->
+<section class="founder-section">
+  <div class="container">
+    <div class="founder-box">
+      <div class="eyebrow">Founder's Statement</div>
+      <h3>On the establishment of the ElitePetz Certification Authority</h3>
+
+      <p>
+        The establishment of the ElitePetz Certification Authority reflects a
+        deliberate effort to introduce structured transparency and documented
+        standards into an industry where trust is often informal and inconsistent.
+      </p>
+      <p>
+        The Founding Certified Breeders represent the first cohort to participate
+        in this framework. Their early adoption demonstrates a willingness to
+        operate within defined disclosure requirements, compliance obligations,
+        and publicly verifiable status classifications.
+      </p>
+      <p>
+        ElitePetz Certification is designed to function as a standards-based system,
+        not as a marketing tool. Certification decisions are recorded, reviewable,
+        and subject to enforcement under published governance policies.
+      </p>
+      <p>
+        The long-term objective of this initiative is institutional consistency:
+        clear criteria, documented decisions, and transparent status records that
+        support informed participation across the companion animal breeding
+        community.
+      </p>
+
+      <div class="signature">
+        <div class="name">Pavel Legki</div>
+        <div class="role">Founder &middot; ElitePetz Certification Authority</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2026 &middot; ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">About</a>
+        <a href="#">Certification</a>
+        <a href="#">Registry</a>
+        <a href="#">Governance</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="#">Privacy</a><span class="sep">&middot;</span><a href="#">Terms</a><span class="sep">&middot;</span><a href="#">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
