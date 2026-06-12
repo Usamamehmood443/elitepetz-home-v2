@@ -586,9 +586,9 @@
   }
   .notice {
     display: grid;
-    grid-template-columns: 130px 130px 1fr auto;
-    gap: 28px;
-    padding: 18px 0;
+    grid-template-columns: 120px 120px 1fr auto;
+    gap: 24px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border-soft);
     align-items: baseline;
   }
@@ -608,9 +608,9 @@
   }
   .notice .title {
     font-family: var(--serif);
-    font-size: 15.5px;
+    font-size: 14.5px;
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.4;
     color: var(--text);
   }
   .notice .title a { color: var(--text); border-bottom: none; }
@@ -642,10 +642,10 @@
   .stat-cell {
     border: 1px solid var(--border);
     background: #fff;
-    padding: 16px 18px;
+    padding: 12px 14px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
   }
   .stat-cell .pill-line {
     display: flex;
@@ -654,9 +654,9 @@
   .stat-cell .pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 3px 10px;
-    font-size: 10.5px;
+    gap: 5px;
+    padding: 2px 9px;
+    font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -672,7 +672,7 @@
   }
   .stat-cell .figure {
     font-family: var(--mono);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 500;
     color: var(--text);
     letter-spacing: -0.015em;
@@ -680,9 +680,9 @@
   }
   .stat-cell .figure.zero { color: var(--text-soft); }
   .stat-cell .lbl {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--text-muted);
-    line-height: 1.45;
+    line-height: 1.4;
   }
   .stat-cell.total {
     background: var(--navy);
@@ -690,7 +690,7 @@
     color: #fff;
   }
   .stat-cell.total .head-line {
-    font-size: 10.5px;
+    font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -754,7 +754,7 @@
     border-bottom: 1px solid var(--border-soft);
   }
   .ls-stage {
-    padding: 22px;
+    padding: 14px 16px;
     border-right: 1px solid var(--border-soft);
     border-bottom: 1px solid var(--border-soft);
   }
@@ -762,22 +762,22 @@
   .ls-stage:nth-child(n+4) { border-bottom: none; }
   .ls-stage .step {
     font-family: var(--mono);
-    font-size: 10.5px;
+    font-size: 9.5px;
     color: var(--text-soft);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .ls-stage h4 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 1.3;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
     color: var(--text);
   }
   .ls-stage p {
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 12px;
+    line-height: 1.45;
     color: var(--text-muted);
   }
   .lifecycle-states {
@@ -816,7 +816,7 @@
     display: grid;
     grid-template-columns: 70px 110px 1fr 70px;
     gap: 24px;
-    padding: 16px 0;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border-soft);
     align-items: baseline;
   }
@@ -833,9 +833,9 @@
   }
   .doc-row .titles { font-family: var(--serif); }
   .doc-row .titles .t1 {
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.35;
     color: var(--text);
     margin-bottom: 2px;
   }
@@ -843,9 +843,9 @@
   .doc-row .titles .t1 a:hover { color: var(--navy); }
   .doc-row .titles .t2 {
     font-family: var(--sans);
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--text-muted);
-    line-height: 1.45;
+    line-height: 1.4;
   }
   .doc-row .format {
     font-family: var(--mono);
@@ -994,16 +994,16 @@
     margin-top: 4px;
   }
   .gov-item {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border-soft);
   }
   .gov-item .gov-title {
     font-family: var(--serif);
-    font-size: 17px;
+    font-size: 15.5px;
     font-weight: 600;
     color: var(--text);
     line-height: 1.3;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
   }
   .gov-item .gov-title a {
     color: var(--text);
@@ -1011,9 +1011,9 @@
   }
   .gov-item .gov-title a:hover { color: var(--navy); }
   .gov-item .gov-desc {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.5;
     max-width: 720px;
   }
 
@@ -1090,23 +1090,28 @@
     padding: 28px 0 24px;
     border-top: 2px solid var(--text);
   }
-  footer.site-footer .footer-top {
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--border-soft);
+  footer.site-footer .footer-row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 18px;
+    gap: 24px;
     flex-wrap: wrap;
   }
-  footer.site-footer .footer-top .name {
+  footer.site-footer .footer-row.top {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: flex-end;
+  }
+  footer.site-footer .brand .name {
     font-family: var(--serif);
     font-size: 17px;
     font-weight: 600;
     color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
-  footer.site-footer .footer-top .est {
+  footer.site-footer .brand .est {
     font-family: var(--mono);
     font-size: 11px;
     color: var(--text-soft);
@@ -1116,10 +1121,7 @@
   footer.site-footer .footer-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--border-soft);
+    gap: 22px;
     font-size: 13px;
   }
   footer.site-footer .footer-nav a {
@@ -1128,23 +1130,21 @@
     font-weight: 500;
   }
   footer.site-footer .footer-nav a:hover { color: var(--navy); }
-  footer.site-footer .footer-copyright {
+  footer.site-footer .copyright,
+  footer.site-footer .legal-links {
     font-size: 11.5px;
     color: var(--text-soft);
     letter-spacing: 0.01em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: baseline;
   }
-  footer.site-footer .footer-copyright a {
+  footer.site-footer .legal-links a {
     color: var(--text-soft);
     border: none;
   }
-  footer.site-footer .footer-copyright a:hover { color: var(--navy); }
-  footer.site-footer .footer-copyright .sep {
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep {
     color: var(--text-soft);
     opacity: 0.5;
+    margin: 0 4px;
   }
 
   /* ══════════════════════════════════════════════════════════════════
@@ -1180,7 +1180,7 @@
     .advisory-row { grid-template-columns: 1fr; gap: 4px; }
     .state-row { grid-template-columns: 1fr; gap: 6px; }
     .scope-grid { grid-template-columns: 1fr; }
-    footer.site-footer .footer-top { flex-direction: column; align-items: flex-start; gap: 4px; }
+    footer.site-footer .footer-row { gap: 14px; }
   }
   @media (max-width: 560px) {
     .container, .container-narrow { padding: 0 22px; }
@@ -1218,7 +1218,7 @@
   <div class="container">
     <a href="#" class="org">
       <div class="mark" aria-hidden="true">
-        <img src="https://static.wixstatic.com/media/21cbee_de27abfacc024cd69d3930600e303402~mv2.jpg" alt="" />
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
       </div>
       <div class="wordmark">
         ElitePetz
@@ -1350,9 +1350,12 @@
         <p>
           Our purpose is to administer certifications, maintain accurate records, and
           provide reliable public verification of certification status.
-          <a href="#">Learn more about the Authority →</a>
         </p>
       </div>
+    </div>
+
+    <div class="section-foot">
+      <a href="#">Learn more about the Authority →</a>
     </div>
   </div>
 </section>
@@ -1769,27 +1772,25 @@
 <footer class="site-footer">
   <div class="container">
 
-    <div class="footer-top">
-      <div class="name">ElitePetz Certification Authority</div>
-      <div class="est">EST. 2025 &middot; ELITE PETZ LLC</div>
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2026 &middot; ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">About</a>
+        <a href="#">Certification</a>
+        <a href="#">Registry</a>
+        <a href="#">Governance</a>
+        <a href="#">Contact</a>
+      </nav>
     </div>
 
-    <nav class="footer-nav" aria-label="Footer">
-      <a href="#">About</a>
-      <a href="#">Certification</a>
-      <a href="#">Registry</a>
-      <a href="#">Governance</a>
-      <a href="#">Contact</a>
-    </nav>
-
-    <div class="footer-copyright">
-      <span>&copy; 2026 Elite Petz LLC</span>
-      <span class="sep">&middot;</span>
-      <a href="#">Privacy</a>
-      <span class="sep">&middot;</span>
-      <a href="#">Terms</a>
-      <span class="sep">&middot;</span>
-      <a href="#">Cookies</a>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="#">Privacy</a><span class="sep">&middot;</span><a href="#">Terms</a><span class="sep">&middot;</span><a href="#">Cookies</a>
+      </div>
     </div>
 
   </div>
