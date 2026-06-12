@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apply for Certification — ElitePetz Certification Authority</title>
+<meta name="description" content="Certification application submission for the ElitePetz Certification Authority. Submit an application for evaluation under the published Standards Framework.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+  ══════════════════════════════════════════════════════════════════ */
+  .top-meta {
+    border-bottom: 1px solid var(--border-soft);
+    padding: 8px 0;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .top-meta .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+  ══════════════════════════════════════════════════════════════════ */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0 24px;
+    background: #fff;
+  }
+  .masthead .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead .org {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    border-bottom: none;
+    color: var(--text);
+  }
+  .masthead .mark {
+    height: 88px;
+    display: flex;
+    align-items: center;
+  }
+  .masthead .mark img {
+    height: 88px;
+    width: auto;
+    max-width: 360px;
+    object-fit: contain;
+    display: block;
+  }
+  .masthead .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .masthead .wordmark .sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .masthead .topnav {
+    display: flex;
+    gap: 26px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .masthead .topnav a {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    font-weight: 500;
+  }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+  ══════════════════════════════════════════════════════════════════ */
+  .breadcrumb {
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  .breadcrumb a { color: var(--text-muted); border-bottom: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .sep { margin: 0 8px; color: var(--text-soft); opacity: 0.6; }
+  .breadcrumb .current { color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     HERO — title + description + "approval not guaranteed" disclosure
+  ══════════════════════════════════════════════════════════════════ */
+  .hero {
+    padding: 40px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 36px;
+    line-height: 1.18;
+    letter-spacing: -0.014em;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero .description {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+  .hero .description a { color: var(--navy); font-weight: 500; }
+  .hero .hero-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    background: var(--claimed-bg);
+    border-left: 3px solid var(--claimed-fg);
+    border-radius: 0 3px 3px 0;
+  }
+  .hero .hero-notice .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--claimed-fg);
+    white-space: nowrap;
+  }
+  .hero .hero-notice .text {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     SECTION PRIMITIVES
+  ══════════════════════════════════════════════════════════════════ */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section.alt { background: var(--bg-band); }
+  .section.cream { background: var(--bg-cream); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.008em;
+    font-weight: 600;
+  }
+  .section-head .head-meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .section .lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .section .body-p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section .body-p.muted { color: var(--text-muted); }
+  .section .closing {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     "DOES NOT" LIST (Scope section)
+  ══════════════════════════════════════════════════════════════════ */
+  .scope-list {
+    border-top: 1px solid var(--border);
+    margin: 18px 0 0;
+  }
+  .scope-list .b-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    padding: 14px 0 10px;
+  }
+  .scope-list ul { list-style: none; }
+  .scope-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .scope-list li .mark {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--revoked-fg);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .scope-list li .text {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     PROCESS STRIP (Review Process)
+  ══════════════════════════════════════════════════════════════════ */
+  .process-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+    margin-top: 14px;
+  }
+  .process-step {
+    padding: 22px 24px;
+    border-right: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .process-step:nth-child(2n) { border-right: none; }
+  .process-step:nth-child(n+3) { border-bottom: none; }
+  .process-step .step {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .process-step h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .process-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSIBILITY LIST
+  ══════════════════════════════════════════════════════════════════ */
+  .responsibility-list {
+    border-top: 1px solid var(--border-soft);
+    margin: 16px 0 0;
+  }
+  .responsibility-list .item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .responsibility-list .item .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+  }
+  .responsibility-list .item .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     WARNING CALLOUT
+  ══════════════════════════════════════════════════════════════════ */
+  .warning-callout {
+    margin-top: 24px;
+    padding: 16px 22px;
+    background: var(--revoked-bg);
+    border-left: 3px solid var(--revoked-fg);
+  }
+  .warning-callout .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--revoked-fg);
+    margin-bottom: 6px;
+  }
+  .warning-callout p {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     APPLICATION FORM
+  ══════════════════════════════════════════════════════════════════ */
+  .apply-section {
+    padding: 64px 0 80px;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .apply-section .form-head {
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .apply-section .form-head h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .apply-section .form-head .meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .apply-section .form-intro {
+    margin-bottom: 28px;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .apply-section .required-note {
+    display: inline-block;
+    margin-bottom: 28px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+  }
+  .apply-section .required-note .star {
+    color: var(--revoked-fg);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .apply-form {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+    max-width: 920px;
+  }
+
+  .form-field {
+    margin-bottom: 24px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .form-field label .req {
+    color: var(--revoked-fg);
+    margin-left: 4px;
+  }
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 13px 16px;
+    transition: border-color .12s, box-shadow .12s;
+  }
+  .form-field input[type="email"] {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.08);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--text-soft);
+  }
+  .form-field textarea {
+    min-height: 110px;
+    resize: vertical;
+    font-family: var(--sans);
+  }
+  .form-field .helper {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .form-field.error input,
+  .form-field.error textarea {
+    border-color: var(--revoked-fg);
+    background: #fff;
+  }
+  .form-field.error .helper.error-msg {
+    color: var(--revoked-fg);
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  /* Certification fee block */
+  .fee-block {
+    margin: 32px 0 28px;
+    padding: 24px 28px;
+    background: var(--navy-tint);
+    border-left: 3px solid var(--navy);
+  }
+  .fee-block .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .fee-block .amount-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .fee-block .amount {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+  .fee-block .amount .period {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 4px;
+  }
+  .fee-block .amount-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .fee-block p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 580px;
+  }
+
+  /* Consent block */
+  .consent-block {
+    margin: 0 0 24px;
+    padding: 22px 26px;
+    background: var(--bg-band);
+    border: 1px solid var(--border);
+  }
+  .consent-block .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .consent-block .consent-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .consent-block input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--navy);
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  .consent-block .consent-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .consent-block .consent-text a {
+    color: var(--navy);
+    font-weight: 500;
+    border-bottom: 1px solid var(--navy-tint);
+  }
+  .consent-block .consent-text a:hover { border-bottom-color: var(--navy); }
+  .consent-block.error {
+    border-color: var(--revoked-fg);
+    background: #FEF2F2;
+  }
+  .consent-block.error .label { color: var(--revoked-fg); }
+
+  /* reCAPTCHA placeholder */
+  .recaptcha-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    max-width: 320px;
+    margin-bottom: 28px;
+  }
+  .recaptcha-placeholder input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--navy);
+    cursor: pointer;
+  }
+  .recaptcha-placeholder .text {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+  }
+  .recaptcha-placeholder .brand {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+  }
+
+  /* Submit button */
+  .submit-row {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+  .submit-btn {
+    background: var(--navy);
+    color: #fff;
+    border: 1.5px solid var(--navy);
+    border-radius: 3px;
+    padding: 16px 36px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .12s, border-color .12s;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover {
+    background: var(--navy-hover);
+    border-color: var(--navy-hover);
+  }
+  .submit-btn:disabled {
+    background: var(--text-soft);
+    border-color: var(--text-soft);
+    cursor: not-allowed;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     SUCCESS STATE
+  ══════════════════════════════════════════════════════════════════ */
+  .success-section {
+    padding: 80px 0 80px;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .success-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    background: var(--active-bg);
+    border-left: 3px solid var(--active-fg);
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 28px;
+    max-width: 920px;
+  }
+  .success-banner .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: var(--active-fg);
+    color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .success-banner .check-icon svg { width: 12px; height: 12px; }
+  .success-banner .text {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--active-fg);
+  }
+  .success-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    padding: 36px 40px;
+    max-width: 920px;
+    margin-bottom: 28px;
+  }
+  .success-card h2 {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .success-card .lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    max-width: 680px;
+  }
+  .success-card .ref-block {
+    background: var(--bg-band);
+    border: 1px solid var(--border-soft);
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .success-card .ref-block .lbl {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+  }
+  .success-card .ref-block .value {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+  }
+  .success-card .ref-block .note {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--serif);
+    font-style: italic;
+  }
+  .success-card .next-block .heading {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .success-card .next-list {
+    list-style: none;
+  }
+  .success-card .next-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    align-items: baseline;
+  }
+  .success-card .next-list li .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .success-card .next-list li .text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .success-card .next-list li .text strong { font-weight: 600; }
+
+  .success-disclosure {
+    max-width: 920px;
+    padding: 16px 22px;
+    background: var(--navy-tint);
+    border-left: 3px solid var(--navy);
+    font-family: var(--serif);
+    font-size: 13.5px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     GLOBAL PILL (matches v2.3)
+  ══════════════════════════════════════════════════════════════════ */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 13px 5px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: var(--sans);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .pill::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55);
+  }
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-claimed { background: var(--claimed-bg); color: var(--claimed-fg); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════════════════════ */
+  footer.site-footer {
+    background: #fff;
+    padding: 28px 0 24px;
+    border-top: 2px solid var(--text);
+  }
+  footer.site-footer .footer-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  footer.site-footer .footer-row.top {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: flex-end;
+  }
+  footer.site-footer .brand .name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  footer.site-footer .brand .est {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  footer.site-footer .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-size: 13px;
+  }
+  footer.site-footer .footer-nav a {
+    color: var(--text);
+    border: none;
+    font-weight: 500;
+  }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright,
+  footer.site-footer .legal-links {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.01em;
+  }
+  footer.site-footer .legal-links a {
+    color: var(--text-soft);
+    border: none;
+  }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep {
+    color: var(--text-soft);
+    opacity: 0.5;
+    margin: 0 4px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .hero h1 { font-size: 30px; }
+    .process-strip { grid-template-columns: 1fr; }
+    .process-step {
+      border-right: none;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .process-step:nth-child(2n) { border-right: none; }
+    .process-step:nth-child(n+3) { border-bottom: 1px solid var(--border-soft); }
+    .process-step:last-child { border-bottom: none; }
+    .apply-form { padding: 28px 28px; }
+    .success-card { padding: 28px 28px; }
+    .success-card h2 { font-size: 26px; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .hero { padding: 28px 0 44px; }
+    .hero h1 { font-size: 24px; }
+    .hero .hero-notice { flex-wrap: wrap; gap: 8px; }
+    .apply-form { padding: 22px 22px; }
+    .fee-block { padding: 20px 22px; }
+    .consent-block { padding: 18px 22px; }
+    .success-card { padding: 22px 22px; }
+    .success-card h2 { font-size: 22px; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+══════════════════════════════════════════════════════════════════ -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="#">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="#">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="#">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+══════════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="container">
+    <a href="#" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#" class="active">Certification</a>
+      <a href="#">Registry</a>
+      <a href="#">Research</a>
+      <a href="#">Governance</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+══════════════════════════════════════════════════════════════════ -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">Home</a>
+    <span class="sep">›</span>
+    <span class="current">Apply for Certification</span>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <h1>Apply for Certification</h1>
+    <p class="description">
+      The ElitePetz Certification Authority accepts applications for evaluation
+      under the published <a href="#">Standards Framework</a>. Submission of an
+      application constitutes formal entry into the Authority's record system.
+    </p>
+    <div class="hero-notice">
+      <span class="label">Notice</span>
+      <span class="text">Approval is not guaranteed.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 01 — SCOPE OF CERTIFICATION
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Scope of certification</h2>
+      <span class="head-meta">SEC. 01 &middot; What certification covers and what it does not</span>
+    </div>
+
+    <p class="lead">
+      Certification applies to entities operating within the companion animal
+      breeding sector and within the defined scope of the Authority.
+    </p>
+    <p class="body-p muted">
+      The Authority evaluates applications solely against the published
+      <a href="#">Standards</a> and <a href="#">Governance</a> documents.
+      Certification status is limited to the Authority's registry.
+    </p>
+
+    <div class="scope-list">
+      <div class="b-label">Certification does not</div>
+      <ul>
+        <li><span class="mark">&#10005;</span><span class="text">Replace government licensing</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Constitute legal authorisation</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Guarantee commercial outcomes</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Serve as regulatory approval</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 02 — REVIEW PROCESS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Review process</h2>
+      <span class="head-meta">SEC. 02 &middot; What happens after submission</span>
+    </div>
+
+    <p class="lead">
+      Every application passes through a defined sequence of administrative steps
+      before a determination is issued.
+    </p>
+
+    <div class="process-strip">
+      <div class="process-step">
+        <div class="step">Step 01 &middot; Logged</div>
+        <h4>Submission logged</h4>
+        <p>The application is logged into the Authority's record system and assigned a temporary internal identifier.</p>
+      </div>
+      <div class="process-step">
+        <div class="step">Step 02 &middot; Reviewed</div>
+        <h4>Completeness review</h4>
+        <p>A completeness review is conducted to confirm that all information necessary for evaluation has been provided.</p>
+      </div>
+      <div class="process-step">
+        <div class="step">Step 03 &middot; Evaluated</div>
+        <h4>Substantive evaluation</h4>
+        <p>Substantive evaluation is performed by the certification committee against the published Standards Framework.</p>
+      </div>
+      <div class="process-step">
+        <div class="step">Step 04 &middot; Determined</div>
+        <h4>Formal determination</h4>
+        <p>A formal determination is recorded in the Status History system. The applicant is notified of the outcome.</p>
+      </div>
+    </div>
+
+    <p class="closing">
+      The Authority does not provide advisory opinions or preliminary eligibility
+      assessments prior to formal determination.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 03 — APPLICANT RESPONSIBILITY
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Applicant responsibility</h2>
+      <span class="head-meta">SEC. 03 &middot; Obligations carried by the applicant</span>
+    </div>
+
+    <p class="lead">
+      The applicant bears full responsibility for the integrity of the information
+      submitted and for ongoing compliance with the Standards Framework if
+      certified.
+    </p>
+
+    <div class="responsibility-list">
+      <div class="item">
+        <span class="num">01</span>
+        <span class="text">Accuracy and completeness of submitted information.</span>
+      </div>
+      <div class="item">
+        <span class="num">02</span>
+        <span class="text">Ongoing compliance with the applicable Standards Framework, if certified.</span>
+      </div>
+      <div class="item">
+        <span class="num">03</span>
+        <span class="text">Timely notification to the Authority of material changes affecting the certification record.</span>
+      </div>
+    </div>
+
+    <div class="warning-callout">
+      <div class="label">Warning</div>
+      <p>Misrepresentation in an application or after certification may result in denial, suspension, or revocation of the certification record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 04 — APPLICATION FORM
+══════════════════════════════════════════════════════════════════ -->
+<section class="apply-section" id="applySection">
+  <div class="container">
+    <div class="form-head">
+      <h2>Submit an application</h2>
+      <span class="meta">SEC. 04 &middot; Certification Application — Form CA-01</span>
+    </div>
+
+    <p class="form-intro">
+      Complete the fields below to submit an application for review. All
+      information is recorded in the Authority's administrative system and is not
+      published unless and until the certification reaches the public registry.
+    </p>
+
+    <div class="required-note"><span class="star">*</span>All fields are required.</div>
+
+    <form class="apply-form" id="applyForm" novalidate>
+      <div class="form-field" id="field-name">
+        <label for="legal-name">Legal name of applicant entity <span class="req">*</span></label>
+        <input type="text" id="legal-name" name="legal-name" placeholder="Individual, cattery, or kennel business name">
+        <span class="helper">The legal name under which the entity operates. As recorded on the public certification record if approved.</span>
+      </div>
+
+      <div class="form-field" id="field-email">
+        <label for="email">Official contact email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="contact@example.com">
+        <span class="helper">Used for application correspondence and, if approved, the certification issuance notice.</span>
+      </div>
+
+      <div class="form-field" id="field-country">
+        <label for="country">Country of operation <span class="req">*</span></label>
+        <input type="text" id="country" name="country" placeholder="e.g. United States, California">
+        <span class="helper">The country in which the entity primarily operates.</span>
+      </div>
+
+      <div class="form-field" id="field-species">
+        <label for="species">Species and breed category <span class="req">*</span></label>
+        <input type="text" id="species" name="species" placeholder="e.g. Canine — Golden Retriever, or Feline — Persian">
+        <span class="helper">The species and breed category covered by the application.</span>
+      </div>
+
+      <div class="form-field" id="field-description">
+        <label for="description">Description of breeding operations <span class="req">*</span></label>
+        <textarea id="description" name="description" placeholder="Briefly describe the entity's breeding operations — programme structure, length of practice, premises, and any prior certifications or affiliations."></textarea>
+        <span class="helper">A short narrative summary. Used by the certification committee to contextualise the standards-based evaluation.</span>
+      </div>
+
+      <!-- Certification fee -->
+      <div class="fee-block">
+        <div class="label">Certification Fee</div>
+        <div class="amount-row">
+          <div class="amount">USD $199.00 <span class="period">/ year</span></div>
+          <div class="amount-name">Early Certification Fee</div>
+        </div>
+        <p>This fee covers administrative review, certification issuance, and ongoing registry maintenance for the certification term. The fee is invoiced upon issuance of a positive determination and is not payable at the point of application.</p>
+      </div>
+
+      <!-- Consent block -->
+      <div class="consent-block" id="consentBlock">
+        <div class="label">Declaration &amp; consent</div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent">
+          <label for="consent" class="consent-text">
+            I declare that the information submitted is accurate and complete to the best
+            of my knowledge. I confirm that I have read and agree to the
+            <a href="#">Certification Applicant Agreement</a>,
+            <a href="#">Standards Framework</a>,
+            <a href="#">Code of Ethics</a>,
+            <a href="#">Terms of Use</a>, and
+            <a href="#">Privacy Policy</a>
+            of the ElitePetz Certification Authority. I acknowledge that certification
+            determinations are made solely in accordance with these governing documents
+            and that submission does not guarantee approval.
+          </label>
+        </div>
+      </div>
+
+      <!-- reCAPTCHA placeholder -->
+      <div class="recaptcha-placeholder" aria-label="Verification — I am not a robot">
+        <input type="checkbox" id="recaptcha">
+        <span class="text">I&rsquo;m not a robot</span>
+        <span class="brand">reCAPTCHA</span>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Submit Application →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SUCCESS STATE (hidden by default)
+══════════════════════════════════════════════════════════════════ -->
+<section class="success-section" id="successSection" hidden aria-live="polite">
+  <div class="container">
+
+    <div class="success-banner">
+      <span class="check-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 12 10 17 19 8"></polyline>
+        </svg>
+      </span>
+      <span class="text">Application received</span>
+    </div>
+
+    <article class="success-card">
+      <h2>Your application has been logged.</h2>
+      <p class="lead">
+        Your application has been entered into the Authority's record system and
+        assigned a temporary administrative identifier. A confirmation has been
+        sent to the official contact email provided.
+      </p>
+
+      <div class="ref-block">
+        <div class="lbl">Application Reference</div>
+        <div class="value" id="referenceId">APP-2026-0042-PND</div>
+        <div class="note">Temporary identifier &mdash; replaced by a permanent Certification ID if the application reaches the public registry.</div>
+      </div>
+
+      <div class="next-block">
+        <div class="heading">What happens next</div>
+        <ul class="next-list">
+          <li>
+            <span class="num">01</span>
+            <span class="text"><strong>Completeness review</strong> &mdash; the Authority confirms all information required for evaluation has been provided. The applicant is contacted if any item is missing.</span>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <span class="text"><strong>Substantive evaluation</strong> &mdash; the certification committee assesses the application against the published Standards Framework.</span>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <span class="text"><strong>Formal determination</strong> &mdash; the outcome is recorded in the Status History system and the applicant is notified by email.</span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <span class="text"><strong>Public record</strong> &mdash; on a positive determination, the record is published in the public registry under a permanent Certification ID in the format <span style="font-family:var(--mono);">EP-CERT-YYYY-NNNN-XXX</span>.</span>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <div class="success-disclosure">
+      <strong>Submission does not guarantee approval.</strong>
+      The Authority does not provide advisory opinions or preliminary eligibility assessments. The outcome of the review will be communicated only after the formal determination has been recorded.
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2026 &middot; ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">About</a>
+        <a href="#">Certification</a>
+        <a href="#">Registry</a>
+        <a href="#">Governance</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="#">Privacy</a><span class="sep">&middot;</span><a href="#">Terms</a><span class="sep">&middot;</span><a href="#">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('applyForm');
+    var applySection = document.getElementById('applySection');
+    var successSection = document.getElementById('successSection');
+    var consent = document.getElementById('consent');
+    var consentBlock = document.getElementById('consentBlock');
+    var recaptcha = document.getElementById('recaptcha');
+
+    var requiredFields = [
+      { id: 'legal-name',  wrapper: 'field-name'        },
+      { id: 'email',       wrapper: 'field-email'       },
+      { id: 'country',     wrapper: 'field-country'     },
+      { id: 'species',     wrapper: 'field-species'     },
+      { id: 'description', wrapper: 'field-description' }
+    ];
+
+    function clearErrors() {
+      requiredFields.forEach(function (f) {
+        var wrap = document.getElementById(f.wrapper);
+        if (wrap) wrap.classList.remove('error');
+        var msg = wrap && wrap.querySelector('.helper.error-msg');
+        if (msg) msg.remove();
+      });
+      consentBlock.classList.remove('error');
+    }
+
+    function attachErrorMessage(wrapperEl, text) {
+      var existing = wrapperEl.querySelector('.helper.error-msg');
+      if (existing) return;
+      var msg = document.createElement('span');
+      msg.className = 'helper error-msg';
+      msg.textContent = text;
+      wrapperEl.appendChild(msg);
+    }
+
+    function validate() {
+      clearErrors();
+      var firstError = null;
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      requiredFields.forEach(function (f) {
+        var input = document.getElementById(f.id);
+        var wrap = document.getElementById(f.wrapper);
+        var value = (input.value || '').trim();
+        if (!value) {
+          wrap.classList.add('error');
+          attachErrorMessage(wrap, 'This field is required.');
+          if (!firstError) firstError = wrap;
+        } else if (f.id === 'email' && !emailPattern.test(value)) {
+          wrap.classList.add('error');
+          attachErrorMessage(wrap, 'Please enter a valid email address.');
+          if (!firstError) firstError = wrap;
+        }
+      });
+
+      if (!consent.checked) {
+        consentBlock.classList.add('error');
+        if (!firstError) firstError = consentBlock;
+      }
+
+      return firstError;
+    }
+
+    function generateRef() {
+      var year = 2026;
+      var seq  = String(Math.floor(Math.random() * 8999) + 1000);
+      var suff = '';
+      var pool = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      for (var i = 0; i < 3; i++) suff += pool.charAt(Math.floor(Math.random() * pool.length));
+      return 'APP-' + year + '-' + seq + '-' + suff;
+    }
+
+    function showSuccess() {
+      document.getElementById('referenceId').textContent = generateRef();
+      applySection.hidden = true;
+      successSection.hidden = false;
+      setTimeout(function () {
+        successSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var firstError = validate();
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          var input = firstError.querySelector('input, textarea');
+          if (input) setTimeout(function () { input.focus(); }, 300);
+        } else {
+          showSuccess();
+        }
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
