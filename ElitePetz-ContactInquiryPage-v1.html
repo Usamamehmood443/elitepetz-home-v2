@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact the Authority — ElitePetz Certification Authority</title>
+<meta name="description" content="Official intake channels of the ElitePetz Certification Authority. Submit a formal inquiry or a complaint and evidence submission under the published Governance & Enforcement Framework.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     TOP META BAR (canonical)
+  ══════════════════════════════════════════════════════════════════ */
+  .top-meta {
+    border-bottom: 1px solid var(--border-soft);
+    padding: 8px 0;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     MASTHEAD (canonical)
+  ══════════════════════════════════════════════════════════════════ */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0 24px;
+    background: #fff;
+  }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; border-bottom: none; color: var(--text);
+  }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img {
+    height: 88px; width: auto; max-width: 360px;
+    object-fit: contain; display: block;
+  }
+  .masthead .wordmark {
+    font-family: var(--serif); font-weight: 600;
+    font-size: 19px; letter-spacing: -0.005em; line-height: 1.15;
+  }
+  .masthead .wordmark .sub {
+    display: block; font-family: var(--sans);
+    font-size: 10.5px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 3px;
+  }
+  .masthead .topnav { display: flex; gap: 26px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px; font-weight: 500;
+  }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+  ══════════════════════════════════════════════════════════════════ */
+  .breadcrumb {
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  .breadcrumb a { color: var(--text-muted); border-bottom: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .sep { margin: 0 8px; color: var(--text-soft); opacity: 0.6; }
+  .breadcrumb .current { color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════════════════════════════ */
+  .hero {
+    padding: 40px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    line-height: 1.18;
+    letter-spacing: -0.014em;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero .description {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .hero .description.last { margin-bottom: 0; }
+  .hero .description a { color: var(--navy); font-weight: 500; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     SECTION PRIMITIVES (canonical)
+  ══════════════════════════════════════════════════════════════════ */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section.alt { background: var(--bg-band); }
+  .section.cream { background: var(--bg-cream); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.008em;
+    font-weight: 600;
+  }
+  .section-head .head-meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .section .lead {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .section .body-p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section .body-p.muted { color: var(--text-muted); }
+  .section .closing {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     CHECKLIST (numbered protocol list)
+  ══════════════════════════════════════════════════════════════════ */
+  .checklist {
+    border-top: 1px solid var(--border-soft);
+    margin: 18px 0 0;
+  }
+  .checklist .item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .checklist .item .mark {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--active-fg);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .checklist .item .text {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .checklist .item .text a { color: var(--navy); font-weight: 500; }
+
+  /* Negative-list variant ("does not") */
+  .checklist.negative .item .mark { color: var(--revoked-fg); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     CHANNEL CARDS (SEC 02 — two intake portals)
+  ══════════════════════════════════════════════════════════════════ */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .channel-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .channel-card .channel-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .channel-card h3 {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.006em;
+  }
+  .channel-card .channel-lede {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .channel-card .use-for {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .channel-card ul.use-list {
+    list-style: none;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+  .channel-card ul.use-list li {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 10px;
+    padding: 5px 0;
+    font-family: var(--serif);
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .channel-card ul.use-list li::before {
+    content: "›";
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .channel-card .channel-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    background: var(--navy);
+    color: #fff;
+    border: 1.5px solid var(--navy);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 3px;
+    align-self: flex-start;
+    transition: background .12s, border-color .12s, color .12s;
+    cursor: pointer;
+  }
+  .channel-card .channel-action:hover {
+    background: var(--navy-hover);
+    border-color: var(--navy-hover);
+    border-bottom: 1.5px solid var(--navy-hover);
+  }
+  .channel-card .channel-action .arrow { transition: transform .15s; }
+  .channel-card .channel-action:hover .arrow { transform: translateX(2px); }
+
+  /* Open / expanded state — flips to outline so the user sees which form is live */
+  .channel-card .channel-action.is-open {
+    background: var(--active-bg);
+    color: var(--active-fg);
+    border-color: var(--active-fg);
+    border-bottom: 1.5px solid var(--active-fg);
+  }
+  .channel-card .channel-action.is-open:hover {
+    background: #d9efdb;
+    border-color: var(--active-fg);
+    border-bottom: 1.5px solid var(--active-fg);
+  }
+  .channel-card .channel-action.is-open .arrow { transform: rotate(90deg); }
+  .channel-card .channel-action.is-open:hover .arrow { transform: rotate(90deg) translateX(2px); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FORM SECTIONS (canonical pattern from Apply page)
+  ══════════════════════════════════════════════════════════════════ */
+  .form-section {
+    padding: 64px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-section.alt { background: var(--bg-band); }
+  .form-head {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .form-head h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .form-head .meta {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .form-head .form-close {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-head .form-close:hover {
+    color: var(--navy);
+    border-bottom-color: var(--navy);
+  }
+  .form-head .form-close .x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .form-head .form-close:hover .x { background: var(--navy); color: #fff; }
+  .form-intro {
+    margin-bottom: 22px;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  /* Form scope / warning callout (sits above each form) */
+  .scope-callout {
+    margin-bottom: 28px;
+    padding: 18px 22px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    max-width: 920px;
+  }
+  .scope-callout.warning {
+    background: #FEF8EC;
+    border-color: #FAE0A8;
+    border-left-color: var(--claimed-fg);
+  }
+  .scope-callout .label {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .scope-callout.warning .label { color: var(--claimed-fg); }
+  .scope-callout p {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .scope-callout p + p { margin-top: 6px; }
+
+  .required-note {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+  }
+  .required-note .star {
+    color: var(--revoked-fg);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .intake-form {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+    max-width: 920px;
+  }
+  .intake-form.alt-bg { background: #fff; }
+
+  /* Form sub-section heading (e.g., "Section 1 — Requesting Party Identification") */
+  .form-subsec {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 24px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .form-subsec:first-child { margin-top: 0; }
+  .form-subsec .num {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+  .form-subsec .title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.25;
+    letter-spacing: -0.004em;
+  }
+
+  /* Form fields (extends Apply pattern) */
+  .form-field { margin-bottom: 20px; }
+  .form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .form-field label .req { color: var(--revoked-fg); margin-left: 4px; }
+  .form-field label .opt {
+    margin-left: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 13px 16px;
+    transition: border-color .12s, box-shadow .12s;
+  }
+  .form-field input[type="email"] {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.08);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: var(--text-soft); }
+  .form-field textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+  .form-field textarea.long { min-height: 180px; }
+
+  .form-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 42px;
+    cursor: pointer;
+  }
+  .form-field .helper {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  /* File upload zones */
+  .upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .upload-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 18px;
+    background: var(--bg-band);
+    border: 1.5px dashed var(--border);
+    border-radius: 3px;
+    text-align: center;
+    transition: border-color .12s, background .12s;
+    cursor: pointer;
+  }
+  .upload-zone:hover {
+    border-color: var(--navy);
+    background: #fff;
+  }
+  .upload-zone .icon {
+    width: 28px;
+    height: 28px;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+  }
+  .upload-zone .upload-label {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .upload-zone .upload-formats {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .upload-zone .upload-button {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .upload-helper {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+  }
+
+  /* Declaration / attestation block */
+  .declaration-block {
+    margin: 8px 0 24px;
+    padding: 22px 26px;
+    background: var(--bg-band);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+  }
+  .declaration-block .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .declaration-block .consent-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .declaration-block input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--navy);
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .declaration-block .consent-text {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .declaration-block .consent-text p { margin-bottom: 6px; }
+  .declaration-block .consent-text p:last-child { margin-bottom: 0; }
+  .declaration-block .consent-text a { color: var(--navy); font-weight: 500; }
+
+  /* reCAPTCHA placeholder */
+  .recaptcha-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    max-width: 320px;
+    margin-bottom: 24px;
+  }
+  .recaptcha-placeholder input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--navy);
+    cursor: pointer;
+  }
+  .recaptcha-placeholder .text {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+  }
+  .recaptcha-placeholder .brand {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+  }
+
+  /* Submit button */
+  .submit-row { display: flex; justify-content: flex-start; margin-top: 6px; }
+  .submit-btn {
+    background: var(--navy);
+    color: #fff;
+    border: 1.5px solid var(--navy);
+    border-radius: 3px;
+    padding: 16px 36px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .12s, border-color .12s;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover {
+    background: var(--navy-hover);
+    border-color: var(--navy-hover);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSE STANDARDS BLOCK (SEC 06)
+  ══════════════════════════════════════════════════════════════════ */
+  .response-block {
+    padding: 24px 28px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    margin-top: 8px;
+  }
+  .response-block .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .response-block p {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .response-block p:last-child { margin-bottom: 0; }
+
+  /* ══════════════════════════════════════════════════════════════════
+     FOOTER (canonical — matches v2.4 / Verify v1.3 / Apply v1 / Founding v1)
+  ══════════════════════════════════════════════════════════════════ */
+  footer.site-footer {
+    background: #fff;
+    padding: 28px 0 24px;
+    border-top: 2px solid var(--text);
+  }
+  footer.site-footer .footer-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  footer.site-footer .footer-row.top {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: flex-end;
+  }
+  footer.site-footer .brand .name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  footer.site-footer .brand .est {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  footer.site-footer .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-size: 13px;
+  }
+  footer.site-footer .footer-nav a {
+    color: var(--text);
+    border: none;
+    font-weight: 500;
+  }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright,
+  footer.site-footer .legal-links {
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.01em;
+  }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep {
+    color: var(--text-soft);
+    opacity: 0.5;
+    margin: 0 4px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .hero h1 { font-size: 30px; }
+    .channel-grid { grid-template-columns: 1fr; }
+    .intake-form { padding: 28px 26px; }
+    .form-row-2 { grid-template-columns: 1fr; gap: 0; }
+    .upload-grid { grid-template-columns: 1fr; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .hero { padding: 28px 0 44px; }
+    .hero h1 { font-size: 26px; }
+    .form-section { padding: 44px 0 52px; }
+    .form-head h2 { font-size: 22px; }
+    .intake-form { padding: 22px 18px; }
+    .channel-card { padding: 22px 22px; }
+    .channel-card h3 { font-size: 19px; }
+    .declaration-block { padding: 18px 20px; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TOP META BAR
+══════════════════════════════════════════════════════════════════ -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="#">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="#">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="#">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MASTHEAD
+══════════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="container">
+    <a href="#" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Certification</a>
+      <a href="#">Registry</a>
+      <a href="#">Research</a>
+      <a href="#">Governance</a>
+      <a href="#" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     BREADCRUMB
+══════════════════════════════════════════════════════════════════ -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">Home</a>
+    <span class="sep">›</span>
+    <span class="current">Contact the Authority</span>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Official Intake &middot; Authority Correspondence</div>
+    <h1>Contact the Authority</h1>
+    <p class="description">
+      ElitePetz Certification Authority operates as a structured private certification
+      body. Official communications are accepted exclusively through the designated
+      intake channels below and are processed in accordance with the
+      <a href="#">Governance &amp; Enforcement Framework</a>.
+    </p>
+    <p class="description last">
+      The Authority does not provide informal consultation, advisory services, or
+      pre-determination opinions.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 01 — COMMUNICATION PROTOCOL
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Communication Protocol</h2>
+      <span class="head-meta">SEC. 01 &middot; How Submissions Are Processed</span>
+    </div>
+
+    <p class="lead">
+      All submissions to the Authority are recorded, reviewed, and handled under
+      the same documented procedures, regardless of intake channel.
+    </p>
+
+    <p class="body-p">All submissions:</p>
+
+    <div class="checklist">
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Are logged in the Authority&rsquo;s record system.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Enter defined review workflows.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">Are evaluated within the scope of published <a href="#">Standards</a> and <a href="#">Governance</a> documents.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&#10003;</span>
+        <span class="text">May receive a written response at the discretion of the Authority.</span>
+      </div>
+    </div>
+
+    <p class="closing">
+      Informal communications &mdash; including direct email, telephone, or social
+      media messaging &mdash; are not recognised as official submissions and do not
+      enter the certification record.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 02 — INTAKE CHANNELS (TWO CARDS)
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Designated Intake Channels</h2>
+      <span class="head-meta">SEC. 02 &middot; Select the Channel That Matches Your Submission</span>
+    </div>
+
+    <p class="lead">
+      Two intake channels are recognised by the Authority. Each is governed by its
+      own form, scope, and review pathway. Select the channel that matches the
+      nature of your submission.
+    </p>
+
+    <div class="channel-grid">
+
+      <!-- Channel 1: Official Inquiry -->
+      <article class="channel-card">
+        <div class="channel-eyebrow">Channel 01 &middot; Inquiry</div>
+        <h3>Official Inquiry Submission</h3>
+        <p class="channel-lede">
+          Submit a formal written inquiry within the Authority&rsquo;s scope.
+        </p>
+        <div class="use-for">Use this channel for</div>
+        <ul class="use-list">
+          <li>Certification record verification</li>
+          <li>Registry questions</li>
+          <li>Scope of Authority clarification</li>
+          <li>Governance framework interpretation</li>
+          <li>Institutional or regulatory correspondence</li>
+        </ul>
+        <a href="#official-inquiry-form" class="channel-action" data-target="official-inquiry-form" data-open-label="Submit Official Inquiry" data-close-label="Inquiry Form Open">
+          <span class="action-text">Submit Official Inquiry</span> <span class="arrow">&rarr;</span>
+        </a>
+      </article>
+
+      <!-- Channel 2: Complaint & Evidence -->
+      <article class="channel-card">
+        <div class="channel-eyebrow">Channel 02 &middot; Enforcement Intake</div>
+        <h3>Complaint &amp; Evidence Submission</h3>
+        <p class="channel-lede">
+          Report information relevant to a certified entity for enforcement review.
+        </p>
+        <div class="use-for">Use this channel to</div>
+        <ul class="use-list">
+          <li>Report information relevant to a certified entity</li>
+          <li>Submit documentation for enforcement review</li>
+          <li>Provide evidence supporting suspension or revocation consideration</li>
+        </ul>
+        <a href="#complaint-evidence-form" class="channel-action" data-target="complaint-evidence-form" data-open-label="Submit Complaint &amp; Evidence" data-close-label="Complaint Form Open">
+          <span class="action-text">Submit Complaint &amp; Evidence</span> <span class="arrow">&rarr;</span>
+        </a>
+      </article>
+
+    </div>
+
+    <p class="closing">
+      The Authority does not mediate private disputes and does not provide legal
+      remedies. Complaint submissions are evaluated under the
+      <a href="#">Enforcement Authority</a> and <a href="#">Due Process</a> provisions.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 03 — OFFICIAL INQUIRY SUBMISSION FORM
+══════════════════════════════════════════════════════════════════ -->
+<section class="form-section" id="official-inquiry-form" hidden>
+  <div class="container">
+    <div class="form-head">
+      <h2>Official Inquiry Submission</h2>
+      <a href="#" class="form-close" data-collapse="official-inquiry-form" aria-label="Collapse inquiry form">
+        <span class="x">&times;</span> Collapse form
+      </a>
+      <span class="meta">SEC. 03 &middot; Form CI-01</span>
+    </div>
+
+    <p class="form-intro">
+      This form is for formal written inquiries within the Authority&rsquo;s scope.
+      Each submission is logged in the record system and enters the defined inquiry
+      review workflow.
+    </p>
+
+    <div class="scope-callout">
+      <div class="label">Scope of this form</div>
+      <p>
+        This form <strong>is not</strong> for complaints or evidence submissions
+        &mdash; use Channel 02 for those.
+      </p>
+      <p>
+        This form <strong>is not</strong> for advisory requests, legal opinions,
+        or pre-determination consultation.
+      </p>
+    </div>
+
+    <div class="required-note"><span class="star">*</span>Required fields.</div>
+
+    <form class="intake-form" id="inquiryForm" novalidate>
+
+      <!-- Section 1 — Requesting Party Identification -->
+      <div class="form-subsec">
+        <span class="num">SEC. 01</span>
+        <span class="title">Requesting Party Identification</span>
+      </div>
+
+      <div class="form-field">
+        <label for="ci-name">Full legal name <span class="req">*</span></label>
+        <input type="text" id="ci-name" name="ci-name" placeholder="As recorded on official identification">
+      </div>
+
+      <div class="form-field">
+        <label for="ci-org">Organization / entity name <span class="opt">If applicable</span></label>
+        <input type="text" id="ci-org" name="ci-org" placeholder="e.g. registered business, institution, or representative body">
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-field">
+          <label for="ci-email">Official contact email <span class="req">*</span></label>
+          <input type="email" id="ci-email" name="ci-email" placeholder="contact@example.com">
+        </div>
+        <div class="form-field">
+          <label for="ci-country">Country of residence or operation <span class="req">*</span></label>
+          <input type="text" id="ci-country" name="ci-country" placeholder="e.g. United States, United Kingdom">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="ci-capacity">Capacity of requesting party <span class="req">*</span></label>
+        <select id="ci-capacity" name="ci-capacity">
+          <option value="" disabled selected>Select capacity&hellip;</option>
+          <option>Individual</option>
+          <option>Certified Entity Representative</option>
+          <option>Prospective Applicant</option>
+          <option>Industry Body or Association</option>
+          <option>Regulatory or Institutional Representative</option>
+          <option>Press or Media</option>
+          <option>Other</option>
+        </select>
+        <span class="helper">Used to route the inquiry to the appropriate review pathway.</span>
+      </div>
+
+      <!-- Section 2 — Subject Classification -->
+      <div class="form-subsec">
+        <span class="num">SEC. 02</span>
+        <span class="title">Subject Classification</span>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-field">
+          <label for="ci-category">Inquiry category <span class="req">*</span></label>
+          <select id="ci-category" name="ci-category">
+            <option value="" disabled selected>Select category&hellip;</option>
+            <option>Certification record verification</option>
+            <option>Registry question</option>
+            <option>Scope of Authority clarification</option>
+            <option>Governance framework interpretation</option>
+            <option>Institutional or regulatory correspondence</option>
+            <option>Other (specify in written inquiry)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="ci-certid">Certification ID <span class="opt">If applicable</span></label>
+          <input type="text" id="ci-certid" name="ci-certid" placeholder="EP-CERT-YYYY-NNNN-XXX" style="font-family:var(--mono); letter-spacing:0.04em;">
+        </div>
+      </div>
+
+      <!-- Section 3 — Formal Written Inquiry -->
+      <div class="form-subsec">
+        <span class="num">SEC. 03</span>
+        <span class="title">Formal Written Inquiry</span>
+      </div>
+
+      <div class="form-field">
+        <label for="ci-statement">Written submission <span class="req">*</span></label>
+        <textarea id="ci-statement" name="ci-statement" class="long" placeholder="State the inquiry clearly and concisely. Reference the certification record, registry entry, framework section, or governance document the inquiry relates to."></textarea>
+        <span class="helper">A clearly stated written inquiry. Used by the Authority to determine the applicable review pathway.</span>
+      </div>
+
+      <!-- Section 4 — Declaration -->
+      <div class="form-subsec">
+        <span class="num">SEC. 04</span>
+        <span class="title">Declaration</span>
+      </div>
+
+      <div class="declaration-block">
+        <div class="label">Acknowledgement</div>
+        <div class="consent-row">
+          <input type="checkbox" id="ci-consent" name="ci-consent">
+          <label for="ci-consent" class="consent-text">
+            <p>I acknowledge that this submission will be logged in the Authority&rsquo;s record system.</p>
+            <p>I understand that the Authority does not provide advisory or legal services, and that responses are issued at the discretion of the Authority.</p>
+            <p>I acknowledge that matters outside the Authority&rsquo;s defined scope may not receive a response.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="recaptcha-placeholder" aria-label="Verification — I am not a robot">
+        <input type="checkbox" id="ci-recaptcha">
+        <span class="text">I&rsquo;m not a robot</span>
+        <span class="brand">reCAPTCHA</span>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Submit Official Inquiry &rarr;</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 04 — COMPLAINT & EVIDENCE SUBMISSION FORM
+══════════════════════════════════════════════════════════════════ -->
+<section class="form-section alt" id="complaint-evidence-form" hidden>
+  <div class="container">
+    <div class="form-head">
+      <h2>Complaint &amp; Evidence Submission</h2>
+      <a href="#" class="form-close" data-collapse="complaint-evidence-form" aria-label="Collapse complaint form">
+        <span class="x">&times;</span> Collapse form
+      </a>
+      <span class="meta">SEC. 04 &middot; Form CE-01</span>
+    </div>
+
+    <p class="form-intro">
+      Enforcement-triggering intake. All submissions are evaluated under the
+      <a href="#">Governance &amp; Enforcement Framework</a>, and may inform suspension,
+      revocation, or other status determinations made by the Authority.
+    </p>
+
+    <div class="scope-callout warning">
+      <div class="label">Enforcement intake</div>
+      <p>
+        Submissions through this channel are evaluated under the Authority&rsquo;s
+        <a href="#">Enforcement Authority</a> and <a href="#">Due Process</a> provisions.
+      </p>
+      <p>
+        The Authority does not mediate private disputes, does not provide legal
+        remedies, and does not guarantee that a submission will result in
+        enforcement action.
+      </p>
+    </div>
+
+    <div class="required-note"><span class="star">*</span>Required fields.</div>
+
+    <form class="intake-form" id="complaintForm" novalidate>
+
+      <!-- Section 1 — Reporting Party Identification -->
+      <div class="form-subsec">
+        <span class="num">SEC. 01</span>
+        <span class="title">Reporting Party Identification</span>
+      </div>
+
+      <div class="form-field">
+        <label for="ce-name">Full legal name <span class="req">*</span></label>
+        <input type="text" id="ce-name" name="ce-name" placeholder="As recorded on official identification">
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-field">
+          <label for="ce-email">Contact email <span class="req">*</span></label>
+          <input type="email" id="ce-email" name="ce-email" placeholder="contact@example.com">
+        </div>
+        <div class="form-field">
+          <label for="ce-country">Country of residence <span class="req">*</span></label>
+          <input type="text" id="ce-country" name="ce-country" placeholder="e.g. United States, Germany">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="ce-capacity">Capacity of reporting party <span class="req">*</span></label>
+        <select id="ce-capacity" name="ce-capacity">
+          <option value="" disabled selected>Select capacity&hellip;</option>
+          <option>Individual</option>
+          <option>Purchaser or Adopter of an Animal</option>
+          <option>Veterinary Professional</option>
+          <option>Industry Body or Association</option>
+          <option>Regulatory or Institutional Representative</option>
+          <option>Anonymous Reporter (limited follow-up)</option>
+          <option>Other</option>
+        </select>
+        <span class="helper">Used to assess the evidentiary weight of the submission under the Due Process provisions.</span>
+      </div>
+
+      <!-- Section 2 — Subject of Complaint -->
+      <div class="form-subsec">
+        <span class="num">SEC. 02</span>
+        <span class="title">Subject of Complaint</span>
+      </div>
+
+      <div class="form-field">
+        <label for="ce-entity">Certified entity name <span class="req">*</span></label>
+        <input type="text" id="ce-entity" name="ce-entity" placeholder="Name as listed on the public certification record">
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-field">
+          <label for="ce-certid">Certification ID <span class="opt">If known</span></label>
+          <input type="text" id="ce-certid" name="ce-certid" placeholder="EP-CERT-YYYY-NNNN-XXX" style="font-family:var(--mono); letter-spacing:0.04em;">
+        </div>
+        <div class="form-field">
+          <label for="ce-nature">Nature of allegation <span class="req">*</span></label>
+          <select id="ce-nature" name="ce-nature">
+            <option value="" disabled selected>Select nature&hellip;</option>
+            <option>Misrepresentation of Certification Status</option>
+            <option>Breach of Standards Framework</option>
+            <option>Failure to Disclose Material Information</option>
+            <option>Conduct Inconsistent with Code of Ethics</option>
+            <option>Misuse of ElitePetz Marks or Identifiers</option>
+            <option>Other (specify in written statement)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 3 — Written Statement -->
+      <div class="form-subsec">
+        <span class="num">SEC. 03</span>
+        <span class="title">Written Statement</span>
+      </div>
+
+      <div class="form-field">
+        <label for="ce-statement">Detailed description of allegation <span class="req">*</span></label>
+        <textarea id="ce-statement" name="ce-statement" class="long" placeholder="State the relevant facts in a clear, dated, factual manner. Include what occurred, when it occurred, how it relates to the certified entity, and any directly observed conduct."></textarea>
+        <span class="helper">A factual narrative. Speculation, hearsay, and unrelated commentary may reduce the evidentiary weight of the submission.</span>
+      </div>
+
+      <!-- Section 4 — Evidence Submission -->
+      <div class="form-subsec">
+        <span class="num">SEC. 04</span>
+        <span class="title">Evidence Submission</span>
+      </div>
+
+      <p class="upload-helper">
+        Upload supporting documents or evidence relevant to the allegation. Files
+        are stored in the Authority&rsquo;s administrative system and are not made
+        public.
+      </p>
+
+      <div class="upload-grid">
+        <label class="upload-zone" for="ce-docs">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="18" x2="12" y2="12"/>
+            <polyline points="9 15 12 12 15 15"/>
+          </svg>
+          <span class="upload-label">Documents</span>
+          <span class="upload-formats">PDF · DOC · XLS</span>
+          <span class="upload-button">Choose files</span>
+          <input type="file" id="ce-docs" name="ce-docs" accept=".pdf,.doc,.docx,.xls,.xlsx" hidden multiple>
+        </label>
+
+        <label class="upload-zone" for="ce-imgs">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="upload-label">Images</span>
+          <span class="upload-formats">JPEG · PNG</span>
+          <span class="upload-button">Choose files</span>
+          <input type="file" id="ce-imgs" name="ce-imgs" accept="image/jpeg,image/png" hidden multiple>
+        </label>
+      </div>
+
+      <!-- Section 5 — Attestation -->
+      <div class="form-subsec">
+        <span class="num">SEC. 05</span>
+        <span class="title">Attestation</span>
+      </div>
+
+      <div class="declaration-block">
+        <div class="label">Sworn declaration</div>
+        <div class="consent-row">
+          <input type="checkbox" id="ce-consent" name="ce-consent">
+          <label for="ce-consent" class="consent-text">
+            <p>I declare that the information submitted is accurate to the best of my knowledge.</p>
+            <p>I understand that the Authority evaluates submissions in accordance with its <a href="#">Governance &amp; Enforcement Framework</a>.</p>
+            <p>I acknowledge that submission does not guarantee enforcement action, and that knowingly false statements may result in dismissal of this submission and may be referred to the appropriate external authority.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="recaptcha-placeholder" aria-label="Verification — I am not a robot">
+        <input type="checkbox" id="ce-recaptcha">
+        <span class="text">I&rsquo;m not a robot</span>
+        <span class="brand">reCAPTCHA</span>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Submit Complaint &amp; Evidence &rarr;</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 05 — SCOPE LIMITATIONS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Scope Limitations</h2>
+      <span class="head-meta">SEC. 05 &middot; Matters Outside the Authority&rsquo;s Function</span>
+    </div>
+
+    <p class="lead">
+      The Authority&rsquo;s function is limited to evaluation, certification, status
+      tracking, and enforcement within its published framework. The Authority does
+      not assume responsibilities outside this defined scope.
+    </p>
+
+    <p class="body-p">ElitePetz Certification Authority:</p>
+
+    <div class="checklist negative">
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Does not provide legal advice.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Does not interpret external regulatory requirements.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Does not provide operational or breeding consultation.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Does not participate in commercial transactions.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Does not offer dispute mediation between private parties.</span>
+      </div>
+    </div>
+
+    <p class="closing">
+      Matters outside this defined scope are returned to the submitting party
+      without further review.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEC 06 — RESPONSE STANDARDS
+══════════════════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Response Standards</h2>
+      <span class="head-meta">SEC. 06 &middot; Response Discretion of the Authority</span>
+    </div>
+
+    <p class="lead">
+      Submission to the Authority does not, in itself, entitle a submitter to a
+      response. Responses are issued at the discretion of the Authority and in
+      accordance with the policies below.
+    </p>
+
+    <p class="body-p">The Authority reserves the right to decline responses to:</p>
+
+    <div class="checklist negative">
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Incomplete submissions.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Matters outside jurisdiction.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Requests seeking advisory opinions.</span>
+      </div>
+      <div class="item">
+        <span class="mark">&times;</span>
+        <span class="text">Duplicate or abusive filings.</span>
+      </div>
+    </div>
+
+    <div class="response-block">
+      <div class="label">Record retention</div>
+      <p>
+        Every submission &mdash; whether or not a response is issued &mdash; is
+        retained in the Authority&rsquo;s record system and may be referenced in
+        subsequent enforcement or certification proceedings involving the same
+        certified entity or subject matter.
+      </p>
+      <p>
+        Submission does not guarantee a response. Submission does, however,
+        guarantee a record.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2026 &middot; ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">About</a>
+        <a href="#">Certification</a>
+        <a href="#">Registry</a>
+        <a href="#">Governance</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="#">Privacy</a><span class="sep">&middot;</span><a href="#">Terms</a><span class="sep">&middot;</span><a href="#">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var channelButtons = document.querySelectorAll('.channel-action[data-target]');
+    var collapseLinks = document.querySelectorAll('.form-head .form-close[data-collapse]');
+
+    function setButton(btn, open) {
+      var textEl = btn.querySelector('.action-text');
+      if (open) {
+        btn.classList.add('is-open');
+        if (textEl) textEl.innerHTML = btn.getAttribute('data-close-label') || textEl.innerHTML;
+      } else {
+        btn.classList.remove('is-open');
+        if (textEl) textEl.innerHTML = btn.getAttribute('data-open-label') || textEl.innerHTML;
+      }
+    }
+
+    function closeAll() {
+      document.querySelectorAll('.form-section[id]').forEach(function (s) {
+        s.setAttribute('hidden', '');
+      });
+      channelButtons.forEach(function (b) { setButton(b, false); });
+    }
+
+    channelButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = btn.getAttribute('data-target');
+        var target = document.getElementById(targetId);
+        if (!target) return;
+
+        var isOpen = !target.hasAttribute('hidden');
+        closeAll();
+
+        if (!isOpen) {
+          target.removeAttribute('hidden');
+          setButton(btn, true);
+          window.setTimeout(function () {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
+      });
+    });
+
+    collapseLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-collapse');
+        var target = document.getElementById(id);
+        if (target) target.setAttribute('hidden', '');
+        var btn = document.querySelector('.channel-action[data-target="' + id + '"]');
+        if (btn) setButton(btn, false);
+        var grid = document.querySelector('.channel-grid');
+        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
