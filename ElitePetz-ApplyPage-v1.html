@@ -566,7 +566,9 @@
     color: var(--text-muted);
     line-height: 1.6;
     max-width: 580px;
+    margin-bottom: 10px;
   }
+  .fee-block p:last-child { margin-bottom: 0; }
 
   /* Consent block */
   .consent-block {
@@ -601,6 +603,8 @@
     line-height: 1.6;
     color: var(--text);
   }
+  .consent-block .consent-text p { margin-bottom: 10px; }
+  .consent-block .consent-text p:last-child { margin-bottom: 0; }
   .consent-block .consent-text a {
     color: var(--navy);
     font-weight: 500;
@@ -794,7 +798,15 @@
     color: var(--text);
     line-height: 1.55;
   }
-  .success-card .next-list li .text strong { font-weight: 600; }
+  .success-card .next-list li .text strong {
+    display: block;
+    font-weight: 600;
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
 
   .success-disclosure {
     max-width: 920px;
@@ -806,6 +818,13 @@
     font-style: italic;
     line-height: 1.6;
     color: var(--text-muted);
+  }
+  .success-disclosure p { margin-bottom: 8px; }
+  .success-disclosure p:last-child { margin-bottom: 0; }
+  .success-disclosure strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text);
   }
 
   /* ══════════════════════════════════════════════════════════════════
@@ -1000,13 +1019,15 @@
   <div class="container">
     <h1>Apply for Certification</h1>
     <p class="description">
-      The ElitePetz Certification Authority accepts applications for evaluation
-      under the published <a href="#">Standards Framework</a>. Submission of an
-      application constitutes formal entry into the Authority's record system.
+      The ElitePetz Certification Authority accepts applications from companion
+      animal breeding entities seeking evaluation under its published
+      <a href="#">Standards Framework</a>. Submission of an application initiates
+      a formal review process and creates an administrative record within the
+      Authority's certification system.
     </p>
     <div class="hero-notice">
       <span class="label">Notice</span>
-      <span class="text">Approval is not guaranteed.</span>
+      <span class="text">Submission of an application does not guarantee certification.</span>
     </div>
   </div>
 </section>
@@ -1022,22 +1043,24 @@
     </div>
 
     <p class="lead">
-      Certification applies to entities operating within the companion animal
-      breeding sector and within the defined scope of the Authority.
+      Certification is available to qualifying companion animal breeding entities
+      that fall within the scope of the Authority's certification program and
+      agree to be evaluated against its published standards.
     </p>
     <p class="body-p muted">
-      The Authority evaluates applications solely against the published
-      <a href="#">Standards</a> and <a href="#">Governance</a> documents.
-      Certification status is limited to the Authority's registry.
+      Applications are evaluated using the Authority's published
+      <a href="#">standards</a>, <a href="#">governance policies</a>, and
+      certification procedures. Any certification status granted is recognized
+      only within the ElitePetz Certification Registry.
     </p>
 
     <div class="scope-list">
       <div class="b-label">Certification does not</div>
       <ul>
-        <li><span class="mark">&#10005;</span><span class="text">Replace government licensing</span></li>
-        <li><span class="mark">&#10005;</span><span class="text">Constitute legal authorisation</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Confer legal authority or regulatory status</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Represent government endorsement or approval</span></li>
         <li><span class="mark">&#10005;</span><span class="text">Guarantee commercial outcomes</span></li>
-        <li><span class="mark">&#10005;</span><span class="text">Serve as regulatory approval</span></li>
+        <li><span class="mark">&#10005;</span><span class="text">Replace applicable licensing or legal obligations</span></li>
       </ul>
     </div>
   </div>
@@ -1050,40 +1073,42 @@
   <div class="container">
     <div class="section-head">
       <h2>Review process</h2>
-      <span class="head-meta">SEC. 02 &middot; What happens after submission</span>
+      <span class="head-meta">SEC. 02 &middot; How applications are evaluated and determined</span>
     </div>
 
     <p class="lead">
-      Every application passes through a defined sequence of administrative steps
-      before a determination is issued.
+      Each application undergoes a structured review process designed to ensure
+      consistent evaluation and record integrity before a certification
+      determination is made.
     </p>
 
     <div class="process-strip">
       <div class="process-step">
-        <div class="step">Step 01 &middot; Logged</div>
-        <h4>Submission logged</h4>
-        <p>The application is logged into the Authority's record system and assigned a temporary internal identifier.</p>
+        <div class="step">Step 01</div>
+        <h4>Application Received</h4>
+        <p>The application is recorded within the Authority's administrative system and assigned a unique application reference number.</p>
       </div>
       <div class="process-step">
-        <div class="step">Step 02 &middot; Reviewed</div>
-        <h4>Completeness review</h4>
-        <p>A completeness review is conducted to confirm that all information necessary for evaluation has been provided.</p>
+        <div class="step">Step 02</div>
+        <h4>Completeness Review</h4>
+        <p>The Authority verifies that sufficient information has been provided to conduct a standards-based evaluation.</p>
       </div>
       <div class="process-step">
-        <div class="step">Step 03 &middot; Evaluated</div>
-        <h4>Substantive evaluation</h4>
-        <p>Substantive evaluation is performed by the certification committee against the published Standards Framework.</p>
+        <div class="step">Step 03</div>
+        <h4>Standards Evaluation</h4>
+        <p>The application is assessed against the published Standards Framework and supporting governance requirements.</p>
       </div>
       <div class="process-step">
-        <div class="step">Step 04 &middot; Determined</div>
-        <h4>Formal determination</h4>
-        <p>A formal determination is recorded in the Status History system. The applicant is notified of the outcome.</p>
+        <div class="step">Step 04</div>
+        <h4>Determination Issued</h4>
+        <p>A formal determination is recorded and communicated to the applicant. Approved applicants receive certification issuance instructions, including payment information where applicable.</p>
       </div>
     </div>
 
     <p class="closing">
-      The Authority does not provide advisory opinions or preliminary eligibility
-      assessments prior to formal determination.
+      To preserve impartiality and consistency, the Authority does not provide
+      pre-approval opinions, informal eligibility assessments, or advisory
+      determinations before completion of the review process.
     </p>
   </div>
 </section>
@@ -1095,33 +1120,33 @@
   <div class="container">
     <div class="section-head">
       <h2>Applicant responsibility</h2>
-      <span class="head-meta">SEC. 03 &middot; Obligations carried by the applicant</span>
+      <span class="head-meta">SEC. 03 &middot; Responsibilities accepted upon submission</span>
     </div>
 
     <p class="lead">
-      The applicant bears full responsibility for the integrity of the information
-      submitted and for ongoing compliance with the Standards Framework if
-      certified.
+      Applicants are responsible for ensuring that all submitted information is
+      accurate, complete, and current, and for maintaining compliance with
+      applicable certification requirements if certification is granted.
     </p>
 
     <div class="responsibility-list">
       <div class="item">
         <span class="num">01</span>
-        <span class="text">Accuracy and completeness of submitted information.</span>
+        <span class="text">Accuracy and completeness of all submitted information.</span>
       </div>
       <div class="item">
         <span class="num">02</span>
-        <span class="text">Ongoing compliance with the applicable Standards Framework, if certified.</span>
+        <span class="text">Compliance with applicable certification requirements if certification is granted.</span>
       </div>
       <div class="item">
         <span class="num">03</span>
-        <span class="text">Timely notification to the Authority of material changes affecting the certification record.</span>
+        <span class="text">Prompt notification of material changes that could affect the certification record.</span>
       </div>
     </div>
 
     <div class="warning-callout">
       <div class="label">Warning</div>
-      <p>Misrepresentation in an application or after certification may result in denial, suspension, or revocation of the certification record.</p>
+      <p>False, misleading, or materially incomplete information may result in application denial, certification suspension, certification revocation, or other actions permitted under the Authority's governance policies.</p>
     </div>
   </div>
 </section>
@@ -1137,42 +1162,43 @@
     </div>
 
     <p class="form-intro">
-      Complete the fields below to submit an application for review. All
-      information is recorded in the Authority's administrative system and is not
-      published unless and until the certification reaches the public registry.
+      Complete the form below to request certification review. Application
+      information is maintained within the Authority's administrative records
+      and is not published unless a certification record is formally issued and
+      entered into the public registry.
     </p>
 
     <div class="required-note"><span class="star">*</span>All fields are required.</div>
 
     <form class="apply-form" id="applyForm" novalidate>
       <div class="form-field" id="field-name">
-        <label for="legal-name">Legal name of applicant entity <span class="req">*</span></label>
-        <input type="text" id="legal-name" name="legal-name" placeholder="Individual, cattery, or kennel business name">
-        <span class="helper">The legal name under which the entity operates. As recorded on the public certification record if approved.</span>
+        <label for="legal-name">Applicant Name or Organization <span class="req">*</span></label>
+        <input type="text" id="legal-name" name="legal-name" placeholder="Enter your personal name, kennel name, cattery name, or organization name">
+        <span class="helper">Enter the primary name that should be associated with this application and any future certification record.</span>
       </div>
 
       <div class="form-field" id="field-email">
-        <label for="email">Official contact email <span class="req">*</span></label>
+        <label for="email">Primary Contact Email <span class="req">*</span></label>
         <input type="email" id="email" name="email" placeholder="contact@example.com">
-        <span class="helper">Used for application correspondence and, if approved, the certification issuance notice.</span>
+        <span class="helper">Used for review communications, determination notices, and certification-related correspondence.</span>
       </div>
 
       <div class="form-field" id="field-country">
-        <label for="country">Country of operation <span class="req">*</span></label>
-        <input type="text" id="country" name="country" placeholder="e.g. United States, California">
-        <span class="helper">The country in which the entity primarily operates.</span>
+        <label for="country">Country of Operation <span class="req">*</span></label>
+        <input type="text" id="country" name="country" placeholder="e.g. United States, Canada, United Kingdom">
+        <span class="helper">Identify the country where your breeding activities are primarily conducted.</span>
       </div>
 
       <div class="form-field" id="field-species">
-        <label for="species">Species and breed category <span class="req">*</span></label>
-        <input type="text" id="species" name="species" placeholder="e.g. Canine — Golden Retriever, or Feline — Persian">
-        <span class="helper">The species and breed category covered by the application.</span>
+        <label for="species">Species and Breed <span class="req">*</span></label>
+        <input type="text" id="species" name="species" placeholder="e.g. Canine — Golden Retriever, Feline — Maine Coon">
+        <span class="helper">Specify the species and breed associated with the breeding program being submitted for review.</span>
       </div>
 
       <div class="form-field" id="field-description">
-        <label for="description">Description of breeding operations <span class="req">*</span></label>
-        <textarea id="description" name="description" placeholder="Briefly describe the entity's breeding operations — programme structure, length of practice, premises, and any prior certifications or affiliations."></textarea>
-        <span class="helper">A short narrative summary. Used by the certification committee to contextualise the standards-based evaluation.</span>
+        <label for="description">Breeding Program Overview <span class="req">*</span></label>
+        <textarea id="description" name="description" placeholder="Describe your breeding program, including years of operation, breeding practices, facilities, health-testing approach, organizational memberships, and any relevant certifications or distinctions."></textarea>
+        <span class="helper">Provide a concise overview that helps reviewers understand the nature and scope of your breeding program.</span>
       </div>
 
       <!-- Certification fee -->
@@ -1180,9 +1206,11 @@
         <div class="label">Certification Fee</div>
         <div class="amount-row">
           <div class="amount">USD $199.00 <span class="period">/ year</span></div>
-          <div class="amount-name">Early Certification Fee</div>
+          <div class="amount-name">Charged Only Upon Approval</div>
         </div>
-        <p>This fee covers administrative review, certification issuance, and ongoing registry maintenance for the certification term. The fee is invoiced upon issuance of a positive determination and is not payable at the point of application.</p>
+        <p>The certification fee is only payable after a positive certification determination has been issued.</p>
+        <p>Applicants are not charged at the time of submission. Applications that are denied or rejected are not charged any certification fee.</p>
+        <p>For approved applicants, the fee covers certification issuance, registry administration, and maintenance of the certification record during the certification term. Certain invitation-based or founding-program certifications may be subject to different fee arrangements.</p>
       </div>
 
       <!-- Consent block -->
@@ -1191,16 +1219,23 @@
         <div class="consent-row">
           <input type="checkbox" id="consent" name="consent">
           <label for="consent" class="consent-text">
-            I declare that the information submitted is accurate and complete to the best
-            of my knowledge. I confirm that I have read and agree to the
-            <a href="#">Certification Applicant Agreement</a>,
-            <a href="#">Standards Framework</a>,
-            <a href="#">Code of Ethics</a>,
-            <a href="#">Terms of Use</a>, and
-            <a href="#">Privacy Policy</a>
-            of the ElitePetz Certification Authority. I acknowledge that certification
-            determinations are made solely in accordance with these governing documents
-            and that submission does not guarantee approval.
+            <p>
+              I declare that the information submitted is accurate and complete to the
+              best of my knowledge. I confirm that I have read and agree to the
+              <a href="#">Certification Applicant Agreement</a>,
+              <a href="#">Standards Framework</a>,
+              <a href="#">Code of Ethics</a>,
+              <a href="#">Terms of Use</a>, and
+              <a href="#">Privacy Policy</a>
+              of the ElitePetz Certification Authority.
+            </p>
+            <p>
+              I acknowledge that certification determinations are made solely in
+              accordance with these governing documents, that submission of an
+              application does not guarantee certification, and that certification
+              fees, where applicable, are payable only after certification approval
+              and issuance.
+            </p>
           </label>
         </div>
       </div>
@@ -1231,21 +1266,21 @@
           <polyline points="5 12 10 17 19 8"></polyline>
         </svg>
       </span>
-      <span class="text">Application received</span>
+      <span class="text">Application Received</span>
     </div>
 
     <article class="success-card">
-      <h2>Your application has been logged.</h2>
+      <h2>Application Successfully Submitted</h2>
       <p class="lead">
-        Your application has been entered into the Authority's record system and
-        assigned a temporary administrative identifier. A confirmation has been
-        sent to the official contact email provided.
+        Your application has been received and assigned a unique application
+        reference number. A confirmation message has been sent to the contact
+        email provided during submission.
       </p>
 
       <div class="ref-block">
         <div class="lbl">Application Reference</div>
         <div class="value" id="referenceId">APP-2026-0042-PND</div>
-        <div class="note">Temporary identifier &mdash; replaced by a permanent Certification ID if the application reaches the public registry.</div>
+        <div class="note">This reference number is used for application tracking and correspondence. A permanent Certification ID is assigned only if certification is issued.</div>
       </div>
 
       <div class="next-block">
@@ -1253,27 +1288,27 @@
         <ul class="next-list">
           <li>
             <span class="num">01</span>
-            <span class="text"><strong>Completeness review</strong> &mdash; the Authority confirms all information required for evaluation has been provided. The applicant is contacted if any item is missing.</span>
+            <span class="text"><strong>Completeness Review</strong>The Authority verifies that all information necessary for evaluation has been provided.</span>
           </li>
           <li>
             <span class="num">02</span>
-            <span class="text"><strong>Substantive evaluation</strong> &mdash; the certification committee assesses the application against the published Standards Framework.</span>
+            <span class="text"><strong>Standards Evaluation</strong>The application is assessed against the published Standards Framework and supporting governance requirements.</span>
           </li>
           <li>
             <span class="num">03</span>
-            <span class="text"><strong>Formal determination</strong> &mdash; the outcome is recorded in the Status History system and the applicant is notified by email.</span>
+            <span class="text"><strong>Formal Determination</strong>A certification determination is recorded and communicated to the applicant by email.</span>
           </li>
           <li>
             <span class="num">04</span>
-            <span class="text"><strong>Public record</strong> &mdash; on a positive determination, the record is published in the public registry under a permanent Certification ID in the format <span style="font-family:var(--mono);">EP-CERT-YYYY-NNNN-XXX</span>.</span>
+            <span class="text"><strong>Certification Issuance</strong>If approved, the applicant receives certification issuance instructions, including payment information and next steps for publication within the public registry.</span>
           </li>
         </ul>
       </div>
     </article>
 
     <div class="success-disclosure">
-      <strong>Submission does not guarantee approval.</strong>
-      The Authority does not provide advisory opinions or preliminary eligibility assessments. The outcome of the review will be communicated only after the formal determination has been recorded.
+      <p><strong>Submission of an application does not guarantee certification.</strong></p>
+      <p>Applicants are not charged a certification fee unless a positive certification determination is issued. Applications that are denied or rejected incur no certification fee.</p>
     </div>
 
   </div>
@@ -1288,7 +1323,7 @@
     <div class="footer-row top">
       <div class="brand">
         <div class="name">ElitePetz Certification Authority</div>
-        <div class="est">EST. 2026 &middot; ELITE PETZ LLC</div>
+        <div class="est">EST. 2025 &middot; ELITE PETZ LLC</div>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#">About</a>
