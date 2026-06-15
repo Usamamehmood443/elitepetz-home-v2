@@ -649,6 +649,30 @@
     text-transform: uppercase;
   }
 
+  /* Pre-submit trust callout */
+  .trust-callout {
+    margin: 4px 0 22px;
+    padding: 16px 20px;
+    background: var(--active-bg);
+    border-left: 3px solid var(--active-fg);
+    border-radius: 0;
+  }
+  .trust-callout .label {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--active-fg);
+    margin-bottom: 8px;
+  }
+  .trust-callout p {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
   /* Submit button */
   .submit-row {
     display: flex;
@@ -1043,9 +1067,8 @@
     </div>
 
     <p class="lead">
-      Certification is available to qualifying companion animal breeding entities
-      that fall within the scope of the Authority's certification program and
-      agree to be evaluated against its published standards.
+      Certification may be requested by companion animal breeding entities
+      seeking independent evaluation under the Authority's published standards.
     </p>
     <p class="body-p muted">
       Applications are evaluated using the Authority's published
@@ -1096,7 +1119,7 @@
       <div class="process-step">
         <div class="step">Step 03</div>
         <h4>Standards Evaluation</h4>
-        <p>The application is assessed against the published Standards Framework and supporting governance requirements.</p>
+        <p>Reviewers assess the application using the Authority’s published standards and certification procedures.</p>
       </div>
       <div class="process-step">
         <div class="step">Step 04</div>
@@ -1125,8 +1148,8 @@
 
     <p class="lead">
       Applicants are responsible for ensuring that all submitted information is
-      accurate, complete, and current, and for maintaining compliance with
-      applicable certification requirements if certification is granted.
+      accurate, complete, and current, and for maintaining compliance with any
+      obligations associated with an issued certification.
     </p>
 
     <div class="responsibility-list">
@@ -1247,6 +1270,12 @@
         <span class="brand">reCAPTCHA</span>
       </div>
 
+      <!-- Trust callout — pre-submit reassurance -->
+      <div class="trust-callout" role="note">
+        <div class="label">No Upfront Payment Required</div>
+        <p>Applications are reviewed before any certification fee is charged. Applicants whose applications are not approved are not billed.</p>
+      </div>
+
       <div class="submit-row">
         <button type="submit" class="submit-btn">Submit Application →</button>
       </div>
@@ -1292,7 +1321,7 @@
           </li>
           <li>
             <span class="num">02</span>
-            <span class="text"><strong>Standards Evaluation</strong>The application is assessed against the published Standards Framework and supporting governance requirements.</span>
+            <span class="text"><strong>Standards Evaluation</strong>Reviewers assess the application using the Authority's published standards and certification procedures.</span>
           </li>
           <li>
             <span class="num">03</span>
