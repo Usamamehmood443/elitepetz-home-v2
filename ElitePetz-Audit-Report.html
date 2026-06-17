@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ElitePetz — Codebase Audit Report</title>
+<style>
+  /* ── Reset & Base ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 40px 60px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── Cover ────────────────────────────────────────────────── */
+  .cover {
+    text-align: center;
+    padding: 60px 0 50px;
+    border-bottom: 3px solid #1a1a1a;
+    margin-bottom: 50px;
+  }
+  .cover .label {
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .cover h1 {
+    font-size: 28pt;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .cover .subtitle {
+    font-size: 13pt;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+  .cover .meta {
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .cover .meta span strong { color: #1a1a1a; }
+
+  /* ── Section Headings ─────────────────────────────────────── */
+  h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 9pt;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 26px;
+    margin-bottom: 8px;
+  }
+  h3::before {
+    content: '▸ ';
+    color: #888;
+    font-size: 9pt;
+  }
+
+  h4 {
+    font-family: 'Arial', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #444;
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+
+  /* ── Body Text ────────────────────────────────────────────── */
+  p { margin-bottom: 10px; }
+
+  ul, ol {
+    margin: 8px 0 12px 24px;
+  }
+  ul li, ol li {
+    margin-bottom: 5px;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 9.5pt;
+    background: #f2f2f2;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+  }
+
+  pre {
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-left: 4px solid #1a1a1a;
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin: 12px 0 18px;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  /* ── Tables ───────────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 10pt;
+    font-family: 'Arial', sans-serif;
+  }
+  thead tr {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  thead th {
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 9pt;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  tbody tr:nth-child(even) { background: #f7f7f7; }
+  tbody tr:hover { background: #eef2ff; }
+  tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top;
+  }
+
+  /* ── Callout Boxes ────────────────────────────────────────── */
+  .callout {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 14px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 10pt;
+  }
+  .callout.critical {
+    background: #fff0f0;
+    border-left: 4px solid #c0392b;
+    color: #7b1a1a;
+  }
+  .callout.warning {
+    background: #fffaf0;
+    border-left: 4px solid #e67e22;
+    color: #7a4a10;
+  }
+  .callout.info {
+    background: #f0f4ff;
+    border-left: 4px solid #3a5bc7;
+    color: #1a2d6b;
+  }
+  .callout.success {
+    background: #f0fff4;
+    border-left: 4px solid #27ae60;
+    color: #145a32;
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 10pt; }
+
+  /* ── Status / Tag Pills ───────────────────────────────────── */
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 3px;
+    font-family: 'Arial', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
+  }
+  .tag.green  { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+  .tag.orange { background: #fef9e7; color: #b7770d; border: 1px solid #f9e79f; }
+  .tag.red    { background: #fdedec; color: #922b21; border: 1px solid #f5b7b1; }
+  .tag.grey   { background: #f2f3f4; color: #555;    border: 1px solid #d5d8dc; }
+  .tag.blue   { background: #eaf3fb; color: #1a5276; border: 1px solid #aed6f1; }
+
+  /* ── Divider ──────────────────────────────────────────────── */
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+
+  /* ── Workflow Steps ───────────────────────────────────────── */
+  .steps { margin: 14px 0; }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-body { flex: 1; }
+  .step-body strong {
+    font-family: 'Arial', sans-serif;
+    font-size: 10pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .step-body p { margin: 0; font-size: 10pt; color: #444; }
+
+  /* ── Print ────────────────────────────────────────────────── */
+  @media print {
+    body { padding: 0; font-size: 10pt; }
+    .cover { padding: 40px 0 36px; }
+    h2 { page-break-before: auto; }
+    table, pre, .callout { page-break-inside: avoid; }
+    .no-print { display: none; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  @page {
+    margin: 20mm 18mm;
+    size: A4;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     COVER
+════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="label">Technical Audit Report</div>
+  <h1>ElitePetz</h1>
+  <div class="subtitle">Wix Studio + Velo — Full Codebase Audit</div>
+  <div class="meta">
+    <span><strong>Date:</strong> April 28, 2026</span>
+    <span><strong>Platform:</strong> Wix Studio + Velo</span>
+    <span><strong>Status:</strong> Read-Only Audit</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     1. SYSTEM ARCHITECTURE SUMMARY
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">01</span> System Architecture Summary</h2>
+
+<p>ElitePetz is a <strong>pet breeder certification platform</strong> built on <strong>Wix Studio + Velo</strong>. It manages the full lifecycle of breeder certifications — from public application submission through admin review, payment, badge generation, activation, auto-expiry, suspension, revocation, and reinstatement. A public-facing registry allows anyone to verify a certification by its unique ID.</p>
+
+<table>
+  <thead>
+    <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Database</td><td>Wix CMS (<code>wixData</code>)</td><td>All collections: Applications, Certifications, StatusHistory, etc.</td></tr>
+    <tr><td>Backend API</td><td>Velo <code>.web.js</code> webMethods</td><td>All business logic called from page code</td></tr>
+    <tr><td>Email</td><td>Wix CRM (<code>wix-crm-backend</code>)</td><td>Triggered email templates for every state transition</td></tr>
+    <tr><td>Payments</td><td><code>wix-pay-backend</code> / <code>wix-pay-frontend</code></td><td>Wix native payment flow for certification fees</td></tr>
+    <tr><td>Media</td><td><code>wix-media-backend</code> / <code>wix-media.v2</code></td><td>Badge PNG upload, download URL generation</td></tr>
+    <tr><td>Secrets</td><td><code>wix-secrets-backend.v2</code></td><td>Stores the certification fee amount</td></tr>
+    <tr><td>Frontend UI</td><td>Wix page code (<code>$w</code>)</td><td>Page logic, lightboxes, Admin Portal multi-state box</td></tr>
+    <tr><td>Custom UI</td><td>Web Components (Shadow DOM)</td><td>7 custom table + badge elements</td></tr>
+    <tr><td>Scheduled Jobs</td><td>Velo <code>jobs.config</code></td><td>Daily auto-expiry of certifications</td></tr>
+    <tr><td>HTTP Endpoints</td><td><code>http-functions.js</code></td><td>Public badge download endpoint using Jimp</td></tr>
+  </tbody>
+</table>
+
+<h3>Project Folder Structure</h3>
+<pre>src/
+├── backend/
+│   ├── utilts.web.js          ← core business logic (all admin operations)
+│   ├── emailUtilts.web.js     ← all triggered email functions
+│   ├── payments.web.js        ← Wix payment creation
+│   ├── secret.web.js          ← reads payment_amount from Wix Secrets
+│   ├── mediaupload.web.js     ← badge PNG upload to Media Manager
+│   ├── mediaUtilts.web.js     ← badge file search + download URL generation
+│   ├── download-file.web.js   ← download URL wrappers
+│   ├── getdownloadableLink.web.js
+│   ├── contantformsUtitls.web.js ← complaint + inquiry form queries
+│   ├── deleteUtilts.web.js    ← member deletion (appears unused)
+│   ├── http-functions.js      ← public HTTP endpoints
+│   ├── events.js              ← EMPTY (boilerplate only)
+│   ├── jobs.config            ← scheduled cron configuration
+│   ├── permissions.json       ← API access control settings
+│   └── ___spi___/             ← automation action providers (all stubs)
+├── pages/                     ← ~40 page and lightbox files
+├── public/
+│   ├── custom-elements/       ← 7 Web Component files
+│   └── dateUtilts.js          ← shared date formatting utility
+├── CMS Collections/           ← CSV exports of all 6 collections
+└── styles/global.css</pre>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     2. CMS COLLECTIONS
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">02</span> CMS Collections &amp; Relationships</h2>
+
+<h3>Applications</h3>
+<p><strong>Wix Collection ID:</strong> <code>Applications</code></p>
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>_id</code></td><td>Text</td><td>Wix auto-generated UUID</td></tr>
+    <tr><td><code>referenceId</code></td><td>Text</td><td>Human-readable ID: <code>EP-YEAR-NNNN</code> (e.g. EP-2026-0001)</td></tr>
+    <tr><td><code>applicantName</code></td><td>Text</td><td>Full name of breeder/applicant</td></tr>
+    <tr><td><code>email</code></td><td>Text</td><td>Applicant email address</td></tr>
+    <tr><td><code>country</code></td><td>Text</td><td>Country / location of operation</td></tr>
+    <tr><td><code>speciesBreed</code></td><td>Text</td><td>Animal species and breed</td></tr>
+    <tr><td><code>breedingDescription</code></td><td>Text</td><td>Description of breeding operation</td></tr>
+    <tr><td><code>declarationAgreed</code></td><td>Boolean</td><td>Applicant agreed to declaration</td></tr>
+    <tr><td><code>status</code></td><td>Text</td><td><code>Submitted</code> | <code>Approved</code> | <code>Rejected</code></td></tr>
+    <tr><td><code>paymentStatus</code></td><td>Text</td><td><code>Pending</code> | <code>Paid</code></td></tr>
+    <tr><td><code>paymentResponse</code></td><td>Object</td><td>Raw Wix payment result object</td></tr>
+    <tr><td><code>_createdDate</code></td><td>Date</td><td>Submission timestamp</td></tr>
+  </tbody>
+</table>
+<p><strong>Role:</strong> Master record per breeder application. Created by the public Certification Application page. 2 sample records exist.</p>
+
+<h3>Certifications</h3>
+<p><strong>Wix Collection ID:</strong> <code>Certifications</code></p>
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>_id</code></td><td>Text</td><td>Wix auto-generated UUID</td></tr>
+    <tr><td><code>certificationId</code></td><td>Text</td><td>Human ID: <code>EP-CERT-YEAR-NNNN-XXX</code> (e.g. EP-CERT-2026-0001-4ZP)</td></tr>
+    <tr><td><code>applicationId</code></td><td>Reference</td><td>Linked to Applications collection</td></tr>
+    <tr><td><code>businessName</code></td><td>Text</td><td>Copied from applicantName at creation</td></tr>
+    <tr><td><code>certificationStatus</code></td><td>Text</td><td><code>Approved</code> | <code>Active</code> | <code>Suspended</code> | <code>Revoked</code> | <code>Expired</code></td></tr>
+    <tr><td><code>paymentStatus</code></td><td>Text</td><td><code>Paid</code> (set at creation)</td></tr>
+    <tr><td><code>activationDate</code></td><td>Date</td><td>Set when admin activates</td></tr>
+    <tr><td><code>expirationDate</code></td><td>Date</td><td>activationDate + 12 months</td></tr>
+    <tr><td><code>approvingAdminId</code></td><td>Text</td><td>Member ID of admin who confirmed payment</td></tr>
+    <tr><td><code>link-certifications-title_fld</code></td><td>Text</td><td>URL slug for public verify page (e.g. <code>/verify/ep-cert-2026-0001-4zp</code>)</td></tr>
+  </tbody>
+</table>
+<p><strong>Role:</strong> The issued certificate. Created when admin confirms payment. 1 sample record exists (Active, Paid).</p>
+
+<h3>StatusHistory</h3>
+<p><strong>Wix Collection ID:</strong> <code>StatusHistory</code> &nbsp;|&nbsp; CSV filename: <code>Status+History.csv</code></p>
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>applicationId</code></td><td>Reference</td><td>Linked to Applications</td></tr>
+    <tr><td><code>certificationId</code></td><td>Reference</td><td>Linked to Certifications (may be empty for early application history)</td></tr>
+    <tr><td><code>action</code></td><td>Text</td><td><code>Approved</code> | <code>Rejected</code> | <code>Paid</code> | <code>Activated</code> | <code>Suspended</code> | <code>Revoked</code> | <code>Reinstated</code> | <code>Expired</code></td></tr>
+    <tr><td><code>reason</code></td><td>Text</td><td>Admin-entered reason or system message</td></tr>
+    <tr><td><code>actorId</code></td><td>Text</td><td>Member ID of admin, or <code>"system"</code> for auto-expiry</td></tr>
+    <tr><td><code>_createdDate</code></td><td>Date</td><td>Timestamp of the action</td></tr>
+  </tbody>
+</table>
+<p><strong>Role:</strong> Immutable audit trail. One record per state transition. 3 sample records exist.</p>
+
+<h3>Complaint &amp; Evidence Submission Form</h3>
+<p><strong>Wix Collection ID:</strong> <code>ComplaintEvidenceSubmissionForm</code></p>
+<table>
+  <thead><tr><th>Field</th><th>Type</th></tr></thead>
+  <tbody>
+    <tr><td><code>fullLegalName</code></td><td>Text</td></tr>
+    <tr><td><code>organizationEntityNameIfApplicable</code></td><td>Text</td></tr>
+    <tr><td><code>contactEmailAddress</code></td><td>Text</td></tr>
+    <tr><td><code>countryOfResidence</code></td><td>Text</td></tr>
+    <tr><td><code>capacityOfReportingParty</code></td><td>Text</td></tr>
+    <tr><td><code>certifiedEntityName</code></td><td>Text</td></tr>
+    <tr><td><code>certificationIdIfKnown</code></td><td>Text</td></tr>
+    <tr><td><code>natureOfAllegation</code></td><td>Text</td></tr>
+    <tr><td><code>detailedDescriptionOfAllegation</code></td><td>Long Text</td></tr>
+    <tr><td><code>evidenceSubmissionDocument</code></td><td>Document URL (wix:document://)</td></tr>
+    <tr><td><code>evidenceSubmissionImage</code></td><td>Image URL (wix:image://)</td></tr>
+  </tbody>
+</table>
+<p><strong>Role:</strong> Public complaint/allegations intake. Admin reviews in Admin Portal. Currently empty.</p>
+
+<h3>Inquiry Submission Form</h3>
+<p><strong>Wix Collection ID:</strong> <code>InquirySubmissionForm</code></p>
+<table>
+  <thead><tr><th>Field</th><th>Type</th></tr></thead>
+  <tbody>
+    <tr><td><code>fullLegalName</code></td><td>Text</td></tr>
+    <tr><td><code>organizationEntityNameIfApplicable</code></td><td>Text</td></tr>
+    <tr><td><code>officialContactEmailAddress</code></td><td>Text</td></tr>
+    <tr><td><code>countryOfResidenceOrOperation</code></td><td>Text</td></tr>
+    <tr><td><code>capacityOfRequestingParty</code></td><td>Text</td></tr>
+    <tr><td><code>inquiryCategory</code></td><td>Text</td></tr>
+    <tr><td><code>certificationIdIfApplicable</code></td><td>Text</td></tr>
+    <tr><td><code>writtenSubmission</code></td><td>Long Text</td></tr>
+  </tbody>
+</table>
+<p><strong>Role:</strong> Public general inquiry intake. Admin reviews in Admin Portal. Currently empty.</p>
+
+<h3>Status Reference Table (<code>table</code>)</h3>
+<table>
+  <thead><tr><th>Status</th><th>Meaning</th><th>Public Visibility</th></tr></thead>
+  <tbody>
+    <tr><td><span class="tag green">Active</span></td><td>Valid and in good standing</td><td>Public</td></tr>
+    <tr><td><span class="tag orange">Suspended</span></td><td>Temporarily inactive pending review</td><td>Public</td></tr>
+    <tr><td><span class="tag red">Revoked</span></td><td>Certification withdrawn</td><td>Public</td></tr>
+    <tr><td><span class="tag grey">Expired</span></td><td>Term ended</td><td>Public</td></tr>
+    <tr><td><span class="tag blue">Approved</span></td><td>Decision issued (awaiting activation)</td><td>Not Public</td></tr>
+    <tr><td><span class="tag orange">Submitted</span></td><td>Application under review</td><td>Not Public</td></tr>
+  </tbody>
+</table>
+
+<h3>Collection Relationships</h3>
+<pre>Applications (1) ──────────────────── (1) Certifications
+     │                                        │
+     └──── (many) StatusHistory ─────────────┘
+              (applicationId + certificationId)</pre>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. BACKEND MODULES
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">03</span> Backend Modules &amp; Their Responsibilities</h2>
+
+<h3>utilts.web.js — Core Business Logic</h3>
+<p>The central backend module. Contains all admin operations, data queries, and status transition logic. Interacts with: <strong>Applications</strong>, <strong>Certifications</strong>, <strong>StatusHistory</strong>.</p>
+<table>
+  <thead><tr><th>Export</th><th>Parameters</th><th>What It Does</th></tr></thead>
+  <tbody>
+    <tr><td><code>getApplications()</code></td><td>—</td><td>Returns all Applications split into submitted / approved / rejected arrays with counts</td></tr>
+    <tr><td><code>getCertification()</code></td><td>—</td><td>Returns all Certifications (with joined applicationId) split by status with counts</td></tr>
+    <tr><td><code>getApplicationAndHistory(id)</code></td><td>Application ID</td><td>Returns a single Application + its StatusHistory records</td></tr>
+    <tr><td><code>getCertificationAndHistory(id)</code></td><td>Certification ID</td><td>Returns single Certification (joined) + combined history for cert + its application</td></tr>
+    <tr><td><code>getStatusHistory()</code></td><td>—</td><td>Returns all StatusHistory records</td></tr>
+    <tr><td><code>approvedApplication(id, memberId, reason)</code></td><td>App ID, Admin ID, Reason</td><td>Sets app status → Approved; writes history; sends email VDUHs9m with payment link</td></tr>
+    <tr><td><code>rejectApplication(id, memberId, reason)</code></td><td>App ID, Admin ID, Reason</td><td>Sets app status → Rejected; writes history; sends email VDUMSa5</td></tr>
+    <tr><td><code>confrimPayments(id, memberId, reason)</code></td><td>App ID, Admin ID, Reason</td><td>Sets app paymentStatus → Paid; <strong>creates new Certifications record</strong>; writes history; sends email VDaC8OZ</td></tr>
+    <tr><td><code>activationCertification(id, memberId, reason)</code></td><td>Cert ID, Admin ID, Reason</td><td>Sets cert → Active; sets activationDate + expirationDate (+12mo); writes history. Email NOT sent here.</td></tr>
+    <tr><td><code>suspendCertification(id, memberId, reason)</code></td><td>Cert ID, Admin ID, Reason</td><td>Sets cert → Suspended; writes history; sends email VEFanj2</td></tr>
+    <tr><td><code>revokeCertification(id, memberId, reason)</code></td><td>Cert ID, Admin ID, Reason</td><td>Sets cert → Revoked; writes history; sends email VEFVrBN</td></tr>
+    <tr><td><code>reinstatedCertification(id, memberId, reason)</code></td><td>Cert ID, Admin ID, Reason</td><td>Sets cert → Active; writes history; sends email VEFL8LR with verification link</td></tr>
+    <tr><td><code>expiredCertification()</code></td><td>—</td><td>Cron job: batch-processes all overdue certs → Expired; bulk inserts history with actorId:"system"</td></tr>
+    <tr><td><code>getCertificationById(certificationId)</code></td><td>Cert string ID</td><td>Public lookup by certificationId string; excludes "Approved" status (safe for public verify page)</td></tr>
+    <tr><td><code>generateCertificationId()</code></td><td>—</td><td>Internal helper: generates <code>EP-CERT-YEAR-NNNN-XXX</code> format</td></tr>
+  </tbody>
+</table>
+
+<h3>emailUtilts.web.js — Email System</h3>
+<p>All functions use Wix CRM (<code>contacts</code> + <code>triggeredEmails</code>). Pattern: look up or create a CRM contact by email → send triggered email template.</p>
+<table>
+  <thead><tr><th>Function</th><th>Template ID</th><th>Triggered By</th></tr></thead>
+  <tbody>
+    <tr><td><code>sendEmailApplicationsubmittedconfirmation</code></td><td><code>VDU6G9m</code></td><td>Certification Application page on form submit</td></tr>
+    <tr><td><code>sendEmailApplicationApprovalnotification</code></td><td><code>VDUHs9m</code></td><td><code>approvedApplication()</code> — includes payment link</td></tr>
+    <tr><td><code>sendEmailApplicationRejectionnotification</code></td><td><code>VDUMSa5</code></td><td><code>rejectApplication()</code></td></tr>
+    <tr><td><code>sendEmailconfrimPayments</code></td><td><code>VDaC8OZ</code></td><td><code>confrimPayments()</code></td></tr>
+    <tr><td><code>sendEmailCertificationIssued</code></td><td><code>VE3TXBV</code></td><td>Activate Certification lightbox (includes 6 badge download links)</td></tr>
+    <tr><td><code>sendEmailCertificationSuspended</code></td><td><code>VEFanj2</code></td><td><code>suspendCertification()</code></td></tr>
+    <tr><td><code>sendEmailCertificationRevokion</code></td><td><code>VEFVrBN</code></td><td><code>revokeCertification()</code> — includes previous status + reason</td></tr>
+    <tr><td><code>sendEmailCertificationReinstated</code></td><td><code>VEFL8LR</code></td><td><code>reinstatedCertification()</code> — includes verification link</td></tr>
+    <tr><td><code>sendEmailofCertificationInquiry</code></td><td>Passed by caller</td><td>Inquiry submission confirmation</td></tr>
+    <tr><td><code>sendEmailComplaintIntakeSubmission</code></td><td>Passed by caller</td><td>Complaint submission confirmation</td></tr>
+    <tr><td><del><code>sendEmailofAdministrativeInquiry</code></del></td><td>—</td><td><span class="tag red">COMMENTED OUT</span> — not functional</td></tr>
+  </tbody>
+</table>
+
+<h3>payments.web.js</h3>
+<p>Exports <code>createPayment(productName, price)</code> — creates a Wix payment object via <code>wix-pay-backend</code>. Returns an object with a payment <code>.id</code> used by <code>wixPayFrontend.startPayment()</code> on the Payments page.</p>
+
+<h3>secret.web.js</h3>
+<p>Exports <code>getPaymentAmount()</code> — reads the <code>payment_amount</code> key from Wix Secrets (elevated). Used by the Payments page to display and charge the correct fee without hardcoding it.</p>
+
+<h3>mediaupload.web.js</h3>
+<p>Handles badge PNG uploads to Wix Media Manager:</p>
+<ul>
+  <li><code>uploadBase64Image(base64Data, fileName)</code> — uploads to <code>/certificates</code> folder (dark badges)</li>
+  <li><code>uploadBase64ImageLight(base64Data, fileName)</code> — uploads to <code>/lightCertificates</code> folder (light badges)</li>
+</ul>
+<p>Called from the Activate Certification lightbox after canvas rendering produces 6 badge images.</p>
+
+<h3>mediaUtilts.web.js</h3>
+<ul>
+  <li><code>getCertificateDownloadLinks(certId)</code> — searches Media Manager for badge files by certId filename pattern, generates temporary download URLs for all 3 sizes</li>
+  <li><code>mySearchFilesFunction(fileName)</code> — elevated file search, returns first match</li>
+  <li><code>getImageByname(name)</code> — <span class="tag orange">buggy</span>: ignores the name parameter, always returns all files</li>
+</ul>
+
+<h3>download-file.web.js &amp; getdownloadableLink.web.js</h3>
+<p>Both export <code>myGetDownloadUrlFunction(fileUrl)</code> — generates a temporary download URL via <code>mediaManager.getDownloadUrl()</code>. Used for badge download links and complaint evidence file downloads.</p>
+
+<h3>contantformsUtitls.web.js</h3>
+<p>Exports <code>getComplaintEvidenceSubmissionForm()</code> and <code>getInquirySubmissionForm()</code> — simple <code>wixData.query()</code> calls for the two intake form collections. Called by Admin Portal.</p>
+
+<h3>deleteUtilts.web.js</h3>
+<p>Exports <code>myDeletedMemberFunction(_id)</code> — elevated member deletion via <code>wix-members.v2</code>. <span class="tag grey">Appears unused</span> — not called from any page code.</p>
+
+<h3>http-functions.js — Public HTTP Endpoints</h3>
+<table>
+  <thead><tr><th>Endpoint</th><th>Status</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>GET /_functions/multiply</code></td>
+      <td><span class="tag grey">Boilerplate</span></td>
+      <td>Sample function: returns product of two query params. Not production-relevant.</td>
+    </tr>
+    <tr>
+      <td><code>GET /_functions/badge600?certId=EP-CERT-...</code></td>
+      <td><span class="tag green">Implemented</span></td>
+      <td>Uses Jimp to fetch base badge PNG, overlays certId text (16px, white, centered at y=143), returns downloadable PNG with proper Content-Disposition header.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>events.js</h3>
+<p><span class="tag grey">Empty</span> — default boilerplate only. No Wix lifecycle event handlers are implemented.</p>
+
+<h3>jobs.config</h3>
+<p>One scheduled job configured:</p>
+<table>
+  <thead><tr><th>Function</th><th>Schedule</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>expiredCertification</code></td><td>Daily at 20:00 UTC</td><td>Marks all certifications past their expirationDate as Expired; bulk inserts StatusHistory records.</td></tr>
+  </tbody>
+</table>
+<div class="callout warning"><strong>⚠ Warning: Filename Typo</strong>The config references <code>/utils.web.js</code> but the actual file is <code>utilts.web.js</code>. The scheduled job likely does not execute.</div>
+
+<h3>permissions.json</h3>
+<p>Grants <code>invoke: true</code> to <code>siteOwner</code>, <code>siteMember</code>, and <code>anonymous</code> for all web methods. All admin operations are publicly invocable at the API level with no role restriction.</p>
+
+<h3>SPI: automations-velo-action-provider</h3>
+<p>Four providers registered (Handler, code, form, formHandler). All <code>invoke()</code> functions return empty objects. <span class="tag grey">Not implemented.</span></p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. CERTIFICATION WORKFLOW
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">04</span> Current Certification Workflow</h2>
+
+<p>The complete end-to-end flow as it exists in code today:</p>
+
+<div class="steps">
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Applicant Submits Application</strong>
+      <p>Page: <em>Certification Application</em>. User fills form (name, email, country, breed, description, declaration checkbox, captcha). Code calls <code>wixData.insert("Applications", {...})</code> with <code>status: "Submitted"</code> and <code>paymentStatus: "Pending"</code>. Reference ID generated as <code>EP-YEAR-NNNN</code>. Email VDU6G9m (confirmation) sent to applicant.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Admin Reviews in Admin Portal</strong>
+      <p>Admin Portal → Applications tab → clicks View → ApplicationsDetails state shows all application fields + status history.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3a</div>
+    <div class="step-body">
+      <strong>Admin Approves Application</strong>
+      <p>Lightbox: <em>Approve Application</em>. Calls <code>approvedApplication(id, memberId, reason)</code>. Application status → <code>Approved</code>. StatusHistory record: action "Approved". Email VDUHs9m sent with payment link: <code>https://www.elitepetz.com/payments?id={referenceId}</code>.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3b</div>
+    <div class="step-body">
+      <strong>Admin Rejects Application</strong>
+      <p>Lightbox: <em>Reject Application</em>. Calls <code>rejectApplication()</code>. Application status → <code>Rejected</code>. StatusHistory: "Rejected". Email VDUMSa5. <span class="tag red">Terminal state.</span></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Applicant Pays Online</strong>
+      <p>Page: <em>Payments</em> (<code>/payments?id={referenceId}</code>). Reads payment amount from Wix Secrets. Validates application is Approved and not yet Paid. Calls <code>createPayment()</code> → <code>wixPayFrontend.startPayment()</code>. On success, updates <code>paymentResponse</code> field on Application. <span class="tag orange">Note: Does NOT auto-set paymentStatus = "Paid" — admin must still manually confirm.</span></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <strong>Admin Confirms Payment → Certification Record Created</strong>
+      <p>Lightbox: <em>ConfirmPayments</em>. Calls <code>confrimPayments(applicationId, memberId, reason)</code>. Sets Application <code>paymentStatus = "Paid"</code>. <strong>Creates a new Certifications record</strong> with status "Approved", paymentStatus "Paid", certificationId generated as <code>EP-CERT-YEAR-NNNN-XXX</code>. StatusHistory: "Paid". Email VDaC8OZ.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <strong>Admin Activates Certification + Badge Generation</strong>
+      <p>Lightbox: <em>Activate Certification</em>. Renders 6 badge PNGs using canvas Web Components (3 sizes × dark/light: 300×100, 600×200, 1080×1080). Uploads each PNG to Wix Media Manager. Calls <code>activationCertification(certId, memberId, reason)</code>: sets <code>certificationStatus = "Active"</code>, <code>activationDate = now</code>, <code>expirationDate = +12 months</code>. StatusHistory: "Activated". Email VE3TXBV sent with 6 badge download links + verification link.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">7</div>
+    <div class="step-body">
+      <strong>System Auto-Expires (Daily Cron)</strong>
+      <p>Scheduled at 20:00 UTC. <code>expiredCertification()</code> paginated query finds all non-Expired certifications where <code>expirationDate ≤ today</code>. Sets <code>certificationStatus = "Expired"</code>. Bulk inserts StatusHistory records (actorId: "system"). <span class="tag orange">No email sent.</span></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">8</div>
+    <div class="step-body">
+      <strong>Admin Suspends (from Active)</strong>
+      <p>Lightbox: <em>Suspend Certification</em>. <code>suspendCertification()</code>. Status → <code>Suspended</code>. History + email VEFanj2.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">9</div>
+    <div class="step-body">
+      <strong>Admin Reinstates (from Suspended)</strong>
+      <p>Lightbox: <em>Reinstate Certification</em>. <code>reinstatedCertification()</code>. Status → <code>Active</code> (dates not reset). History + email VEFL8LR with verification link.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">10</div>
+    <div class="step-body">
+      <strong>Admin Revokes (from Active or Suspended)</strong>
+      <p>Lightbox: <em>Revoke Certification</em>. <code>revokeCertification()</code>. Status → <code>Revoked</code>. History + email VEFVrBN (includes previous status + reason). <span class="tag red">Terminal state in UI.</span></p>
+    </div>
+  </div>
+
+</div>
+
+<h3>Status State Machine</h3>
+<pre>Applications:
+  Submitted ──► Approved ──► (paymentStatus: Pending ──► Paid)
+  Submitted ──► Rejected  [terminal]
+
+Certifications:
+  Approved ──► Active ──► Suspended ──► Active  (reinstated)
+               Active ──► Revoked              [terminal]
+               Suspended ──► Revoked           [terminal]
+               Active ──► Expired              [auto, terminal]</pre>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. EXTERNAL SERVICES & INTEGRATIONS
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">05</span> External Services &amp; Integrations</h2>
+
+<table>
+  <thead><tr><th>Service</th><th>Wix Module</th><th>Used For</th></tr></thead>
+  <tbody>
+    <tr><td>Wix CRM</td><td><code>wix-crm-backend</code></td><td>Triggered emails — looks up/creates contacts, sends all notification emails</td></tr>
+    <tr><td>Wix Pay</td><td><code>wix-pay-backend</code> / <code>wix-pay-frontend</code></td><td>Certification fee payment processing</td></tr>
+    <tr><td>Wix Media Manager</td><td><code>wix-media-backend</code> / <code>wix-media.v2</code></td><td>Badge PNG storage + temporary download URL generation</td></tr>
+    <tr><td>Wix Secrets</td><td><code>wix-secrets-backend.v2</code></td><td>Stores <code>payment_amount</code> secret (certification fee)</td></tr>
+    <tr><td>Wix Members</td><td><code>wix-members-frontend</code> / <code>wix-members.v2</code></td><td>Gets current admin member ID for audit trail; member deletion</td></tr>
+    <tr><td>Google Fonts</td><td>CSS @import</td><td>Poppins (tables), DM Sans/DM Mono (allegations/inquiry tables)</td></tr>
+    <tr><td>Jimp (npm)</td><td>Imported in http-functions.js</td><td>Server-side badge PNG generation via HTTP endpoint</td></tr>
+    <tr><td>Wix CDN (static)</td><td>static.wixstatic.com</td><td>Hosts base badge template images referenced by badge components and http endpoint</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. CUSTOM ELEMENTS
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">06</span> Custom Elements (Web Components)</h2>
+
+<table>
+  <thead><tr><th>File</th><th>Tag Name</th><th>Renders</th><th>Events Emitted</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>certifications.js</code></td>
+      <td><code>&lt;certifications-table&gt;</code></td>
+      <td>Paginated certification table with status filter dropdown. Columns: Cert ID, Business Name, Status, Approval Date, Activation Date, Payment Status, View.</td>
+      <td><code>viewClick</code> → <code>{_id, item}</code></td>
+    </tr>
+    <tr>
+      <td><code>applicationsTable.js</code></td>
+      <td><code>&lt;applications-table&gt;</code></td>
+      <td>Paginated application table with status + payment filter dropdowns. Columns: Reference ID, Applicant Name, Country, Species/Breed, Submitted, Status, Payment, View.</td>
+      <td><code>viewClick</code> → <code>{_id, item}</code></td>
+    </tr>
+    <tr>
+      <td><code>badge300.js</code></td>
+      <td><code>&lt;badge-renderer-small&gt;</code></td>
+      <td>Canvas renders 300×100 badge. Loads base image, draws certId at 20px Cinzel black font (y=75). Auto-downloads PNG.</td>
+      <td><code>rendered</code> → <code>{imageData, fileName}</code></td>
+    </tr>
+    <tr>
+      <td><code>badge600Light.js</code></td>
+      <td><code>&lt;badge-renderer&gt;</code></td>
+      <td>Canvas renders 600×200 badge. 40px Cinzel black font (y=150). Auto-downloads PNG.</td>
+      <td><code>rendered</code> → <code>{imageData, fileName}</code></td>
+    </tr>
+    <tr>
+      <td><code>badge1080.js</code></td>
+      <td><code>&lt;badge-renderer-1080-light&gt;</code></td>
+      <td>Canvas renders 1080×1080 badge. 80px Cinzel black font (y=620). Auto-downloads PNG. Uses <code>trigger</code> attribute to fire render.</td>
+      <td><code>window.parent.postMessage</code> (inconsistent with others)</td>
+    </tr>
+    <tr>
+      <td><code>allegations-table.js</code></td>
+      <td><code>&lt;allegations-table&gt;</code></td>
+      <td>Complaint/allegation records table with search. Columns: Legal Name, Capacity, Org, Certified Entity, Email, Cert ID, Country, Allegation Nature, Description, Evidence files, Date.</td>
+      <td><code>fileClick</code> → <code>{url, rawUrl, type}</code></td>
+    </tr>
+    <tr>
+      <td><code>inquiry-table.js</code></td>
+      <td><code>&lt;inquiry-table&gt;</code></td>
+      <td>Inquiry records table with search. Columns: Legal Name, Capacity, Org, Cert ID, Email, Country, Inquiry Category, Written Submission, Date.</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Common attributes accepted by all table components:</strong> <code>data</code> (JSON array), <code>api-url</code>, <code>per-page</code>. Badge components accept: <code>image-url</code>, <code>text</code> (certificationId).</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     7. WHAT IS IMPLEMENTED VS MISSING
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">07</span> What is Implemented vs. Missing</h2>
+
+<h3>Fully Implemented</h3>
+<ul>
+  <li>Public application submission form (validation, CAPTCHA, reference ID generation, email confirmation)</li>
+  <li>Admin Portal with all lifecycle actions accessible via lightboxes (approve, reject, confirm payment, activate, suspend, revoke, reinstate)</li>
+  <li>Full email notification system across all state transitions (8 active email templates)</li>
+  <li>Badge generation pipeline: canvas Web Components render 6 badge variants (3 sizes × dark/light), upload to Media Manager, deliver download links via email</li>
+  <li>Daily auto-expiry cron job with batch pagination for scale</li>
+  <li>StatusHistory audit trail written at every state transition</li>
+  <li>Public certification verification page via URL slug</li>
+  <li>Admin review tables for complaints and inquiry forms with evidence file download</li>
+  <li>Payment page with Wix Pay integration and fee read from Secrets</li>
+</ul>
+
+<h3>Partially Implemented / Stubbed</h3>
+<ul>
+  <li><strong>Payment auto-confirmation:</strong> Wix payment fires but does not auto-set <code>paymentStatus = "Paid"</code> — admin must manually confirm via ConfirmPayments lightbox</li>
+  <li><strong>Activation email in backend:</strong> Commented out in <code>activationCertification()</code> — email only fires via the lightbox UI path</li>
+  <li><strong>HTTP badge endpoint (<code>get_badge600</code>):</strong> Implemented with Jimp but unclear if it is used in production; runs parallel to the canvas badge system</li>
+  <li><strong>SPI automation providers:</strong> All 4 registered but have empty <code>invoke()</code> stubs</li>
+  <li><strong>Administrative inquiry email:</strong> Function exists but is commented out</li>
+  <li><strong><code>getCertificateDownloadLinks</code>:</strong> Implemented in mediaUtilts.web.js but unclear where it is called from</li>
+</ul>
+
+<h3>Not Implemented / Missing</h3>
+<ul>
+  <li>No Wix lifecycle event handlers (<code>events.js</code> is empty)</li>
+  <li>No expiry notification email to the breeder when their cert expires</li>
+  <li>No reinstate path from Revoked status in the Admin Portal UI (backend supports it, UI does not surface it)</li>
+  <li>No renewal flow after expiry</li>
+</ul>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     8. RISKS & GAPS
+════════════════════════════════════════════════════════════ -->
+<h2><span class="num">08</span> Risks, Gaps &amp; Issues</h2>
+
+<h3>Critical Security Risk</h3>
+<div class="callout critical">
+  <strong>🔴 No authorization on admin web methods</strong>
+  <code>permissions.json</code> grants <code>anonymous</code> users the right to invoke ALL web methods including <code>approvedApplication</code>, <code>rejectApplication</code>, <code>suspendCertification</code>, <code>revokeCertification</code>, etc. Any unauthenticated external caller can manipulate certification status. There are no auth checks inside the methods themselves. This must be addressed before public launch.
+</div>
+
+<h3>Functional Gaps</h3>
+
+<div class="callout warning">
+  <strong>⚠ Payment flow disconnect</strong>
+  The Payments page stores <code>paymentResponse</code> on success but does NOT update <code>paymentStatus = "Paid"</code>. A Wix payment can succeed online and the applicant receives no automated next step. Admin must manually notice and confirm via the ConfirmPayments lightbox before a Certifications record is created.
+</div>
+
+<div class="callout warning">
+  <strong>⚠ jobs.config filename typo</strong>
+  The scheduled cron references <code>/utils.web.js</code> but the actual file is <code>utilts.web.js</code>. The daily auto-expiry job likely never runs, meaning certifications never expire automatically.
+</div>
+
+<div class="callout info">
+  <strong>ℹ No expiry email to breeders</strong>
+  When a certification expires (auto or manual), no email is sent. Breeders would only discover expiry by checking the public directory or being told.
+</div>
+
+<h3>Bugs</h3>
+
+<div class="callout warning">
+  <strong>⚠ applicationsTable.js — filter logic bug</strong>
+  In <code>applyFilter()</code>, when both the status filter AND payment filter are set to non-"all", the code uses OR logic (<code>statusMatch || paymentMatch</code>) instead of AND. This returns all Approved applications OR all Pending-payment applications, rather than the intersection.
+</div>
+
+<div class="callout warning">
+  <strong>⚠ getApplications() and getCertification() — missing .limit()</strong>
+  Neither query sets a <code>.limit()</code> value. Wix CMS defaults to 50 items per query. Once there are more than 50 applications or certifications, these queries will silently truncate data. The <code>expiredCertification()</code> cron correctly uses paginated batches of 1000 — the same pattern needs to be applied to the admin queries.
+</div>
+
+<div class="callout info">
+  <strong>ℹ getImageByname() ignores the name parameter</strong>
+  The function calls <code>files.searchFiles()</code> without passing the <code>searchOptions</code> variable, always returning all files instead of filtering by name.
+</div>
+
+<h3>Architecture / Design Issues</h3>
+
+<div class="callout info">
+  <strong>ℹ Certification is created at payment confirmation, not at approval</strong>
+  There is a commented-out block in <code>approvedApplication()</code> that would have created the Certifications record at the approval step. Current design creates it only when payment is confirmed. This is likely intentional but means no Certifications record exists in the gap between approval and payment confirmation.
+</div>
+
+<div class="callout info">
+  <strong>ℹ Badge generation is tightly coupled to the UI</strong>
+  The 6 badge PNGs are generated in the browser (canvas) inside the Activate Certification lightbox. If the lightbox errors mid-way, some badges may upload while others do not, and the email may send with broken download links. There is no retry mechanism or atomic guarantee.
+</div>
+
+<div class="callout info">
+  <strong>ℹ badge1080.js uses window.parent.postMessage instead of CustomEvent</strong>
+  The 1080×1080 badge component sends results via <code>window.parent.postMessage()</code> while the other two badge components dispatch <code>rendered</code> CustomEvents. The lightbox handles this correctly today using <code>element.onMessage()</code>, but the inconsistency makes the components harder to understand and maintain.
+</div>
+
+<div class="callout info">
+  <strong>ℹ Two parallel badge generation approaches</strong>
+  The <code>get_badge600</code> HTTP endpoint (using Jimp on the server) and the canvas-based lightbox badge generation are two separate implementations for the same purpose. It is unclear which one is the production path or if both are used in different contexts.
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<hr />
+<p style="text-align:center; font-family:'Arial',sans-serif; font-size:9pt; color:#aaa; margin-top:20px;">
+  ElitePetz Codebase Audit &nbsp;|&nbsp; Read-Only &nbsp;|&nbsp; Generated April 28, 2026
+</p>
+
+</body>
+</html>
