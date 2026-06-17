@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ElitePetz — Phase 1 Development Plan</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 11pt;
+    line-height: 1.75;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 40px 60px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .cover {
+    text-align: center;
+    padding: 64px 0 52px;
+    border-bottom: 3px solid #1a1a1a;
+    margin-bottom: 52px;
+  }
+  .cover .label {
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .cover h1 { font-size: 28pt; font-weight: bold; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .cover .subtitle { font-size: 13pt; color: #555; font-style: italic; margin-bottom: 30px; }
+  .cover .meta {
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .cover .meta span strong { color: #1a1a1a; }
+
+  h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    margin-top: 46px;
+    margin-bottom: 18px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 9pt;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    margin-top: 26px;
+    margin-bottom: 8px;
+  }
+  h3::before { content: '▸ '; color: #aaa; font-size: 9pt; }
+
+  p { margin-bottom: 10px; }
+  ul { margin: 8px 0 12px 20px; }
+  ul li { margin-bottom: 4px; font-size: 10pt; font-family: 'Arial', sans-serif; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 10pt;
+    font-family: 'Arial', sans-serif;
+  }
+  thead tr { background: #1a1a1a; color: #fff; }
+  thead th { padding: 9px 12px; text-align: left; font-size: 9pt; letter-spacing: 0.5px; }
+  tbody tr:nth-child(even) { background: #f7f7f7; }
+  tbody td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+
+  .callout {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 14px 0 18px;
+    font-family: 'Arial', sans-serif;
+    font-size: 10pt;
+  }
+  .callout.info    { background: #f0f4ff; border-left: 4px solid #3a5bc7; color: #1a2d6b; }
+  .callout.success { background: #f0fff4; border-left: 4px solid #27ae60; color: #145a32; }
+  .callout.neutral { background: #f7f8fa; border-left: 4px solid #7f8c8d; color: #333; }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 10.5pt; }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 3px;
+    font-family: 'Arial', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag.green  { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+  .tag.orange { background: #fef9e7; color: #b7770d; border: 1px solid #f9e79f; }
+  .tag.red    { background: #fdedec; color: #922b21; border: 1px solid #f5b7b1; }
+  .tag.grey   { background: #f2f3f4; color: #555;    border: 1px solid #d5d8dc; }
+  .tag.blue   { background: #eaf3fb; color: #1a5276; border: 1px solid #aed6f1; }
+  .tag.amber  { background: #fffbeb; color: #92400e; border: 1px solid #fcd34d; }
+
+  hr { border: none; border-top: 1px solid #ddd; margin: 32px 0; }
+
+  /* ── Group Header ── */
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    font-family: 'Arial', sans-serif;
+  }
+  .group-header.fix    { background: #fff0f0; border-left: 4px solid #e53e3e; }
+  .group-header.life   { background: #fffbeb; border-left: 4px solid #f59e0b; }
+  .group-header.claim  { background: #f0f4ff; border-left: 4px solid #3a5bc7; }
+  .group-header.public { background: #f0fff4; border-left: 4px solid #27ae60; }
+  .group-header.email  { background: #fdf4ff; border-left: 4px solid #a855f7; }
+  .group-header.found  { background: #fff7ed; border-left: 4px solid #ea580c; }
+  .group-header .gh-title { font-size: 11pt; font-weight: 700; }
+  .group-header .gh-desc  { font-size: 9pt; color: #666; }
+  .group-header .gh-total { margin-left: auto; font-size: 10pt; font-weight: 700; white-space: nowrap; }
+  .group-header.fix   .gh-total { color: #c53030; }
+  .group-header.life  .gh-total { color: #92400e; }
+  .group-header.claim .gh-total { color: #1a2d6b; }
+  .group-header.public .gh-total { color: #145a32; }
+  .group-header.email .gh-total { color: #6b21a8; }
+  .group-header.found .gh-total { color: #9a3412; }
+
+  .tag.purple { background: #fdf4ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+  .tag.new    { background: #f59e0b; color: #fff; border: none; font-size: 7.5pt; padding: 1px 6px; }
+
+  /* ── Feature Card ── */
+  .feature-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+  .feature-card.done { opacity: 0.65; }
+
+  .fc-head {
+    display: flex;
+    align-items: center;
+    padding: 11px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    gap: 12px;
+  }
+  .fc-id {
+    font-size: 8pt;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: #94a3b8;
+    min-width: 38px;
+  }
+  .fc-title { font-size: 10.5pt; font-weight: 700; color: #0f172a; flex: 1; }
+  .fc-badges { display: flex; gap: 6px; align-items: center; }
+
+  .cx-badge {
+    padding: 2px 9px;
+    border-radius: 3px;
+    font-size: 8pt;
+    font-weight: 700;
+    border: 1px solid transparent;
+  }
+  .cx-badge.high   { background: #fff0f0; color: #c53030; border-color: #fed7d7; }
+  .cx-badge.medium { background: #fffbeb; color: #92400e; border-color: #fcd34d; }
+  .cx-badge.low    { background: #f0f4ff; color: #1a2d6b; border-color: #c3dafe; }
+  .cx-badge.done   { background: #f0fff4; color: #145a32; border-color: #9ae6b4; }
+
+  .est-badge {
+    background: #1e293b;
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .est-badge.done-est { background: #9ae6b4; color: #145a32; }
+
+  .fc-body { padding: 12px 16px; }
+  .fc-body p {
+    font-size: 9.5pt;
+    color: #334155;
+    margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.55;
+  }
+  .fc-section-label {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+  .fc-body ul { margin: 0 0 8px 16px; }
+  .fc-body ul li { font-size: 9pt; color: #475569; margin-bottom: 3px; }
+
+  .fc-dep {
+    display: inline-flex;
+    align-items: center;
+    font-size: 8.5pt;
+    color: #64748b;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-right: 4px;
+    margin-top: 4px;
+  }
+
+  /* ── Summary ── */
+  .summary-total {
+    border: 2px solid #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 24px 0 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  .summary-total-head {
+    background: #1e293b;
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .summary-total-head .st-label { font-size: 10pt; font-weight: 700; }
+  .summary-total-head .st-sub   { font-size: 9pt; color: #94a3b8; margin-top: 2px; }
+  .summary-total-head .st-hours { font-size: 18pt; font-weight: 700; color: #fbbf24; }
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    padding: 9px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 9.5pt;
+    align-items: center;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row.head {
+    background: #f8fafc;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+  }
+  .summary-row .sr-group { font-weight: 700; color: #0f172a; }
+
+  /* ── Out of Scope ── */
+  .oos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0 20px;
+  }
+  .oos-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    font-size: 9pt;
+    color: #475569;
+  }
+  .oos-item::before {
+    content: '✕';
+    color: #cbd5e1;
+    font-weight: 700;
+    font-size: 9pt;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media print {
+    body { padding: 20px 30px; }
+    h2 { page-break-after: avoid; }
+    .feature-card, .summary-total { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ COVER ══════════════════════════ -->
+<div class="cover">
+  <div class="label">ElitePetz &mdash; Phase 1</div>
+  <h1>Development Plan</h1>
+  <div class="subtitle">Feature Breakdown &amp; Estimates</div>
+  <div class="meta">
+    <span><strong>Updated</strong> May 8, 2026</span>
+    <span><strong>Platform</strong> Wix Studio + Velo</span>
+    <span><strong>Phase</strong> Phase 1 Only</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 1. SCOPE OVERVIEW ══════════════════════════ -->
+<h2><span class="num">1</span> Scope Overview</h2>
+
+<p>
+  This plan covers all development work required to deliver Phase 1 of the ElitePetz improvement
+  roadmap. It is broken into six groups: foundational bug fixes, the manual onboarding lifecycle
+  and admin dashboard, the claim and notification system, public-facing certification visibility,
+  the email handling and audit trail system, and the Founding Breeders positioning layer.
+  All work runs on the existing Wix Studio + Velo platform — no infrastructure changes.
+  Updated May 8, 2026 to reflect the full scope of blueprint v2.6.
+</p>
+
+<div class="callout info">
+  <strong>What this plan delivers</strong>
+  A stable ID generation system with no race conditions or deletion risk; the complete manual
+  onboarding lifecycle (Approved → Invited → Active → Suspended / Revoked / Expired / Renewed);
+  a full admin dashboard with state-sensitive actions, data validation checkpoint, duplicate
+  prevention, record origin tracking, admin ownership, contact attempt logging, reason enforcement,
+  internal notes, and a dedicated Needs Attention tab; a configurable claim link system with
+  backend state guard; updated public certification visibility for all states including post-active;
+  the Verify page trust explanation section (content supplied by Pavel); a robust email failure and
+  retry system with confirmed asset inclusion on renewal; a complete StatusHistory audit trail for
+  the manual path; and Founding Breeders positioning fields including the foundingBadgeVariant slot.
+</div>
+
+<div class="callout neutral">
+  <strong>Estimates</strong>
+  All hour ranges reflect development and integration testing time on the Wix + Velo platform. The standard application path and all existing payment, email, and media
+  functionality are not touched.
+</div>
+
+
+<!-- ══════════════════════════ 2. GROUP A: FOUNDATION FIXES ══════════════════════════ -->
+<h2><span class="num">2</span> Group A — Foundation Fixes</h2>
+
+<p>Current production bugs identified in the codebase audit. These must be resolved first — they
+  underpin the reliability of everything built on top.</p>
+
+<div class="group-header fix">
+  <div>
+    <div class="gh-title">Bug Fixes &amp; Infrastructure</div>
+    <div class="gh-desc">Resolving production-breaking issues in the existing system</div>
+  </div>
+  <div class="gh-total">6–9 hours</div>
+</div>
+
+<!-- F-01 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-01</span>
+    <span class="fc-title">IDRegistry — Race Condition &amp; Deletion Fix</span>
+    <div class="fc-badges">
+      <span class="cx-badge high">High Complexity</span>
+      <span class="est-badge">5–7 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The current ID generation reads a record count, computes the next ID, then writes — three
+      separate operations with no lock. Two concurrent requests can read the same count and generate
+      the same ID; Wix CMS accepts both inserts silently. Separately, deleting records rewinds
+      the counter, causing previously issued IDs to be reassigned. Both are production-breaking
+      for a platform whose core promise is a permanent, non-reusable certification identity.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>IDRegistry CMS collection — dedicated counter with lock fields (lockedBy, lockedAt, status)</li>
+      <li>IDLog CMS collection — permanent record of every issued ID</li>
+      <li>Rewritten <code>generateCertificationId()</code> using IDRegistry — never counts live records</li>
+      <li>Rewritten <code>generateReferenceId()</code> for Application IDs — same pattern</li>
+      <li>Stale lock detection — locks older than 15 seconds auto-release on next request</li>
+      <li>Retry logic — up to 3 retries at 300ms intervals</li>
+    </ul>
+  </div>
+</div>
+
+<!-- F-02 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-02</span>
+    <span class="fc-title">Query Limit Fix — 50-Record Truncation</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">1–2 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Wix CMS queries default to 50 records. Every query in the backend that does not explicitly
+      set a limit silently truncates results — making the 51st application, certification, or
+      complaint invisible to admin. This gets worse as the registry grows.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>Audit of all <code>wixData.query()</code> calls across all backend modules</li>
+      <li>Explicit <code>.limit(1000)</code> added to all admin-facing queries</li>
+      <li>Pagination handling added to any query that could realistically exceed 1000 records in future</li>
+    </ul>
+  </div>
+</div>
+
+<!-- F-03 -->
+<div class="feature-card done">
+  <div class="fc-head">
+    <span class="fc-id">F-03</span>
+    <span class="fc-title">Scheduled Job — Certification Expiry</span>
+    <div class="fc-badges">
+      <span class="cx-badge done">Already Fixed</span>
+      <span class="est-badge done-est">0 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The expiry job in <code>jobs.config</code> was not running due to a configuration error —
+      certifications were never being automatically expired. This has been resolved. No further
+      work required.
+    </p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 3. GROUP B: MANUAL ONBOARDING LIFECYCLE ══════════════════════════ -->
+<h2><span class="num">3</span> Group B — Manual Onboarding Lifecycle</h2>
+
+<p>The core new feature: the Approved → Invited → Active lifecycle for admin-created certifications,
+  including the admin dashboard to create and manage them, with full admin override at every stage.</p>
+
+<div class="group-header life">
+  <div>
+    <div class="gh-title">Manual Onboarding Lifecycle</div>
+    <div class="gh-desc">Backend state machine, admin dashboard, and visibility controls</div>
+  </div>
+  <div class="gh-total">16–26 hours</div>
+</div>
+
+<!-- F-04 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-04</span>
+    <span class="fc-title">Lifecycle State Machine — Full Manual Path</span>
+    <div class="fc-badges">
+      <span class="cx-badge high">High Complexity</span>
+      <span class="est-badge">5–8 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The backend foundation for the manual onboarding path. Enforces the complete state machine
+      — all creation, promotion, and terminal transitions — with explicit guards at every step.
+      Revoked is a hard lock: no transitions, no emails, and the cron job explicitly skips it.
+      ClaimActivated is restricted to Approved and Invited states at the backend level.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>New <code>onboardingType</code> field: <code>"standard"</code> or <code>"manual"</code> — cross-path guard on every function</li>
+      <li>New <code>manualOnboarding.web.js</code> backend module — all manual path logic isolated here</li>
+      <li>Permanent Certification ID assigned at creation via IDRegistry (F-01)</li>
+      <li>All forward transitions: Create→Approved, Approved→Invited, Approved→Active (direct), Invited→Active, Invited→Approved (unpublish)</li>
+      <li>Post-active transitions: Active→Suspended, Suspended→Active (Reinstate), Active/Suspended→Revoked, Active→Expired (cron)</li>
+      <li>Renewal transition: Expired→Active (Renewed) — same Cert ID, new dates, renewal email fires</li>
+      <li>Revoked hard lock — backend explicitly blocks all transitions and all emails from Revoked state</li>
+      <li>Cron job updated to skip Revoked records when running the expiry check</li>
+      <li>ClaimActivated backend guard: validates cert is Approved or Invited before processing; rejects all other states with appropriate message</li>
+      <li>Reason field required at backend level for Suspend, Revoke, and Direct Activation — function rejects calls without it</li>
+      <li><code>invitedAt</code> timestamp set on Approved→Invited transition</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-01 IDRegistry</span>
+  </div>
+</div>
+
+<!-- F-05 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-05</span>
+    <span class="fc-title">Admin Certifications Management Dashboard</span>
+    <div class="fc-badges">
+      <span class="cx-badge high">High Complexity</span>
+      <span class="est-badge">6–9 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The admin-facing page where all manual certifications are created and managed. Covers the
+      full lifecycle — from creation through to post-active states — with context-sensitive
+      actions, reason enforcement dialogs, internal notes, a dedicated Needs Attention tab,
+      data validation before activation, and duplicate prevention at creation.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><strong>Create Certification form</strong> — breeder name, breed, location, email; <code>isFounding</code> checkbox; <code>foundingSequenceNumber</code> input; <code>foundingBadgeVariant</code> text field; <code>sourceType</code> dropdown (manual_outreach / application / imported / referral); <code>sourceNote</code> text field; <code>assignedAdminId</code> selector; system assigns Cert ID on submission</li>
+      <li><strong>Duplicate prevention check</strong> — on form submission, checks existing records for matching breeder name or email; displays warning banner if match found (not a hard block); logs <code>DuplicateWarningAcknowledged</code> to StatusHistory if admin proceeds</li>
+      <li><strong>Certifications table</strong> — Breeder Name, Cert ID, Status pill, Last Updated, Actions</li>
+      <li><strong>Status filter tabs</strong> — All / Approved / Invited / Active / Suspended / Revoked / Expired + ⚠ Needs Attention (count badge)</li>
+      <li><strong>Full action set per state:</strong>
+        <ul>
+          <li>Approved: Publish as Invited, Activate Directly, Send Claim Email, Edit</li>
+          <li>Invited: Activate, Resend Claim Email, Edit, Unpublish</li>
+          <li>Active: View Verification, Resend Assets Email, Edit, Suspend, Revoke</li>
+          <li>Suspended: Reinstate, Revoke, Edit, View Verification</li>
+          <li>Expired: Renew, View Verification</li>
+          <li>Revoked: View Verification, Add Internal Note (read-only otherwise)</li>
+        </ul>
+      </li>
+      <li><strong>Data validation checkpoint</strong> — Activate button visually disabled until breeder name, location, and breed are all confirmed present; UI-level gate only (not backend enforced)</li>
+      <li><strong>Reason enforcement dialog</strong> — modal that requires reason text before confirming Suspend, Revoke, or Direct Activation; calls backend with reason parameter</li>
+      <li><strong>Internal notes UI</strong> — text input on record detail view; each note appended to StatusHistory as <code>InternalNote</code>; shown in chronological order, admin-only</li>
+      <li><strong>Contact tracking fields on record detail view</strong> — admin can log <code>lastContactAttemptAt</code> (date picker) and <code>contactMethod</code> (email / instagram / facebook / phone) for each outreach attempt; never shown publicly</li>
+      <li>Each button calls corresponding backend function; table refreshes on state change</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-15 Email &amp; Needs Attention</span>
+    <span class="fc-dep">F-16 Audit Log</span>
+  </div>
+</div>
+
+<!-- F-06 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-06</span>
+    <span class="fc-title">Admin Lifecycle Control Functions</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">2–4 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Backend functions for all admin-triggered lifecycle transitions beyond the core
+      Approved→Active flow. Covers the full post-active lifecycle: suspend, reinstate,
+      revoke, and renewal. Each function validates the current state, enforces reason
+      requirements, and logs to StatusHistory.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><code>adminActivateCertification(certId, reason)</code> — Approved/Invited → Active; invalidates open claim token; reason required</li>
+      <li><code>suspendCertification(certId, reason)</code> — Active → Suspended; reason required; cert remains publicly visible with Suspended label</li>
+      <li><code>reinstateCertification(certId, reason)</code> — Suspended → Active; re-activates publicly</li>
+      <li><code>revokeCertification(certId, reason)</code> — Active/Suspended → Revoked; hard lock applied; reason stored permanently in StatusHistory; reason required</li>
+      <li><code>renewCertification(certId)</code> — Expired → Active (Renewed); same Cert ID; new <code>activationDate</code> and <code>expirationDate</code>; triggers renewal email (separate template)</li>
+      <li>All functions reject calls on Revoked records — hard lock enforced at function level</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-05 Admin Dashboard</span>
+  </div>
+</div>
+
+<!-- F-07 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-07</span>
+    <span class="fc-title">Publish as Invited / Unpublish</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">1–2 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The admin can publish a certification to the public registry as "Invited for Certification"
+      without activating it, and can unpublish it back to Approved (private) if information needs
+      correcting before it is visible again.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><code>publishAsInvited(certificationId)</code> — transitions Approved → Invited, sets record as publicly visible</li>
+      <li><code>unpublishCertification(certificationId)</code> — transitions Invited → Approved, removes from public listing</li>
+      <li>Public label field set on publish: "Invited for Certification" or "Founding Candidate" depending on the breeder category</li>
+      <li>Connected to "Publish as Invited" and "Unpublish" buttons in the admin dashboard</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-05 Admin Dashboard</span>
+  </div>
+</div>
+
+<!-- F-08 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-08</span>
+    <span class="fc-title">Certification Visibility Rules — All States</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">2–3 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Backend and public-facing queries updated to reflect the full visibility model.
+      Approved records remain private. All other states (Invited, Active, Suspended,
+      Revoked, Expired) are publicly visible on the Verify page with appropriate labels —
+      transparency is core to the authority model. Badges are never shown on public pages.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>Public listing query returns: Invited, Active, Suspended, Revoked, Expired records (not Approved)</li>
+      <li>Status labels per state: "Invited for Certification" / "ElitePetz Certified" / "Certification Suspended" / "Certification Revoked" / "Certification Expired"</li>
+      <li>Badges never shown on public pages at any state — assets delivered via email only</li>
+      <li>Backend <code>getPublicVisibilityFilter()</code> helper used by all public-facing queries — single enforcement point</li>
+      <li>Verify page returns appropriate response for all states including Not Found (invalid ID)</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-07 Publish as Invited</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 4. GROUP C: CLAIM & NOTIFICATION ══════════════════════════ -->
+<h2><span class="num">4</span> Group C — Claim &amp; Notification System</h2>
+
+<p>The optional path that allows breeders to take ownership of and activate their own profiles.
+  None of this blocks admin control — it runs in parallel to the admin workflow.</p>
+
+<div class="group-header claim">
+  <div>
+    <div class="gh-title">Claim &amp; Notification</div>
+    <div class="gh-desc">Token-based breeder activation and email system</div>
+  </div>
+  <div class="gh-total">6–10 hours</div>
+</div>
+
+<!-- F-09 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-09</span>
+    <span class="fc-title">Claim Token System</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">3–5 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      When admin sends a claim email, the system generates a secure one-time token attached to
+      the certification record. When the breeder clicks the link, the token is validated and
+      the certification activates immediately. The token cannot be reused, replayed, or used
+      after expiry.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>Token generation: UUID v4 stored as <code>claimToken</code> on the Certifications record</li>
+      <li>Token fields: <code>claimToken</code>, <code>claimTokenExpiry</code>, <code>tokenUsed</code></li>
+      <li>Claim validation endpoint: checks token exists, not expired, not already used</li>
+      <li><strong>State guard (backend enforced):</strong> rejects activation if cert is not Approved or Invited — Suspended, Revoked, Expired, and Active are all hard-blocked with appropriate response message</li>
+      <li>On valid claim: marks token as used and transitions record to Active atomically</li>
+      <li>On admin activation: any outstanding token for the record is invalidated</li>
+      <li>Configurable expiry: reads from admin settings (default 30 days, disableable)</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-11 Admin Config</span>
+  </div>
+</div>
+
+<!-- F-10 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-10</span>
+    <span class="fc-title">Claim Email — Send &amp; Resend</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">1–2 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Admin can send a claim email from either Approved or Invited state. The email contains
+      the breeder's certification details and their unique claim link. Resending invalidates the
+      old token and generates a fresh one.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><code>sendClaimEmail(certificationId)</code> backend function — generates token and sends email via Wix CRM Triggered Emails</li>
+      <li>Email template: includes breeder name, Certification ID, and unique claim link</li>
+      <li>Resend logic — old token invalidated, new token generated, email re-sent</li>
+      <li>Connected to "Send Claim Email" (Approved) and "Resend Claim Email" (Invited) buttons in admin dashboard</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-09 Claim Token</span>
+  </div>
+</div>
+
+<!-- F-11 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-11</span>
+    <span class="fc-title">Admin Configuration Settings</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">2–3 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Four settings that control Phase 1 behaviour, all adjustable by admin without a code
+      change. Stored in a dedicated AdminConfig CMS collection and read dynamically by
+      backend functions at runtime.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><strong>Claim Token Expiry</strong> — toggle on/off with configurable duration (default: 30 days). When off, tokens never expire until used or invalidated.</li>
+      <li><strong>Auto-Send Claim Email on Publish</strong> — toggle on/off (default: off). When on, claim email fires automatically on Approved→Invited transition.</li>
+      <li><strong>Invite No-Response Alert Threshold</strong> — number of days after publishing as Invited before the record surfaces in the Needs Attention tab (default: 7 days). Can be disabled.</li>
+      <li><strong>Email Max Retry Attempts</strong> — how many automatic retries before <code>emailUnreachable</code> is set (default: 3). Set to 1 to disable retries.</li>
+      <li>Settings stored in AdminConfig CMS collection; settings UI in admin panel Settings tab</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 5. GROUP D: PUBLIC CERTIFICATION VISIBILITY ══════════════════════════ -->
+<h2><span class="num">5</span> Group D — Public Certification Visibility</h2>
+
+<p>Updates to the public-facing certification listing and verify page to correctly reflect
+  the Invited and Active states. This is about what status a certification carries when it is
+  visible — not about profile pages or individual detail pages.</p>
+
+<div class="group-header public">
+  <div>
+    <div class="gh-title">Public Certification Visibility</div>
+    <div class="gh-desc">Status labels in the public listing and verify page behaviour</div>
+  </div>
+  <div class="gh-total">3–6 hours</div>
+</div>
+
+<!-- F-12 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-12</span>
+    <span class="fc-title">Public Listing — Invited &amp; Active Status Labels</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">1–2 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The public certifications listing is updated to show all publicly visible states with
+      clear, accurate status pills. Visitors can immediately identify a certification's status
+      — including post-active states — maintaining the authority's transparency model.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>Invited: "Invited for Certification" pill — visible, not certified</li>
+      <li>Active: "ElitePetz Certified" pill — unchanged from current behaviour</li>
+      <li>Suspended: "Suspended" pill — remains in listing, clearly labeled</li>
+      <li>Revoked: "Revoked" pill — remains in listing, clearly labeled</li>
+      <li>Expired: "Expired" pill — remains in listing, clearly labeled</li>
+      <li>Approved: not shown in public listing</li>
+      <li>Badge never shown alongside any listing entry — assets email-only</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-08 Visibility Rules</span>
+  </div>
+</div>
+
+<!-- F-13 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-13</span>
+    <span class="fc-title">Verify Page — All State Handling + Trust Section</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">2–3 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The public verification page is updated to handle every certification state with a
+      distinct, accurate response. All post-active states remain visible — the Verify page
+      is the authoritative public record for the lifetime of a certification. A "What This
+      Certification Means" trust section is added directly below the status block at all states.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><strong>Invited:</strong> cert ID, breeder, breed, location. Label: "has been selected for certification but has not yet activated." No assets.</li>
+      <li><strong>Active:</strong> full certified record. Label: "ElitePetz Certified ✓". No assets on page.</li>
+      <li><strong>Suspended:</strong> full record. Label: "Certification Suspended". No assets.</li>
+      <li><strong>Revoked:</strong> full record + revocation date. Label: "Certification Revoked". No assets.</li>
+      <li><strong>Expired:</strong> full record + expiry date. Label: "Certification Expired". No assets.</li>
+      <li><strong>Not Found:</strong> clean message — no detail exposed</li>
+      <li>No certification assets (badges, embed code) shown at any state on the Verify page</li>
+      <li><strong>"What This Certification Means" section</strong> — static content block placed directly below the status indicator at all states. Content supplied by Pavel (see blueprint Section 7). Covers what ElitePetz reviews, what the record represents, and a transparency disclaimer. Not in footer, not hidden, not a link — immediately visible.</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-08 Visibility Rules</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 6. GROUP E: EMAIL HANDLING & AUDIT TRAIL ══════════════════════════ -->
+<h2><span class="num">6</span> Group E — Email Handling &amp; Audit Trail</h2>
+
+<p>Cross-cutting features that wire the activation and renewal emails, handle delivery failures
+  and retries, surface issues to admin, and build the complete StatusHistory audit trail for
+  the manual onboarding path.</p>
+
+<div class="group-header email">
+  <div>
+    <div class="gh-title">Email Handling &amp; Audit Trail</div>
+    <div class="gh-desc">Activation email wiring, failure handling, retry logic, Needs Attention tab, StatusHistory extension</div>
+  </div>
+  <div class="gh-total">8–13 hours</div>
+</div>
+
+<!-- F-14 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-14</span>
+    <span class="fc-title">Activation Email Wiring &amp; Renewal Email Template</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">2–3 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      The activation email call is currently commented out in <code>activationCertification()</code>
+      in <code>utilts.web.js</code>. This feature wires it up fully, adds the embed code
+      parameter, and creates a separate renewal email template so renewal sends a distinct
+      message rather than a confusing duplicate activation.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>Uncomment and wire <code>sendEmailCertificationIssued()</code> call in <code>activationCertification()</code></li>
+      <li>Wire all 6 badge download URLs via <code>myGetDownloadUrlFunction</code> into the email parameters</li>
+      <li>Generate embed code string server-side (badge URL + verify link) and pass as <code>embedCode</code> parameter to template VE3TXBV</li>
+      <li>Create a dedicated <strong>Renewal Email</strong> template in Wix CRM (placeholder template — Pavel supplies final copy)</li>
+      <li>Wire renewal email to the <code>renewCertification()</code> function — fires on Expired→Active transition only</li>
+      <li>Renewal email includes updated certification dates and the same asset links</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-06 Lifecycle Controls</span>
+  </div>
+</div>
+
+<!-- F-15 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-15</span>
+    <span class="fc-title">Email Failure Handling &amp; Needs Attention Tab</span>
+    <div class="fc-badges">
+      <span class="cx-badge high">High Complexity</span>
+      <span class="est-badge">4–6 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Wraps all email send calls in try/catch, logs failures, retries automatically up to the
+      configured limit, and flags unreachable records. Surfaces all issues in a dedicated
+      Needs Attention tab in the admin dashboard — email failures, stale invitations, and
+      expired claim tokens in one unified queue.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><strong>New fields on Certifications:</strong> <code>emailFailedFlag</code> (Boolean), <code>emailFailedType</code> (Text), <code>emailUnreachable</code> (Boolean)</li>
+      <li>Try/catch wrapper on all email send calls — on failure: set flag, log <code>ActivationEmailFailed</code> / <code>ClaimEmailFailed</code> / <code>AssetsEmailFailed</code> to StatusHistory</li>
+      <li>Auto-retry logic: retries up to configured max attempts (F-11), then sets <code>emailUnreachable = true</code> and logs <code>EmailUnreachable</code></li>
+      <li><strong>Needs Attention tab query</strong> combining: <code>emailFailedFlag = true</code> OR <code>emailUnreachable = true</code> OR (<code>status = Invited</code> AND <code>invitedAt</code> older than threshold) OR (claim token expired AND status in Approved/Invited)</li>
+      <li><strong>Needs Attention tab UI</strong>: rows with issue-type badges (Email Failed / No Response / Token Expired / Email Unreachable), context-sensitive action buttons per issue</li>
+      <li><strong>Three emailUnreachable resolution actions:</strong>
+        <ul>
+          <li>Mark as Delivered Manually — clears flag, logs <code>MarkedDeliveredManually</code></li>
+          <li>Update Email + Retry — corrects address, triggers fresh send, resets retry counter</li>
+          <li>Proceed Without Email (Silent) — closes issue, logs <code>EmailSkipped</code></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+    <span class="fc-dep">F-11 Admin Config</span>
+    <span class="fc-dep">F-16 Audit Log</span>
+  </div>
+</div>
+
+<!-- F-16 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-16</span>
+    <span class="fc-title">StatusHistory Audit Log — Manual Path Extension</span>
+    <div class="fc-badges">
+      <span class="cx-badge medium">Medium Complexity</span>
+      <span class="est-badge">2–4 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Extends the existing StatusHistory collection to cover the full manual onboarding path.
+      Every state transition, email event, admin action, and internal note is recorded as an
+      append-only log entry. The <code>actorType</code> field is added to enable filtering by actor
+      category. A shared helper keeps logging consistent across all features.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li>New <code>actorType</code> field on StatusHistory: <code>"admin"</code> / <code>"breeder"</code> / <code>"system"</code></li>
+      <li>Shared <code>addStatusHistory(certId, action, actorId, actorType, reason)</code> helper in <code>utilts.web.js</code> — used by every feature to ensure consistent logging</li>
+      <li>All new action values wired: <code>ManualCreated</code>, <code>PublishedAsInvited</code>, <code>Unpublished</code>, <code>ActivatedDirect</code>, <code>ActivatedFromInvited</code>, <code>ClaimEmailSent</code>, <code>ClaimEmailResent</code>, <code>ClaimActivated</code>, <code>ActivationEmailSent</code>, <code>AssetsEmailResent</code>, <code>Suspended</code>, <code>Reinstated</code>, <code>Revoked</code>, <code>Expired</code>, <code>Renewed</code>, <code>ActivationEmailFailed</code>, <code>ClaimEmailFailed</code>, <code>AssetsEmailFailed</code>, <code>EmailUnreachable</code>, <code>MarkedDeliveredManually</code>, <code>EmailUpdatedAndRetried</code>, <code>EmailSkipped</code>, <code>InternalNote</code></li>
+      <li>Internal notes stored as StatusHistory entries with <code>action: "InternalNote"</code>, note text in <code>reason</code> field — append-only, admin-only, never publicly exposed</li>
+      <li>Admin dashboard record detail view shows full StatusHistory for each certification, filtered to exclude InternalNotes from any public-facing query</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-04 State Machine</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 7. GROUP F: FOUNDING BREEDERS LAYER ══════════════════════════ -->
+<h2><span class="num">7</span> Group F — Founding Breeders Layer</h2>
+
+<p>Low-effort, high-impact fields that unlock the Founding Certified Breeders positioning
+  narrative — prestige, scarcity, and sequential identity — without touching the state machine
+  or any workflow logic.</p>
+
+<div class="group-header found">
+  <div>
+    <div class="gh-title">Founding Breeders Positioning</div>
+    <div class="gh-desc">isFounding flag and sequence number — display and narrative fields only</div>
+  </div>
+  <div class="gh-total">1–2 hours</div>
+</div>
+
+<!-- F-17 -->
+<div class="feature-card">
+  <div class="fc-head">
+    <span class="fc-id">F-17</span>
+    <span class="fc-title">Founding Fields — isFounding &amp; Sequence Number</span>
+    <div class="fc-badges">
+      <span class="cx-badge low">Low Complexity</span>
+      <span class="est-badge">1–2 hrs</span>
+    </div>
+  </div>
+  <div class="fc-body">
+    <p>
+      Two optional fields added to the Certifications collection to support the Founding
+      Certified Breeders cohort. Set by admin at creation — no effect on the state machine
+      or lifecycle transitions. Display-only, but they unlock the marketing narrative.
+    </p>
+    <div class="fc-section-label">What will be built</div>
+    <ul>
+      <li><code>isFounding</code> (Boolean) field on Certifications — checkbox in the Create Certification form</li>
+      <li><code>foundingSequenceNumber</code> (Number) field on Certifications — numeric input in Create form (e.g. "3" → displayed as "Founding Member #3")</li>
+      <li>Public listing: founding certs display a "Founding Member" indicator when <code>isFounding = true</code></li>
+      <li>Verify page: displays "Founding Member #N" line when <code>isFounding = true</code> and sequence number is set</li>
+      <li>Admin Certifications table: Founding column shows founding badge for quick identification</li>
+    </ul>
+    <div class="fc-section-label">Depends on</div>
+    <span class="fc-dep">F-05 Admin Dashboard</span>
+    <span class="fc-dep">F-12 Public Listing</span>
+    <span class="fc-dep">F-13 Verify Page</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 8. ESTIMATE SUMMARY ══════════════════════════ -->
+<h2><span class="num">8</span> Estimate Summary</h2>
+
+<div class="summary-total">
+  <div class="summary-total-head">
+    <div>
+      <div class="st-label">Total Estimated Development Hours — Phase 1</div>
+      <div class="st-sub">Includes development and integration testing. Excludes UAT and client review cycles.</div>
+    </div>
+    <div class="st-hours">40–66 hrs</div>
+  </div>
+  <div>
+    <div class="summary-row head">
+      <div>Group</div>
+      <div>Features</div>
+      <div>Est. Hours</div>
+      <div>Priority</div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">A — Foundation Fixes</div>
+      <div>3 features</div>
+      <div><strong>6–9 hrs</strong></div>
+      <div><span class="tag red">Build First</span></div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">B — Manual Onboarding Lifecycle</div>
+      <div>5 features</div>
+      <div><strong>16–26 hrs</strong></div>
+      <div><span class="tag amber">Core Feature</span></div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">C — Claim &amp; Notification System</div>
+      <div>3 features</div>
+      <div><strong>6–10 hrs</strong></div>
+      <div><span class="tag blue">After Group B</span></div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">D — Public Certification Visibility</div>
+      <div>2 features</div>
+      <div><strong>3–6 hrs</strong></div>
+      <div><span class="tag blue">After Group B</span></div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">E — Email Handling &amp; Audit Trail</div>
+      <div>3 features</div>
+      <div><strong>8–13 hrs</strong></div>
+      <div><span class="tag blue">After Group B</span></div>
+    </div>
+    <div class="summary-row">
+      <div class="sr-group">F — Founding Breeders Layer</div>
+      <div>1 feature</div>
+      <div><strong>1–2 hrs</strong></div>
+      <div><span class="tag blue">After Group B</span></div>
+    </div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>ID</th><th>Feature</th><th>Complexity</th><th>Est. Hours</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>F-01</td><td>IDRegistry — Race Condition &amp; Deletion Fix</td><td><span class="tag red">High</span></td><td><strong>5–7 hrs</strong></td></tr>
+    <tr><td>F-02</td><td>Query Limit Fix</td><td><span class="tag grey">Low</span></td><td><strong>1–2 hrs</strong></td></tr>
+    <tr><td>F-03</td><td>Scheduled Job — Certification Expiry</td><td><span class="tag green">Fixed</span></td><td><strong>0 hrs</strong></td></tr>
+    <tr><td>F-04</td><td>Lifecycle State Machine — Full Manual Path</td><td><span class="tag red">High</span></td><td><strong>5–8 hrs</strong></td></tr>
+    <tr><td>F-05</td><td>Admin Certifications Management Dashboard</td><td><span class="tag red">High</span></td><td><strong>6–9 hrs</strong></td></tr>
+    <tr><td>F-06</td><td>Admin Lifecycle Control Functions</td><td><span class="tag orange">Medium</span></td><td><strong>2–4 hrs</strong></td></tr>
+    <tr><td>F-07</td><td>Publish as Invited / Unpublish</td><td><span class="tag grey">Low</span></td><td><strong>1–2 hrs</strong></td></tr>
+    <tr><td>F-08</td><td>Certification Visibility Rules — All States</td><td><span class="tag orange">Medium</span></td><td><strong>2–3 hrs</strong></td></tr>
+    <tr><td>F-09</td><td>Claim Token System</td><td><span class="tag orange">Medium</span></td><td><strong>3–5 hrs</strong></td></tr>
+    <tr><td>F-10</td><td>Claim Email — Send &amp; Resend</td><td><span class="tag grey">Low</span></td><td><strong>1–2 hrs</strong></td></tr>
+    <tr><td>F-11</td><td>Admin Configuration Settings</td><td><span class="tag grey">Low</span></td><td><strong>2–3 hrs</strong></td></tr>
+    <tr><td>F-12</td><td>Public Listing — All State Status Labels</td><td><span class="tag grey">Low</span></td><td><strong>1–2 hrs</strong></td></tr>
+    <tr><td>F-13</td><td>Verify Page — All State Handling</td><td><span class="tag orange">Medium</span></td><td><strong>2–3 hrs</strong></td></tr>
+    <tr><td>F-14</td><td>Activation Email Wiring &amp; Renewal Email Template</td><td><span class="tag orange">Medium</span></td><td><strong>2–3 hrs</strong></td></tr>
+    <tr><td>F-15</td><td>Email Failure Handling &amp; Needs Attention Tab</td><td><span class="tag red">High</span></td><td><strong>4–6 hrs</strong></td></tr>
+    <tr><td>F-16</td><td>StatusHistory Audit Log — Manual Path Extension</td><td><span class="tag orange">Medium</span></td><td><strong>2–4 hrs</strong></td></tr>
+    <tr><td>F-17</td><td>Founding Fields — isFounding &amp; Sequence Number</td><td><span class="tag grey">Low</span></td><td><strong>1–2 hrs</strong></td></tr>
+  </tbody>
+</table>
+
+
+<!-- ══════════════════════════ 9. OUT OF SCOPE ══════════════════════════ -->
+<h2><span class="num">9</span> Out of Scope — Phase 1</h2>
+
+<div class="oos-grid">
+  <div class="oos-item">Standard application path — existing flow unchanged</div>
+  <div class="oos-item">Payment processing — Wix Pay, no changes</div>
+  <div class="oos-item">Existing activation email template (VE3TXBV) visual design — copy and layout unchanged; only embed code parameter added</div>
+  <div class="oos-item">Renewal email copy — placeholder template created; Pavel supplies final copy</div>
+  <div class="oos-item">Media Manager &amp; badge file generation — unchanged</div>
+  <div class="oos-item">Complaint &amp; inquiry submission forms — unchanged</div>
+  <div class="oos-item">Rate limiting &amp; email burst protection — noted in blueprint; future scope</div>
+  <div class="oos-item">Dispute / impersonation complaint mechanism — future scope</div>
+  <div class="oos-item">Founding Breeders counter &amp; whitepaper — separate future scope</div>
+  <div class="oos-item">Profile ownership / claim linking to member accounts — future scope</div>
+</div>
+
+<div class="callout success">
+  <strong>Recommended build order</strong>
+  Group A first — IDRegistry is the foundation everything else relies on for ID stability.
+  Group B second — the state machine and admin dashboard must exist before claim tokens, emails,
+  or audit logging can reference states.
+  Groups C, D, E, and F can all proceed in parallel once Group B is complete.
+  Group E (email wiring + failure handling + audit log) is recommended immediately after Group B
+  — the Needs Attention tab and StatusHistory helper are depended on by Group B's admin dashboard
+  for email failure display and internal notes.
+</div>
+
+<hr />
+
+<p style="font-family:'Arial',sans-serif;font-size:8.5pt;color:#aaa;text-align:center;margin-top:24px;">
+  ElitePetz &mdash; Phase 1 Development Plan &mdash; May 8, 2026
+</p>
+
+</body>
+</html>
