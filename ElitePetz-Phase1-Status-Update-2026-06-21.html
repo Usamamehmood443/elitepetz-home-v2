@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phase 1 Redesign: Status Update &amp; Completion Plan | ElitePetz Certification Authority</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:        #1a1a1a;
+    --text-muted:  #6b7280;
+    --text-soft:   #9ca3af;
+    --border:      #e5e7eb;
+    --border-soft: #f0f1f3;
+    --bg:          #ffffff;
+    --bg-band:     #fafafa;
+    --bg-cream:    #fbfaf7;
+
+    --navy:        #0B2545;
+    --navy-tint:   #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg-band);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 40px 20px;
+  }
+
+  .doc {
+    max-width: 880px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+  }
+
+  .pad { padding: 0 56px; }
+
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+
+  /* ── Masthead ──────────────────────────────────────────────── */
+  .masthead {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 40px 56px 26px;
+    border-bottom: 1px solid var(--border);
+  }
+  .masthead .mark img { height: 64px; width: auto; display: block; }
+  .masthead .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    color: var(--text);
+  }
+  .masthead .wordmark .sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 4px;
+  }
+
+  /* ── Title block ───────────────────────────────────────────── */
+  .title-block { padding: 34px 56px 28px; border-bottom: 1px solid var(--border); }
+  .title-block .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .title-block h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    margin-bottom: 18px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 8px 40px;
+    margin-top: 6px;
+  }
+  .meta-grid .item .lbl {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 3px;
+  }
+  .meta-grid .item .val { font-size: 13.5px; color: var(--text); font-weight: 500; }
+
+  /* ── Intro ─────────────────────────────────────────────────── */
+  .intro { padding: 28px 56px 8px; }
+  .intro p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ── Section ───────────────────────────────────────────────── */
+  section.block { padding: 30px 56px; border-bottom: 1px solid var(--border-soft); }
+  section.block:last-of-type { border-bottom: none; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-head .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+  .sec-head h2 { font-size: 19px; letter-spacing: -0.008em; }
+
+  ul.clean { list-style: none; }
+  ul.clean li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  ul.clean li::before { content: "\203A"; color: var(--navy); font-weight: 700; }
+  ul.clean li strong { font-weight: 600; }
+
+  /* ── Tables ────────────────────────────────────────────────── */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table th {
+    text-align: left;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    padding: 10px 12px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  table tr:last-child td { border-bottom: none; }
+  table td.center, table th.center { text-align: center; }
+  table .deliverable { font-weight: 600; }
+  table .date { font-family: var(--mono); font-size: 12.5px; color: var(--navy); white-space: nowrap; }
+
+  /* ── Status badges ─────────────────────────────────────────── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .badge.done { background: var(--active-bg); color: var(--active-fg); }
+  .badge.progress { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .badge.todo { background: var(--soft-bg); color: var(--soft-fg); }
+
+  .tick { color: var(--active-fg); font-weight: 700; font-size: 15px; }
+  .pending { color: var(--text-soft); font-size: 12px; font-style: italic; font-family: var(--serif); }
+  .mini-progress { color: var(--claimed-fg); font-size: 11.5px; font-weight: 500; }
+
+  /* ── Highlight (completion estimate) ──────────────────────── */
+  .estimate {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .estimate .card {
+    background: var(--bg-cream);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    padding: 18px 22px;
+  }
+  .estimate .card .lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+  .estimate .card .val {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .callout {
+    padding: 14px 18px;
+    background: var(--active-bg);
+    border-left: 3px solid var(--active-fg);
+    border-radius: 0 3px 3px 0;
+    font-family: var(--serif);
+    font-size: 14.5px;
+    color: var(--text);
+  }
+
+  .inv-group { margin-bottom: 22px; }
+  .inv-group:last-child { margin-bottom: 0; }
+  .inv-group .inv-label {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .inv-group ul.clean li { font-size: 14px; padding: 5px 0; }
+  .inv-group ul.clean li .fn-page { font-family: var(--serif); font-weight: 600; }
+
+  /* ── Sign-off / footer ─────────────────────────────────────── */
+  .signoff { padding: 30px 56px; border-top: 1px solid var(--border); }
+  .signoff p {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .signoff .names {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .signoff .role {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  .doc-footer {
+    padding: 18px 56px 24px;
+    border-top: 2px solid var(--text);
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 680px) {
+    body { padding: 16px 0; }
+    .doc { border-left: 0; border-right: 0; }
+    .pad, .masthead, .title-block, .intro, section.block, .signoff, .doc-footer { padding-left: 24px; padding-right: 24px; }
+    .title-block h1 { font-size: 23px; }
+    .meta-grid { grid-template-columns: 1fr; gap: 10px; }
+    .estimate { grid-template-columns: 1fr; }
+    table { font-size: 12.5px; }
+    table th, table td { padding: 9px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+
+  <!-- Title -->
+  <div class="title-block">
+    <div class="eyebrow">Phase 1 Redesign &middot; Status Update</div>
+    <h1>Status Update &amp; Completion Plan</h1>
+    <div class="meta-grid">
+      <div class="item"><div class="lbl">Date</div><div class="val">21 June 2026</div></div>
+      <div class="item"><div class="lbl">Prepared for</div><div class="val">Pavel Legel</div></div>
+      <div class="item"><div class="lbl">Prepared by</div><div class="val">Usama &amp; Tayyba</div></div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>
+      Hi Pavel,<br><br>
+      Thank you for the clear note and for taking the time to review the preview links. Below is a complete status
+      update and completion plan covering each of the points you raised, followed by a summary of the work completed
+      to date.
+    </p>
+  </div>
+
+  <!-- 1. Remaining -->
+  <section class="block">
+    <div class="sec-head"><span class="num">01</span><h2>Remaining Pages &amp; Deliverables</h2></div>
+    <ul class="clean">
+      <li><span><strong>Contact &amp; Inquiry page</strong>: design completed; form functionality in progress.</span></li>
+      <li><span><strong>Hyperlinks</strong>: connect the correct internal links across all newly designed pages.</span></li>
+      <li><span><strong>Buttons</strong>: wire the remaining buttons across all newly designed pages to their destinations.</span></li>
+      <li><span><strong>Email templates</strong>: remaining notification templates to be redesigned (2 templates already completed).</span></li>
+    </ul>
+  </section>
+
+  <!-- 2. Dates -->
+  <section class="block">
+    <div class="sec-head"><span class="num">02</span><h2>Expected Completion Dates</h2></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Deliverable</th>
+          <th>Current Status</th>
+          <th class="center">Expected Completion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="deliverable">Verify Certification page</td>
+          <td>Functionality completed (hyperlinks pending)</td>
+          <td class="center date">22 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Founding Certified Breeders page</td>
+          <td>Functionality completed (hyperlinks pending)</td>
+          <td class="center date">22 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Apply for Certification page</td>
+          <td>Functionality completed (hyperlinks pending)</td>
+          <td class="center date">22 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Contact page</td>
+          <td>Functionality in progress (hyperlinks pending)</td>
+          <td class="center date">22 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Mobile responsiveness (all redesigned pages)</td>
+          <td><span class="badge done">Completed</span></td>
+          <td class="center date">21 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Dynamic database integrations &amp; live statistics</td>
+          <td><span class="badge done">Completed</span></td>
+          <td class="center date">21 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Email notification redesigns &amp; implementation</td>
+          <td><span class="badge progress">In progress</span></td>
+          <td class="center date">23 Jun 2026</td>
+        </tr>
+        <tr>
+          <td class="deliverable">Final QA &amp; testing</td>
+          <td><span class="badge todo">To do</span></td>
+          <td class="center date">25 Jun 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. Estimate -->
+  <section class="block">
+    <div class="sec-head"><span class="num">03</span><h2>Full Phase 1 Completion</h2></div>
+    <div class="estimate">
+      <div class="card">
+        <div class="lbl">Redesign implementation complete</div>
+        <div class="val">23 June 2026</div>
+      </div>
+      <div class="card">
+        <div class="lbl">Final QA &amp; testing concluded</div>
+        <div class="val">25 June 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Page status -->
+  <section class="block">
+    <div class="sec-head"><span class="num">04</span><h2>Page Status Confirmation</h2></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th class="center">Desktop</th>
+          <th class="center">Mobile</th>
+          <th class="center">Dynamic Data</th>
+          <th class="center">Final QA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="deliverable">Home</td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="deliverable">Verify Certification</td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td class="deliverable">Apply for Certification</td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td class="deliverable">Founding Certified Breeders</td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td class="deliverable">Contact</td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="tick">&#10003;</span></td>
+          <td class="center"><span class="mini-progress">In progress</span></td>
+          <td class="center"><span class="pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. Blockers -->
+  <section class="block">
+    <div class="sec-head"><span class="num">05</span><h2>Blockers, Limitations &amp; Dependencies</h2></div>
+    <div class="callout">
+      <strong>None at this time.</strong> We will flag any new blockers immediately if they arise during the remaining work.
+    </div>
+  </section>
+
+  <!-- Inventory -->
+  <section class="block">
+    <div class="sec-head"><span class="num">&#9632;</span><h2>Implementation Inventory: Work Completed to Date</h2></div>
+
+    <div class="inv-group">
+      <div class="inv-label">Pages Redesigned</div>
+      <ul class="clean">
+        <li><span>Home</span></li>
+        <li><span>Verify Certification</span></li>
+        <li><span>Founding Certified Breeders</span></li>
+        <li><span>Apply for Certification</span></li>
+        <li><span>Contact</span></li>
+        <li><span>Whitepaper / Research page</span></li>
+      </ul>
+    </div>
+
+    <div class="inv-group">
+      <div class="inv-label">Email Templates Redesigned</div>
+      <ul class="clean">
+        <li><span>Application Submitted Confirmation</span></li>
+        <li><span>Application Approved Notice</span></li>
+      </ul>
+    </div>
+
+    <div class="inv-group">
+      <div class="inv-label">Dynamic Database Integrations Completed</div>
+      <ul class="clean">
+        <li><span>Verify Certification</span></li>
+        <li><span>Founding Certified Breeders</span></li>
+        <li><span>Apply for Certification</span></li>
+        <li><span>Home</span></li>
+        <li><span>Contact <em>(in progress)</em></span></li>
+      </ul>
+    </div>
+
+    <div class="inv-group">
+      <div class="inv-label">Functionality Implemented (via code)</div>
+      <ul class="clean">
+        <li><span><span class="fn-page">Home</span>: Certification ID search that redirects to the Verify page and runs the lookup automatically.</span></li>
+        <li><span><span class="fn-page">Verify Certification</span>: Live record lookup by Certification ID, with clear result, no-match, preview, and expired-link states; status indicators coloured by certification status; a loading animation while a record is being checked; and automatic search pre-fill when arriving from a link.</span></li>
+        <li><span><span class="fn-page">Founding Certified Breeders</span>: Live cohort statistics and the founding registry listing pulled directly from the database, with a graceful empty-state when no records are listed.</span></li>
+        <li><span><span class="fn-page">Apply for Certification</span>: Full application form with field validation, spam protection, database submission, automatic confirmation email, and a success confirmation showing the application reference number.</span></li>
+        <li><span><span class="fn-page">Contact</span>: Intake-channel selection that opens the relevant inquiry or complaint form; form submission functionality in progress.</span></li>
+      </ul>
+    </div>
+
+    <div class="inv-group">
+      <div class="inv-label">Automations / Workflows</div>
+      <ul class="clean">
+        <li><span>No existing automations or workflows were modified. Notification emails are handled directly within the site's code.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sign-off -->
+  <div class="signoff">
+    <p>
+      We are on track to complete the Phase 1 redesign implementation by <strong>23 June 2026</strong>, with final QA and
+      testing concluded by <strong>25 June 2026</strong>. Once the remaining hyperlinks, buttons, and email templates are
+      finalised, the redesign will be ready for your review ahead of launch.
+    </p>
+    <p>Please let us know if you would like any additional detail on any item above.</p>
+    <div style="margin-top:22px;">
+      <div class="names">Usama &amp; Tayyba</div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Status Update &middot; 21 June 2026</span>
+  </div>
+
+</div>
+
+</body>
+</html>
