@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breeder Certification Standards Framework — ElitePetz Certification Authority</title>
+<meta name="description" content="The ElitePetz Certification Standards Framework — the eligibility conditions, certification criteria, and ongoing compliance obligations required to obtain and maintain ElitePetz Certification.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── TOP META BAR ────────────────────────────────────────────── */
+  .top-meta { border-bottom: 1px solid var(--border-soft); padding: 8px 0; font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ── MASTHEAD ────────────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--border); padding: 26px 0 24px; background: #fff; }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org { display: flex; align-items: center; gap: 14px; text-decoration: none; border-bottom: none; color: var(--text); }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img { height: 88px; width: auto; max-width: 360px; object-fit: contain; display: block; }
+  .masthead .wordmark { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; line-height: 1.15; }
+  .masthead .wordmark .sub { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .masthead .topnav { display: flex; gap: 26px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a { color: inherit; border-bottom: 1px solid transparent; padding-bottom: 3px; font-weight: 500; }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .intro-block .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 18px; }
+  .intro-block h1 { font-size: 34px; line-height: 1.22; letter-spacing: -0.012em; font-weight: 600; margin-bottom: 22px; }
+  .intro-block .description { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text-muted); font-weight: 400; max-width: 760px; }
+
+  /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--bg-band); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.008em; font-weight: 600; }
+  .section-head .head-meta { font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; white-space: nowrap; }
+  .section-intro { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; max-width: 760px; }
+
+  /* ── PROSE + LIST HELPERS ────────────────────────────────────── */
+  .txt { font-family: var(--serif); font-size: 16px; line-height: 1.68; color: var(--text); max-width: 760px; }
+  .txt p { margin-bottom: 16px; }
+  .txt p:last-child { margin-bottom: 0; }
+  .txt .lede { font-size: 18.5px; line-height: 1.55; color: var(--text); margin-bottom: 22px; }
+  .sub-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin: 26px 0 10px; }
+  .note-line { font-family: var(--serif); font-size: 14.5px; line-height: 1.6; color: var(--text-muted); font-style: italic; margin-top: 18px; max-width: 760px; }
+
+  .enum { list-style: none; margin-top: 6px; border-top: 1px solid var(--border-soft); max-width: 760px; }
+  .enum li { position: relative; padding: 11px 0 11px 24px; border-bottom: 1px solid var(--border-soft); font-family: var(--serif); font-size: 15.5px; line-height: 1.5; color: var(--text); }
+  .enum li::before { content: "\203A"; position: absolute; left: 2px; top: 11px; color: var(--navy); font-weight: 700; }
+  .enum.links li a { color: var(--navy); font-weight: 500; }
+
+  .callout-navy { padding: 20px 26px; background: var(--navy-tint); border-left: 3px solid var(--navy); font-family: var(--serif); font-size: 16px; line-height: 1.6; color: var(--text); margin-top: 22px; max-width: 760px; }
+  .callout-navy p { margin-bottom: 10px; }
+  .callout-navy p:last-child { margin-bottom: 0; }
+
+  /* ── FOUR CORE ELEMENTS (definition list) ────────────────────── */
+  .def-list { border-top: 1px solid var(--border); margin-top: 4px; max-width: 820px; }
+  .def-row { display: grid; grid-template-columns: 250px 1fr; gap: 28px; padding: 16px 0; border-bottom: 1px solid var(--border-soft); align-items: baseline; }
+  .def-row .term { font-family: var(--serif); font-size: 15.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .def-row .desc { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── NUMBERED SUB-BLOCK (eligibility reqs / obligations) ─────── */
+  .sub-block { margin-top: 30px; }
+  .sub-block:first-of-type { margin-top: 22px; }
+  .sub-block .sub-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-soft); }
+  .sub-block .sub-num { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--navy); background: var(--navy-tint); padding: 4px 9px; border-radius: 2px; white-space: nowrap; }
+  .sub-block .sub-title { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .sub-block .req-intro { font-family: var(--serif); font-size: 15.5px; line-height: 1.6; color: var(--text); margin-bottom: 6px; max-width: 760px; }
+  .sub-block .req-cue { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-soft); margin: 14px 0 2px; }
+
+  /* ── CHECKLIST / CROSS CARD ──────────────────────────────────── */
+  .mark-list { list-style: none; margin-top: 6px; border-top: 1px solid var(--border-soft); max-width: 760px; }
+  .mark-list li { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border-soft); align-items: baseline; }
+  .mark-list li .mark { font-family: var(--sans); font-weight: 700; font-size: 14px; text-align: center; line-height: 1.3; }
+  .mark-list li .label { font-family: var(--serif); font-size: 15.5px; color: var(--text); line-height: 1.45; }
+  .mark-list.includes li .mark { color: var(--active-fg); }
+  .mark-list.excludes li .mark { color: var(--revoked-fg); }
+  .mark-list.excludes li .label { color: var(--text-muted); }
+  .mark-card { padding: 4px 28px 22px; background: #fff; border: 1px solid var(--border); max-width: 760px; }
+  .mark-card.includes { border-left: 3px solid var(--active-fg); }
+  .mark-card.excludes { border-left: 3px solid var(--revoked-fg); background: var(--bg-band); }
+  .mark-card .c-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; padding: 20px 0 12px; }
+  .mark-card.includes .c-label { color: var(--active-fg); }
+  .mark-card.excludes .c-label { color: var(--revoked-fg); }
+  .mark-card .mark-list { border-top: none; margin-top: 0; }
+  .mark-card .mark-list li:first-child { border-top: none; }
+
+  /* ── PILLS ───────────────────────────────────────────────────── */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 4px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 11px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; font-family: var(--sans); white-space: nowrap; line-height: 1.3; }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; box-shadow: 0 0 0 2.5px rgba(255,255,255,0.55); }
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-claimed { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-expired { background: var(--expired-bg); color: var(--expired-fg); }
+  .pill-neutral { background: var(--soft-bg); color: var(--soft-fg); }
+
+  /* ── STATUS TABLE ────────────────────────────────────────────── */
+  .table-wrap { max-width: 820px; overflow-x: auto; border: 1px solid var(--border); }
+  .status-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .status-table th { text-align: left; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); padding: 12px 18px; background: var(--bg-band); border-bottom: 1px solid var(--border); }
+  .status-table td { padding: 14px 18px; border-bottom: 1px solid var(--border-soft); font-size: 14px; color: var(--text); vertical-align: middle; }
+  .status-table tr:last-child td { border-bottom: none; }
+  .status-table .meaning { font-family: var(--serif); font-size: 14.5px; color: var(--text); }
+  .status-table .vis { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; font-weight: 500; }
+  .status-table .vis.pub { color: var(--active-fg); }
+  .status-table .vis.no { color: var(--text-soft); }
+
+  /* ── BUTTONS ─────────────────────────────────────────────────── */
+  .cert-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1; padding: 14px 26px; border-radius: 3px; border: 1.5px solid transparent; text-decoration: none; cursor: pointer; transition: background .12s, color .12s, border-color .12s; border-bottom: 1.5px solid transparent; }
+  .btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .btn-navy:hover { background: var(--navy-hover); border-color: var(--navy-hover); border-bottom: 1.5px solid var(--navy-hover); }
+  .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+  .btn-outline:hover { background: var(--navy-tint); border-bottom: 1.5px solid var(--navy); }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer.site-footer { background: #fff; padding: 28px 0 24px; border-top: 2px solid var(--text); }
+  footer.site-footer .footer-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer.site-footer .footer-row.top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border-soft); align-items: flex-end; }
+  footer.site-footer .brand .name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  footer.site-footer .brand .est { font-family: var(--mono); font-size: 11px; color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer.site-footer .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+  footer.site-footer .footer-nav a { color: var(--text); border: none; font-weight: 500; }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright, footer.site-footer .legal-links { font-size: 11.5px; color: var(--text-soft); letter-spacing: 0.01em; }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep { color: var(--text-soft); opacity: 0.5; margin: 0 4px; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .section-head { gap: 8px; }
+    .def-row { grid-template-columns: 1fr; gap: 4px; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .mark-card { padding-left: 22px; padding-right: 22px; }
+    .cert-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP META BAR ─────────────────────────────────────────────── -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/contact-1">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="container">
+    <a href="https://www.elitepetz.com/" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="https://www.elitepetz.com/">Home</a>
+      <a href="https://www.elitepetz.com/about-1">About</a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework" class="active">Certification</a>
+      <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+      <a href="https://www.elitepetz.com/verification-problem-companion-animal-breeding">Research</a>
+      <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+      <a href="https://www.elitepetz.com/contact-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── INTRO BLOCK ──────────────────────────────────────────────── -->
+<section class="intro-block">
+  <div class="container">
+    <div class="eyebrow">Certification · Standards Framework</div>
+    <h1>Certification Standards Framework</h1>
+    <p class="description">
+      The eligibility conditions, certification criteria, and ongoing compliance obligations required to obtain and
+      maintain ElitePetz Certification.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC I — PURPOSE OF THE STANDARDS ─────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Purpose of the Standards</h2>
+      <span class="head-meta">SEC. 01 · Purpose</span>
+    </div>
+    <div class="txt">
+      <p class="lede">
+        The ElitePetz Certification Standards Framework establishes the eligibility conditions, certification criteria,
+        and ongoing compliance obligations required to obtain and maintain ElitePetz Certification.
+      </p>
+      <p>
+        Certification is granted following a documented review conducted by the ElitePetz Certification Authority. It
+        reflects a compliance determination based on information available at the time of review.
+      </p>
+      <p>
+        Certification status is conditional, subject to ongoing compliance obligations, and may be modified, suspended,
+        or revoked if material information emerges after approval.
+      </p>
+    </div>
+
+    <div class="sub-label">Four Core Elements of Certification Governance</div>
+    <div class="def-list">
+      <div class="def-row">
+        <div class="term">Eligibility Standards</div>
+        <div class="desc">Baseline requirements required for certification review.</div>
+      </div>
+      <div class="def-row">
+        <div class="term">Certification Representation</div>
+        <div class="desc">What ElitePetz Certification signifies publicly.</div>
+      </div>
+      <div class="def-row">
+        <div class="term">Ongoing Compliance Obligations</div>
+        <div class="desc">Responsibilities of certified entities after approval.</div>
+      </div>
+      <div class="def-row">
+        <div class="term">Status Classifications</div>
+        <div class="desc">The public standing recorded in the ElitePetz Registry.</div>
+      </div>
+    </div>
+
+    <p class="note-line">
+      Enforcement authority and procedural governance are defined separately under the ElitePetz Governance &amp;
+      Enforcement Framework.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC II — ELIGIBILITY STANDARDS ───────────────────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Eligibility Standards (Entry Requirements)</h2>
+      <span class="head-meta">SEC. 02 · Entry Requirements</span>
+    </div>
+    <div class="txt">
+      <p>
+        To qualify for certification review, applicants must satisfy the baseline requirements described below.
+        Eligibility establishes the minimum conditions required for an application to be considered.
+      </p>
+      <p>
+        Eligibility alone does not guarantee certification approval. Applicants who fail to meet these conditions may be
+        deemed ineligible for certification review.
+      </p>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">01</span>
+        <span class="sub-title">Identity and Operational Transparency</span>
+      </div>
+      <p class="req-intro">
+        Applicants must provide sufficient identifying information to establish the identity of the operating entity
+        seeking certification.
+      </p>
+      <div class="req-cue">Applicants shall</div>
+      <ul class="enum">
+        <li>Provide verifiable identifying information associated with the breeding or animal-related operation</li>
+        <li>Disclose an accurate operating name and valid contact information</li>
+        <li>Identify the jurisdiction in which the operation conducts its activities</li>
+        <li>Maintain consistent representation of their operational identity across publicly accessible channels where such identity is disclosed</li>
+        <li>Agree to the publication of certification status and related registry information if certification is granted</li>
+      </ul>
+      <p class="note-line">
+        Participation in third-party marketplaces that limit the public disclosure of breeder identity does not in itself
+        constitute a violation of this requirement, provided the applicant maintains a consistent operational identity in
+        their own disclosures and communications.
+      </p>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">02</span>
+        <span class="sub-title">Operational Disclosure Requirements</span>
+      </div>
+      <p class="req-intro">
+        Applicants must provide sufficient information describing the nature and scope of their activities to enable
+        meaningful certification review.
+      </p>
+      <div class="req-cue">Applicants shall disclose</div>
+      <ul class="enum">
+        <li>The species and breed categories involved in their operations</li>
+        <li>The nature of breeding, raising, or related animal-management activities</li>
+        <li>The geographic jurisdiction in which such activities occur</li>
+        <li>A truthful and materially accurate description of operational practices</li>
+      </ul>
+      <p class="note-line">
+        Incomplete, materially misleading, or intentionally inaccurate disclosures may result in rejection of the
+        application or subsequent certification enforcement actions.
+      </p>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">03</span>
+        <span class="sub-title">Legal and Regulatory Baseline</span>
+      </div>
+      <p class="req-intro">
+        Applicants must operate in accordance with applicable legal and regulatory requirements within the jurisdictions
+        in which their activities occur.
+      </p>
+      <div class="req-cue">Applicants shall</div>
+      <ul class="enum">
+        <li>Affirm compliance with applicable local, regional, and national laws governing animal breeding or related activities</li>
+        <li>Disclose known regulatory actions, enforcement proceedings, or material legal matters relevant to the operation</li>
+      </ul>
+      <div class="txt" style="margin-top:16px;">
+        <p>ElitePetz Certification does not replace, supersede, or replicate governmental regulatory oversight.</p>
+        <p>
+          Regulatory findings, licensing changes, or enforcement actions may be considered during certification review
+          and may affect certification standing.
+        </p>
+      </div>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">04</span>
+        <span class="sub-title">Applicant Declaration of Accuracy</span>
+      </div>
+      <p class="req-intro">
+        As part of the certification application process, applicants must attest to the accuracy and completeness of all
+        submitted information.
+      </p>
+      <div class="req-cue">Applicants shall affirm that</div>
+      <ul class="enum">
+        <li>All information provided to the Authority is truthful and complete to the best of their knowledge</li>
+        <li>Any material changes affecting eligibility or certification status will be disclosed promptly</li>
+        <li>They understand certification may be suspended, revoked, or otherwise modified in accordance with ElitePetz governance procedures</li>
+      </ul>
+      <p class="note-line">
+        Knowingly providing false, misleading, or materially incomplete information constitutes grounds for denial of
+        certification or subsequent revocation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC III — WHAT CERTIFICATION REPRESENTS ──────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What Certification Represents</h2>
+      <span class="head-meta">SEC. 03 · Meaning of Certification</span>
+    </div>
+    <p class="section-intro" style="margin-bottom:14px;">ElitePetz Certification indicates that, at the time of approval:</p>
+
+    <div class="mark-card includes">
+      <div class="c-label">Certification Indicates</div>
+      <ul class="mark-list includes">
+        <li><span class="mark">&#10003;</span><span class="label">The applicant underwent structured certification review</span></li>
+        <li><span class="mark">&#10003;</span><span class="label">Required disclosures were submitted and evaluated</span></li>
+        <li><span class="mark">&#10003;</span><span class="label">No disqualifying information was identified based on available evidence</span></li>
+        <li><span class="mark">&#10003;</span><span class="label">The entity agreed to ongoing compliance and transparency obligations</span></li>
+      </ul>
+    </div>
+
+    <p class="note-line" style="margin-bottom:26px;">
+      Certification reflects a compliance posture based on available information at a defined point in time.
+    </p>
+
+    <div class="mark-card excludes">
+      <div class="c-label">Certification Does Not Constitute</div>
+      <ul class="mark-list excludes">
+        <li><span class="mark">&#10005;</span><span class="label">A guarantee of animal health outcomes</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">A substitute for buyer due diligence</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">A replacement for governmental licensing or regulatory authority</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">A warranty, insurance product, or commercial guarantee</span></li>
+      </ul>
+    </div>
+
+    <p class="note-line">
+      Certification represents an administrative determination of compliance with ElitePetz certification standards at
+      the time of review.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC IV — ONGOING COMPLIANCE OBLIGATIONS ──────────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Ongoing Compliance Obligations</h2>
+      <span class="head-meta">SEC. 04 · After Approval</span>
+    </div>
+    <p class="section-intro">
+      Certified entities remain subject to ongoing compliance obligations throughout the duration of certification.
+      Certified entities must:
+    </p>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">01</span>
+        <span class="sub-title">Maintain Legal Standing</span>
+      </div>
+      <p class="req-intro">
+        Continue operating in accordance with applicable laws and regulatory requirements governing their activities.
+      </p>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">02</span>
+        <span class="sub-title">Disclose Material Changes</span>
+      </div>
+      <p class="req-intro">
+        Promptly disclose material changes that may affect certification status, including but not limited to:
+      </p>
+      <ul class="enum">
+        <li>Changes in ownership or operational control</li>
+        <li>Significant operational restructuring</li>
+        <li>Regulatory enforcement actions</li>
+        <li>Licensing status changes</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">03</span>
+        <span class="sub-title">Cooperate With Certification Review</span>
+      </div>
+      <p class="req-intro">
+        Respond to reasonable information requests arising from certification monitoring activities, complaints, or
+        review procedures conducted through ElitePetz governance channels.
+      </p>
+    </div>
+
+    <div class="sub-block">
+      <div class="sub-head">
+        <span class="sub-num">04</span>
+        <span class="sub-title">Preserve Accuracy of Public Representation</span>
+      </div>
+      <p class="req-intro">
+        Ensure that public representations regarding their operation remain materially consistent with information
+        disclosed during certification review.
+      </p>
+    </div>
+
+    <div class="sub-label">Failure to Meet Obligations May Result In</div>
+    <div class="pill-row">
+      <span class="pill pill-suspended">Suspension</span>
+      <span class="pill pill-revoked">Revocation</span>
+      <span class="pill pill-claimed">Status Downgrade</span>
+      <span class="pill pill-expired">Non-Renewal</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC V — CERTIFICATION STATUS CLASSIFICATIONS ─────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Certification Status Classifications</h2>
+      <span class="head-meta">SEC. 05 · Status Classifications</span>
+    </div>
+    <p class="section-intro">
+      Certification status is publicly recorded in the ElitePetz Certification Registry. Each certification record
+      reflects the entity's current standing within the certification lifecycle.
+    </p>
+
+    <div class="table-wrap">
+      <table class="status-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Public Visibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill pill-neutral">Submitted</span></td>
+            <td class="meaning">Application under review</td>
+            <td class="vis no">Not Public</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-claimed">Approved</span></td>
+            <td class="meaning">Decision issued (awaiting activation if applicable)</td>
+            <td class="vis no">Not Public</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-active">Active</span></td>
+            <td class="meaning">Valid and in good standing</td>
+            <td class="vis pub">Public</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-suspended">Suspended</span></td>
+            <td class="meaning">Temporarily inactive pending review</td>
+            <td class="vis pub">Public</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-revoked">Revoked</span></td>
+            <td class="meaning">Certification withdrawn</td>
+            <td class="vis pub">Public</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-expired">Expired</span></td>
+            <td class="meaning">Term ended</td>
+            <td class="vis pub">Public</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note-line">
+      All certification status changes are permanently recorded in the Status History log. Status history records form
+      part of the permanent audit trail maintained by the ElitePetz Certification Authority.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC VI — ENFORCEMENT AND RECORD INTEGRITY ────────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Enforcement and Record Integrity</h2>
+      <span class="head-meta">SEC. 06 · Enforcement &amp; Records</span>
+    </div>
+    <p class="section-intro" style="margin-bottom:12px;">
+      Certification enforcement procedures are governed under the ElitePetz Governance &amp; Enforcement Framework,
+      including:
+    </p>
+
+    <ul class="enum links">
+      <li><a href="https://www.elitepetz.com/grounds-for-suspension">Grounds for Suspension</a></li>
+      <li><a href="https://www.elitepetz.com/grounds-for-revocation">Grounds for Revocation</a></li>
+      <li><a href="https://www.elitepetz.com/due-process">Review and Due Process Procedures</a></li>
+      <li><a href="https://www.elitepetz.com/status-history">Status History and Record Integrity Policies</a></li>
+    </ul>
+
+    <div class="callout-navy">
+      <p>The Certification Standards Framework establishes the criteria for certification.</p>
+      <p>The Governance &amp; Enforcement Framework defines the authority and procedures used to enforce those criteria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC VII — VERSIONING & EVOLUTION ─────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Versioning &amp; Evolution</h2>
+      <span class="head-meta">SEC. 07 · Versioning</span>
+    </div>
+    <div class="txt">
+      <p>
+        The ElitePetz Certification Standards Framework may evolve over time as the certification system matures. Updates
+        to certification standards are recorded under
+        <a href="https://www.elitepetz.com/evolution">Governance → Evolution of Governance Policies</a>.
+      </p>
+      <p>
+        Unless otherwise specified, certification decisions are governed by the standards in effect at the time of
+        review.
+      </p>
+      <p>
+        Ethical conduct obligations applicable to certified entities are governed separately under the
+        <a href="https://www.elitepetz.com/code-of-ethics">ElitePetz Code of Ethics</a>.
+      </p>
+    </div>
+
+    <div class="cert-actions">
+      <a href="https://www.elitepetz.com/certificationapplication" class="btn btn-navy">Apply for Certification <span class="arrow">→</span></a>
+      <a href="https://www.elitepetz.com/howcertificationworks" class="btn btn-outline">How Certification Works <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://www.elitepetz.com/about-1">About</a>
+        <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/contact-1">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use-1">Terms</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
