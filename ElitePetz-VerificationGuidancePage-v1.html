@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verification Guidance — ElitePetz Certification Authority</title>
+<meta name="description" content="Guidance resources for understanding breeder certification, verification, and status evaluation — how to verify a breeder before you buy a pet and what a certified status does and does not mean.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── TOP META BAR ────────────────────────────────────────────── */
+  .top-meta { border-bottom: 1px solid var(--border-soft); padding: 8px 0; font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ── MASTHEAD ────────────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--border); padding: 26px 0 24px; background: #fff; }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org { display: flex; align-items: center; gap: 14px; text-decoration: none; border-bottom: none; color: var(--text); }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img { height: 88px; width: auto; max-width: 360px; object-fit: contain; display: block; }
+  .masthead .wordmark { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; line-height: 1.15; }
+  .masthead .wordmark .sub { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .masthead .topnav { display: flex; gap: 24px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a { color: inherit; border-bottom: 1px solid transparent; padding-bottom: 3px; font-weight: 500; }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .intro-block .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 18px; }
+  .intro-block h1 { font-size: 34px; line-height: 1.22; letter-spacing: -0.012em; font-weight: 600; margin-bottom: 22px; }
+  .intro-block .description { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text-muted); font-weight: 400; max-width: 760px; }
+
+  /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--bg-band); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.008em; font-weight: 600; }
+  .section-head .head-meta { font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; white-space: nowrap; }
+  .section-intro { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; max-width: 760px; }
+  .section-intro a { color: var(--navy); font-weight: 500; }
+
+  /* ── PROSE + LIST HELPERS ────────────────────────────────────── */
+  .txt { font-family: var(--serif); font-size: 16px; line-height: 1.68; color: var(--text); max-width: 760px; }
+  .txt p { margin-bottom: 16px; }
+  .txt p:last-child { margin-bottom: 0; }
+  .txt .lede { font-size: 18.5px; line-height: 1.55; color: var(--text); margin-bottom: 22px; }
+  .sub-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin: 22px 0 8px; }
+  .note-line { font-family: var(--serif); font-size: 14.5px; line-height: 1.6; color: var(--text-muted); font-style: italic; margin-top: 14px; max-width: 760px; }
+
+  .enum { list-style: none; margin-top: 6px; border-top: 1px solid var(--border-soft); max-width: 700px; }
+  .enum li { position: relative; padding: 10px 0 10px 24px; border-bottom: 1px solid var(--border-soft); font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--text); }
+  .enum li::before { content: "\203A"; position: absolute; left: 2px; top: 10px; color: var(--navy); font-weight: 700; }
+  .enum.links li a { color: var(--navy); font-weight: 500; }
+
+  .callout-navy { padding: 20px 26px; background: var(--navy-tint); border-left: 3px solid var(--navy); font-family: var(--serif); font-size: 16px; line-height: 1.6; color: var(--text); margin-top: 24px; max-width: 760px; }
+  .callout-navy p { margin-bottom: 10px; }
+  .callout-navy p:last-child { margin-bottom: 0; }
+  .callout-navy a { color: var(--navy); font-weight: 600; }
+
+  /* ── NUMBERED GUIDANCE STEPS ─────────────────────────────────── */
+  .guide-list { max-width: 820px; margin-top: 8px; counter-reset: gstep; }
+  .guide-item { display: grid; grid-template-columns: 52px 1fr; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--border-soft); }
+  .guide-item:first-child { border-top: 1px solid var(--border); }
+  .guide-item .g-num { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--navy); line-height: 1.1; }
+  .guide-item .g-num::before { counter-increment: gstep; content: "0" counter(gstep); }
+  .guide-item .g-body h3 { font-size: 17.5px; line-height: 1.3; letter-spacing: -0.004em; margin-bottom: 7px; }
+  .guide-item .g-body p { font-family: var(--serif); font-size: 15.5px; line-height: 1.6; color: var(--text-muted); max-width: 700px; }
+  .guide-item .g-body p a { color: var(--navy); font-weight: 500; }
+  .guide-item .g-body p + p { margin-top: 12px; }
+  .guide-item .g-body .mini-label { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-soft); margin: 14px 0 2px; }
+
+  /* ── INLINE WARNING LIST (inside a step) ─────────────────────── */
+  .warn-list { list-style: none; margin-top: 10px; max-width: 700px; }
+  .warn-list li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border-soft); align-items: baseline; }
+  .warn-list li:last-child { border-bottom: none; }
+  .warn-list li .mark { font-family: var(--sans); font-weight: 700; font-size: 13px; text-align: center; color: var(--revoked-fg); line-height: 1.3; }
+  .warn-list li .label { font-family: var(--serif); font-size: 15px; color: var(--text); line-height: 1.45; }
+
+  /* ── PILLS ───────────────────────────────────────────────────── */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 4px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 11px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; font-family: var(--sans); white-space: nowrap; line-height: 1.3; }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; box-shadow: 0 0 0 2.5px rgba(255,255,255,0.55); }
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-neutral { background: var(--soft-bg); color: var(--soft-fg); }
+
+  /* ── FAQ NOTE STRIP ──────────────────────────────────────────── */
+  .faq-strip { padding: 32px 0; border-bottom: 1px solid var(--border); background: var(--bg-cream); }
+  .faq-strip .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .faq-strip .fs-text { font-family: var(--serif); font-size: 16px; color: var(--text); }
+  .faq-strip .fs-text strong { font-weight: 600; }
+
+  /* ── CLOSING STATEMENT BAND ──────────────────────────────────── */
+  .closing-band { background: var(--navy); color: #fff; padding: 52px 0; }
+  .closing-band .container { text-align: center; }
+  .closing-band .cb-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .closing-band h2 { color: #fff; font-size: 27px; line-height: 1.3; letter-spacing: -0.01em; max-width: 720px; margin: 0 auto 16px; }
+  .closing-band .cb-sub { font-family: var(--serif); font-size: 16px; color: rgba(255,255,255,0.72); max-width: 620px; margin: 0 auto 24px; }
+  .closing-band .cb-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── BUTTONS ─────────────────────────────────────────────────── */
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1; padding: 14px 26px; border-radius: 3px; border: 1.5px solid transparent; text-decoration: none; cursor: pointer; transition: background .12s, color .12s, border-color .12s; border-bottom: 1.5px solid transparent; }
+  .btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .btn-navy:hover { background: var(--navy-hover); border-color: var(--navy-hover); border-bottom: 1.5px solid var(--navy-hover); }
+  .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+  .btn-outline:hover { background: var(--navy-tint); border-bottom: 1.5px solid var(--navy); }
+  .btn-light { background: #fff; color: var(--navy); border-color: #fff; }
+  .btn-light:hover { background: var(--navy-tint); border-color: var(--navy-tint); border-bottom: 1.5px solid var(--navy-tint); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; border-bottom: 1.5px solid #fff; }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer.site-footer { background: #fff; padding: 28px 0 24px; border-top: 2px solid var(--text); }
+  footer.site-footer .footer-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer.site-footer .footer-row.top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border-soft); align-items: flex-end; }
+  footer.site-footer .brand .name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  footer.site-footer .brand .est { font-family: var(--mono); font-size: 11px; color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer.site-footer .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+  footer.site-footer .footer-nav a { color: var(--text); border: none; font-weight: 500; }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright, footer.site-footer .legal-links { font-size: 11.5px; color: var(--text-soft); letter-spacing: 0.01em; }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep { color: var(--text-soft); opacity: 0.5; margin: 0 4px; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .section-head { gap: 8px; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .guide-item { grid-template-columns: 40px 1fr; gap: 14px; }
+    .guide-item .g-num { font-size: 18px; }
+    .closing-band h2 { font-size: 22px; }
+    .cb-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP META BAR ─────────────────────────────────────────────── -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/contact-1">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="container">
+    <a href="https://www.elitepetz.com/" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="https://www.elitepetz.com/">Home</a>
+      <a href="https://www.elitepetz.com/about-1">About</a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+      <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+      <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+      <a href="https://www.elitepetz.com/guidance" class="active">Guidance</a>
+      <a href="https://www.elitepetz.com/contact-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── INTRO BLOCK ──────────────────────────────────────────────── -->
+<section class="intro-block">
+  <div class="container">
+    <div class="eyebrow">Verification · Public Guidance</div>
+    <h1>Verification Guidance</h1>
+    <p class="description">
+      Guidance resources for understanding breeder certification, verification, and status evaluation. These resources
+      explain how to verify a breeder before you buy a pet, and what a certified status does and does not mean.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC 01 — HOW TO VERIFY A BREEDER ─────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>How to Verify a Breeder Before You Buy a Pet</h2>
+      <span class="head-meta">SEC. 01 · Verification Steps</span>
+    </div>
+    <p class="section-intro">
+      Purchasing a companion animal is a significant decision. In many cases, transactions occur across distance, with
+      limited visibility into the breeder's practices. Verifying a breeder before committing is essential. This guide
+      outlines a structured approach to evaluating breeder legitimacy. For a detailed overview of the evaluation process,
+      see <a href="https://www.elitepetz.com/howcertificationworks">How Certification Works</a>.
+    </p>
+
+    <div class="callout-navy">
+      <p>
+        To confirm the status of a specific breeder, consult the
+        <a href="https://www.elitepetz.com/verify-certifications">Verify a Certification Record</a> page. Status is
+        retrieved directly from the public Certification Registry using the official Certification ID.
+      </p>
+    </div>
+
+    <div class="guide-list">
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Check for Certification Status</h3>
+          <p>
+            Start by determining whether the breeder is listed in a recognized
+            <a href="https://www.elitepetz.com/registry-overview">certification registry</a>.
+          </p>
+          <div class="mini-label">A certified breeder will have</div>
+          <ul class="enum">
+            <li>A verifiable certification ID</li>
+            <li>A public record</li>
+            <li>A defined certification status</li>
+          </ul>
+          <p style="margin-top:12px;">
+            Absence from a registry does not automatically indicate risk, but presence provides an additional layer of
+            transparency.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Review Public Information Consistency</h3>
+          <p>
+            Compare how the breeder presents themselves across platforms: website, social media, and marketplace
+            listings.
+          </p>
+          <p>
+            Look for consistent naming, stable contact details, and clear descriptions of breeding activity.
+            Inconsistencies may indicate misrepresentation.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Evaluate Transparency</h3>
+          <p>
+            A legitimate breeder should be willing to provide clear information about breeding practices, details about
+            animal care, and location and operating scope. Lack of transparency is a key risk signal.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Look for Verifiable History</h3>
+          <p>
+            A structured system should provide status history, activation or approval dates, and a record of any
+            enforcement actions. A breeder with no verifiable history requires additional scrutiny.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Understand What Certification Does and Does Not Mean</h3>
+          <p>
+            Certification indicates that a breeder has undergone review under defined
+            <a href="https://www.elitepetz.com/certificationstandardsframework">standards</a>. It does not guarantee
+            outcomes, replace due diligence, or eliminate all risk. Use certification as one component of your evaluation
+            process.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Watch for Common Warning Signs</h3>
+          <p>Be cautious if you encounter any of the following:</p>
+          <ul class="warn-list">
+            <li><span class="mark">&#10005;</span><span class="label">Pressure to complete transactions quickly</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">Lack of documentation</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">Refusal to provide verifiable information</span></li>
+            <li><span class="mark">&#10005;</span><span class="label">Inconsistent or changing details</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Use Structured Verification Systems</h3>
+          <p>
+            Whenever possible, rely on independent systems that maintain a
+            <a href="https://www.elitepetz.com/registry-overview">registry</a>, track status changes, and provide
+            verifiable identifiers.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout-navy">
+      <p>
+        Verification is not a single step; it is a process. Combining certification status, transparency, and
+        independent checks provides a more reliable basis for decision-making. For common questions, see the
+        <a href="https://www.elitepetz.com/faqs">FAQ</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 02 — WHAT CERTIFIED MEANS ────────────────────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>What Does "Certified Breeder" Actually Mean?</h2>
+      <span class="head-meta">SEC. 02 · Reading a Status</span>
+    </div>
+    <p class="section-intro">
+      The term "certified breeder" is often used informally, but its meaning depends on the system behind it.
+      Understanding what certification represents, and what it does not, is essential.
+    </p>
+
+    <div class="guide-list">
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Certification Is a Structured Evaluation</h3>
+          <p>
+            Certification is not a label applied arbitrarily. It is the result of a defined process that includes
+            submission of applicant information, review against published
+            <a href="https://www.elitepetz.com/certificationstandardsframework">standards</a>, administrative approval,
+            and issuance of certification status. A certified breeder has passed this structured evaluation.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Certification Creates a Verifiable Record</h3>
+          <p>
+            A key function of certification is the creation of a public record. This record typically includes a
+            certification ID, entity name, status, and activation date. This allows third parties to independently
+            <a href="https://www.elitepetz.com/verify-certifications">verify status</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Certification Is Not Permanent</h3>
+          <p>
+            Certification is dynamic. Statuses may change over time. A system that does not track status changes is
+            incomplete.
+          </p>
+          <div class="pill-row">
+            <span class="pill pill-active">Active (Certified)</span>
+            <span class="pill pill-suspended">Suspended</span>
+            <span class="pill pill-revoked">Revoked</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Certification Does Not Guarantee Outcomes</h3>
+          <p>
+            This is critical. Certification does not guarantee animal health, guarantee transaction outcomes, or
+            eliminate risk. It reflects a point-in-time evaluation within a structured system.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Certification Is Different From Licensing</h3>
+          <p>
+            Certification is typically independent, standards-based, and voluntary. Licensing is government-issued,
+            regulatory, and mandatory in certain cases. These systems may coexist but serve different roles.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="g-num"></div>
+        <div class="g-body">
+          <h3>Why Certification Exists</h3>
+          <p>
+            In industries where trust is informal, certification introduces structure, transparency, and verifiability.
+            It allows buyers to move from assumptions to documented status.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout-navy">
+      <p>
+        "Certified breeder" is not just a label; it is a status within a system. Understanding that system is essential
+        to interpreting what certification actually represents. For more answers, see the
+        <a href="https://www.elitepetz.com/faqs">FAQ</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ NOTE STRIP ───────────────────────────────────────────── -->
+<section class="faq-strip">
+  <div class="container">
+    <div class="fs-text">
+      For common questions about certification and verification, refer to the <strong>FAQ</strong> section.
+    </div>
+    <a href="https://www.elitepetz.com/faqs" class="btn btn-outline">Visit the FAQ <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ── CLOSING STATEMENT BAND ───────────────────────────────────── -->
+<section class="closing-band">
+  <div class="container">
+    <div class="cb-eyebrow">Public Verification</div>
+    <h2>Confirm a certification record before proceeding.</h2>
+    <p class="cb-sub">
+      Confirm the current status of a certification using its official Certification ID, or report a concern regarding a
+      listed entity.
+    </p>
+    <div class="cb-actions">
+      <a href="https://www.elitepetz.com/verify-certifications" class="btn btn-light">Verify a Record <span class="arrow">→</span></a>
+      <a href="https://www.elitepetz.com/contact-1" class="btn btn-ghost">Report a Concern <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://www.elitepetz.com/about-1">About</a>
+        <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/guidance">Guidance</a>
+        <a href="https://www.elitepetz.com/contact-1">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use-1">Terms</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
