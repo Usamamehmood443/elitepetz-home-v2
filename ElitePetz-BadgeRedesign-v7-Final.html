@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElitePetz — Certification Badges v7 (Final)</title>
+<meta name="description" content="Final ElitePetz badges: rounded corners + double dark/gold border, transparent outside the corners, all variants. Downloadable transparent PNGs.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --text:#1a1a1a; --sub:#6b7280; --line:#e5e7eb; --bg:#f4f5f7; --card:#ffffff;
+    --navy:#0B2545; --navy-hover:#143A66; --navy-tint:#EEF2F7; --green:#166534;
+    --serif:"Source Serif 4",Georgia,serif; --sans:"Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+  }
+  body { font-family:var(--sans); color:var(--text); background:var(--bg); line-height:1.55; -webkit-font-smoothing:antialiased; padding:48px 24px 96px; }
+  .wrap { max-width:1140px; margin:0 auto; }
+  h1,h2 { font-family:var(--serif); font-weight:600; color:var(--text); }
+  .doc-head { border-bottom:2px solid var(--navy); padding-bottom:22px; margin-bottom:14px; }
+  .doc-kicker { font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); margin-bottom:12px; }
+  .doc-head h1 { font-size:32px; line-height:1.2; margin-bottom:10px; }
+  .doc-head p { color:var(--sub); max-width:820px; font-size:15px; }
+  .meta-strip { display:flex; flex-wrap:wrap; gap:26px; font-family:var(--mono); font-size:12px; color:var(--sub); padding:14px 0 0; margin-bottom:34px; }
+  .meta-strip b { color:var(--text); font-weight:600; }
+  .callout { background:var(--card); border:1px solid var(--line); border-left:3px solid var(--navy); border-radius:8px; padding:18px 22px; margin-bottom:40px; font-size:14px; color:var(--sub); }
+  .callout h3 { font-size:13.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--text); margin-bottom:8px; font-family:var(--sans); font-weight:700; }
+  .callout ul { margin:8px 0 0 18px; } .callout li { margin-bottom:5px; }
+  .section { margin-bottom:52px; }
+  .section-head { display:flex; align-items:baseline; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .section-num { font-family:var(--mono); font-size:18px; font-weight:600; color:var(--navy); }
+  .section-head h2 { font-size:22px; }
+  .section-desc { color:var(--sub); font-size:14.5px; max-width:820px; margin-bottom:22px; }
+  .sub-title { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--sub); margin:0 0 16px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+
+  .gallery { display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; margin-bottom:22px; }
+  .bcard { border:1px solid var(--line); border-radius:14px; padding:22px; display:flex; flex-direction:column; align-items:center; gap:13px;
+    /* checkerboard so transparency is visible */
+    background: repeating-conic-gradient(#eceef1 0% 25%, #fafbfc 0% 50%) 50% / 20px 20px; }
+  .btag { font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:#4b5563; background:#fff; border:1px solid var(--line); border-radius:999px; padding:3px 10px; }
+  .stage { display:flex; align-items:center; justify-content:center; }
+  .stage svg { display:block; max-width:100%; height:auto; }
+  .dl { font-family:var(--sans); font-size:11.5px; font-weight:600; color:var(--navy); background:#fff; border:1px solid #c7d3e2; border-radius:6px; padding:5px 12px; cursor:pointer; }
+  .dl:hover { background:var(--navy-tint); }
+
+  /* In-context: colored site backgrounds to prove rounded transparency */
+  .device-row { display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start; }
+  .device { border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.07); }
+  .device .chrome { background:#eef0f3; border-bottom:1px solid var(--line); padding:9px 12px; display:flex; gap:6px; align-items:center; }
+  .device .chrome i { width:10px; height:10px; border-radius:50%; background:#cfd4da; display:block; }
+  .device .chrome .url { margin-left:10px; font-family:var(--mono); font-size:10.5px; color:var(--sub); background:#fff; border:1px solid var(--line); border-radius:5px; padding:2px 8px; }
+  .device.desktop { width:680px; max-width:100%; } .device.phone { width:300px; }
+  .site { background:#fff; }
+  .site .hero { padding:24px 26px; background:linear-gradient(135deg,#16223a,#0B2545); color:#fff; }
+  .site .brand { font-family:var(--serif); font-size:21px; font-weight:700; }
+  .site .brand small { display:block; font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#9db0cb; margin-top:3px; }
+  .site .trust { padding:22px 26px; background:#f7f8fa; border-top:1px solid #eef0f3; }
+  .site .trust .label { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:12px; }
+  .site .embed { display:inline-block; width:100%; max-width:360px; }
+  .site.tinted .trust { background:#0f1f17; } /* show light badge on dark site too */
+  .device.phone .embed { max-width:100%; }
+
+  .footer { border-top:1px solid var(--line); margin-top:36px; padding-top:28px; }
+  .footer h2 { font-size:20px; margin-bottom:14px; }
+  .footer ul { margin-left:20px; color:var(--sub); font-size:14px; } .footer li { margin-bottom:7px; }
+  .footer code { font-family:var(--mono); font-size:12.5px; background:#eef0f3; padding:1px 6px; border-radius:4px; color:var(--navy); }
+  .dl-all { margin-top:6px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; border:none; background:var(--navy); color:#fff; }
+  .btn:hover { background:var(--navy-hover); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <div class="doc-kicker">ElitePetz · Certification Authority</div>
+    <h1>Certification Badges — v7 (Final)</h1>
+    <p>Now with a <strong>double border</strong>
+       (dark outer line + fine gold inner line) and <strong>rounded corners</strong> on every variant. Everything outside the
+       rounded border is <strong>transparent</strong>, so the badge drops onto any breeder site as a clean rounded card. The
+       outer border is now <strong>deep navy</strong>, not grey.</p>
+  </header>
+
+  <div class="meta-strip">
+    <span>Document <b>Badges v7 Final</b></span>
+    <span>Sample <b>EP-CERT-2026-0003-7YB</b></span>
+    <span>Variants <b>300×100 · 600×200 · 1080×1080 · Light + Dark</b></span>
+    <span>Background <b>Transparent (PNG)</b></span>
+  </div>
+
+  <div class="callout">
+    <h3>Changes in this version</h3>
+    <ul>
+      <li><b>Rounded corners</b> on all variants.</li>
+      <li><b>Double border</b> — dark navy outer + fine gold inner hairline.</li>
+      <li><b>Outer border darkened</b> to deep navy <code style="font-family:var(--mono)">#0B2545</code> (was grey).</li>
+      <li><b>Transparent outside the corners</b> — the checkerboard behind each badge below shows the real transparency; the rounded card sits cleanly on any background.</li>
+      <li>Download buttons give you the actual <b>transparent PNGs</b> (rendered at 2× for crisp display).</li>
+    </ul>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><span class="section-num">01.</span><h2>The variants</h2></div>
+    <p class="section-desc">Each badge below sits on a transparency checkerboard — the rounded corners are genuinely cut out.
+      Click <em>Download PNG</em> to grab the real asset.</p>
+    <p class="sub-title">600 × 200 — primary web embed</p>
+    <div class="gallery" id="g600"></div>
+    <p class="sub-title">300 × 100 — compact</p>
+    <div class="gallery" id="g300"></div>
+    <p class="sub-title">1080 × 1080 — square / social</p>
+    <div class="gallery" id="g1080"></div>
+  </section>
+
+  <section class="section">
+    <!-- <div class="section-head"><span class="section-num">02.</span><h2>On a breeder's website</h2></div> -->
+    <!-- <p class="section-desc">Placed on coloured backgrounds, desktop + mobile — the rounded corners read correctly with no white box around them.</p> -->
+    <div class="device-row" id="context"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="section-num">02.</span><h2>Unified family</h2></div>
+    <p class="section-desc">Every designation on the final 600×200 frame.</p>
+    <div class="gallery" id="family"></div>
+  </section>
+
+  <footer class="footer">
+    <h2>Download everything</h2>
+    <p style="color:var(--sub);font-size:14px;margin-bottom:8px;">Grab all six core transparent PNGs at once:</p>
+    <button class="btn dl-all" id="dlAll">⤓ Download all 6 (Founding Certified Entity)</button>
+    <!-- <h2 style="margin-top:26px;">Implementation note</h2>
+    <ul>
+      <li>These render fully in code (vector logo + text), so the pipeline needs <b>no template images</b> — it outputs transparent PNGs directly and supports every designation + ID automatically.</li>
+      <li>Maps to <code>_renderOneBadge</code>: transparent canvas → rounded card fill → logo + text → double rounded border. Storage, email, and the download page are unchanged.</li>
+      <li>Outer border navy <code>#0B2545</code> / inner gold <code>#9C7A3C</code> (light); on dark badges, platinum outer + warm-gold inner. The inner hairline can be switched to neutral if you prefer pure monochrome — one line.</li>
+    </ul> -->
+  </footer>
+
+</div>
+
+<script>
+// ── Data ────────────────────────────────────────────────────────────────────
+const CERT_ID = "EP-CERT-2026-0003-7YB";
+const VERIFY_LONG = "Verify at elitepetz.com/verify";
+const VERIFY_SHORT = "elitepetz.com/verify";
+const SERIF = "'Source Serif 4', Georgia, serif";
+const SANS  = "'Inter', sans-serif";
+const MONO  = "'JetBrains Mono', monospace";
+const DPR = 2;
+
+const THEMES = {
+  light: { bg:"#ffffff", fg:"#111111", sub:"#6b7280", line:"#e3e7ec", accent:"#111111",
+           bOuter:"#0B2545", bInner:"#9C7A3C", gold:"#9C7A3C" },
+  dark:  { bg:"#13171c", fg:"#ffffff", sub:"#aeb6c0", line:"rgba(255,255,255,.18)", accent:"#ffffff",
+           bOuter:"#9FB0C7", bInner:"#C9A24B", gold:"#C9A24B" }
+};
+const DESIGS = {
+  certified:{ full:"ElitePetz Certified", short:"Certified" },
+  entity:   { full:"Founding Certified Entity", short:"Founding Entity" },
+  breeder:  { full:"Founding Certified Breeder", short:"Certified Breeder" },
+  verified: { full:"Publicly Verified Entity", short:"Verified Entity" }
+};
+
+// ── Official logo vector ─────────────────────────────────────────────────────
+const LOGO_VB_W = 359.614664, LOGO_VB_H = 383.305055, LOGO_R = LOGO_VB_H/LOGO_VB_W;
+const LOGO_XFORM = "translate(-19.112012,399.430590) scale(0.1,-0.1)";
+const LOGO_PATHS = [
+  "M1885 3993 c-430 -13 -841 -93 -1275 -250 -357 -129 -392 -164 -412 -416 -27 -344 25 -899 120 -1292 129 -532 375 -975 733 -1320 194 -187 385 -324 617 -442 233 -119 312 -134 449 -88 267 90 613 323 868 586 458 472 700 1058 780 1889 33 341 28 753 -10 843 -21 49 -80 114 -126 137 -98 51 -379 152 -565 204 -266 74 -605 132 -833 141 -75 3 -163 7 -196 8 -33 2 -100 2 -150 0z m431 -238 c292 -28 562 -85 829 -173 177 -59 354 -126 380 -146 26 -19 33 -88 34 -306 2 -565 -88 -1081 -260 -1489 -209 -495 -581 -903 -1054 -1155 -147 -79 -230 -109 -274 -101 -60 10 -312 139 -431 219 -155 105 -247 182 -374 310 -393 401 -617 907 -706 1600 -46 361 -54 876 -14 916 16 16 196 87 357 141 498 167 1022 231 1513 184z",
+  "M1613 3390 c-113 -27 -181 -138 -190 -310 -11 -192 67 -359 198 -425 111 -57 224 -6 285 127 24 54 29 79 32 170 4 89 1 119 -18 179 -55 181 -182 289 -307 259z",
+  "M2311 3389 c-193 -57 -301 -390 -198 -611 94 -202 299 -195 421 15 43 72 70 198 63 292 -9 130 -70 250 -146 289 -38 20 -101 26 -140 15z",
+  "M1112 2809 c-55 -16 -117 -87 -137 -155 -22 -76 -16 -196 15 -277 32 -85 104 -174 170 -211 45 -25 66 -31 117 -31 52 0 68 5 105 30 115 80 140 283 55 454 -68 136 -216 223 -325 190z",
+  "M2783 2806 c-110 -36 -207 -154 -246 -300 -10 -37 -24 -53 -91 -106 -63 -50 -81 -59 -87 -48 -96 171 -212 245 -373 236 -141 -8 -244 -82 -320 -228 -67 -129 -102 -176 -228 -308 -135 -141 -169 -196 -189 -303 -16 -88 5 -187 56 -264 96 -144 242 -180 470 -114 80 23 138 33 211 37 93 4 111 1 235 -33 231 -63 350 -46 455 67 72 77 89 124 89 248 0 99 -2 109 -33 173 -23 47 -61 96 -124 162 l-90 94 21 29 c38 54 47 57 81 28 119 -99 303 -20 391 169 121 257 -15 530 -228 461z m26 -293 c-247 -235 -427 -443 -676 -781 -63 -86 -119 -157 -123 -157 -5 0 -45 43 -90 95 -46 52 -125 141 -176 196 -52 56 -94 104 -94 106 0 8 148 118 157 118 5 0 49 -45 98 -99 50 -55 93 -100 96 -100 3 -1 53 52 111 117 145 163 338 331 518 452 75 51 239 140 258 140 7 0 -28 -39 -79 -87z"
+];
+let LOGO_P2D = null; const logoP2D = () => (LOGO_P2D || (LOGO_P2D = new Path2D(LOGO_PATHS.join(" "))));
+
+// ── Prim renderers ────────────────────────────────────────────────────────────
+function rrSVG(p){ return `<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="${p.rx}" ry="${p.rx}" fill="${p.fill||'none'}"${p.stroke?` stroke="${p.stroke}" stroke-width="${p.sw}"`:''}/>`; }
+function rrPath(ctx,x,y,w,h,r){ r=Math.min(r,w/2,h/2); ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+
+function renderSVG(W, H, prims) {
+  let s = "";
+  for (const p of prims) {
+    if (p.t === "rrect") s += rrSVG(p);
+    else if (p.t === "line") s += `<line x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}" stroke="${p.stroke}" stroke-width="${p.sw}"/>`;
+    else if (p.t === "diamond") s += `<rect x="${p.x-p.s/2}" y="${p.y-p.s/2}" width="${p.s}" height="${p.s}" fill="${p.fill}" transform="rotate(45 ${p.x} ${p.y})"/>`;
+    else if (p.t === "logo") { const h=p.w*LOGO_R, paths=LOGO_PATHS.map(d=>`<path d="${d}"/>`).join("");
+      s += `<svg x="${p.x}" y="${p.y}" width="${p.w}" height="${h}" viewBox="0 0 ${LOGO_VB_W} ${LOGO_VB_H}" overflow="visible"><g transform="${LOGO_XFORM}" fill="${p.color}">${paths}</g></svg>`; }
+    else if (p.t === "text") s += `<text x="${p.x}" y="${p.y}" text-anchor="${p.anchor||'middle'}" font-family="${p.f}" font-size="${p.size}" font-weight="${p.w||400}" fill="${p.fill}"${p.ls?` letter-spacing="${p.ls}"`:''}>${p.str}</text>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+function renderCanvas(ctx, prims) {
+  for (const p of prims) {
+    if (p.t === "rrect") {
+      rrPath(ctx, p.x, p.y, p.w, p.h, p.rx);
+      if (p.fill) { ctx.fillStyle = p.fill; ctx.fill(); }
+      if (p.stroke) { ctx.strokeStyle = p.stroke; ctx.lineWidth = p.sw; ctx.stroke(); }
+    }
+    else if (p.t === "line") { ctx.strokeStyle=p.stroke; ctx.lineWidth=p.sw; ctx.beginPath(); ctx.moveTo(p.x1,p.y1); ctx.lineTo(p.x2,p.y2); ctx.stroke(); }
+    else if (p.t === "diamond") { ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(Math.PI/4); ctx.fillStyle=p.fill; ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s); ctx.restore(); }
+    else if (p.t === "logo") { const h=p.w*LOGO_R; ctx.save(); ctx.translate(p.x,p.y); ctx.scale(p.w/LOGO_VB_W,h/LOGO_VB_H);
+      ctx.translate(-19.112012,399.430590); ctx.scale(0.1,-0.1); ctx.fillStyle=p.color; ctx.fill(logoP2D()); ctx.restore(); }
+    else if (p.t === "text") { ctx.textAlign=p.anchor==="start"?"left":(p.anchor==="end"?"right":"center"); ctx.textBaseline="alphabetic";
+      ctx.fillStyle=p.fill; ctx.font=`${p.w||400} ${p.size}px ${p.f}`; ctx.letterSpacing=(p.ls||0)+"px"; ctx.fillText(p.str,p.x,p.y); ctx.letterSpacing="0px"; }
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function desigLines(full) {
+  const up = full.toUpperCase();
+  if (up.length <= 18) return [up];
+  const w = up.split(" "); if (w.length < 2) return [up];
+  let best=1, bd=1e9;
+  for (let i=1;i<w.length;i++){ const d=Math.abs(w.slice(0,i).join(" ").length - w.slice(i).join(" ").length); if(d<bd){bd=d;best=i;} }
+  return [w.slice(0,best).join(" "), w.slice(best).join(" ")];
+}
+function stack(prims, items, x, anchor, top, bottom) {
+  const H = items.reduce((a,it)=> a + (it.kind==="logo"?it.w*LOGO_R:it.kind==="text"?it.size:0) + (it.gap||0), 0);
+  let y = top + ((bottom-top)-H)/2;
+  for (const it of items) {
+    if (it.kind==="logo") { prims.push({t:"logo", x: anchor==="middle"?x-it.w/2:x, y, w:it.w, color:it.color}); y += it.w*LOGO_R; }
+    else if (it.kind==="text") { prims.push({t:"text", x, y:y+it.size*0.80, str:it.str, f:it.f, size:it.size, w:it.w, fill:it.fill, ls:it.ls, anchor}); y += it.size; }
+    else if (it.kind==="rule") { prims.push({t:"line", x1:it.x1, y1:y, x2:it.x2, y2:y, stroke:it.color, sw:it.sw}); }
+    else if (it.kind==="golddiv") { prims.push({t:"line",x1:x-it.half,y1:y,x2:x-6,y2:y,stroke:it.color,sw:1});
+      prims.push({t:"line",x1:x+6,y1:y,x2:x+it.half,y2:y,stroke:it.color,sw:1}); prims.push({t:"diamond",x,y,s:it.s||6,fill:it.color}); }
+    if (it.gap) y += it.gap;
+  }
+}
+// Double rounded border + transparent-outside card fill, returned as prim helpers.
+function frame(W, H, t, rxFactor) {
+  const oSW = Math.max(1.6, H*0.013), oi = oSW/2 + 1, Ro = H*rxFactor;
+  const iGap = Math.max(3, H*0.035), iSW = Math.max(0.75, H*0.0055);
+  return {
+    fill: { t:"rrect", x:oi, y:oi, w:W-2*oi, h:H-2*oi, rx:Ro, fill:t.bg },
+    outer:{ t:"rrect", x:oi, y:oi, w:W-2*oi, h:H-2*oi, rx:Ro, stroke:t.bOuter, sw:oSW },
+    inner:{ t:"rrect", x:oi+iGap, y:oi+iGap, w:W-2*(oi+iGap), h:H-2*(oi+iGap), rx:Math.max(1,Ro-iGap), stroke:t.bInner, sw:iSW }
+  };
+}
+
+// ── Horizontal badge (3:1) ─────────────────────────────────────────────────────
+function composeH(W, H, t, dz, tier) {
+  const fr = frame(W, H, t, 0.16), prims = [fr.fill];
+  const p = Math.round(H*0.18), logoSide = H - 2*p, lw = logoSide/LOGO_R, colW = logoSide;
+  prims.push({ t:"logo", x: p + (colW-lw)/2, y: p, w: lw, color: t.accent });
+  const dx = p + colW + Math.round(p*0.65);
+  prims.push({ t:"line", x1:dx, y1:p+H*0.04, x2:dx, y2:H-p-H*0.04, stroke:t.line, sw:1 });
+  const tx = dx + Math.round(p*0.8), txR = W - p - H*0.04;
+  const items = [];
+  if (tier === "full") {
+    items.push({ kind:"text", str:"ELITEPETZ CERTIFIED™", f:SERIF, size:H*0.112, w:700, fill:t.fg, ls:0.3, gap:H*0.04 });
+    items.push({ kind:"rule", x1:tx, x2:txR, color:t.line, sw:1.2, gap:H*0.055 });
+    items.push({ kind:"text", str:dz.full.toUpperCase(), f:SANS, size:H*0.083, w:600, fill:t.fg, ls:1.5, gap:H*0.085 });
+    items.push({ kind:"text", str:"CERTIFICATION ID", f:SANS, size:H*0.044, w:700, fill:t.sub, ls:1.6, gap:H*0.028 });
+    items.push({ kind:"text", str:CERT_ID, f:MONO, size:H*0.073, w:500, fill:t.fg, gap:H*0.05 });
+    items.push({ kind:"text", str:VERIFY_LONG, f:SANS, size:H*0.058, w:500, fill:t.sub });
+  } else {
+    items.push({ kind:"text", str:"ELITEPETZ CERTIFIED™", f:SERIF, size:H*0.128, w:700, fill:t.fg, ls:0.2, gap:H*0.05 });
+    items.push({ kind:"text", str:dz.short.toUpperCase(), f:SANS, size:H*0.098, w:600, fill:t.fg, ls:1.1, gap:H*0.075 });
+    items.push({ kind:"text", str:CERT_ID, f:MONO, size:H*0.092, w:500, fill:t.fg, gap:H*0.06 });
+    items.push({ kind:"text", str:VERIFY_SHORT, f:SANS, size:H*0.08, w:500, fill:t.sub });
+  }
+  stack(prims, items, tx, "start", p, H-p);
+  prims.push(fr.outer, fr.inner);
+  return { W, H, prims };
+}
+
+// ── Square badge (1:1) — centred premium layout ────────────────────────────────
+function composeSquare(W, H, t, dz) {
+  const fr = frame(W, H, t, 0.055), prims = [fr.fill];
+  const cx = W/2, pad = W*0.12;
+  const items = [
+    { kind:"logo", w:W*0.255, color:t.accent, gap:W*0.030 },
+    { kind:"text", str:"ELITEPETZ CERTIFIED™", f:SERIF, size:W*0.050, w:700, fill:t.fg, ls:0.3, gap:W*0.020 },
+    { kind:"golddiv", half:W*0.10, s:W*0.018, color:t.gold, gap:W*0.030 }
+  ];
+  const dl = desigLines(dz.full);
+  dl.forEach((ln,i) => items.push({ kind:"text", str:ln, f:SANS, size:W*(dl.length>1?0.042:0.048), w:600, fill:t.fg, ls:2, gap: i<dl.length-1?W*0.012:W*0.045 }));
+  items.push({ kind:"text", str:"CERTIFICATION ID", f:SANS, size:W*0.024, w:700, fill:t.sub, ls:2, gap:W*0.016 });
+  items.push({ kind:"text", str:CERT_ID, f:MONO, size:W*0.040, w:500, fill:t.fg, gap:W*0.040 });
+  items.push({ kind:"text", str:VERIFY_SHORT, f:SANS, size:W*0.032, w:500, fill:t.sub });
+  stack(prims, items, cx, "middle", pad, H - pad - W*0.05);
+  prims.push({ t:"text", x:cx, y:H - pad*0.55, str:"INDEPENDENT CERTIFICATION AUTHORITY", f:SANS, size:W*0.022, w:600, fill:t.gold, ls:2, anchor:"middle" });
+  prims.push(fr.outer, fr.inner);
+  return { W, H, prims };
+}
+
+// ── DOM ────────────────────────────────────────────────────────────────────────
+function canvasEl(spec, dpr) {
+  const cv = document.createElement("canvas");
+  cv.width = spec.W*dpr; cv.height = spec.H*dpr; cv.style.width = spec.W+"px"; cv.style.height = spec.H+"px";
+  const ctx = cv.getContext("2d"); ctx.scale(dpr,dpr); renderCanvas(ctx, spec.prims);
+  return cv;
+}
+function downloadSpec(spec, filename) {
+  const cv = canvasEl(spec, DPR);
+  const a = document.createElement("a"); a.href = cv.toDataURL("image/png"); a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function card(tag, spec, filename) {
+  const c = document.createElement("div"); c.className = "bcard";
+  c.innerHTML = `<span class="btag">${tag}</span><div class="stage">${renderSVG(spec.W, spec.H, spec.prims)}</div>`;
+  if (filename) { const b = document.createElement("button"); b.className="dl"; b.textContent="⤓ Download PNG";
+    b.onclick = () => downloadSpec(spec, filename); c.appendChild(b); }
+  return c;
+}
+function fname(size, theme, dz){ return `ElitePetz-Badge-${size}-${theme}-${dz.full.replace(/\s+/g,'')}.png`; }
+
+function render() {
+  const sets = [
+    ["g600", "600x200", (t,dz)=>composeH(600,200,t,dz,"full")],
+    ["g300", "300x100", (t,dz)=>composeH(300,100,t,dz,"compact")],
+    ["g1080","1080x1080",(t,dz)=>composeSquare(1080>360?360:1080, 360, t, dz)] // display at 360; download at full below
+  ];
+  // 600 + 300 displayed/downloaded at native; 1080 displayed at 360 but downloaded at 1080
+  const g600 = document.getElementById("g600"); g600.innerHTML="";
+  ["light","dark"].forEach(th => g600.appendChild(card(th+" · 600×200", composeH(600,200,THEMES[th],DESIGS.entity,"full"), fname("600x200",th,DESIGS.entity))));
+  const g300 = document.getElementById("g300"); g300.innerHTML="";
+  ["light","dark"].forEach(th => g300.appendChild(card(th+" · 300×100", composeH(300,100,THEMES[th],DESIGS.entity,"compact"), fname("300x100",th,DESIGS.entity))));
+  const g1080 = document.getElementById("g1080"); g1080.innerHTML="";
+  ["light","dark"].forEach(th => {
+    const disp = composeSquare(360,360,THEMES[th],DESIGS.entity);
+    const c = card(th+" · 1080×1080", disp, null);
+    const b = document.createElement("button"); b.className="dl"; b.textContent="⤓ Download PNG (1080)";
+    b.onclick = () => downloadSpec(composeSquare(1080,1080,THEMES[th],DESIGS.entity), fname("1080x1080",th,DESIGS.entity));
+    c.appendChild(b); g1080.appendChild(c);
+  });
+
+  // Context (colored backgrounds)
+  const ctx = document.getElementById("context"); ctx.innerHTML="";
+  const badge = (th)=>renderSVG(...(()=>{const s=composeH(600,200,THEMES[th],DESIGS.entity,"full");return [s.W,s.H,s.prims];})());
+  const site = (tinted) => `<div class="site ${tinted?'tinted':''}">
+      <div class="hero"><div class="brand">Sunridge Kennels<small>Family Breeder · Est. 2009</small></div></div>
+      <div class="trust"><div class="label" ${tinted?'style="color:#7f8ea3"':''}>Independently Certified</div>
+        <div class="embed">${badge(tinted?'dark':'light')}</div></div></div>`;
+  const d = document.createElement("div"); d.className="device desktop";
+  d.innerHTML = `<div class="chrome"><i></i><i></i><i></i><span class="url">sunridgekennels.com</span></div>${site(false)}`;
+  // const ph = document.createElement("div"); ph.className="device phone";
+  // ph.innerHTML = `<div class="chrome"><i></i><i></i><i></i><span class="url">sunridge…</span></div>${site(true)}`;
+  // ctx.appendChild(d); ctx.appendChild(ph);
+
+  // Family
+  const fam = document.getElementById("family"); fam.innerHTML="";
+  for (const k of ["certified","entity","breeder","verified"])
+    fam.appendChild(card(DESIGS[k].full, composeH(600,200,THEMES.light,DESIGS[k],"full"), fname("600x200","light",DESIGS[k])));
+}
+document.getElementById("dlAll").addEventListener("click", () => {
+  const jobs = [];
+  ["light","dark"].forEach(th => {
+    jobs.push([composeH(600,200,THEMES[th],DESIGS.entity,"full"), fname("600x200",th,DESIGS.entity)]);
+    jobs.push([composeH(300,100,THEMES[th],DESIGS.entity,"compact"), fname("300x100",th,DESIGS.entity)]);
+    jobs.push([composeSquare(1080,1080,THEMES[th],DESIGS.entity), fname("1080x1080",th,DESIGS.entity)]);
+  });
+  jobs.forEach((j,i) => setTimeout(() => downloadSpec(j[0], j[1]), i*350));
+});
+
+render();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
+</script>
+</body>
+</html>
