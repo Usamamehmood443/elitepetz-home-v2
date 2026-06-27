@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How Certification Works — ElitePetz Certification Authority</title>
+<meta name="description" content="How ElitePetz Certification works — the documented administrative process from application and review through activation, the certification term, and renewal or status action.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── TOP META BAR ────────────────────────────────────────────── */
+  .top-meta { border-bottom: 1px solid var(--border-soft); padding: 8px 0; font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ── MASTHEAD ────────────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--border); padding: 26px 0 24px; background: #fff; }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org { display: flex; align-items: center; gap: 14px; text-decoration: none; border-bottom: none; color: var(--text); }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img { height: 88px; width: auto; max-width: 360px; object-fit: contain; display: block; }
+  .masthead .wordmark { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; line-height: 1.15; }
+  .masthead .wordmark .sub { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .masthead .topnav { display: flex; gap: 26px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a { color: inherit; border-bottom: 1px solid transparent; padding-bottom: 3px; font-weight: 500; }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .intro-block .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 18px; }
+  .intro-block h1 { font-size: 34px; line-height: 1.22; letter-spacing: -0.012em; font-weight: 600; margin-bottom: 22px; }
+  .intro-block .description { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text-muted); font-weight: 400; max-width: 760px; }
+
+  /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--bg-band); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.008em; font-weight: 600; }
+  .section-head .head-meta { font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; white-space: nowrap; }
+  .section-intro { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; max-width: 760px; }
+
+  /* ── PROSE + LIST HELPERS ────────────────────────────────────── */
+  .txt { font-family: var(--serif); font-size: 16px; line-height: 1.68; color: var(--text); max-width: 760px; }
+  .txt p { margin-bottom: 16px; }
+  .txt p:last-child { margin-bottom: 0; }
+  .txt .lede { font-size: 18.5px; line-height: 1.55; color: var(--text); margin-bottom: 22px; }
+  .sub-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin: 26px 0 10px; }
+  .note-line { font-family: var(--serif); font-size: 14.5px; line-height: 1.6; color: var(--text-muted); font-style: italic; margin-top: 18px; max-width: 760px; }
+
+  .enum { list-style: none; margin-top: 6px; border-top: 1px solid var(--border-soft); max-width: 760px; }
+  .enum li { position: relative; padding: 11px 0 11px 24px; border-bottom: 1px solid var(--border-soft); font-family: var(--serif); font-size: 15.5px; line-height: 1.5; color: var(--text); }
+  .enum li::before { content: "\203A"; position: absolute; left: 2px; top: 11px; color: var(--navy); font-weight: 700; }
+  .enum.links li a { color: var(--navy); font-weight: 500; }
+
+  .callout-navy { padding: 20px 26px; background: var(--navy-tint); border-left: 3px solid var(--navy); font-family: var(--serif); font-size: 16px; line-height: 1.6; color: var(--text); margin-top: 22px; max-width: 760px; }
+  .callout-navy p { margin-bottom: 10px; }
+  .callout-navy p:last-child { margin-bottom: 0; }
+
+  /* ── PROCESS SNAPSHOT BAND ───────────────────────────────────── */
+  .snapshot-band { background: var(--navy-tint); border-bottom: 1px solid var(--border); padding: 30px 0; }
+  .snapshot-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin-bottom: 18px; }
+  .snapshot { display: flex; align-items: stretch; gap: 6px; }
+  .snap-step {
+    flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 7px;
+    background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--navy); border-radius: 4px;
+    padding: 14px 14px;
+  }
+  .snap-step .n { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--navy); }
+  .snap-step .t { font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--text); line-height: 1.32; }
+  .snap-arrow { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; color: var(--navy); opacity: 0.4; font-weight: 700; font-size: 16px; }
+
+  @media (max-width: 820px) {
+    .snapshot { flex-direction: column; gap: 4px; }
+    .snap-step { flex: 1 1 auto; flex-direction: row; align-items: center; gap: 14px; border-top: 1px solid var(--border); border-left: 3px solid var(--navy); }
+    .snap-step .n { flex: 0 0 auto; }
+    .snap-arrow { transform: rotate(90deg); padding: 3px 0; font-size: 15px; }
+  }
+
+  /* ── LIFECYCLE STEP RAIL ─────────────────────────────────────── */
+  .steps { max-width: 820px; margin-top: 4px; position: relative; }
+  .step { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 26px; padding: 0 0 40px; }
+  .step:last-child { padding-bottom: 0; }
+  .step::before { content: ""; position: absolute; left: 31px; top: 56px; bottom: -4px; width: 1.5px; background: var(--border); }
+  .step:last-child::before { display: none; }
+  .step .marker { width: 64px; height: 64px; border-radius: 50%; border: 1.5px solid var(--navy); background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 1; flex-shrink: 0; }
+  .step .marker .lbl { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); line-height: 1; margin-bottom: 3px; }
+  .step .marker .num { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--navy); line-height: 1; }
+  .step .body { padding-top: 4px; }
+  .step .body h3 { font-size: 20px; line-height: 1.3; letter-spacing: -0.006em; margin-bottom: 12px; }
+  .step .body .txt { max-width: 700px; }
+  .step .body .enum { max-width: 700px; }
+  .step .body .pill-row { margin-top: 16px; }
+
+  /* ── PILLS ───────────────────────────────────────────────────── */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 4px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 11px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; font-family: var(--sans); white-space: nowrap; line-height: 1.3; }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; box-shadow: 0 0 0 2.5px rgba(255,255,255,0.55); }
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-claimed { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-expired { background: var(--expired-bg); color: var(--expired-fg); }
+  .pill-neutral { background: var(--soft-bg); color: var(--soft-fg); }
+
+  /* ── DECISION SPLIT CARDS ────────────────────────────────────── */
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; max-width: 700px; }
+  .dec-card { border: 1px solid var(--border); padding: 18px 20px; background: #fff; }
+  .dec-card.approved { border-left: 3px solid var(--active-fg); }
+  .dec-card.rejected { border-left: 3px solid var(--revoked-fg); background: var(--bg-band); }
+  .dec-card .dec-title { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 16px; font-weight: 600; margin-bottom: 7px; }
+  .dec-card .dec-title .ic { font-family: var(--sans); font-weight: 700; font-size: 14px; }
+  .dec-card.approved .dec-title .ic { color: var(--active-fg); }
+  .dec-card.rejected .dec-title .ic { color: var(--revoked-fg); }
+  .dec-card .dec-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── CLOSING STATEMENT BAND ──────────────────────────────────── */
+  .closing-band { background: var(--navy); color: #fff; padding: 52px 0; }
+  .closing-band .container { text-align: center; }
+  .closing-band .cb-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .closing-band h2 { color: #fff; font-size: 27px; line-height: 1.3; letter-spacing: -0.01em; max-width: 760px; margin: 0 auto 24px; }
+  .closing-band .cb-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FAQ NOTE STRIP ──────────────────────────────────────────── */
+  .faq-strip { padding: 32px 0; border-bottom: 1px solid var(--border); background: var(--bg-cream); }
+  .faq-strip .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .faq-strip .fs-text { font-family: var(--serif); font-size: 16px; color: var(--text); }
+  .faq-strip .fs-text strong { font-weight: 600; }
+
+  /* ── BUTTONS ─────────────────────────────────────────────────── */
+  .cert-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1; padding: 14px 26px; border-radius: 3px; border: 1.5px solid transparent; text-decoration: none; cursor: pointer; transition: background .12s, color .12s, border-color .12s; border-bottom: 1.5px solid transparent; }
+  .btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .btn-navy:hover { background: var(--navy-hover); border-color: var(--navy-hover); border-bottom: 1.5px solid var(--navy-hover); }
+  .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+  .btn-outline:hover { background: var(--navy-tint); border-bottom: 1.5px solid var(--navy); }
+  .btn-light { background: #fff; color: var(--navy); border-color: #fff; }
+  .btn-light:hover { background: var(--navy-tint); border-color: var(--navy-tint); border-bottom: 1.5px solid var(--navy-tint); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; border-bottom: 1.5px solid #fff; }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer.site-footer { background: #fff; padding: 28px 0 24px; border-top: 2px solid var(--text); }
+  footer.site-footer .footer-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer.site-footer .footer-row.top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border-soft); align-items: flex-end; }
+  footer.site-footer .brand .name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  footer.site-footer .brand .est { font-family: var(--mono); font-size: 11px; color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer.site-footer .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+  footer.site-footer .footer-nav a { color: var(--text); border: none; font-weight: 500; }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright, footer.site-footer .legal-links { font-size: 11.5px; color: var(--text-soft); letter-spacing: 0.01em; }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep { color: var(--text-soft); opacity: 0.5; margin: 0 4px; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .section-head { gap: 8px; }
+    .decision-grid { grid-template-columns: 1fr; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .step { grid-template-columns: 48px 1fr; gap: 18px; }
+    .step::before { left: 23px; top: 48px; }
+    .step .marker { width: 48px; height: 48px; }
+    .step .marker .num { font-size: 20px; }
+    .step .marker .lbl { font-size: 7.5px; }
+    .step .body h3 { font-size: 18px; }
+    .closing-band h2 { font-size: 22px; }
+    .cert-actions .btn, .cb-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP META BAR ─────────────────────────────────────────────── -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Documented Certification Process</div>
+    <div class="right">
+      <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/contact-1">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="container">
+    <a href="https://www.elitepetz.com/" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="https://www.elitepetz.com/">Home</a>
+      <a href="https://www.elitepetz.com/about-1">About</a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework" class="active">Certification</a>
+      <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+      <a href="https://www.elitepetz.com/verification-problem-companion-animal-breeding">Research</a>
+      <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+      <a href="https://www.elitepetz.com/contact-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── INTRO BLOCK ──────────────────────────────────────────────── -->
+<section class="intro-block">
+  <div class="container">
+    <div class="eyebrow">Certification · Process Overview</div>
+    <h1>How Certification Works</h1>
+    <p class="description">
+      Every certification follows the same documented administrative process, from application and review through
+      activation, ongoing certification, and renewal or enforcement. Each stage is recorded to preserve a consistent and
+      transparent certification history.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC 01 — OVERVIEW ────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Overview</h2>
+      <span class="head-meta">SEC. 01 · Process Summary</span>
+    </div>
+    <div class="txt">
+      <p class="lede">
+        Certification progresses through a documented sequence of administrative stages. Every application, decision,
+        activation, and later status change becomes part of the certification record.
+      </p>
+      <p>
+        The process is organized into six stages, giving applicants a clear path from submission to activation while
+        preserving a reliable record for future verification.
+      </p>
+    </div>
+
+    <div class="sub-label">Certification Stages</div>
+    <div class="pill-row">
+      <span class="pill pill-neutral">01 · Application</span>
+      <span class="pill pill-neutral">02 · Review</span>
+      <span class="pill pill-neutral">03 · Decision</span>
+      <span class="pill pill-claimed">04 · Activation</span>
+      <span class="pill pill-active">05 · Certification Term</span>
+      <span class="pill pill-expired">06 · Renewal or Status Action</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS SNAPSHOT BAND ────────────────────────────────────── -->
+<section class="snapshot-band">
+  <div class="container">
+    <div class="snapshot-label">Process Snapshot</div>
+    <div class="snapshot">
+      <div class="snap-step"><span class="n">01</span><span class="t">Application submitted</span></div>
+      <span class="snap-arrow" aria-hidden="true">&rarr;</span>
+      <div class="snap-step"><span class="n">02</span><span class="t">Review completed</span></div>
+      <span class="snap-arrow" aria-hidden="true">&rarr;</span>
+      <div class="snap-step"><span class="n">03</span><span class="t">Decision issued</span></div>
+      <span class="snap-arrow" aria-hidden="true">&rarr;</span>
+      <div class="snap-step"><span class="n">04</span><span class="t">Activation completed</span></div>
+      <span class="snap-arrow" aria-hidden="true">&rarr;</span>
+      <div class="snap-step"><span class="n">05</span><span class="t">Registry record published</span></div>
+      <span class="snap-arrow" aria-hidden="true">&rarr;</span>
+      <div class="snap-step"><span class="n">06</span><span class="t">Renewal or status action</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEC 02 — THE CERTIFICATION PROCESS (STEPS) ───────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>The Certification Process</h2>
+      <span class="head-meta">SEC. 02 · From Application to Registry Status</span>
+    </div>
+
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">1</span></div>
+        <div class="body">
+          <h3>Application Submission</h3>
+          <div class="txt">
+            <p>Applicants submit a certification application through the official ElitePetz application portal.</p>
+          </div>
+          <div class="sub-label">Required Information Includes</div>
+          <ul class="enum">
+            <li>Legal or operating name</li>
+            <li>Contact details</li>
+            <li>Country of operation</li>
+            <li>Species and breed focus</li>
+            <li>Description of breeding activity</li>
+            <li>Declaration of agreement with published standards</li>
+          </ul>
+          <p class="note-line">
+            Every submission creates an administrative record, regardless of the final certification outcome.
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">2</span></div>
+        <div class="body">
+          <h3>Administrative Review</h3>
+          <div class="txt">
+            <p>Each application undergoes administrative review against ElitePetz certification requirements.</p>
+          </div>
+          <div class="sub-label">Review May Include</div>
+          <ul class="enum">
+            <li>Review of submitted information</li>
+            <li>Verification of required disclosures</li>
+            <li>Assessment against certification requirements</li>
+          </ul>
+          <p class="note-line">
+            The Authority may request clarification or supporting documentation during this stage.
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">3</span></div>
+        <div class="body">
+          <h3>Decision</h3>
+          <div class="txt">
+            <p>Following review, one of the following determinations is issued:</p>
+          </div>
+          <div class="decision-grid">
+            <div class="dec-card approved">
+              <div class="dec-title"><span class="ic">&#10003;</span> Approved</div>
+              <div class="dec-desc">The application meets certification requirements and becomes eligible for activation.</div>
+            </div>
+            <div class="dec-card rejected">
+              <div class="dec-title"><span class="ic">&#10005;</span> Rejected</div>
+              <div class="dec-desc">The application does not meet certification requirements at the time of review.</div>
+            </div>
+          </div>
+          <p class="note-line">
+            Every decision is retained as part of the administrative certification record.
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">4</span></div>
+        <div class="body">
+          <h3>Activation</h3>
+          <div class="txt">
+            <p>
+              Approved applicants complete any remaining administrative requirements, including payment of applicable
+              certification fees. Once activation is completed, the certification becomes publicly active in the ElitePetz
+              Certification Registry.
+            </p>
+          </div>
+          <div class="callout-navy">
+            <p>
+              Certification is not active until activation has been completed and the public certification record has been
+              published.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">5</span></div>
+        <div class="body">
+          <h3>Certification Term</h3>
+          <div class="txt">
+            <p>
+              Once activated, certification remains valid for its published term unless renewed, suspended, revoked,
+              expired, or otherwise changed through the administrative process.
+            </p>
+          </div>
+          <div class="sub-label">During This Period</div>
+          <ul class="enum">
+            <li>Certification remains Active unless a later status action occurs</li>
+            <li>Complaints or evidence submissions may trigger review</li>
+            <li>Any status change becomes part of the certification history</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step">
+        <div class="marker"><span class="lbl">Step</span><span class="num">6</span></div>
+        <div class="body">
+          <h3>Renewal or Status Action</h3>
+          <div class="txt">
+            <p>
+              Before expiration, certified entities may apply for renewal. Depending on renewal outcomes, compliance
+              findings, or administrative review, certification may continue, expire, be suspended, or be revoked.
+            </p>
+          </div>
+          <div class="pill-row">
+            <span class="pill pill-active">Renewed</span>
+            <span class="pill pill-expired">Expired</span>
+            <span class="pill pill-suspended">Suspended</span>
+            <span class="pill pill-revoked">Revoked</span>
+          </div>
+          <p class="note-line">
+            All status actions are handled according to ElitePetz governance and enforcement policies.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING STATEMENT BAND ───────────────────────────────────── -->
+<section class="closing-band">
+  <div class="container">
+    <div class="cb-eyebrow">Documented Certification</div>
+    <h2>Trust is built through consistent certification, documented decisions, and transparent records.</h2>
+    <div class="cb-actions">
+      <a href="https://www.elitepetz.com/certificationapplication" class="btn btn-light">Apply for Certification <span class="arrow">→</span></a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework" class="btn btn-ghost">Standards Framework <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ NOTE STRIP ───────────────────────────────────────────── -->
+<section class="faq-strip">
+  <div class="container">
+    <div class="fs-text">
+      Looking for additional guidance? Visit the <strong>FAQ</strong> for answers about certification, verification, and
+      the public registry.
+    </div>
+    <a href="https://www.elitepetz.com/faqs" class="btn btn-outline">Visit the FAQ <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://www.elitepetz.com/about-1">About</a>
+        <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/contact-1">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use-1">Terms</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
