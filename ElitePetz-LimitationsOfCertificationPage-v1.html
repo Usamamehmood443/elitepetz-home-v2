@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Limitations of Certification — ElitePetz Certification Authority</title>
+<meta name="description" content="The defined limits of ElitePetz Certification — what certification does not represent, and the administrative approval it confirms within defined standards.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── TOP META BAR ────────────────────────────────────────────── */
+  .top-meta { border-bottom: 1px solid var(--border-soft); padding: 8px 0; font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ── MASTHEAD ────────────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--border); padding: 26px 0 24px; background: #fff; }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org { display: flex; align-items: center; gap: 14px; text-decoration: none; border-bottom: none; color: var(--text); }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img { height: 88px; width: auto; max-width: 360px; object-fit: contain; display: block; }
+  .masthead .wordmark { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; line-height: 1.15; }
+  .masthead .wordmark .sub { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .masthead .topnav { display: flex; gap: 26px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a { color: inherit; border-bottom: 1px solid transparent; padding-bottom: 3px; font-weight: 500; }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .intro-block .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 18px; }
+  .intro-block h1 { font-size: 34px; line-height: 1.22; letter-spacing: -0.012em; font-weight: 600; margin-bottom: 22px; }
+  .intro-block .description { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text-muted); font-weight: 400; max-width: 760px; }
+
+  /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--bg-band); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.008em; font-weight: 600; }
+  .section-head .head-meta { font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; white-space: nowrap; }
+  .section-intro { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; max-width: 760px; }
+
+  /* ── PROSE + LIST HELPERS ────────────────────────────────────── */
+  .txt { font-family: var(--serif); font-size: 16px; line-height: 1.68; color: var(--text); max-width: 760px; }
+  .txt p { margin-bottom: 16px; }
+  .txt p:last-child { margin-bottom: 0; }
+  .txt .lede { font-size: 18.5px; line-height: 1.55; color: var(--text); margin-bottom: 22px; }
+  .sub-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin: 26px 0 10px; }
+  .note-line { font-family: var(--serif); font-size: 14.5px; line-height: 1.6; color: var(--text-muted); font-style: italic; margin-top: 18px; max-width: 760px; }
+
+  .callout-navy { padding: 22px 28px; background: var(--navy-tint); border-left: 3px solid var(--navy); font-family: var(--serif); font-size: 16.5px; line-height: 1.6; color: var(--text); margin-top: 4px; max-width: 760px; }
+  .callout-navy p { margin-bottom: 10px; }
+  .callout-navy p:last-child { margin-bottom: 0; }
+
+  /* ── EXCLUSIONS CARD (does not) ──────────────────────────────── */
+  .scope-card { padding: 4px 28px 24px; background: var(--bg-band); border: 1px solid var(--border); border-left: 3px solid var(--revoked-fg); max-width: 760px; }
+  .scope-card .c-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--revoked-fg); padding: 22px 0 14px; border-bottom: 1px solid var(--border-soft); margin-bottom: 4px; }
+  .scope-card ul { list-style: none; }
+  .scope-card li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; padding: 13px 0; border-top: 1px solid var(--border-soft); align-items: baseline; }
+  .scope-card li:first-child { border-top: none; }
+  .scope-card li .mark { font-family: var(--sans); font-weight: 700; font-size: 15px; text-align: center; line-height: 1.3; color: var(--revoked-fg); }
+  .scope-card li .label { font-family: var(--serif); font-size: 16px; color: var(--text); line-height: 1.45; }
+
+  /* ── WHAT IT DOES MEAN CARD ──────────────────────────────────── */
+  .means-card { padding: 4px 28px 24px; background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--active-fg); max-width: 760px; }
+  .means-card .c-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--active-fg); padding: 22px 0 12px; }
+  .means-card p { font-family: var(--serif); font-size: 16.5px; line-height: 1.6; color: var(--text); }
+
+  /* ── CLOSING STATEMENT BAND ──────────────────────────────────── */
+  .closing-band { background: var(--navy); color: #fff; padding: 52px 0; }
+  .closing-band .container { text-align: center; }
+  .closing-band .cb-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .closing-band h2 { color: #fff; font-size: 27px; line-height: 1.3; letter-spacing: -0.01em; max-width: 720px; margin: 0 auto 24px; }
+  .closing-band .cb-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FAQ NOTE STRIP ──────────────────────────────────────────── */
+  .faq-strip { padding: 32px 0; border-bottom: 1px solid var(--border); background: var(--bg-cream); }
+  .faq-strip .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .faq-strip .fs-text { font-family: var(--serif); font-size: 16px; color: var(--text); }
+  .faq-strip .fs-text strong { font-weight: 600; }
+
+  /* ── BUTTONS ─────────────────────────────────────────────────── */
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1; padding: 14px 26px; border-radius: 3px; border: 1.5px solid transparent; text-decoration: none; cursor: pointer; transition: background .12s, color .12s, border-color .12s; border-bottom: 1.5px solid transparent; }
+  .btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .btn-navy:hover { background: var(--navy-hover); border-color: var(--navy-hover); border-bottom: 1.5px solid var(--navy-hover); }
+  .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+  .btn-outline:hover { background: var(--navy-tint); border-bottom: 1.5px solid var(--navy); }
+  .btn-light { background: #fff; color: var(--navy); border-color: #fff; }
+  .btn-light:hover { background: var(--navy-tint); border-color: var(--navy-tint); border-bottom: 1.5px solid var(--navy-tint); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; border-bottom: 1.5px solid #fff; }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer.site-footer { background: #fff; padding: 28px 0 24px; border-top: 2px solid var(--text); }
+  footer.site-footer .footer-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer.site-footer .footer-row.top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border-soft); align-items: flex-end; }
+  footer.site-footer .brand .name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  footer.site-footer .brand .est { font-family: var(--mono); font-size: 11px; color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer.site-footer .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+  footer.site-footer .footer-nav a { color: var(--text); border: none; font-weight: 500; }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright, footer.site-footer .legal-links { font-size: 11.5px; color: var(--text-soft); letter-spacing: 0.01em; }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep { color: var(--text-soft); opacity: 0.5; margin: 0 4px; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .section-head { gap: 8px; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .scope-card, .means-card { padding-left: 22px; padding-right: 22px; }
+    .closing-band h2 { font-size: 22px; }
+    .cb-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP META BAR ─────────────────────────────────────────────── -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Documented Certification Process</div>
+    <div class="right">
+      <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/contact-1">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="container">
+    <a href="https://www.elitepetz.com/" class="org">
+      <div class="mark" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="https://www.elitepetz.com/">Home</a>
+      <a href="https://www.elitepetz.com/about-1">About</a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework" class="active">Certification</a>
+      <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+      <a href="https://www.elitepetz.com/verification-problem-companion-animal-breeding">Research</a>
+      <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+      <a href="https://www.elitepetz.com/contact-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── INTRO BLOCK ──────────────────────────────────────────────── -->
+<section class="intro-block">
+  <div class="container">
+    <div class="eyebrow">Certification · Scope &amp; Limits</div>
+    <h1>Limitations of Certification</h1>
+    <p class="description">
+      ElitePetz Certification has a defined and bounded scope. This page sets out what certification does not represent,
+      so that its meaning is understood accurately by applicants, certified entities, and the public.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC 01 — WHAT CERTIFICATION DOES NOT DO ──────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What Certification Does Not Do</h2>
+      <span class="head-meta">SEC. 01 · Defined Limits</span>
+    </div>
+    <p class="section-intro" style="margin-bottom:18px;">ElitePetz Certification:</p>
+
+    <div class="scope-card">
+      <div class="c-label">Certification Does Not</div>
+      <ul>
+        <li><span class="mark">&#10005;</span><span class="label">Does not guarantee the quality of animals</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">Does not guarantee transaction outcomes</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">Does not act as a mediator in buyer-seller disputes</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">Does not replace regulatory licensing requirements</span></li>
+        <li><span class="mark">&#10005;</span><span class="label">Does not supervise daily operations</span></li>
+      </ul>
+    </div>
+
+    <p class="note-line">
+      These limits define the boundary of certification and apply throughout the certification period.
+    </p>
+  </div>
+</section>
+
+<!-- ── SEC 02 — WHAT CERTIFICATION REPRESENTS ───────────────────── -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>What Certification Represents</h2>
+      <span class="head-meta">SEC. 02 · Within Defined Standards</span>
+    </div>
+
+    <div class="means-card">
+      <div class="c-label">Certification Reflects</div>
+      <p>Certification reflects documented administrative approval within defined standards.</p>
+    </div>
+
+    <div class="callout-navy" style="margin-top:22px;">
+      <p>
+        Certification confirms that an applicant met the Authority's published standards at the time of review. It is an
+        administrative determination, recorded as part of the permanent certification record, and remains subject to
+        ongoing compliance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING STATEMENT BAND ───────────────────────────────────── -->
+<section class="closing-band">
+  <div class="container">
+    <div class="cb-eyebrow">Defined Scope</div>
+    <h2>A clear scope is part of a credible standard.</h2>
+    <div class="cb-actions">
+      <a href="https://www.elitepetz.com/certificationstandardsframework" class="btn btn-light">Standards Framework <span class="arrow">→</span></a>
+      <a href="https://www.elitepetz.com/guidance" class="btn btn-ghost">Verification Guidance <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ NOTE STRIP ───────────────────────────────────────────── -->
+<section class="faq-strip">
+  <div class="container">
+    <div class="fs-text">
+      Looking for additional guidance? Visit the <strong>FAQ</strong> for answers about certification, verification, and
+      the public registry.
+    </div>
+    <a href="https://www.elitepetz.com/faqs" class="btn btn-outline">Visit the FAQ <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://www.elitepetz.com/about-1">About</a>
+        <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/contact-1">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use-1">Terms</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
