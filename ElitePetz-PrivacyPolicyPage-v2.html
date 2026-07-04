@@ -112,8 +112,9 @@
   .quicknav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
   .quicknav .container { display: flex; align-items: center; gap: 8px 22px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
   .quicknav .qn-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); margin-right: 2px; }
-  .quicknav a { font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--text-muted); border-bottom: none; white-space: nowrap; }
+  .quicknav a { font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--text-muted); border-bottom: 2px solid transparent; padding-bottom: 2px; white-space: nowrap; transition: color .12s, border-color .12s; }
   .quicknav a:hover { color: var(--navy); }
+  .quicknav a.active { color: var(--navy); font-weight: 600; border-bottom-color: var(--navy); }
 
   /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
   .section { padding: 52px 0; border-bottom: 1px solid var(--border); }
@@ -629,6 +630,61 @@
     </div>
   </div>
 </footer>
+
+<!-- ── QUICK-NAV SCROLLSPY ───────────────────────────────────────── -->
+<script>
+(function () {
+  var nav = document.querySelector('.quicknav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+
+  // Pair each link with its target section, then order by document position
+  // (the nav is curated, not in strict section order).
+  var targets = links
+    .map(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      return el ? { a: a, el: el } : null;
+    })
+    .filter(Boolean)
+    .sort(function (x, y) {
+      return (x.el.compareDocumentPosition(y.el) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+  if (!targets.length) return;
+
+  function threshold() { return nav.offsetHeight + 28; }
+
+  function setActive(link) {
+    links.forEach(function (a) { a.classList.toggle('active', a === link); });
+  }
+
+  function onScroll() {
+    var line = window.scrollY + threshold();
+    var current = targets[0];
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i].el.getBoundingClientRect().top + window.scrollY <= line) {
+        current = targets[i];
+      } else {
+        break;
+      }
+    }
+    // Snap to the last item once the page is scrolled to the bottom.
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 2) {
+      current = targets[targets.length - 1];
+    }
+    setActive(current.a);
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
 
 </body>
 </html>
