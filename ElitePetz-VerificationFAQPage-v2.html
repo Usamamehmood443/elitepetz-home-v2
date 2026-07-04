@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Breeder Verification &amp; Certification FAQ | ElitePetz Certification Authority</title>
+<meta name="description" content="Frequently asked questions about breeder verification and certification: how to verify a breeder, certification statuses (Approved, Active, Suspended, Revoked, Expired), the public registry, Certification IDs, renewal, and what a certified status means." />
+<meta name="keywords" content="breeder verification, breeder certification, certified breeder, verify a breeder, certification status, certification ID, breeder registry, ElitePetz certification" />
+<meta name="author" content="ElitePetz Certification Authority" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="theme-color" content="#0B2545" />
+<link rel="canonical" href="https://www.elitepetz.com/verification-faq" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ElitePetz Certification Authority" />
+<meta property="og:title" content="Breeder Verification &amp; Certification FAQ | ElitePetz" />
+<meta property="og:description" content="Learn how breeder certification works, how to verify a certification record, what the certification statuses mean, and how the ElitePetz Certification Authority maintains the public registry." />
+<meta property="og:url" content="https://www.elitepetz.com/verification-faq" />
+<meta property="og:image" content="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Breeder Verification &amp; Certification FAQ | ElitePetz" />
+<meta name="twitter:description" content="How to verify a breeder, certification statuses, Certification IDs, the public registry, renewal, and what a certified status means." />
+<meta name="twitter:image" content="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:           #1a1a1a;
+    --text-muted:     #6b7280;
+    --text-soft:      #9ca3af;
+    --border:         #e5e7eb;
+    --border-soft:    #f0f1f3;
+    --bg:             #ffffff;
+    --bg-band:        #fafafa;
+    --bg-cream:       #fbfaf7;
+
+    --navy:           #0B2545;
+    --navy-hover:     #143A66;
+    --navy-tint:      #EEF2F7;
+
+    --active-bg: #E8F5E9; --active-fg: #2E7D32;
+    --claimed-bg: #FEF3C7; --claimed-fg: #92400E;
+    --suspended-bg: #FFEDD5; --suspended-fg: #9A3412;
+    --revoked-bg: #FEE2E2; --revoked-fg: #991B1B;
+    --expired-bg: #E0E7FF; --expired-fg: #3730A3;
+    --soft-bg: #F3F4F6; --soft-fg: #6b7280;
+
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; color: var(--text); }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .1s; }
+  a:hover { border-bottom-color: var(--navy); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── TOP META BAR ────────────────────────────────────────────── */
+  .top-meta { border-bottom: 1px solid var(--border-soft); padding: 8px 0; font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; }
+  .top-meta .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-meta a { color: var(--text-muted); border-bottom: none; }
+  .top-meta a:hover { color: var(--navy); }
+  .top-meta .right { display: flex; gap: 22px; align-items: center; }
+  .top-meta .sep { color: var(--text-soft); opacity: 0.5; }
+
+  /* ── MASTHEAD ────────────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--border); padding: 26px 0 24px; background: #fff; }
+  .masthead .container { display: flex; align-items: center; justify-content: space-between; }
+  .masthead .org { display: flex; align-items: center; gap: 14px; text-decoration: none; border-bottom: none; color: var(--text); }
+  .masthead .mark { height: 88px; display: flex; align-items: center; }
+  .masthead .mark img { height: 88px; width: auto; max-width: 360px; object-fit: contain; display: block; }
+  .masthead .wordmark { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; line-height: 1.15; }
+  .masthead .wordmark .sub { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .masthead .topnav { display: flex; gap: 24px; font-size: 14px; color: var(--text); }
+  .masthead .topnav a { color: inherit; border-bottom: 1px solid transparent; padding-bottom: 3px; font-weight: 500; }
+  .masthead .topnav a:hover { color: var(--navy); }
+  .masthead .topnav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .intro-block .eyebrow { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 18px; }
+  .intro-block h1 { font-size: 34px; line-height: 1.22; letter-spacing: -0.012em; font-weight: 600; margin-bottom: 22px; }
+  .intro-block .description { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--text-muted); font-weight: 400; max-width: 780px; }
+  .intro-block .intro-meta { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; color: var(--text-soft); margin-top: 22px; text-transform: uppercase; }
+
+  /* ── SECTION PRIMITIVES ──────────────────────────────────────── */
+  .section { padding: 54px 0; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--bg-band); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.008em; font-weight: 600; }
+  .section-head .head-meta { font-size: 11.5px; color: var(--text-soft); font-family: var(--mono); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* ── FAQ LIST ────────────────────────────────────────────────── */
+  main.faq-main { counter-reset: faq; }
+  .faq-list { max-width: 860px; margin-top: 4px; }
+  .faq-item { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding: 26px 0; border-bottom: 1px solid var(--border-soft); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item .q-num { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--navy); padding-top: 3px; }
+  .faq-item .q-num::before { counter-increment: faq; content: counter(faq, decimal-leading-zero); }
+  .faq-body h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing: -0.004em; margin-bottom: 10px; }
+  .faq-body p { font-family: var(--serif); font-size: 15.5px; line-height: 1.66; color: var(--text-muted); max-width: 730px; }
+  .faq-body p a { color: var(--navy); font-weight: 500; }
+  .faq-body p + p { margin-top: 10px; }
+
+  /* ── STATUS DEFINITIONS (Q10) ────────────────────────────────── */
+  .status-defs { list-style: none; margin-top: 14px; max-width: 760px; }
+  .status-defs li { display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--border-soft); flex-wrap: wrap; }
+  .status-defs li:last-child { border-bottom: none; }
+  .status-defs .pill-cell { flex: 0 0 auto; min-width: 232px; }
+  .status-defs .d { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--text-muted); flex: 1 1 260px; }
+
+  /* ── ENUM (Q7) ───────────────────────────────────────────────── */
+  .enum { list-style: none; margin: 12px 0 4px; border-top: 1px solid var(--border-soft); max-width: 620px; }
+  .enum li { position: relative; padding: 9px 0 9px 24px; border-bottom: 1px solid var(--border-soft); font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--text); }
+  .enum li::before { content: "\203A"; position: absolute; left: 2px; top: 9px; color: var(--navy); font-weight: 700; }
+
+  /* ── PILLS ───────────────────────────────────────────────────── */
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 11px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; font-family: var(--sans); white-space: nowrap; line-height: 1.3; }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; box-shadow: 0 0 0 2.5px rgba(255,255,255,0.55); }
+  .pill-approved { background: var(--claimed-bg); color: var(--claimed-fg); }
+  .pill-active { background: var(--active-bg); color: var(--active-fg); }
+  .pill-suspended { background: var(--suspended-bg); color: var(--suspended-fg); }
+  .pill-revoked { background: var(--revoked-bg); color: var(--revoked-fg); }
+  .pill-expired { background: var(--expired-bg); color: var(--expired-fg); }
+
+  /* ── RELATED GUIDANCE CARDS ──────────────────────────────────── */
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .related-card { display: block; border: 1px solid var(--border); border-left: 3px solid var(--navy); background: #fff; padding: 22px 22px 20px; transition: background .12s; }
+  .related-card:hover { background: var(--bg-band); }
+  .related-card .rc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 10px; }
+  .related-card h3 { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--text); margin-bottom: 12px; }
+  .related-card .rc-go { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--navy); }
+
+  /* ── CLOSING STATEMENT BAND ──────────────────────────────────── */
+  .closing-band { background: var(--navy); color: #fff; padding: 52px 0; }
+  .closing-band .container { text-align: center; }
+  .closing-band .cb-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .closing-band h2 { color: #fff; font-size: 27px; line-height: 1.3; letter-spacing: -0.01em; max-width: 720px; margin: 0 auto 16px; }
+  .closing-band .cb-sub { font-family: var(--serif); font-size: 16px; color: rgba(255,255,255,0.72); max-width: 620px; margin: 0 auto 24px; }
+  .closing-band .cb-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── BUTTONS ─────────────────────────────────────────────────── */
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1; padding: 14px 26px; border-radius: 3px; border: 1.5px solid transparent; text-decoration: none; cursor: pointer; transition: background .12s, color .12s, border-color .12s; border-bottom: 1.5px solid transparent; }
+  .btn-light { background: #fff; color: var(--navy); border-color: #fff; }
+  .btn-light:hover { background: var(--navy-tint); border-color: var(--navy-tint); border-bottom: 1.5px solid var(--navy-tint); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; border-bottom: 1.5px solid #fff; }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer.site-footer { background: #fff; padding: 28px 0 24px; border-top: 2px solid var(--text); }
+  footer.site-footer .footer-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer.site-footer .footer-row.top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border-soft); align-items: flex-end; }
+  footer.site-footer .brand .name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  footer.site-footer .brand .est { font-family: var(--mono); font-size: 11px; color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer.site-footer .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+  footer.site-footer .footer-nav a { color: var(--text); border: none; font-weight: 500; }
+  footer.site-footer .footer-nav a:hover { color: var(--navy); }
+  footer.site-footer .copyright, footer.site-footer .legal-links { font-size: 11.5px; color: var(--text-soft); letter-spacing: 0.01em; }
+  footer.site-footer .legal-links a { color: var(--text-soft); border: none; }
+  footer.site-footer .legal-links a:hover { color: var(--navy); }
+  footer.site-footer .legal-links .sep { color: var(--text-soft); opacity: 0.5; margin: 0 4px; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .container { padding: 0 32px; }
+    .top-meta .container { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .masthead .container { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .masthead .topnav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .intro-block h1 { font-size: 28px; }
+    .section-head { gap: 8px; }
+    .related-grid { grid-template-columns: 1fr; }
+    footer.site-footer .footer-row { gap: 14px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 22px; }
+    .intro-block { padding: 40px 0 28px; }
+    .intro-block h1 { font-size: 24px; }
+    .faq-item { grid-template-columns: 34px 1fr; gap: 14px; }
+    .status-defs .pill-cell { min-width: 0; }
+    .closing-band h2 { font-size: 22px; }
+    .cb-actions .btn { width: 100%; justify-content: center; }
+    footer.site-footer .footer-nav { gap: 14px 18px; }
+  }
+</style>
+
+<!-- ── STRUCTURED DATA: FAQPage (enables FAQ rich results) ──────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Breeder Verification & Certification FAQ",
+  "url": "https://www.elitepetz.com/verification-faq",
+  "inLanguage": "en-US",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is breeder certification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Breeder certification is an independent assessment process conducted by a certification authority to determine whether an applicant meets defined standards. Certification results in the issuance of a formal status recorded within a public registry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does certification represent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification indicates that an applicant has undergone review and met defined criteria. It reflects compliance with the Authority's standards at the time of evaluation. It is not a guarantee of future conduct or transaction outcomes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can apply for certification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification is available to eligible companion animal breeding operations, including breeders, kennels and catteries, provided they meet eligibility criteria and submit verifiable information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is certification permanent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Certification remains valid only while the entity continues to meet applicable standards and conditions. It may be suspended or revoked if those conditions are not maintained."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does certification guarantee a safe or successful transaction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Certification does not guarantee transaction outcomes, animal health, or future performance. It documents the outcome of an independent certification review. Independent due diligence remains necessary."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I verify a breeder's certification status?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every certified entity has a publicly accessible certification record that can be searched using its Certification ID through the official ElitePetz registry. Each record includes a certification identifier, status classification, and activation date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What information is available in the public registry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The registry provides a standardized record that includes the Certification ID, business or entity name, country of operation, species or breed category, certification status, activation date, and expiration date. Additional registry fields may be introduced as the certification framework evolves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Certification ID?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every certified entity receives a unique Certification ID when certification is issued. This permanent identifier allows anyone to locate the official certification record in the public registry and helps distinguish it from similarly named businesses or breeders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can anyone search the certification registry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The ElitePetz public registry is available to anyone without creating an account. Visitors can search by Certification ID or other available search criteria to confirm whether a certification record exists and review its current public status."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the possible certification statuses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification status is classified as Approved / Invited for Certification, meaning the application has been approved and the applicant is invited to complete certification; Active, meaning certification is currently valid; Suspended, meaning certification is temporarily restricted pending review or corrective action; Revoked, meaning certification has been permanently withdrawn; and Expired, meaning certification has lapsed and is no longer active pending renewal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can certification status change over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Certification is not static. Status may change based on new information, compliance reviews, or enforcement actions. All status changes are recorded within a structured history under the governance framework."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is recorded in certification status history?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification history records significant public status changes over time, including activation, suspension, expiration, revocation, and reinstatement where applicable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a revoked certification be restored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A previously revoked entity may submit a new application where permitted by the Authority's policies. Any new certification decision is evaluated independently and recorded as part of the public record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often is certification renewed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification is issued for a defined validity period and must be renewed before expiration to remain active. Renewal requirements, applicable fees, and validity periods are described in the Fees & Validity section of the certification framework."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is certification different from government licensing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification is an independent, standards-based process conducted by a private authority. Government licensing is regulatory and issued by public agencies. The two systems serve different functions and may operate in parallel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ElitePetz affiliated with any government or trade organization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ElitePetz Certification Authority operates independently and is not affiliated with any government body, regulatory agency, or trade association."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the purpose of certification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Certification introduces structure, transparency, and verifiable status into an industry that often relies on informal trust. It allows third parties to independently confirm whether an entity has undergone formal review."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ElitePetz investigate or enforce legal violations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ElitePetz Certification Authority does not act as a regulatory or law enforcement body. Its role is limited to certification, status tracking, and enforcement within its own governance framework."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ── STRUCTURED DATA: BreadcrumbList ─────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.elitepetz.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Verification Guidance", "item": "https://www.elitepetz.com/guidance" },
+    { "@type": "ListItem", "position": 3, "name": "Breeder Verification & Certification FAQ", "item": "https://www.elitepetz.com/verification-faq" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ── TOP META BAR ─────────────────────────────────────────────── -->
+<div class="top-meta">
+  <div class="container">
+    <div class="left">Independent Certification Body</div>
+    <div class="right">
+      <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/contact-1">Report a concern</a>
+      <span class="sep">·</span>
+      <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="container">
+    <a href="https://www.elitepetz.com/" class="org">
+      <div class="mark">
+        <img src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg" alt="ElitePetz Certification Authority" width="88" height="88" />
+      </div>
+      <div class="wordmark">
+        ElitePetz
+        <span class="sub">Certification Authority</span>
+      </div>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="https://www.elitepetz.com/">Home</a>
+      <a href="https://www.elitepetz.com/about-1">About</a>
+      <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+      <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+      <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+      <a href="https://www.elitepetz.com/guidance">Guidance</a>
+      <a href="https://www.elitepetz.com/contact-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="faq-main">
+
+<!-- ── INTRO BLOCK ──────────────────────────────────────────────── -->
+<section class="intro-block">
+  <div class="container">
+    <div class="eyebrow">Verification · Frequently Asked Questions</div>
+    <h1>Breeder Verification &amp; Certification FAQ</h1>
+    <p class="description">
+      Learn how breeder certification works, what certification does and does not represent, how to verify a
+      certification record, and how the ElitePetz Certification Authority maintains the public registry.
+    </p>
+    <div class="intro-meta">Reference Guide &bull; Public Registry &bull; Certification Standards &bull; Governance</div>
+  </div>
+</section>
+
+<!-- ══ SECTION 1 · UNDERSTANDING CERTIFICATION ══════════════════════ -->
+<section class="section" id="understanding-certification" aria-labelledby="sec1-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="sec1-heading">Understanding Certification</h2>
+      <span class="head-meta">SEC. 01 &middot; Certification Basics &middot; Eligibility &middot; Scope</span>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What is breeder certification?</h3>
+          <p>
+            Breeder <a href="https://www.elitepetz.com/certificationstandardsframework">certification</a> is an
+            independent assessment process conducted by a certification authority to determine whether an applicant meets
+            defined standards. Certification results in the issuance of a formal status recorded within a public registry.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What does certification represent?</h3>
+          <p>
+            Certification indicates that an applicant has undergone review and met defined criteria. It reflects
+            compliance with the Authority's standards at the time of evaluation. It is not a guarantee of future conduct
+            or transaction outcomes.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Who can apply for certification?</h3>
+          <p>
+            <a href="https://www.elitepetz.com/certificationapplication">Certification</a> is available to eligible
+            companion animal breeding operations, including breeders, kennels and catteries, provided they meet
+            eligibility criteria and submit verifiable information.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Is certification permanent?</h3>
+          <p>
+            No. Certification remains valid only while the entity continues to meet applicable standards and conditions.
+            It may be suspended or revoked if those conditions are not maintained.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Does certification guarantee a safe or successful transaction?</h3>
+          <p>
+            No. Certification does not guarantee transaction outcomes, animal health, or future performance. It documents
+            the outcome of an independent certification review. Independent due diligence remains necessary.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2 · VERIFICATION & PUBLIC REGISTRY ═══════════════════ -->
+<section class="section alt" id="verification-registry" aria-labelledby="sec2-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="sec2-heading">Verification &amp; Public Registry</h2>
+      <span class="head-meta">SEC. 02 &middot; Certification Records &middot; Public Registry &middot; Verification</span>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>How can I verify a breeder's certification status?</h3>
+          <p>
+            Every certified entity has a publicly accessible certification record that can be searched using its
+            Certification ID through the official
+            <a href="https://www.elitepetz.com/verify-certifications">ElitePetz registry</a>. Each record includes a
+            certification identifier, status classification, and activation date.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What information is available in the public registry?</h3>
+          <p>
+            The <a href="https://www.elitepetz.com/registry-overview">registry</a> provides a standardized record that
+            includes:
+          </p>
+          <ul class="enum">
+            <li>Certification ID</li>
+            <li>Business or entity name</li>
+            <li>Country of operation</li>
+            <li>Species / Breed Category</li>
+            <li>Certification status</li>
+            <li>Activation date</li>
+            <li>Expiration date</li>
+          </ul>
+          <p style="margin-top:10px;">Additional registry fields may be introduced as the certification framework evolves.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What is a Certification ID?</h3>
+          <p>
+            Every certified entity receives a unique Certification ID when certification is issued. This permanent
+            identifier allows anyone to locate the official certification record in the
+            <a href="https://www.elitepetz.com/registry-overview">public registry</a> and helps distinguish it from
+            similarly named businesses or breeders.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Can anyone search the certification registry?</h3>
+          <p>
+            Yes. The ElitePetz public registry is available to anyone without creating an account. Visitors can search by
+            Certification ID or other available search criteria to confirm whether a certification record exists and
+            review its current public status.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 3 · CERTIFICATION STATUS & LIFECYCLE ═════════════════ -->
+<section class="section" id="status-lifecycle" aria-labelledby="sec3-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="sec3-heading">Certification Status &amp; Lifecycle</h2>
+      <span class="head-meta">SEC. 03 &middot; Status Definitions &middot; Status History &middot; Renewal</span>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What are the possible certification statuses?</h3>
+          <p>Certification status is classified as follows:</p>
+          <ul class="status-defs">
+            <li><span class="pill-cell"><span class="pill pill-approved">Approved / Invited</span></span><span class="d">The application has been approved and the applicant is invited to complete certification.</span></li>
+            <li><span class="pill-cell"><span class="pill pill-active">Active</span></span><span class="d">Certification is currently valid.</span></li>
+            <li><span class="pill-cell"><span class="pill pill-suspended">Suspended</span></span><span class="d">Certification is temporarily restricted pending review or corrective action.</span></li>
+            <li><span class="pill-cell"><span class="pill pill-revoked">Revoked</span></span><span class="d">Certification has been permanently withdrawn.</span></li>
+            <li><span class="pill-cell"><span class="pill pill-expired">Expired</span></span><span class="d">Certification has lapsed and is no longer active pending renewal.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Can certification status change over time?</h3>
+          <p>
+            Yes. Certification is not static. Status may change based on new information, compliance reviews, or
+            enforcement actions. All status changes are recorded within a structured history under the
+            <a href="https://www.elitepetz.com/governance-framework">governance framework</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What is recorded in certification status history?</h3>
+          <p>
+            Certification history records significant public status changes over time, including activation, suspension,
+            expiration, revocation, and reinstatement where applicable.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Can a revoked certification be restored?</h3>
+          <p>
+            A previously revoked entity may submit a new application where permitted by the Authority's policies. Any new
+            certification decision is evaluated independently and recorded as part of the public record.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>How often is certification renewed?</h3>
+          <p>
+            Certification is issued for a defined validity period and must be renewed before expiration to remain active.
+            Renewal requirements, applicable fees, and validity periods are described in the
+            <a href="https://www.elitepetz.com/fee-validity">Fees &amp; Validity</a> section of the certification
+            framework.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4 · ABOUT THE AUTHORITY ══════════════════════════════ -->
+<section class="section alt" id="about-authority" aria-labelledby="sec4-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="sec4-heading">About the Authority</h2>
+      <span class="head-meta">SEC. 04 &middot; Governance &middot; Independence &middot; Authority</span>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>How is certification different from government licensing?</h3>
+          <p>
+            Certification is an independent, standards-based process conducted by a private authority. Government
+            licensing is regulatory and issued by public agencies. The two systems serve different functions and may
+            operate in parallel.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Is ElitePetz affiliated with any government or trade organization?</h3>
+          <p>
+            No. ElitePetz Certification Authority operates independently and is not affiliated with any government body,
+            regulatory agency, or trade association.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>What is the purpose of certification?</h3>
+          <p>
+            Certification introduces structure, transparency, and verifiable status into an industry that often relies on
+            informal trust. It allows third parties to independently confirm whether an entity has undergone formal
+            review.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q-num"></div>
+        <div class="faq-body">
+          <h3>Does ElitePetz investigate or enforce legal violations?</h3>
+          <p>
+            No. ElitePetz Certification Authority does not act as a regulatory or law enforcement body. Its role is
+            limited to certification, status tracking, and enforcement within its own
+            <a href="https://www.elitepetz.com/governance-framework">governance framework</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RELATED GUIDANCE ─────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Related Guidance</h2>
+      <span class="head-meta">Explore More</span>
+    </div>
+    <div class="related-grid">
+      <a class="related-card" href="https://www.elitepetz.com/guidance">
+        <div class="rc-label">Buyer Guidance</div>
+        <h3>Verification Guidance</h3>
+        <div class="rc-go">How to verify a breeder &rarr;</div>
+      </a>
+      <a class="related-card" href="https://www.elitepetz.com/fee-validity">
+        <div class="rc-label">Fees &amp; Validity</div>
+        <h3>Fees &amp; Validity</h3>
+        <div class="rc-go">Renewal and validity &rarr;</div>
+      </a>
+      <a class="related-card" href="https://www.elitepetz.com/registry-overview">
+        <div class="rc-label">Registry</div>
+        <h3>Registry Overview</h3>
+        <div class="rc-go">Understand the registry &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING STATEMENT BAND ───────────────────────────────────── -->
+<section class="closing-band">
+  <div class="container">
+    <div class="cb-eyebrow">Still Have Questions?</div>
+    <h2>Verify a record or reach the Authority directly.</h2>
+    <p class="cb-sub">
+      Confirm a breeder's current certification status, or contact the ElitePetz Certification Authority with any
+      remaining questions.
+    </p>
+    <div class="cb-actions">
+      <a href="https://www.elitepetz.com/verify-certifications" class="btn btn-light">Verify a Record <span class="arrow">→</span></a>
+      <a href="https://www.elitepetz.com/contact-1" class="btn btn-ghost">Contact the Authority <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row top">
+      <div class="brand">
+        <div class="name">ElitePetz Certification Authority</div>
+        <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://www.elitepetz.com/about-1">About</a>
+        <a href="https://www.elitepetz.com/certificationstandardsframework">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/guidance">Guidance</a>
+        <a href="https://www.elitepetz.com/contact-1">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-row bottom">
+      <div class="copyright">&copy; 2026 Elite Petz LLC</div>
+      <div class="legal-links">
+        <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use-1">Terms</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
