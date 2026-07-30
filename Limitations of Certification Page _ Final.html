@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<!-- saved from url=(0137)file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Limitations of Certification | ElitePetz Certification Authority</title>
+  <meta name="description" content="Understand what ElitePetz certification confirms, what it does not guarantee, and how to verify a certification record.">
+  <link rel="canonical" href="https://www.elitepetz.com/limitations">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Limitations of Certification | ElitePetz Certification Authority">
+  <meta property="og:description" content="A clear statement of the scope and limitations of ElitePetz certification.">
+  <meta property="og:url" content="https://www.elitepetz.com/limitations">
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d6878;
+      --quiet: #7b8492;
+      --navy: #0b2d4f;
+      --navy-2: #174f78;
+      --navy-soft: #eef5f9;
+      --gold: #bd9350;
+      --gold-soft: #faf6ec;
+      --green: #277451;
+      --green-soft: #eef8f2;
+      --red: #9b3d3d;
+      --red-soft: #fcf3f2;
+      --line: #dce2e7;
+      --line-soft: #ebeff2;
+      --paper: #ffffff;
+      --wash: #f7f8f9;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 14px 34px rgba(18, 42, 64, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--navy-2); text-underline-offset: .2em; }
+    a:hover { color: var(--navy); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); }
+    h1 { margin-bottom: 20px; font-size: clamp(2.45rem, 5vw, 4.4rem); line-height: 1.03; letter-spacing: -.035em; }
+    h2 { margin-bottom: 10px; font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.16; letter-spacing: -.02em; }
+    h3 { margin-bottom: 8px; font-size: 1.18rem; line-height: 1.35; }
+    :focus-visible { outline: 3px solid #5aa9e6; outline-offset: 3px; }
+    [id] { scroll-margin-top: 92px; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 4px;
+      transform: translateY(-180%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+
+    .utility {
+      color: #dce8f0;
+      background: var(--navy);
+      font-size: .76rem;
+      letter-spacing: .04em;
+    }
+    .utility .container {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .utility-links { display: flex; gap: 22px; }
+    .utility a { color: #fff; text-decoration: none; }
+    .utility a:hover { text-decoration: underline; }
+
+    .masthead {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.98);
+    }
+    .masthead .container {
+      min-height: 112px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .seal {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #fff;
+      background: var(--navy);
+      border: 3px double var(--gold);
+      border-radius: 50%;
+      font: 700 1.05rem/1 var(--serif);
+      letter-spacing: -.04em;
+    }
+    .brand-name { font: 700 1.25rem/1.12 var(--serif); }
+    .brand-sub {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font: 700 .61rem/1.2 var(--sans);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .primary-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px 24px; }
+    .primary-nav a {
+      padding: 7px 0;
+      color: var(--ink);
+      font-size: .88rem;
+      font-weight: 650;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+    }
+    .primary-nav a:hover,
+    .primary-nav a[aria-current="page"] { color: var(--navy); border-bottom-color: var(--gold); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(64px, 9vw, 112px) 0 58px;
+      background:
+        linear-gradient(90deg, rgba(11,45,79,.035) 1px, transparent 1px) 0 0 / 54px 54px,
+        linear-gradient(rgba(11,45,79,.035) 1px, transparent 1px) 0 0 / 54px 54px,
+        linear-gradient(135deg, #fff 52%, var(--navy-soft));
+      border-bottom: 1px solid var(--line);
+    }
+    .breadcrumbs {
+      margin-bottom: 32px;
+      color: var(--quiet);
+      font-size: .78rem;
+    }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .breadcrumbs li + li::before { content: "/"; margin-right: 7px; color: #abb3bd; }
+    .eyebrow {
+      margin-bottom: 16px;
+      color: var(--navy-2);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .hero-copy { max-width: 865px; }
+    .hero .lede {
+      max-width: 810px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font: 1.18rem/1.7 var(--serif);
+    }
+    .hero .lede strong { color: var(--ink); }
+    .document-meta {
+      max-width: 940px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .meta-cell { min-height: 95px; padding: 20px 24px; border-left: 1px solid var(--line-soft); }
+    .meta-cell:first-child { border-left: 0; }
+    .meta-label {
+      margin-bottom: 6px;
+      color: var(--quiet);
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .meta-value { font-size: .91rem; font-weight: 700; line-height: 1.42; }
+
+    .jump-nav {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .jump-nav .container {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .jump-nav .label {
+      flex: 0 0 auto;
+      color: var(--quiet);
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .jump-nav a {
+      flex: 0 0 auto;
+      padding: 17px 0 14px;
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+    }
+    .jump-nav a:hover,
+    .jump-nav a.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+    .section { padding: clamp(64px, 8vw, 96px) 0; border-bottom: 1px solid var(--line); }
+    .section--tint { background: var(--wash); }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 760px);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .section-number {
+      padding-top: 8px;
+      color: var(--gold);
+      font-size: .69rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .section-intro { margin-bottom: 0; color: var(--muted); font: 1.04rem/1.7 var(--serif); }
+
+    .scope-notice {
+      margin: 0 0 32px 120px;
+      max-width: 880px;
+      padding: 24px 28px;
+      background: var(--gold-soft);
+      border: 1px solid #e8d9b9;
+      border-left: 4px solid var(--gold);
+    }
+    .scope-notice strong { display: block; margin-bottom: 5px; font-family: var(--serif); font-size: 1.05rem; }
+    .scope-notice p { margin-bottom: 0; color: #5d5548; font-size: .91rem; }
+
+    .boundary-list { margin-left: 120px; max-width: 880px; border-top: 1px solid var(--line); }
+    .boundary {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 18px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .boundary-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      color: var(--red);
+      background: var(--red-soft);
+      border: 1px solid #efd4d2;
+      border-radius: 50%;
+      font-weight: 850;
+      line-height: 1;
+    }
+    .boundary h3 { margin-bottom: 6px; }
+    .boundary p { max-width: 760px; margin-bottom: 0; color: var(--muted); font-size: .91rem; }
+
+    .meaning-layout {
+      margin-left: 120px;
+      max-width: 880px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+    }
+    .definition {
+      min-height: 100%;
+      padding: 34px;
+      color: #fff;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+    .card-label {
+      margin-bottom: 16px;
+      color: #c8d8e4;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .definition blockquote {
+      margin: 0;
+      font: 700 clamp(1.42rem, 2.5vw, 2rem)/1.4 var(--serif);
+    }
+    .definition p { margin: 24px 0 0; color: #d7e1e9; font-size: .86rem; }
+    .confirms {
+      padding: 29px 30px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+    }
+    .confirms .card-label { color: var(--green); }
+    .confirms ul { margin: 0; padding: 0; list-style: none; }
+    .confirms li {
+      position: relative;
+      padding: 13px 0 13px 32px;
+      border-top: 1px solid var(--line-soft);
+      font: 700 .94rem/1.45 var(--serif);
+    }
+    .confirms li:first-child { border-top: 0; }
+    .confirms li::before {
+      content: "✓";
+      position: absolute;
+      left: 2px;
+      top: 12px;
+      color: var(--green);
+      font-family: var(--sans);
+      font-weight: 900;
+    }
+    .status-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 18px 20px;
+      color: #3d5f4b;
+      background: var(--green-soft);
+      border: 1px solid #cee5d7;
+      font-size: .88rem;
+    }
+
+    .audience-grid {
+      margin-left: 120px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .audience-card {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--navy-2);
+    }
+    .audience-card p { margin-bottom: 0; color: var(--muted); font-size: .88rem; }
+
+    .resource-grid {
+      margin-left: 120px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .resource {
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      text-decoration: none;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .resource:hover { color: var(--ink); border-color: #9db2c3; box-shadow: var(--shadow); transform: translateY(-2px); }
+    .resource-type {
+      margin-bottom: 12px;
+      color: var(--quiet);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .resource-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 7px;
+      font: 700 1.08rem/1.35 var(--serif);
+    }
+    .resource p { margin-bottom: 0; color: var(--muted); font-size: .84rem; line-height: 1.55; }
+
+    .faq-list { margin-left: 120px; max-width: 880px; border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative;
+      padding: 24px 50px 24px 0;
+      cursor: pointer;
+      list-style: none;
+      font: 700 1.08rem/1.45 var(--serif);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      color: var(--navy-2);
+      font: 400 1.7rem/1 var(--sans);
+    }
+    details[open] summary::after { content: "–"; }
+    details p { max-width: 780px; padding: 0 50px 24px 0; margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .cta { padding: 54px 0; color: #fff; background: var(--navy); }
+    .cta .container { display: flex; align-items: center; justify-content: space-between; gap: 34px; }
+    .cta h2 { margin-bottom: 5px; color: #fff; font-size: clamp(1.55rem, 3vw, 2.1rem); }
+    .cta p { margin-bottom: 0; color: #cfdae3; font-size: .91rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; flex: 0 0 auto; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      font-size: .84rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button:hover { color: var(--navy); background: #edf4f8; }
+    .button--ghost { color: #fff; background: transparent; }
+    .button--ghost:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+    footer { padding: 40px 0 28px; border-top: 4px solid var(--gold); }
+    .footer-main {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+    }
+    .footer-brand { font: 700 1.05rem/1.3 var(--serif); }
+    .footer-brand small {
+      display: block;
+      margin-top: 5px;
+      color: var(--quiet);
+      font: 700 .62rem/1.3 var(--sans);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 22px; }
+    .footer-nav a { color: var(--ink); font-size: .79rem; font-weight: 700; text-decoration: none; }
+    .footer-legal {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 22px;
+      color: var(--quiet);
+      font-size: .73rem;
+    }
+    .footer-legal div { display: flex; gap: 16px; }
+
+    @media (max-width: 920px) {
+      .masthead .container { align-items: flex-start; flex-direction: column; padding: 22px 0; }
+      .primary-nav { justify-content: flex-start; }
+      .document-meta { grid-template-columns: 1fr; }
+      .meta-cell { min-height: 0; border-top: 1px solid var(--line-soft); border-left: 0; }
+      .meta-cell:first-child { border-top: 0; }
+      .section-heading { grid-template-columns: 1fr; gap: 5px; }
+      .section-number { padding-top: 0; }
+      .scope-notice, .boundary-list, .meaning-layout, .audience-grid, .resource-grid, .faq-list { margin-left: 0; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .cta .container { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 32px, 1160px); }
+      .utility .container { align-items: flex-start; flex-direction: column; gap: 3px; padding-block: 8px; }
+      .utility-links { flex-wrap: wrap; gap: 3px 16px; }
+      .masthead .container { min-height: 0; }
+      .primary-nav { gap: 4px 15px; }
+      .hero { padding-top: 54px; }
+      .breadcrumbs { margin-bottom: 24px; }
+      .jump-nav .label { display: none; }
+      .meaning-layout, .resource-grid { grid-template-columns: 1fr; }
+      .definition, .confirms { padding: 25px; }
+      .footer-main, .footer-legal { align-items: flex-start; flex-direction: column; }
+      .footer-nav { justify-content: flex-start; }
+      .actions, .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+    @media print {
+      .utility, .primary-nav, .jump-nav, .cta, .footer-nav, .footer-legal div { display: none; }
+      .masthead .container { min-height: 76px; }
+      .hero, .section, footer { padding-block: 28px; background: #fff; }
+      .document-meta, .definition, .resource, .audience-card { box-shadow: none; break-inside: avoid; }
+      .definition { color: var(--ink); background: #fff; border: 2px solid var(--navy); }
+      .definition .card-label, .definition p { color: var(--muted); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.elitepetz.com/limitations#webpage",
+    "url": "https://www.elitepetz.com/limitations",
+    "name": "Limitations of Certification | ElitePetz Certification Authority",
+    "description": "A clear statement of the scope and limitations of ElitePetz certification.",
+    "inLanguage": "en",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.elitepetz.com/"},
+        {"@type":"ListItem","position":2,"name":"Certification","item":"https://www.elitepetz.com/how-certification-works"},
+        {"@type":"ListItem","position":3,"name":"Limitations of Certification","item":"https://www.elitepetz.com/limitations"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#main-content">Skip to main content</a>
+
+  <div class="utility">
+    <div class="container">
+      <span>Independent certification authority</span>
+      <div class="utility-links">
+        <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+        <a href="https://www.elitepetz.com/contact">Report a concern</a>
+        <a href="https://www.elitepetz.com/guidance">Buyer guidance</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="container">
+      <a class="brand" href="https://www.elitepetz.com/" aria-label="ElitePetz Certification Authority home">
+        <span class="seal" aria-hidden="true">EP</span>
+        <span class="brand-name">ElitePetz<span class="brand-sub">Certification Authority</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="https://www.elitepetz.com/">Home</a>
+        <a href="https://www.elitepetz.com/about">About</a>
+        <a href="https://www.elitepetz.com/how-certification-works" aria-current="page">Certification</a>
+        <a href="https://www.elitepetz.com/verify-certifications">Registry</a>
+        <a href="https://www.elitepetz.com/research">Research</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="https://www.elitepetz.com/">Home</a></li>
+            <li><a href="https://www.elitepetz.com/how-certification-works">Certification</a></li>
+            <li aria-current="page">Limitations of Certification</li>
+          </ol>
+        </nav>
+        <div class="hero-copy">
+          <p class="eyebrow">Public guidance · Certification scope</p>
+          <h1 id="page-title">Limitations of Certification</h1>
+          <p class="lede">ElitePetz certification confirms that an applicant completed the applicable review process and was found to meet the certification standards in force <strong>at the time of assessment</strong>. It is not a guarantee, license, or endorsement of any animal or transaction.</p>
+        </div>
+        <div class="document-meta" aria-label="Document information">
+          <div class="meta-cell">
+            <div class="meta-label">Document type</div>
+            <div class="meta-value">Public guidance</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Applies to</div>
+            <div class="meta-value">Applicants, certificate holders, buyers, and the public</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Effective date</div>
+            <div class="meta-value">July 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="jump-nav" aria-label="On this page">
+      <div class="container">
+        <span class="label">On this page</span>
+        <a href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#boundaries" class="active" aria-current="location">What certification does not do</a>
+        <a href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#meaning" class="">What certification confirms</a>
+        <a href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#audiences" class="">What this means for you</a>
+        <a href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#resources" class="">Related resources</a>
+        <a href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/ElitePetz-Limitations-of-Certification-Final.html#faq" class="">FAQ</a>
+      </div>
+    </nav>
+
+    <section class="section" id="boundaries" aria-labelledby="boundaries-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">Section 01</div>
+          <div>
+            <h2 id="boundaries-title">What certification does not do</h2>
+            <p class="section-intro">Certification has a defined and limited scope. These boundaries are essential to understanding and using an ElitePetz certification record correctly.</p>
+          </div>
+        </div>
+        <aside class="scope-notice" aria-label="Important scope notice">
+          <strong>Certification is a point-in-time determination.</strong>
+          <p>A certificate reflects the information reviewed and the standards applied during an assessment. It does not amount to continuous oversight of a certificate holder’s business, premises, animals, or conduct.</p>
+        </aside>
+        <div class="boundary-list">
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not guarantee an animal’s health, quality, or suitability</h3>
+              <p>ElitePetz does not inspect, diagnose, grade, or warrant any individual animal. Certification does not predict health, temperament, behavior, appearance, fertility, longevity, or suitability for a particular person, household, or purpose.</p>
+            </div>
+          </article>
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not guarantee the outcome of a transaction</h3>
+              <p>Certification does not guarantee availability, price, payment, delivery, placement, contractual performance, buyer satisfaction, or any other outcome of a sale or arrangement between private parties.</p>
+            </div>
+          </article>
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not make ElitePetz a party to buyer–seller disputes</h3>
+              <p>ElitePetz is not a party, agent, broker, guarantor, or representative in transactions between certificate holders and buyers. It does not mediate, arbitrate, adjudicate, or enforce private agreements.</p>
+            </div>
+          </article>
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not replace legal or regulatory requirements</h3>
+              <p>ElitePetz certification is separate from any license, permit, registration, inspection, or other legal obligation. Applicants and certificate holders remain solely responsible for identifying and complying with all laws and rules that apply to them.</p>
+            </div>
+          </article>
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not constitute continuous supervision or an endorsement</h3>
+              <p>ElitePetz does not manage or supervise a certificate holder’s day-to-day operations. Certification must not be represented as a blanket endorsement of the holder, its animals, services, claims, or future conduct.</p>
+            </div>
+          </article>
+          <article class="boundary">
+            <div class="boundary-mark" aria-hidden="true">×</div>
+            <div>
+              <h3>It does not remove the need for independent judgment</h3>
+              <p>Buyers should conduct their own research, ask questions, review relevant records and agreements, and obtain independent professional advice when appropriate. A certification record is one source of information—not a substitute for due diligence.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="meaning" aria-labelledby="meaning-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">Section 02</div>
+          <div>
+            <h2 id="meaning-title">What certification confirms</h2>
+            <p class="section-intro">Within those boundaries, an active ElitePetz certification has a precise and verifiable meaning.</p>
+          </div>
+        </div>
+        <div class="meaning-layout">
+          <div class="definition">
+            <div class="card-label">Official scope statement</div>
+            <blockquote>Certification records a standards-based determination made from the information and evidence reviewed at the time of assessment.</blockquote>
+            <p>The public registry is the authoritative source for a certification’s current recorded status.</p>
+          </div>
+          <div class="confirms">
+            <div class="card-label">An active record confirms</div>
+            <ul>
+              <li>The applicable application and review process was completed</li>
+              <li>The applicant was assessed against defined standards</li>
+              <li>A certification decision and unique record were issued</li>
+              <li>The record can be checked in the public registry</li>
+              <li>The recorded status was active when the registry was checked</li>
+            </ul>
+          </div>
+          <p class="status-note"><strong>Status can change.</strong> Certification may expire, lapse, be suspended, or be revoked in accordance with the applicable framework. Always verify the current registry record rather than relying only on a badge, screenshot, or printed certificate.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="audiences" aria-labelledby="audiences-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">Section 03</div>
+          <div>
+            <h2 id="audiences-title">What this means for you</h2>
+            <p class="section-intro">Use certification as reliable evidence of a defined assessment—not as a promise about matters outside that assessment.</p>
+          </div>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>For buyers</h3>
+            <p>Verify the certification ID in the public registry, confirm that the record matches the breeder, and continue your own due diligence before entering a transaction.</p>
+          </article>
+          <article class="audience-card">
+            <h3>For certificate holders</h3>
+            <p>Describe certification accurately, comply with applicable mark-use rules, keep required information current, and do not imply guarantees or endorsement beyond the stated scope.</p>
+          </article>
+          <article class="audience-card">
+            <h3>For the public</h3>
+            <p>Use the registry to confirm whether a certification is genuine and current. Report suspected misuse of certification claims or concerns related to the standards.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">Section 04</div>
+          <div>
+            <h2 id="resources-title">Related resources</h2>
+            <p class="section-intro">Use these official resources to verify a record, understand the process, or raise a standards-related concern.</p>
+          </div>
+        </div>
+        <div class="resource-grid">
+          <a class="resource" href="https://www.elitepetz.com/verify-certifications">
+            <span class="resource-type">Public registry</span>
+            <span class="resource-title">Verify a certification <span aria-hidden="true">→</span></span>
+            <p>Confirm that a record is genuine, matches the certificate holder, and has an active recorded status.</p>
+          </a>
+          <a class="resource" href="https://www.elitepetz.com/how-certification-works">
+            <span class="resource-type">Process</span>
+            <span class="resource-title">How certification works <span aria-hidden="true">→</span></span>
+            <p>Understand the application, review, decision, activation, and renewal process.</p>
+          </a>
+          <a class="resource" href="https://www.elitepetz.com/certificationstandardsframework">
+            <span class="resource-type">Standards</span>
+            <span class="resource-title">Certification standards <span aria-hidden="true">→</span></span>
+            <p>Review the defined requirements used during a certification assessment.</p>
+          </a>
+          <a class="resource" href="https://www.elitepetz.com/guidance">
+            <span class="resource-type">Buyer guidance</span>
+            <span class="resource-title">Make an informed decision <span aria-hidden="true">→</span></span>
+            <p>Learn how to verify claims and what to consider before engaging with a breeder.</p>
+          </a>
+          <a class="resource" href="https://www.elitepetz.com/contact">
+            <span class="resource-type">Standards concern</span>
+            <span class="resource-title">Report a concern <span aria-hidden="true">→</span></span>
+            <p>Raise a concern about possible noncompliance or misuse of ElitePetz certification.</p>
+          </a>
+          <a class="resource" href="https://www.elitepetz.com/governance-framework">
+            <span class="resource-type">Governance</span>
+            <span class="resource-title">Governance framework <span aria-hidden="true">→</span></span>
+            <p>See how certification decisions, status changes, oversight, and accountability are structured.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">Section 05</div>
+          <div>
+            <h2 id="faq-title">Frequently asked questions</h2>
+            <p class="section-intro">Short answers to common questions about the limits of ElitePetz certification.</p>
+          </div>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Does ElitePetz guarantee the health or quality of a specific animal?</summary>
+            <p>No. Certification does not inspect, diagnose, or warrant an individual animal, and it does not guarantee health, temperament, condition, or suitability. Ask the breeder for relevant records and obtain independent professional advice when appropriate.</p>
+          </details>
+          <details>
+            <summary>Will ElitePetz resolve a dispute about a sale or placement?</summary>
+            <p>No. ElitePetz is not a party to private transactions and does not mediate, arbitrate, or enforce agreements between buyers and sellers. A standards-related concern may still be reported separately.</p>
+          </details>
+          <details>
+            <summary>Does certification replace a license or permit required by law?</summary>
+            <p>No. Certification is separate from and additional to any applicable legal or regulatory requirement. Each applicant and certificate holder remains responsible for its own compliance.</p>
+          </details>
+          <details>
+            <summary>Does an active record mean ElitePetz continuously supervises the breeder?</summary>
+            <p>No. Certification is based on a defined assessment and does not amount to continuous supervision. An active status means only that the public registry showed the certification as active when checked.</p>
+          </details>
+          <details>
+            <summary>Can I rely on a certificate image or certification badge?</summary>
+            <p>Do not rely on an image or badge alone. Verify the certification ID in the official public registry and confirm that the holder details and current status match the claim being made.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div>
+          <h2 id="cta-title">Verify before you rely on a certification.</h2>
+          <p>Check the public record for the certificate holder, certification ID, and current status.</p>
+        </div>
+        <div class="actions">
+          <a class="button" href="https://www.elitepetz.com/verify-certifications">Verify a certification&nbsp; →</a>
+          <a class="button button--ghost" href="https://www.elitepetz.com/contact">Report a concern</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">ElitePetz Certification Authority<small>Elite Petz LLC · Established 2025</small></div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://www.elitepetz.com/about">About</a>
+          <a href="https://www.elitepetz.com/how-certification-works">Certification</a>
+          <a href="https://www.elitepetz.com/verify-certifications">Registry</a>
+          <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+          <a href="https://www.elitepetz.com/contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-legal">
+        <span>© <span id="year">2026</span> Elite Petz LLC. All rights reserved.</span>
+        <div>
+          <a href="https://www.elitepetz.com/privacy">Privacy</a>
+          <a href="https://www.elitepetz.com/terms">Terms</a>
+          <a href="https://www.elitepetz.com/cookies">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll(".jump-nav a"));
+      var sections = links.map(function (link) {
+        return document.querySelector(link.getAttribute("href"));
+      });
+
+      function updateJumpNavigation() {
+        var marker = window.scrollY + 140;
+        var current = 0;
+        sections.forEach(function (section, index) {
+          if (section && section.offsetTop <= marker) current = index;
+        });
+        links.forEach(function (link, index) {
+          link.classList.toggle("active", index === current);
+          if (index === current) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      }
+
+      window.addEventListener("scroll", updateJumpNavigation, { passive: true });
+      updateJumpNavigation();
+    }());
+  </script>
+
+
+</body></html>
