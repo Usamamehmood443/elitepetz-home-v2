@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!-- saved from url=(0134)file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/registry-overview-final/registry-overview.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============ SEO ============ -->
+<title>Certification Registry Overview | ElitePetz Certification Authority</title>
+<meta name="description" content="How the ElitePetz public certification registry works: its purpose, what any party can verify, and the limited status-related information it publishes. Verify a certification record by Certification ID.">
+<link rel="canonical" href="https://www.elitepetz.com/registry-overview">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Certification Registry Overview | ElitePetz Certification Authority">
+<meta property="og:description" content="The purpose, scope, and structure of the ElitePetz public certification registry.">
+<meta property="og:url" content="https://www.elitepetz.com/registry-overview">
+
+<!-- ============ Structured data ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.elitepetz.com/registry-overview#webpage",
+      "url": "https://www.elitepetz.com/registry-overview",
+      "name": "Certification Registry Overview | ElitePetz Certification Authority",
+      "description": "The purpose, scope, and structure of the ElitePetz public certification registry.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://www.elitepetz.com/#website" },
+      "about": { "@id": "https://www.elitepetz.com/#organization" },
+      "breadcrumb": { "@id": "https://www.elitepetz.com/registry-overview#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.elitepetz.com/registry-overview#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.elitepetz.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Registry", "item": "https://www.elitepetz.com/registry-overview" },
+        { "@type": "ListItem", "position": 3, "name": "Registry Overview", "item": "https://www.elitepetz.com/registry-overview" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text:#1a1a1a; --text-muted:#6b7280; --text-soft:#9ca3af;
+    --border:#e5e7eb; --border-soft:#f0f1f3;
+    --bg:#ffffff; --bg-band:#fafafa; --bg-cream:#fbfaf7;
+    --navy:#0B2545; --navy-hover:#143A66; --navy-tint:#EEF2F7;
+    --active-fg:#256b2b; --revoked-fg:#8f1d1d;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --mono:"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;color:var(--text)}
+  a{color:var(--navy);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .1s}
+  a:hover{border-bottom-color:var(--navy)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid rgba(11,37,69,.24);outline-offset:3px}
+  .skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:var(--navy);color:#fff;padding:10px 14px;border-radius:3px}
+  .skip-link:focus{top:12px}
+  .container{max-width:1120px;margin:0 auto;padding:0 48px}
+
+  /* ===== top meta ===== */
+  .top-meta{border-bottom:1px solid var(--border-soft);padding:8px 0;font-size:11.5px;color:var(--text-soft);font-family:var(--mono);letter-spacing:.04em}
+  .top-meta .container{display:flex;justify-content:space-between;align-items:center}
+  .top-meta a{color:var(--text-muted);border-bottom:none}
+  .top-meta a:hover{color:var(--navy)}
+  .top-meta .right{display:flex;gap:22px;align-items:center}
+
+  /* ===== masthead ===== */
+  .masthead{border-bottom:1px solid var(--border);padding:26px 0 24px;background:#fff}
+  .masthead .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .masthead .org{display:flex;align-items:center;gap:14px;border-bottom:none;color:var(--text)}
+  .masthead .mark{width:72px;height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:#fff}
+  .masthead .mark img{width:72px;height:72px;object-fit:cover;display:block}
+  .masthead .wordmark{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:-.005em;line-height:1.15}
+  .masthead .wordmark .sub{display:block;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:3px}
+  .masthead .topnav{display:flex;gap:22px;font-size:14px;color:var(--text)}
+  .masthead .topnav a{color:inherit;border-bottom:1px solid transparent;padding-bottom:3px;font-weight:500}
+  .masthead .topnav a:hover{color:var(--navy)}
+  .masthead .topnav a.active{color:var(--text);border-bottom-color:var(--text)}
+
+  /* ===== intro ===== */
+  .intro-block{padding:54px 0 36px;border-bottom:1px solid var(--border)}
+  .intro-block .crumbs{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--text-soft);margin-bottom:22px}
+  .intro-block .crumbs a{color:var(--text-muted);border-bottom:none}
+  .intro-block .crumbs a:hover{color:var(--navy)}
+  .intro-block .crumbs .sep{opacity:.5;margin:0 7px}
+  .intro-block .eyebrow{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--text-soft);margin-bottom:18px}
+  .intro-block h1{font-size:36px;line-height:1.18;letter-spacing:-.014em;font-weight:600;margin-bottom:20px}
+  .intro-block .description{font-family:var(--serif);font-size:17.5px;line-height:1.6;color:var(--text-muted);font-weight:400;max-width:760px}
+  .recordmeta{margin-top:30px;max-width:860px;border:1px solid var(--border);border-left:3px solid var(--navy);background:#fff;display:grid;grid-template-columns:repeat(4,1fr)}
+  .recordmeta .cell{padding:15px 18px;border-left:1px solid var(--border-soft)}
+  .recordmeta .cell:first-child{border-left:none}
+  .recordmeta .k{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);margin-bottom:6px}
+  .recordmeta .v{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--text);line-height:1.4}
+
+  /* ===== verify panel ===== */
+  .verify{padding:40px 0;border-bottom:1px solid var(--border);background:var(--bg-band)}
+  .vpanel{background:#fff;border:1px solid var(--border);border-left:3px solid var(--navy);border-radius:3px;padding:26px 30px}
+  .vpanel .vlabel{font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
+  .vpanel h2{font-size:22px;line-height:1.3;margin-bottom:6px}
+  .vpanel .vhelp{font-size:13.5px;color:var(--text-muted);margin-bottom:20px}
+  .vpanel .search-row{display:grid;grid-template-columns:1fr auto;gap:10px}
+  .vpanel input[type="text"]{width:100%;font-family:var(--mono);font-size:14px;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:3px;padding:13px 16px;letter-spacing:.02em;transition:border-color .12s,box-shadow .12s}
+  .vpanel input[type="text"]::placeholder{color:var(--text-soft)}
+  .vpanel input[type="text"]:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(11,37,69,.08)}
+  .vpanel .submit{background:var(--navy);color:#fff;border:1px solid var(--navy);border-radius:3px;padding:13px 26px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;transition:background .12s}
+  .vpanel .submit:hover{background:var(--navy-hover)}
+  .vpanel .vbelow{margin-top:15px;font-size:12.5px;color:var(--text-muted)}
+  .vpanel .vbelow a{color:var(--navy);font-weight:500}
+  .field-label{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:7px}
+  .form-message{min-height:1.4em;margin-top:9px;font-size:12.5px;color:var(--revoked-fg)}
+
+  /* ===== sections ===== */
+  .section{padding:56px 0;border-bottom:1px solid var(--border)}
+  .section.alt{background:var(--bg-band)}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);gap:24px;flex-wrap:wrap}
+  .section-head h2{font-size:24px;line-height:1.25;letter-spacing:-.008em;font-weight:600}
+  .section-head .head-meta{font-size:11.5px;color:var(--text-soft);font-family:var(--mono);letter-spacing:.04em}
+  .lead{font-family:var(--serif);font-size:17.5px;line-height:1.55;color:var(--text);margin-bottom:18px;max-width:760px}
+  .sublabel{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--text);margin:6px 0 6px}
+  .after-p{font-size:15px;line-height:1.65;color:var(--text-muted);margin-top:16px;max-width:760px}
+
+  /* check / deny lists */
+  .flist{list-style:none;border-top:1px solid var(--border-soft);max-width:640px;margin-top:4px}
+  .flist li{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-soft);align-items:baseline}
+  .flist li .mk{font-family:var(--sans);font-weight:700;font-size:14px;text-align:center}
+  .flist.chk li .mk{color:var(--active-fg)}
+  .flist.deny li .mk{color:var(--revoked-fg)}
+  .flist li .lt{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--text);line-height:1.4}
+
+  /* explore registry resource grid */
+  .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .res{display:block;background:#fff;border:1px solid var(--border);border-radius:3px;padding:20px 22px;transition:border-color .12s,box-shadow .12s}
+  .res:hover{border-color:var(--navy);box-shadow:0 4px 18px rgba(11,37,69,.05)}
+  .res .rk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);margin-bottom:9px}
+  .res .rt{font-family:var(--serif);font-size:16.5px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .res .rt .arr{color:var(--navy);transition:transform .15s}
+  .res:hover .rt .arr{transform:translateX(3px)}
+  .res .rd{font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--text-muted)}
+
+  /* help callout */
+  .help{padding:44px 0}
+  .help .box{background:var(--navy-tint);border-left:3px solid var(--navy);border-radius:3px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .help .box .t{font-family:var(--serif);font-size:16.5px;font-weight:500;color:var(--text)}
+  .help .box .t a{font-weight:600}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:14px;font-weight:500;line-height:1;padding:13px 24px;border-radius:3px;border:1.5px solid var(--navy);background:transparent;color:var(--navy);cursor:pointer;transition:background .12s}
+  .btn:hover{background:#fff}
+  .btn .arrow{transition:transform .15s}
+  .btn:hover .arrow{transform:translateX(2px)}
+
+  /* footer */
+  footer.site-footer{background:#fff;padding:28px 0 24px;border-top:2px solid var(--text)}
+  footer.site-footer .footer-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer.site-footer .footer-row.top{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--border-soft);align-items:flex-end}
+  footer.site-footer .brand .name{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--text);line-height:1.2;margin-bottom:4px}
+  footer.site-footer .brand .est{font-family:var(--mono);font-size:11px;color:var(--text-soft);letter-spacing:.06em;text-transform:uppercase}
+  footer.site-footer .footer-nav{display:flex;flex-wrap:wrap;gap:22px;font-size:13px}
+  footer.site-footer .footer-nav a{color:var(--text);border:none;font-weight:500}
+  footer.site-footer .footer-nav a:hover{color:var(--navy)}
+  footer.site-footer .copyright,footer.site-footer .legal-links{font-size:11.5px;color:var(--text-soft)}
+  footer.site-footer .legal-links a{color:var(--text-soft);border:none}
+  footer.site-footer .legal-links a:hover{color:var(--navy)}
+  footer.site-footer .legal-links .sep{color:var(--text-soft);opacity:.5;margin:0 4px}
+
+  /* responsive */
+  @media (max-width:960px){
+    .container{padding:0 32px}
+    .top-meta .container{flex-direction:column;gap:6px;align-items:flex-start}
+    .masthead .container{flex-direction:column;gap:18px;align-items:flex-start}
+    .masthead .topnav{flex-wrap:wrap;gap:18px;font-size:13px}
+    .intro-block h1{font-size:29px}
+    .recordmeta{grid-template-columns:1fr 1fr}
+    .recordmeta .cell:nth-child(3){border-left:none}
+    .recordmeta .cell:nth-child(3),.recordmeta .cell:nth-child(4){border-top:1px solid var(--border-soft)}
+    .res-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .container{padding:0 20px}
+    .top-meta .right a:not(:first-child){display:none}
+    .intro-block h1{font-size:25px}
+    .recordmeta{grid-template-columns:1fr}
+    .recordmeta .cell{border-left:none;border-top:1px solid var(--border-soft)}
+    .recordmeta .cell:first-child{border-top:none}
+    .vpanel .search-row{grid-template-columns:1fr}
+    .help .box{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="file:///Users/pavel.legki/.codex/.chatgpt-projects/g-p-69877a341da081918457c9660187f757/registry-overview-final/registry-overview.html#main-content">Skip to main content</a>
+
+  <!-- ===== TOP META ===== -->
+  <div class="top-meta">
+    <div class="container">
+      <span>Independent Certification Body</span>
+      <div class="right">
+        <a href="https://www.elitepetz.com/verify-certifications">Verify a record</a>
+        <a href="https://www.elitepetz.com/contact">Report a concern</a>
+        <a href="https://www.elitepetz.com/guidance">Verification guidance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MASTHEAD ===== -->
+  <header class="masthead">
+    <div class="container">
+      <a href="https://www.elitepetz.com/" class="org" aria-label="ElitePetz Certification Authority home">
+        <div class="mark">
+          <img src="./Certification Registry Overview _ Final_files/elitepetz-logo.jpg" alt="ElitePetz Certification Authority seal">
+        </div>
+        <div class="wordmark">ElitePetz<span class="sub">Certification Authority</span></div>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="https://www.elitepetz.com/">Home</a>
+        <a href="https://www.elitepetz.com/about">About</a>
+        <a href="https://www.elitepetz.com/how-certification-works">Certification</a>
+        <a href="https://www.elitepetz.com/registry-overview" class="active" aria-current="page">Registry</a>
+        <a href="https://www.elitepetz.com/verification-problem-companion-animal-breeding">Research</a>
+        <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+        <a href="https://www.elitepetz.com/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== INTRO ===== -->
+  <main id="main-content">
+  <section class="intro-block">
+    <div class="container">
+      <div class="crumbs">
+        <a href="https://www.elitepetz.com/">Home</a><span class="sep">/</span>
+        <a href="https://www.elitepetz.com/registry-overview">Registry</a><span class="sep">/</span>
+        Registry Overview
+      </div>
+      <div class="eyebrow">Registry · Structure &amp; Purpose</div>
+      <h1>Registry Overview</h1>
+      <p class="description">The ElitePetz Certification Registry is the authoritative public source for confirming the current status of certifications issued by the ElitePetz Certification Authority. This overview explains what the registry shows, what it does not show, and how to verify a record.</p>
+      <div class="recordmeta">
+        <div class="cell"><div class="k">Document type</div><div class="v">Public guidance</div></div>
+        <div class="cell"><div class="k">Audience</div><div class="v">Public users</div></div>
+        <div class="cell"><div class="k">Information scope</div><div class="v">Public certification records</div></div>
+        <div class="cell"><div class="k">Last updated</div><div class="v">July 2026</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VERIFY PANEL ===== -->
+  <section class="verify">
+    <div class="container">
+      <div class="vpanel">
+        <div class="vlabel">Public Verification</div>
+        <h2>Verify a certification record</h2>
+        <p class="vhelp">Enter the Certification ID exactly as it appears on the certificate or certification mark.</p>
+        <label class="field-label" for="verifyInput">Certification ID</label>
+        <form class="search-row" id="verifyForm" novalidate="">
+          <input type="text" id="verifyInput" name="id" placeholder="For example: EP-CERT-2026-0003-B8Q" aria-describedby="verifyMessage" autocomplete="off" spellcheck="false">
+          <button class="submit" type="submit">Verify record</button>
+        </form>
+        <div class="form-message" id="verifyMessage" role="status" aria-live="polite"></div>
+        <div class="vbelow">If you do not have a Certification ID, read the <a href="https://www.elitepetz.com/guidance">verification guidance</a> or browse the <a href="https://www.elitepetz.com/publicstatusdirectory">public status directory</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEC 01 — PURPOSE ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Purpose of the Registry</h2>
+        <span class="head-meta">SEC. 01 · Why It Exists</span>
+      </div>
+      <p class="lead">The registry enables anyone to confirm whether an ElitePetz certification is valid and current.</p>
+      <p class="sublabel">The registry allows any party to verify:</p>
+      <ul class="flist chk">
+        <li><span class="mk" aria-hidden="true">✓</span><span class="lt">The certification holder or certified entity identified in the public record</span></li>
+        <li><span class="mk" aria-hidden="true">✓</span><span class="lt">The unique Certification ID</span></li>
+        <li><span class="mk" aria-hidden="true">✓</span><span class="lt">The certification validity period</span></li>
+        <li><span class="mk" aria-hidden="true">✓</span><span class="lt">The current certification status</span></li>
+      </ul>
+      <p class="after-p">The registry supports consistent, transparent verification. Each status reflects the most recent administrative action recorded by the ElitePetz Certification Authority. If a printed or digital certificate conflicts with the registry, the registry record governs.</p>
+    </div>
+  </section>
+
+  <!-- ===== SEC 02 — SCOPE ===== -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Scope of Public Information</h2>
+        <span class="head-meta">SEC. 02 · What Is Shown</span>
+      </div>
+      <p class="lead">The registry displays limited, status-related information only.</p>
+      <p class="sublabel">It does not publish:</p>
+      <ul class="flist deny">
+        <li><span class="mk" aria-hidden="true">✕</span><span class="lt">Financial, payment, or transaction information</span></li>
+        <li><span class="mk" aria-hidden="true">✕</span><span class="lt">Internal assessments, evidence, or review notes</span></li>
+        <li><span class="mk" aria-hidden="true">✕</span><span class="lt">Private correspondence or personal contact information</span></li>
+        <li><span class="mk" aria-hidden="true">✕</span><span class="lt">Buyer, customer, or other third-party details</span></li>
+      </ul>
+      <p class="after-p">A registry entry confirms certification status only. It is not a guarantee of future conduct, product quality, transaction outcomes, or ongoing operational performance.</p>
+    </div>
+  </section>
+
+  <!-- ===== SEC 03 — EXPLORE ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Explore the Registry</h2>
+        <span class="head-meta">SEC. 03 · Related Pages</span>
+      </div>
+      <div class="res-grid">
+        <a class="res" href="https://www.elitepetz.com/verify-certifications">
+          <div class="rk">Verify</div>
+          <div class="rt">Verify a certification <span class="arr">→</span></div>
+          <div class="rd">Look up a record by Certification ID and confirm its current public status.</div>
+        </a>
+        <a class="res" href="https://www.elitepetz.com/publicstatusdirectory">
+          <div class="rk">Directory</div>
+          <div class="rt">Public status directory <span class="arr">→</span></div>
+          <div class="rd">Browse certification records that are available in the public registry.</div>
+        </a>
+        <a class="res" href="https://www.elitepetz.com/registry-status-transparency">
+          <div class="rk">Transparency</div>
+          <div class="rt">Status &amp; transparency <span class="arr">→</span></div>
+          <div class="rd">Understand how certification statuses are assigned, updated, and displayed.</div>
+        </a>
+        <a class="res" href="https://www.elitepetz.com/registry-reporting-concerns">
+          <div class="rk">Concerns</div>
+          <div class="rt">Reporting concerns <span class="arr">→</span></div>
+          <div class="rd">Learn how to submit a concern about compliance with applicable standards.</div>
+        </a>
+        <a class="res" href="https://www.elitepetz.com/registry-disclaimers">
+          <div class="rk">Disclaimers</div>
+          <div class="rt">Registry disclaimers <span class="arr">→</span></div>
+          <div class="rd">Review the scope and limitations of information published in the registry.</div>
+        </a>
+        <a class="res" href="https://www.elitepetz.com/verification-faq">
+          <div class="rk">Questions</div>
+          <div class="rt">Verification FAQ <span class="arr">→</span></div>
+          <div class="rd">Find answers to common questions about certification and verification.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HELP CALLOUT ===== -->
+  <section class="help">
+    <div class="container">
+      <div class="box">
+        <div class="t">Need help interpreting a certification record? Visit the <a href="https://www.elitepetz.com/verification-faq">Verification FAQ</a>.</div>
+        <a class="btn" href="https://www.elitepetz.com/verification-faq">Open the FAQ <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row top">
+        <div class="brand">
+          <div class="name">ElitePetz Certification Authority</div>
+          <div class="est">EST. 2025 · ELITE PETZ LLC</div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="https://www.elitepetz.com/about">About</a>
+          <a href="https://www.elitepetz.com/how-certification-works">Certification</a>
+          <a href="https://www.elitepetz.com/governance-framework">Governance</a>
+          <a href="https://www.elitepetz.com/registry-overview">Registry</a>
+          <a href="https://www.elitepetz.com/contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-row bottom">
+        <div class="copyright">© 2026 Elite Petz LLC</div>
+        <div class="legal-links">
+          <a href="https://www.elitepetz.com/privacy">Privacy</a><span class="sep">·</span><a href="https://www.elitepetz.com/terms-of-use">Terms of Use</a><span class="sep">·</span><a href="https://www.elitepetz.com/cookies">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify form -> registry lookup by Certification ID
+    (function(){
+      var form = document.getElementById('verifyForm');
+      var input = document.getElementById('verifyInput');
+      var message = document.getElementById('verifyMessage');
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        var id = (input.value || '').trim();
+        if (id) {
+          message.textContent = '';
+          window.location.href = 'https://www.elitepetz.com/verify-certifications?id=' + encodeURIComponent(id);
+        } else {
+          message.textContent = 'Enter a Certification ID to continue.';
+          input.focus();
+        }
+      });
+    })();
+  </script>
+
+
+</body></html>
