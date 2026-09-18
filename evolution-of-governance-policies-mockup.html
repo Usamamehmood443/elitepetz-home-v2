@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evolution of Governance Policies | ElitePetz</title>
+<meta name="description" content="How ElitePetz governance policies are revised: what prompts a change, how a revision is approved and published, how versions and statuses are identified, and which version applies to a determination.">
+<link rel="canonical" href="https://www.elitepetz.com/evolution">
+<meta property="og:title" content="Evolution of Governance Policies | ElitePetz">
+<meta property="og:description" content="How ElitePetz governance policies are revised: what prompts a change, how a revision is approved and published, how versions and statuses are identified, and which version applies to a determination.">
+<meta property="og:url" content="https://www.elitepetz.com/evolution">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.elitepetz.com/evolution#webpage",
+      "url": "https://www.elitepetz.com/evolution",
+      "name": "Evolution of Governance Policies | ElitePetz",
+      "description": "How ElitePetz governance policies are revised: what prompts a change, how a revision is approved and published, how versions and statuses are identified, and which version applies to a determination.",
+      "inLanguage": "en",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "isPartOf": { "@id": "https://www.elitepetz.com/#website" },
+      "about": { "@id": "https://www.elitepetz.com/#organization" },
+      "publisher": { "@id": "https://www.elitepetz.com/#organization" },
+      "breadcrumb": { "@id": "https://www.elitepetz.com/evolution#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.elitepetz.com/evolution#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.elitepetz.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Governance", "item": "https://www.elitepetz.com/governance-framework" },
+        { "@type": "ListItem", "position": 3, "name": "Evolution of Governance Policies" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --text:#1A1A1A; --text-muted:#6B7280; --text-soft:#9CA3AF; --border:#E5E7EB; --border-soft:#F0F1F3;
+    --bg-band:#FAFAFA; --navy:#0B2545; --navy-hover:#143A66; --navy-tint:#EEF2F7; --paper:#fff; --onnavy:#c9d6e5;
+    --active-fg:#2E7D32; --revoked-fg:#991B1B;
+    --serif:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+    --sans:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    --wrap:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);margin:0;text-wrap:balance}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+
+  /* ── utility bar + header ── */
+  .util{border-bottom:1px solid var(--border-soft);font-family:var(--mono);font-size:12px;color:var(--text-muted)}
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;min-height:48px;max-width:none;padding:0 32px}
+  .util nav a{text-decoration:none;margin-left:24px;display:inline-block;padding:14px 0}
+  header.site{border-bottom:1px solid var(--border)}
+  header.site .wrap{max-width:none;padding:0 32px;display:flex;align-items:center;justify-content:space-between;min-height:104px}
+  .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .brand .mark{width:69px;height:72px;object-fit:contain;display:block}
+  .brand .name{font-family:var(--serif);font-size:24px;color:var(--navy);line-height:1.05}
+  .brand .sub{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--text-muted);margin-top:4px}
+  .mainnav a{text-decoration:none;font-size:15.5px;margin-left:26px;color:var(--text);display:inline-block;padding:14px 0}
+  .mainnav a.on{color:var(--navy);font-weight:500}
+  .mainnav .caret{font-size:11px;margin-left:3px;color:var(--text-muted)}
+
+  /* ── hero ── */
+  .hero{padding:44px 0 56px;border-bottom:1px solid var(--border)}
+  .crumbs{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);margin:0 0 26px;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+  .crumbs a{text-decoration:none}
+  .crumbs li+li:before{content:"/";margin-right:10px;color:var(--text-soft)}
+  .crumbs [aria-current]{color:var(--text)}
+  .hero .eyebrow{margin-bottom:18px}
+  .hero h1{font-size:40px;line-height:1.15;margin-bottom:18px}
+  .hero .intro{font-family:var(--serif);font-size:19px;line-height:1.6;color:var(--text);margin:0 0 30px}
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border)}
+  .meta>div{padding:18px 20px;border-left:1px solid var(--border)}
+  .meta>div:first-child{border-left:0}
+  .meta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+  .meta .v{font-size:15px;font-weight:500;color:var(--text)}
+
+  /* ── at a glance ── */
+  .glance{padding:56px 0 60px;border-bottom:1px solid var(--border)}
+  .glance .eyebrow{margin-bottom:14px}
+  .glance h2{font-size:26px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:22px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{border:1px solid var(--border);padding:22px 24px 8px}
+  .panel .eyebrow{margin-bottom:12px}
+  .panel h3{font-size:19px;margin-bottom:12px}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--border-soft);font-size:15.5px}
+  .list li:first-child{border-top:0}
+  .list .ok{color:var(--active-fg);font-weight:700}
+  .list .no{color:var(--revoked-fg)}
+  .glance .note{margin:22px 0 0;font-size:15px}
+  .glance .note b{font-weight:600}
+
+  /* ── body ── */
+  .body{padding:56px 0 40px}
+  .cols{display:grid;grid-template-columns:minmax(0,748px) minmax(0,1fr);gap:40px;align-items:start}
+  .toc{position:sticky;top:24px;padding-top:6px}
+  .toc .label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+  .toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+  .toc a{display:flex;gap:10px;align-items:baseline;padding:8px 0 8px 14px;margin-left:-2px;border-left:2px solid transparent;text-decoration:none;font-size:14.5px;color:var(--text-muted);min-height:32px}
+  .toc a .n{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--text-soft)}
+  .toc a.active{color:var(--text);font-weight:500;border-left-color:var(--navy)}
+  .toc a.active .n,.toc a:hover .n{color:var(--navy)}
+  .toc a:hover{color:var(--navy)}
+
+  section.sec{padding-bottom:36px;margin-bottom:36px;border-bottom:1px solid var(--border)}
+  section.sec:last-of-type{border-bottom:0}
+  .sec h2{font-size:23px;display:flex;gap:18px;align-items:baseline;margin-bottom:14px;scroll-margin-top:24px}
+  .sec h2 .n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--navy)}
+  .sec p{margin:0 0 14px;font-size:16px}
+  .sec p.lead{font-size:16.5px}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .card{border:1px solid var(--border);padding:18px 20px 20px}
+  .card .eyebrow{font-size:11px;margin-bottom:10px}
+  .card h3{font-size:18.5px;margin-bottom:8px}
+  .card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--text-muted)}
+
+  .steps{border:1px solid var(--border);margin-top:20px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 20px;border-top:1px solid var(--border-soft)}
+  .step:first-child{border-top:0}
+  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--navy);font-weight:600;padding-top:3px}
+  .step h3{font-family:var(--sans);font-size:15.5px;font-weight:600;margin-bottom:4px}
+  .step p{margin:0;font-size:14.5px;color:var(--text-muted)}
+
+  .table-wrap{overflow-x:auto;margin-top:18px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:500;border-bottom:1px solid var(--border)}
+  td.id{font-family:var(--mono);font-size:13px;white-space:nowrap}
+
+  .rule{border:1px solid var(--navy);border-left-width:4px;padding:18px 22px;margin-top:6px;background:var(--bg-band)}
+  .rule .eyebrow{color:var(--navy);margin-bottom:8px}
+  .rule p{margin:0;font-family:var(--serif);font-size:17px;line-height:1.6}
+
+  .rel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .rel a{display:block;border:1px solid var(--border);padding:18px 20px 20px;text-decoration:none;position:relative}
+  .rel a:hover{border-color:var(--navy)}
+  .rel .eyebrow{font-size:10.5px;margin-bottom:10px}
+  .rel h3{font-size:18.5px;margin-bottom:8px;padding-right:36px}
+  .rel h3:after{content:"→";position:absolute;right:20px;top:46px;font-family:var(--sans)}
+  .rel p{margin:0;font-size:14.5px;color:var(--text-muted)}
+
+  .own p{margin:0 0 4px}
+  .own b{font-weight:600}
+
+  /* ── CTA + footer ── */
+  .cta{background:var(--navy);color:#fff;padding:64px 0}
+  .cta .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .cta h2{color:#fff;font-size:26px;margin-bottom:14px}
+  .cta p{font-family:var(--serif);font-size:16.5px;line-height:1.6;margin:0;color:var(--onnavy);max-width:620px}
+  .cta .btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 36px;font-size:15.5px;font-weight:500;text-decoration:none;border:1px solid #fff;border-radius:2px}
+  .btn.solid{background:#fff;color:var(--navy)}
+  .btn.ghost{color:#fff}
+  footer.site{padding:38px 32px 28px;border-top:1px solid var(--border)}
+  footer.site .top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+  footer.site .fb{font-family:var(--serif);font-size:20px;color:var(--navy)}
+  footer.site .fs{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--text-muted);margin-top:8px}
+  footer.site nav a{text-decoration:none;font-size:15px;margin-left:18px;display:inline-block;padding:12px 0}
+  footer.site .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:30px;padding-top:18px;border-top:1px solid var(--border-soft);font-size:13px;color:var(--text-muted)}
+  footer.site .legal a{text-decoration:none;margin-left:14px;display:inline-block;padding:10px 0}
+
+  a:focus-visible,.btn:focus-visible{outline:2px solid #116DFF;outline-offset:2px}
+
+  @media (max-width:960px){
+    .cols{grid-template-columns:minmax(0,1fr)}
+    .toc{position:static;border:1px solid var(--border);padding:16px 18px;margin-bottom:28px}
+    .meta{grid-template-columns:1fr 1fr}
+    .meta>div:nth-child(3){border-left:0}
+    .meta>div:nth-child(n+3){border-top:1px solid var(--border)}
+    .two,.cards,.rel{grid-template-columns:minmax(0,1fr)}
+    .cta .wrap{grid-template-columns:minmax(0,1fr)}
+    .mainnav{display:none}
+    .hero h1{font-size:32px}
+  }
+  @media (max-width:600px){
+    .util .wrap,header.site .wrap{padding:0 20px}
+    .util nav{display:none}
+    .hero{padding:32px 0 40px}
+    .meta{grid-template-columns:1fr}
+    .meta>div{border-left:0;border-top:1px solid var(--border)}
+    .meta>div:first-child{border-top:0}
+    .step{grid-template-columns:1fr;gap:6px}
+    footer.site nav a{margin:0 18px 0 0}
+    /* two-column definition tables stack so the second column keeps its width */
+    table.def thead{display:none}
+    table.def tr{display:block;padding:12px 0;border-bottom:1px solid var(--border-soft)}
+    table.def td{display:block;padding:0;border:0}
+    table.def td:first-child{margin-bottom:6px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <span>Independent Certification Body</span>
+    <nav aria-label="Utility"><a href="/verify-certification">Verify a record</a><a href="/registry-reporting-concerns">Report a concern</a><a href="/guidance">Verification guidance</a></nav>
+  </div>
+</div>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="ElitePetz Certification Authority home">
+      <img class="mark" src="https://static.wixstatic.com/media/21cbee_79458fa839f2417ba79dec59dd6a7796~mv2.jpg/v1/fill/w_138,h_143,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20design%20(4)_edited.jpg" width="69" height="72" alt="">
+      <span><span class="name">ElitePetz</span><br><span class="sub">CERTIFICATION AUTHORITY</span></span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="/">Home</a><a href="/about">About</a><a href="/verification-problem-companion-animal-breeding">Research &amp; Publications<span class="caret">▾</span></a><a href="/certification-standards">Certification<span class="caret">▾</span></a><a href="/registry-overview">Registry<span class="caret">▾</span></a><a href="/governance-framework" class="on">Governance<span class="caret">▾</span></a><a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <nav aria-label="Breadcrumbs"><ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/governance-framework">Governance</a></li><li aria-current="page">Evolution of Governance Policies</li></ol></nav>
+    <div class="eyebrow">Governance · Policy change control</div>
+    <h1>Evolution of Governance Policies</h1>
+    <p class="intro">ElitePetz governance policies are reviewed and revised over time. This page explains what can prompt a change, how a revision is approved and published, how each version is identified, and which version governs a certification determination.</p>
+    <div class="meta">
+      <div><div class="k">Status</div><div class="v">Current</div></div>
+      <div><div class="k">Document ID</div><div class="v">EP-GOV-EGP-001</div></div>
+      <div><div class="k">Version</div><div class="v">1.0</div></div>
+      <div><div class="k">Effective date</div><div class="v">September 18, 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="glance">
+  <div class="wrap">
+    <div class="eyebrow">The change process at a glance</div>
+    <h2>Policies change through a recorded process.</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="eyebrow">A revision can</div>
+        <h3>Change what a policy says</h3>
+        <ul class="list">
+          <li><span class="ok">✓</span>Clarify wording without changing its effect.</li>
+          <li><span class="ok">✓</span>Add, revise, or remove a requirement.</li>
+          <li><span class="ok">✓</span>Restructure or consolidate documents.</li>
+          <li><span class="ok">✓</span>Supersede a version with a new one.</li>
+          <li><span class="ok">✓</span>Withdraw a document that no longer applies.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">A revision cannot</div>
+        <h3>Rewrite what has already happened</h3>
+        <ul class="list">
+          <li><span class="no">—</span>Apply a new rule to a determination already made.</li>
+          <li><span class="no">—</span>Edit a published version without a new version number.</li>
+          <li><span class="no">—</span>Remove earlier versions from the retained record.</li>
+          <li><span class="no">—</span>Change a certification status on its own.</li>
+          <li><span class="no">—</span>Reuse a document ID for a different subject.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>Practical effect:</b> a reader can always identify which version of a policy was in force on a given date, and a certified entity is not judged against a rule that did not exist when the matter was reviewed.</p>
+  </div>
+</section>
+
+<div class="body">
+  <div class="wrap cols">
+    <div>
+
+      <section class="sec" id="why">
+        <h2><span class="n">01</span>Why policies change</h2>
+        <p class="lead">Governance documents are written to be applied. When applying them reveals a gap, an ambiguity, or a change in the environment they operate in, the document is revised rather than worked around.</p>
+        <div class="cards">
+          <div class="card"><div class="eyebrow">Trigger</div><h3>Operational experience</h3><p>A rule proves unclear, produces inconsistent outcomes, or does not address a situation that has arisen in review or enforcement.</p></div>
+          <div class="card"><div class="eyebrow">Trigger</div><h3>Regulatory developments</h3><p>A change in applicable law or regulation affects what the Authority may do, must record, or must disclose.</p></div>
+          <div class="card"><div class="eyebrow">Trigger</div><h3>Industry standards</h3><p>Recognized practice in companion animal breeding, welfare, or certification moves in a way the published framework should reflect.</p></div>
+          <div class="card"><div class="eyebrow">Trigger</div><h3>Internal policy review</h3><p>Every governance document is reviewed at least annually. A scheduled review may confirm the document unchanged or begin a revision.</p></div>
+        </div>
+        <p style="margin-top:16px">A correction of a factual or typographical error is also a change and is recorded as one. It is not applied silently to the published text.</p>
+      </section>
+
+      <section class="sec" id="how">
+        <h2><span class="n">02</span>How a change is made</h2>
+        <p class="lead">Every revision passes through the same stages. A change that has not completed them is not in force.</p>
+        <div class="steps">
+          <div class="step"><div class="n">Step 01</div><div><h3>Proposal</h3><p>The need for a change is documented: what prompted it, which document and sections are affected, and the intended effect.</p></div></div>
+          <div class="step"><div class="n">Step 02</div><div><h3>Drafting and review</h3><p>The Governance function prepares the revised text and reviews it against the rest of the framework so that related policies stay consistent. Conflict-of-interest safeguards apply to everyone involved.</p></div></div>
+          <div class="step"><div class="n">Step 03</div><div><h3>Approval</h3><p>The revision is approved by the function authorized to do so under the Decision-Making Authority policy. Approval is recorded with the date and the approving function.</p></div></div>
+          <div class="step"><div class="n">Step 04</div><div><h3>Publication and effective date</h3><p>The approved version is published with its version number and effective date. Material amendments are communicated to active certified entities before they take effect unless an earlier effective date is required by law or by an urgent animal-welfare or certification-integrity risk.</p></div></div>
+          <div class="step"><div class="n">Step 05</div><div><h3>Record</h3><p>The version history on the document is updated, the previous version is marked Superseded, and the change is retained as part of the governance record.</p></div></div>
+        </div>
+      </section>
+
+      <section class="sec" id="versions">
+        <h2><span class="n">03</span>Versions, status, and effective dates</h2>
+        <p class="lead">Each governance document carries the same four identifiers at the top of its page. Together they tell a reader exactly which text they are looking at and whether it is in force.</p>
+        <div class="table-wrap">
+        <table class="def">
+          <thead><tr><th scope="col">Identifier</th><th scope="col">What it tells you</th></tr></thead>
+          <tbody>
+            <tr><td class="id">Document ID</td><td>A permanent reference for the document, such as EP-GOV-EGP-001. It identifies the subject, not the version, so it does not change when the document is revised and is not reused for another subject.</td></tr>
+            <tr><td class="id">Version</td><td>Which revision of the document this is. A clarification that does not change the effect of the document is a minor revision (for example, 1.0 to 1.1). A change to a requirement, deadline, or scope is a new major version (for example, 1.x to 2.0).</td></tr>
+            <tr><td class="id">Effective date</td><td>The date from which this version governs. It may be later than the publication date so that affected parties have notice.</td></tr>
+            <tr><td class="id">Status</td><td>Whether this version is in force. The statuses used across all governance documents are defined below.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="table-wrap">
+        <table class="def">
+          <thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead>
+          <tbody>
+            <tr><td class="id">Draft</td><td>Under preparation or review. Not approved and not in force. Not published on the public site.</td></tr>
+            <tr><td class="id">Approved, not yet effective</td><td>Approved and published, with an effective date in the future. The previous version remains in force until that date.</td></tr>
+            <tr><td class="id">Current</td><td>In force. This is the version applied to any matter reviewed on or after its effective date.</td></tr>
+            <tr><td class="id">Superseded</td><td>Replaced by a later version. Retained in the record and still relevant to matters reviewed while it was current.</td></tr>
+            <tr><td class="id">Withdrawn</td><td>No longer applies and has not been replaced. Retained in the record.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section class="sec" id="applies">
+        <h2><span class="n">04</span>Which version applies</h2>
+        <div class="rule">
+          <div class="eyebrow">Controlling rule</div>
+          <p>Certification status determinations remain subject to the policies in effect at the time of review.</p>
+        </div>
+        <p style="margin-top:18px">A determination is made under the version of each relevant policy whose status was Current on the date the matter was reviewed. A later revision does not reopen a determination that has already been made, and an earlier version is not applied to a matter reviewed after it was superseded. This is subject to controlling law and the applicable certification agreement.</p>
+        <p>Written decisions identify the document ID and version applied. Where a matter is under review when a new version takes effect, the notice of review states which version governs.</p>
+        <p>Superseded versions remain part of the retained governance record so that a decision can be read against the text that was in force when it was made.</p>
+      </section>
+
+      <section class="sec" id="published">
+        <h2><span class="n">05</span>Where changes are published</h2>
+        <p class="lead">There is no separate change log. Each governance document records its own history in its final section, in the same format on every page.</p>
+        <div class="table-wrap">
+        <table class="def">
+          <thead><tr><th scope="col">Column</th><th scope="col">What it records</th></tr></thead>
+          <tbody>
+            <tr><td class="id">Version</td><td>The version number of that revision.</td></tr>
+            <tr><td class="id">Published</td><td>The date the revision was published on this site.</td></tr>
+            <tr><td class="id">Effective</td><td>The date from which the revision governs.</td></tr>
+            <tr><td class="id">Summary</td><td>What changed. For a minor revision, the summary states that the effect is unchanged.</td></tr>
+            <tr><td class="id">Status</td><td>The current status of that revision: Current, Superseded, or Withdrawn.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p style="margin-top:14px">The Governance Framework page maps every governance document and links to the current version of each. A change to that map is itself recorded on the Governance Framework page.</p>
+      </section>
+
+      <section class="sec" id="related">
+        <h2><span class="n">06</span>Related policies and actions</h2>
+        <p class="lead">This page explains how governance documents change. The documents below control what they say.</p>
+        <div class="rel">
+          <a href="/governance-framework"><div class="eyebrow">Overview</div><h3>Governance Framework</h3><p>How the governance documents fit together and where each subject is controlled.</p></a>
+          <a href="/decision-making-authority"><div class="eyebrow">Authorization</div><h3>Decision-Making Authority</h3><p>Who may approve a policy change and how that approval is recorded.</p></a>
+          <a href="/status-history"><div class="eyebrow">Records</div><h3>Status History and Record Integrity</h3><p>How administrative records, including superseded policy versions, are retained.</p></a>
+          <a href="/code-of-ethics"><div class="eyebrow">Conduct</div><h3>Code of Ethics</h3><p>How amendments to the Code are communicated to certified entities and accepted.</p></a>
+        </div>
+      </section>
+
+      <section class="sec own" id="ownership">
+        <h2><span class="n">07</span>Ownership, review, and version history</h2>
+        <p><b>Policy owner:</b> ElitePetz Certification Authority, Governance function</p>
+        <p><b>Approved by:</b> ElitePetz Certification Authority, Governance committee</p>
+        <p><b>Review cycle:</b> At least annually and following a material legal, standards, or operational change</p>
+        <p><b>Last reviewed:</b> September 18, 2026</p>
+        <p><b>Next scheduled review:</b> September 18, 2027</p>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Version</th><th scope="col">Published</th><th scope="col">Effective</th><th scope="col">Summary</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td class="id">1.0</td><td>September 18, 2026</td><td>September 18, 2026</td><td>Initial policy on how governance documents are revised, versioned, and applied.</td><td>Current</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="toc" aria-label="Contents">
+      <div class="label">Contents</div>
+      <ol>
+        <li><a href="#why" class="active"><span class="n">01</span>Why policies change</a></li>
+        <li><a href="#how"><span class="n">02</span>How a change is made</a></li>
+        <li><a href="#versions"><span class="n">03</span>Versions, status, and effective dates</a></li>
+        <li><a href="#applies"><span class="n">04</span>Which version applies</a></li>
+        <li><a href="#published"><span class="n">05</span>Where changes are published</a></li>
+        <li><a href="#related"><span class="n">06</span>Related policies and actions</a></li>
+        <li><a href="#ownership"><span class="n">07</span>Ownership, review, and version history</a></li>
+      </ol>
+    </aside>
+  </div>
+</div>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <h2>Reading a decision? Check the version it cites.</h2>
+      <p>Every governance page shows its current version and effective date at the top and its full history at the bottom. The public registry shows a certification's current standing.</p>
+    </div>
+    <div class="btns"><a class="btn solid" href="/verify-certification">Verify a Certification</a><a class="btn ghost" href="/governance-framework">Governance Framework</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="top">
+    <div><div class="fb">ElitePetz Certification Authority</div><div class="fs">ELITE PETZ LLC · EST. 2025</div></div>
+    <nav aria-label="Footer"><a href="/about">About</a><a href="/certification-applicant">Certification</a><a href="/governance-framework">Governance</a><a href="/registry-overview">Registry</a><a href="/contact">Contact</a></nav>
+  </div>
+  <div class="legal"><span>© 2026 Elite Petz LLC</span><span><a href="/privacy">Privacy</a><a href="/terms-of-use">Terms of Use</a><a href="/cookies">Cookies</a></span></div>
+</footer>
+
+<script>
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('.toc a'));
+    var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+    function tick(){
+      var line=32,next=0;
+      secs.forEach(function(s,i){ if(s&&s.getBoundingClientRect().top<=line) next=i; });
+      var atBottom=window.innerHeight+window.pageYOffset>=document.documentElement.scrollHeight-2;
+      if(atBottom){ for(var i=secs.length-1;i>next;i--){ if(secs[i]&&secs[i].getBoundingClientRect().top<window.innerHeight){ next=i; break; } } }
+      links.forEach(function(a,i){ a.classList.toggle('active',i===next); });
+    }
+    window.addEventListener('scroll',tick,{passive:true}); tick();
+  })();
+</script>
+</body>
+</html>
